@@ -1,6 +1,6 @@
 <script lang="ts">
    import { Options, Vue } from "vue-class-component";
-   import AppNavigationItem from "@/AppNavigationItem.vue";
+   import AppNavigationItem from "@/App_NavigationItem.vue";
 
    @Options({
       components: { AppNavigationItem },
@@ -10,6 +10,7 @@
                { key: "home", title: "Home" },
                { key: "intro", title: "Intro" },
                { key: "gallery", title: "Gallery" },
+               { key: "project", title: "Projects" },
             ],
          };
       },
@@ -166,6 +167,7 @@
          display: flex;
          flex-direction: column;
          align-items: stretch;
+         flex-grow: 1;
 
          .App-header {
             display: flex;
@@ -225,12 +227,12 @@
          display: flex;
          flex-direction: column;
          align-items: center;
+         flex-grow: 0;
 
          margin-top: 2em;
          background-image: linear-gradient(180deg, #ffffff00, #fcd75f);
 
          img {
-            width: fit-content;
             height: 20em;
             height: 6em;
             transform: rotateY(180deg);
