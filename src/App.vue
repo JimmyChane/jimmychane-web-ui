@@ -1,19 +1,10 @@
 <script lang="ts">
    import { Options, Vue } from "vue-class-component";
    import AppNavigationItem from "@/App_NavigationItem.vue";
+   import AppHeader from "@/App_Header.vue";
 
    @Options({
-      components: { AppNavigationItem },
-      data() {
-         return {
-            navigations: [
-               { key: "home", title: "Home" },
-               { key: "intro", title: "Intro" },
-               { key: "gallery", title: "Gallery" },
-               { key: "project", title: "Projects" },
-            ],
-         };
-      },
+      components: { AppNavigationItem, AppHeader },
       computed: {
          currentRouteKey: (context: Vue) => context.$route.name,
       },
@@ -24,47 +15,12 @@
 
 <template>
    <div class="App">
-      <div class="App-background">
-         <p class="App-background-1">
-            Jimmy Chane Jimmy Chane Jimmy Chane Jimmy Chane Jimmy Chane
-         </p>
-         <p class="App-background-2">
-            Jimmy Chane Jimmy Chane Jimmy Chane Jimmy Chane Jimmy Chane
-         </p>
-         <p class="App-background-3">
-            Jimmy Chane Jimmy Chane Jimmy Chane Jimmy Chane Jimmy Chane
-         </p>
-         <p class="App-background-4">
-            Jimmy Chane Jimmy Chane Jimmy Chane Jimmy Chane Jimmy Chane
-         </p>
-         <p class="App-background-5">
-            Jimmy Chane Jimmy Chane Jimmy Chane Jimmy Chane Jimmy Chane
-         </p>
-         <p class="App-background-6">
-            Jimmy Chane Jimmy Chane Jimmy Chane Jimmy Chane Jimmy Chane
-         </p>
-      </div>
-
       <div class="App-body">
-         <div class="App-header">
-            <div class="App-profile">
-               <img src="@/assets/photo_2022-07-17_09-49-51.jpg" />
-            </div>
-            <div class="App-navigation">
-               <router-link
-                  v-for="nav of navigations"
-                  :key="nav.key"
-                  :to="{ name: nav.key }"
-               >
-                  <AppNavigationItem
-                     :title="nav.title"
-                     :isSelected="currentRouteKey === nav.key"
-                  />
-               </router-link>
-            </div>
-         </div>
+         <AppHeader />
 
-         <router-view />
+         <div class="App-main">
+            <router-view class="App-router" />
+         </div>
       </div>
 
       <div class="App-footer">
@@ -79,7 +35,6 @@
       word-break: break-all;
       text-overflow: clipsssss;
    }
-   // initial
    body {
       margin: 0;
       padding: 0;
@@ -106,116 +61,37 @@
    }
 
    .App {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
+      // position: relative;
+      min-width: 100vw;
+      min-height: 100vh;
       background: linear-gradient(140.09deg, #e0f7f2 10.49%, #f6dbdb 90.41%);
 
       display: flex;
       flex-direction: column;
       align-items: center;
-      overflow-x: hidden;
-      overflow-y: auto;
-
-      .App-background {
-         z-index: 1;
-         position: absolute;
-         top: 0;
-         width: 100%;
-         font-size: 2.4em;
-         font-weight: 600;
-         overflow: hidden;
-         line-height: 1;
-
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-         justify-content: flex-start;
-         gap: 0.2em;
-         opacity: 0.05;
-
-         & > * {
-            width: max-content;
-            padding: 0;
-            margin: 0;
-         }
-
-         .App-background-1 {
-            transform: translateX(-12%);
-         }
-         .App-background-2 {
-            transform: translateX(-6%);
-         }
-         .App-background-3 {
-            transform: translateX(0%);
-         }
-         .App-background-4 {
-            transform: translateX(6%);
-         }
-         .App-background-5 {
-            transform: translateX(12%);
-         }
-         .App-background-6 {
-            transform: translateX(18%);
-         }
-      }
 
       .App-body {
          z-index: 2;
          width: 100%;
-         max-width: 35em;
          display: flex;
          flex-direction: column;
-         align-items: stretch;
+         align-items: center;
          flex-grow: 1;
 
          .App-header {
+         }
+         .App-main {
+            width: 100%;
+            padding: 2rem;
+
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 1em;
+            flex-grow: 1;
 
-            .App-profile {
-               --size: 9em;
-               width: var(--size);
-               height: var(--size);
-               display: flex;
-               border-radius: 50%;
-               box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-               overflow: hidden;
-               transform: translateY(15%);
-               img {
-                  width: var(--size);
-                  height: var(--size);
-                  object-fit: contain;
-               }
-            }
-            .App-navigation {
+            .App-router {
                width: 100%;
-               max-width: fit-content;
-
-               background: hsla(0, 0%, 100%, 0.3);
-               box-shadow: 0px 0.25em 2.5em rgba(0, 0, 0, 0.24);
-               border-radius: 0.6em;
-               padding: 1em 2em;
-
-               display: flex;
-               flex-direction: row;
-               flex-wrap: wrap;
-               align-items: center;
-               justify-content: center;
-               column-gap: 3em;
-               row-gap: 0.3em;
-               overflow-x: auto;
-
-               & > * {
-                  width: max-content;
-                  text-decoration: none;
-                  & > {
-                     width: max-content;
-                  }
-               }
+               max-width: 35em;
             }
          }
       }
