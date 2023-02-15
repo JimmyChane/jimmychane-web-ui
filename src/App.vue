@@ -24,12 +24,14 @@
 
 <template>
    <div class="App" @scroll="(event) => (scrollTop = event.target.scrollTop)">
-      <div class="App-actionbar">
-         <AppNav path="/" title="Home" />
-         <AppNav path="/code" title="Project Code" />
-         <AppNav path="/art" title="Furry Artist" />
-         <AppNav path="/fursona" title="Fursona" />
-      </div>
+      <!-- <div class="App-actionbar">
+         <div class="App-actionbar-items">
+            <AppNav path="/" title="Home" />
+            <AppNav path="/code" title="Project Code" />
+            <AppNav path="/art" title="Furry Artist" />
+            <AppNav path="/fursona" title="Fursona" />
+         </div>
+      </div> -->
 
       <div class="App-body">
          <router-view />
@@ -85,6 +87,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
 
       position: relative;
       overflow-x: hidden;
@@ -93,14 +96,10 @@
       .App-actionbar {
          z-index: 2;
          width: 100%;
-         height: 3.8rem;
          display: flex;
          flex-direction: row;
          justify-content: center;
          align-items: center;
-         gap: 1.2rem;
-
-         padding: 0.5rem;
 
          position: sticky;
          top: 0;
@@ -110,11 +109,24 @@
             -webkit-backdrop-filter: blur(2rem);
             backdrop-filter: blur(2rem);
          }
+
+         .App-actionbar-items {
+            gap: 1.2rem;
+            padding: 0.5rem;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+
+            overflow-y: auto;
+         }
       }
 
       .App-body {
          z-index: 1;
          width: 100%;
+         height: 100%;
          display: flex;
          flex-direction: column;
          align-items: center;
