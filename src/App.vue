@@ -31,7 +31,9 @@
          </div>
       </div>
 
-      <router-view class="App-Page" />
+      <div class="App-body">
+         <router-view class="App-Page" />
+      </div>
    </div>
 </template>
 
@@ -75,6 +77,7 @@
          .App-actionbar-items {
             gap: 1.2rem;
             padding: 0.5rem;
+            padding: 1rem;
 
             display: flex;
             flex-direction: row;
@@ -84,9 +87,13 @@
             overflow-y: auto;
          }
       }
-      .App-Page {
+      .App-body {
          z-index: 1;
          flex-grow: 1;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
       }
    }
 </style>
