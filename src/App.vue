@@ -26,8 +26,8 @@
          <div class="App-actionbar-items">
             <AppNav path="/" title="Home" />
             <AppNav path="/code" title="Code" />
-            <AppNav path="/art" title="Art" />
-            <AppNav path="/fursona" title="Fursona" />
+            <!-- <AppNav path="/art" title="Art" />
+            <AppNav path="/fursona" title="Fursona" /> -->
          </div>
       </div>
 
@@ -43,7 +43,6 @@
       font-family: "Roboto", sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      text-align: center;
       color: black;
 
       width: 100%;

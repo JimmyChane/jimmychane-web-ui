@@ -10,12 +10,12 @@ const router = createRouter({
    routes: [
       { name: "home", path: "/", component: () => import("./PageHome.vue") },
       { name: "code", path: "/code", component: () => import("./PageCode.vue") },
-      { name: "art", path: "/art", component: () => import("./PageArt.vue") },
-      {
-         name: "fursona",
-         path: "/fursona",
-         component: () => import("./PageFursona.vue"),
-      },
+      // { name: "art", path: "/art", component: () => import("./PageArt.vue") },
+      // {
+      //    name: "fursona",
+      //    path: "/fursona",
+      //    component: () => import("./PageFursona.vue"),
+      // },
 
       { path: "/:pathMatch(.*)*", redirect: { path: "/" } },
    ],
