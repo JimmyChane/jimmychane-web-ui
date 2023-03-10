@@ -11,7 +11,7 @@
 </script>
 
 <template>
-   <router-link :class="['App-Nav', isSelected ? 'App-Nav-isSelected' : '']" :to="path">{{
+   <router-link class="App-Nav" :isSelected="isSelected" :to="path">{{
       title
    }}</router-link>
 </template>
@@ -19,17 +19,20 @@
 <style lang="scss" scoped>
    .App-Nav {
       width: 7rem;
-      font-size: 1rem;
-      color: hsl(350, 47%, 19%);
-      text-decoration: none;
       padding: 0.6em 1em;
       border-radius: 2em;
+      line-height: 1em;
+
+      font-size: 1rem;
+      font-weight: bold;
+      color: hsl(350, 47%, 19%);
+      text-decoration: none;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      line-height: 1;
    }
-   .App-Nav-isSelected {
-      background: rgb(243, 214, 219);
+   .App-Nav[isSelected="true"] {
+      background: hsl(350, 55%, 90%);
    }
 </style>

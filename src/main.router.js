@@ -17,7 +17,7 @@ const router = createRouter({
       //    component: () => import("./PageFursona.vue"),
       // },
 
-      { path: "/:pathMatch(.*)*", redirect: "/" },
+      { path: "/:pathMatch(.*)*", redirect: { path: "/" } },
    ],
 });
 

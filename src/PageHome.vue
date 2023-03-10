@@ -10,13 +10,15 @@
       </div>
 
       <div class="PageHome-links">
-         <a class="PageHome-link" target="_blank" href="https://twitter.com/jimmykajun"
-            ><img src="@/assets/twitter-color.svg" /><span>Twitter</span></a
-         >
+         <a class="PageHome-link" target="_blank" href="https://twitter.com/jimmykajun">
+            <img src="@/assets/twitter-color.svg" />
+            <span>Twitter</span>
+         </a>
 
-         <a class="PageHome-link" target="_blank" href="https://t.me/Jimmy612"
-            ><img src="@/assets/telegram-color.svg" /><span>Telegram</span></a
-         >
+         <a class="PageHome-link" target="_blank" href="https://t.me/Jimmy612">
+            <img src="@/assets/telegram-color.svg" />
+            <span>Telegram</span>
+         </a>
       </div>
    </div>
 </template>
@@ -54,7 +56,7 @@
          }
          .PageHome-name {
             font-size: 1.6em;
-            font-weight: 900;
+            font-weight: bold;
             transition: 0.3s;
          }
       }

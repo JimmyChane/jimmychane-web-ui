@@ -22,22 +22,23 @@
 
 <template>
    <div class="App" @scroll="(event) => (scrollTop = event.target.scrollTop)">
-      <!-- <div class="App-actionbar">
+      <div class="App-actionbar">
          <div class="App-actionbar-items">
             <AppNav path="/" title="Home" />
-            <AppNav path="/code" title="Project Code" />
-            <AppNav path="/art" title="Furry Artist" />
+            <AppNav path="/code" title="Code" />
+            <AppNav path="/art" title="Art" />
             <AppNav path="/fursona" title="Fursona" />
          </div>
-      </div> -->
+      </div>
 
-      <router-view />
+      <router-view class="App-Page" />
    </div>
 </template>
 
 <style lang="scss">
    .App {
-      font-family: "Comic Sans MS", Avenir, Helvetica, Arial, sans-serif;
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+      font-family: "Roboto", sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-align: center;
@@ -82,6 +83,10 @@
 
             overflow-y: auto;
          }
+      }
+      .App-Page {
+         z-index: 1;
+         flex-grow: 1;
       }
    }
 </style>
