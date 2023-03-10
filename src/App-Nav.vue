@@ -5,9 +5,7 @@
          title: { type: String, default: "" },
       },
       computed: {
-         isSelected() {
-            return this.$route.path === this.path;
-         },
+         isSelected: (c) => c.$route.path === c.path,
       },
    };
 </script>

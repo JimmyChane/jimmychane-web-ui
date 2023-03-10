@@ -1,15 +1,15 @@
 <template>
-   <div class="ArtPage">
-      <img class="ArtPage-image" src="@/assets/20220822_2138-pink.png" />
+   <div class="PageArt">
+      <img class="PageArt-image" src="@/assets/20220822_2138-pink.png" />
    </div>
 </template>
 
 <style lang="scss" scoped>
-   .ArtPage {
+   .PageArt {
       padding: 1rem;
       display: flex;
       flex-direction: column;
-      .ArtPage-image {
+      .PageArt-image {
          width: 100%;
       }
    }

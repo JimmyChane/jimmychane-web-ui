@@ -8,13 +8,13 @@ import {
 const router = createRouter({
    history: createWebHistory(),
    routes: [
-      { name: "home", path: "/", component: () => import("./HomePage.vue") },
-      // { name: "code", path: "/code", component: () => import("./CodePage.vue") },
-      // { name: "art", path: "/art", component: () => import("./ArtPage.vue") },
+      { name: "home", path: "/", component: () => import("./PageHome.vue") },
+      // { name: "code", path: "/code", component: () => import("./PageCode.vue") },
+      // { name: "art", path: "/art", component: () => import("./PageArt.vue") },
       // {
       //    name: "fursona",
       //    path: "/fursona",
-      //    component: () => import("./FursonaPage.vue"),
+      //    component: () => import("./PageFursona.vue"),
       // },
 
       { path: "/:pathMatch(.*)*", redirect: "/" },
