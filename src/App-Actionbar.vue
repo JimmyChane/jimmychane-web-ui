@@ -8,8 +8,8 @@
       <div class="App-actionbar-items">
          <AppNav path="/" title="Home" />
          <AppNav path="/code" title="Code" />
-         <!-- <AppNav path="/art" title="Art" />
-            <AppNav path="/fursona" title="Fursona" /> -->
+         <!-- <AppNav path="/art" title="Art" /> -->
+         <AppNav path="/fursona" title="Fursona" />
       </div>
    </div>
 </template>
