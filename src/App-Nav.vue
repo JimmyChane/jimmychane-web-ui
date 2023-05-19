@@ -19,20 +19,22 @@
 <style lang="scss" scoped>
    .App-Nav {
       width: 7rem;
-      padding: 0.6em 1em;
-      border-radius: 2em;
+      padding: 0.8em 1em;
+      border-radius: 1em;
       line-height: 1em;
 
       font-size: 1rem;
       font-weight: bold;
-      color: hsl(350, 47%, 19%);
+      color: #101718;
       text-decoration: none;
+      text-align: center;
 
       display: flex;
       align-items: center;
       justify-content: center;
    }
    .App-Nav[isSelected="true"] {
-      background: hsl(350, 55%, 90%);
+      background: #3c5f64;
+      color: white;
    }
 </style>

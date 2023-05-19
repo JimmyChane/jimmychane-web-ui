@@ -1,39 +1,75 @@
+<script>
+   import Header from "./PageCode-header.vue";
+   export default {
+      components: { Header },
+   };
+</script>
+
 <template>
    <div class="PageCode">
-      <p
-         >As a web developer, I am currently building a website for Freshnet Enterprise, a
-         computer store that offers a wide range of products to its customers. The main
-         focus of the website, which can be accessed at
-         <a href="https://www.freshnet.app">www.freshnet.app</a>, is to showcase the
-         various computer products available at the store and provide customers with
-         detailed information about each product, such as specifications, pricing, and
-         availability.</p
+      <a
+         class="PageCode-preview-a"
+         href="https://www.freshnet.app"
+         target="_blank"
       >
+         <img
+            class="PageCode-preview"
+            src="@/assets/showcase-freshnet-enterprise.png"
+         />
+      </a>
+      <Header
+         title="Freshnet Enterprise"
+         subtitle="Commercial Website"
+         href="https://www.freshnet.app"
+      />
       <p
-         >To achieve this, I am using a variety of web development tools and techniques
-         such as Vue, HTML, CSS, and JavaScript to create a visually appealing and
-         user-friendly website that enables customers to view and compare products easily.
-         The website features clear categories, detailed product descriptions, and
-         high-quality images that accurately represent each product.</p
+         >I'm developing a website for Freshnet Enterprise, a computer store
+         that offers a wide range of products. The website showcases detailed
+         information about each product, including specifications, pricing, and
+         availability. It features high-quality images and comprehensive
+         descriptions. The goal is to attract and retain customers, driving
+         sales and growth for Freshnet Enterprise in today's competitive
+         marketplace.</p
       >
+
+      <a
+         class="PageCode-preview-a"
+         href="https://ref.rorywolf.net/"
+         target="_blank"
+      >
+         <img
+            class="PageCode-preview"
+            src="@/assets/showcase-rory-xavier.png"
+         />
+      </a>
+      <Header
+         title="Rory Xavier"
+         subtitle="Personal Website"
+         href="https://ref.rorywolf.net/"
+      />
       <p
-         >The website showcases a diverse range of products, including desktop computers,
-         laptops, printers, monitors, storage drives, and other computer accessories. Each
-         product page provides comprehensive information about the product's technical
-         specifications, warranty information, and other relevant details.</p
+         >I built my boyfriend's personal website to showcase his fursona
+         reference. The website features a clean and user-friendly design,
+         allowing visitors to easily navigate and explore his unique character.
+         It includes a gallery of high-quality artwork and detailed descriptions
+         that capture the essence of his fursona. The site also provides a brief
+         biography, highlighting his interests and background within the furry
+         community. With seamless integration of social media links and a
+         contact form, the website serves as a comprehensive platform for my
+         friend to connect with fellow furries and share his passion for his
+         fursona.</p
       >
-      <p
-         >In addition, to help customers find the products they need quickly, the website
-         may include a search function that enables customers to search for specific
-         products by name or keyword.</p
-      >
-      <p
-         >The ultimate goal of this website is to assist Freshnet Enterprise in attracting
-         new customers, retaining existing customers, and driving sales and growth for the
-         business. By providing customers with an easy-to-use online platform that offers
-         convenience and comprehensive information, the website will play a vital role in
-         helping Freshnet Enterprise succeed in today's highly competitive marketplace.</p
-      >
+
+      <Header title="Knowledge Gained" />
+      <ul class="PageCode-knowledges">
+         <li>Build using Vue.js</li>
+         <li>Build using Svelte</li>
+         <li>Build using TypeScript</li>
+         <li>Serve PWA web application</li>
+         <li>Manage Domains & SSL</li>
+         <li>Deploy Frontend Server using Express.js & Caddy</li>
+         <li>Deploy & Manage Backend Server in Express.js</li>
+      </ul>
    </div>
 </template>
 
@@ -43,7 +79,28 @@
       display: flex;
       flex-direction: column;
       text-align: start;
-      padding: 2rem;
+      padding: 2em;
+      padding-bottom: 7em;
       gap: 2rem;
+
+      .PageCode-preview-a {
+         margin: auto;
+         border-radius: 1em;
+         .PageCode-preview {
+            width: 100%;
+            max-width: 20rem;
+            margin: auto;
+            border-radius: 1em;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+         }
+      }
+      p {
+         margin-bottom: 2rem;
+      }
+      .PageCode-knowledges {
+         gap: 0.3em;
+         margin: 0;
+         padding-left: 1.5em;
+      }
    }
 </style>
