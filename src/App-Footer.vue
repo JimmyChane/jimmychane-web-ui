@@ -15,7 +15,7 @@
 
 <template>
    <div class="App-footer">
-      <span>Updated on 2023 May 19</span>
+      <span>Updated on 2023 August 8</span>
    </div>
 </template>
 

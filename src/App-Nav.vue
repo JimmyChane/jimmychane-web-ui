@@ -24,7 +24,7 @@
       line-height: 1em;
 
       font-size: 1rem;
-      font-weight: bold;
+      font-weight: 600;
       color: #101718;
       text-decoration: none;
       text-align: center;
