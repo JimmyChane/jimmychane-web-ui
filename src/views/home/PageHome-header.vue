@@ -59,7 +59,7 @@
         v-for="social in socials"
         :key="social.title"
         target="_blank"
-        href="https://www.linkedin.com/in/jimmy-chane-b9937a266/"
+        :href="social.href"
       >
         <img :src="social.icon" />
         <span>{{ social.title }}</span>
@@ -76,7 +76,7 @@
 <style lang="scss" scoped>
   .PageHome-header {
     width: 100%;
-    max-width: 50rem;
+    // max-width: 50rem;
     transition: all 0.3s;
 
     display: grid;
@@ -141,7 +141,7 @@
         width: 8em;
         gap: 0.8em;
         padding: 0.6em 0.7em;
-        font-size: 1em;
+        font-size: 1.2em;
         border-radius: 0.8em;
         border: 1px solid hsla(0, 0%, 0%, 0.08);
 
@@ -165,7 +165,7 @@
         }
       }
     }
-    .PageHome-description{
+    .PageHome-description {
       font-size: 1.2em;
     }
   }
