@@ -67,7 +67,7 @@
 
 <style lang="scss" scoped>
   .PageFursona {
-    max-width: 35rem;
+    max-width: 60rem;
     display: flex;
     flex-direction: column;
     text-align: start;

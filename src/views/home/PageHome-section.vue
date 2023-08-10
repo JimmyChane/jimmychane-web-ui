@@ -1,8 +1,6 @@
 <template>
   <div class="card">
-    <div class="card-body">
-      <slot />
-    </div>
+    <slot />
   </div>
 </template>
 
@@ -16,35 +14,16 @@
 
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
 
-    &:first-child {
-      padding-top: 1rem;
-    }
-    &:last-child {
-      padding-bottom: 1rem;
-    }
-
-    .card-body {
-      width: 100%;
-      padding: 3rem 2rem;
-      border-radius: 2rem;
-      background: var(--background-color);
-    }
+    width: 100%;
+    padding: 3rem 2rem;
+    border-radius: 2rem;
+    background: var(--background-color);
 
     @media (min-width: 1200px) {
-      padding: 1rem 5rem;
-      &:first-child {
-        padding-top: 2rem;
-      }
-      &:last-child {
-        padding-bottom: 2rem;
-      }
-
-      .card-body {
-        max-width: var(--max-width);
-        padding: 3.5rem;
-      }
+      max-width: var(--max-width);
+      padding: 3.5rem;
     }
   }
 </style>

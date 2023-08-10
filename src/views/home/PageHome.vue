@@ -13,15 +13,15 @@
 
 <template>
   <div class="PageHome">
-    <Section class="PageHome-intro">
+    <Section :style="{ 'grid-area': 'intro' }">
       <Header />
     </Section>
 
-    <Section>
+    <Section :style="{ 'grid-area': 'programming' }">
       <SectionBody>
         <h2>Programming</h2>
 
-        <div class="PageHome-sections">
+        <div class="PageHome-groups">
           <Group title="Build a functional web interface">
             <Labels>
               <Label>Vue.js</Label>
@@ -70,7 +70,7 @@
       </SectionBody>
     </Section>
 
-    <Section>
+    <Section :style="{ 'grid-area': 'hobbies' }">
       <SectionBody>
         <h2>Hobbies</h2>
         <ul>
@@ -80,7 +80,7 @@
       </SectionBody>
     </Section>
 
-    <Section>
+    <Section :style="{ 'grid-area': 'personality' }">
       <SectionBody>
         <h2>Personality</h2>
         <ul>
@@ -93,26 +93,45 @@
 
 <style lang="scss">
   .PageHome {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-
-    font-size: 1rem;
-
-    --color: #4b6357;
+    --color: #3c5f64;
     --max-width: 60rem;
 
+    max-width: 100%;
+    font-size: 1rem;
+
+    display: grid;
+    grid-template-areas:
+      "intro"
+      "programming"
+      "hobbies"
+      "personality";
+    gap: 0.5rem;
+    padding: 0.5rem;
+    padding-bottom: 1rem;
+
+    @media (min-width: 700px) {
+      gap: 1rem;
+      padding: 2rem;
+      grid-template-areas:
+        "intro intro"
+        "programming programming"
+        "hobbies personality";
+    }
+
+    // every sections
     & > *:not(:first-child) {
       --background-color: hsla(0, 0%, 100%, 0.7);
     }
 
-    .PageHome-sections {
+    .PageHome-groups {
       min-width: 100%;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
       gap: 2rem 3rem;
+    }
+    ul {
+      display: flex;
+      gap: 4px;
     }
   }
 </style>

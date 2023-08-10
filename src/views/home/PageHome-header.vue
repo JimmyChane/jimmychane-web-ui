@@ -76,7 +76,6 @@
 <style lang="scss" scoped>
   .PageHome-header {
     width: 100%;
-    // max-width: 50rem;
     transition: all 0.3s;
 
     display: grid;
@@ -170,7 +169,7 @@
     }
   }
 
-  @media (max-width: 750px) {
+  @media (max-width: 850px) {
     .PageHome-header {
       place-items: center;
       font-size: 0.8rem;
@@ -182,7 +181,7 @@
       }
     }
   }
-  @media (min-width: 750px) {
+  @media (min-width: 850px) {
     .PageHome-header {
       display: grid;
       grid-template-areas:
