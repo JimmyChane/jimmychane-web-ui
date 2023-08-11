@@ -137,7 +137,7 @@
       flex-wrap: wrap;
 
       & > * {
-        width: 8em;
+        width: 8.5em;
         gap: 0.8em;
         padding: 0.6em 0.7em;
         font-size: 1.2em;

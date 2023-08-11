@@ -12,11 +12,6 @@ const routes = [
     path: "/",
     component: () => import("./views/home/PageHome.vue"),
   },
-  {
-    name: "code",
-    path: "/code",
-    component: () => import("./views/code/PageCode.vue"),
-  },
   // { name: "art", path: "/art", component: () => import("./PageArt.vue") },
   {
     name: "fursona",

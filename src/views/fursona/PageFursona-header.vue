@@ -27,19 +27,17 @@
 
 <style lang="scss" scoped>
   .PageCode-header {
-    max-width: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
 
     .PageCode-title {
-      max-width: max-content;
-      margin: 0;
+      width: 100%;
       text-decoration: none;
       color: inherit;
 
       h1 {
-        margin: 0;
-        width: max-content;
+        width: 100%;
       }
     }
     a.PageCode-title {
@@ -49,7 +47,7 @@
     }
 
     .PageCode-subtitle {
-      color: rgba(0, 0, 0, 0.8);
+      color: hsla(0, 0%, 0%, 0.8);
       font-size: 0.9em;
     }
   }

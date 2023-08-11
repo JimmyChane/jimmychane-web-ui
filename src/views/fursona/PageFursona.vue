@@ -1,5 +1,5 @@
 <script>
-  import Header from "../code/PageCode-header.vue";
+  import Header from "./PageFursona-header.vue";
   export default { components: { Header } };
 </script>
 

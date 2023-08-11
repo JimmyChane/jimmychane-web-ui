@@ -34,7 +34,7 @@
       justify-content: center;
    }
    .App-Nav[isSelected="true"] {
-      background: #3c5f64;
+      background: var(--color);
       color: white;
    }
 </style>

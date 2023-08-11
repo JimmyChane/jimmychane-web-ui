@@ -21,6 +21,32 @@
 </template>
 
 <style lang="scss">
+  * {
+    text-overflow: clip;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    word-break: break-word;
+  }
+  body {
+    width: 100%;
+    min-height: 100dvh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+  span,
+  p {
+    padding: 0;
+    margin: 0;
+    line-height: 1.4em;
+    white-space: pre-line;
+  }
+
   .App {
     @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;400;600;900&display=swap");
 
@@ -41,6 +67,9 @@
     justify-content: center;
 
     position: relative;
+
+    --color: #3c5f64;
+    --color-dark: #143135;
 
     .App-body {
       width: 100%;

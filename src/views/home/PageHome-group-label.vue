@@ -6,7 +6,7 @@
 
 <style lang="scss" scoped>
   .label {
-    background: var(--color);
+    background: black;
     color: white;
     padding: 0.3em 0.8em;
     border-radius: 2em;

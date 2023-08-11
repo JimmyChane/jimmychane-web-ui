@@ -5,7 +5,7 @@
     data: () => ({
       routes: [
         { path: "/", title: "About" },
-        { path: "/code", title: "Projects" },
+        // { path: "/code", title: "Projects" },
         // { path: "/art", title: "Art" },
         { path: "/fursona", title: "Fursona" },
       ],

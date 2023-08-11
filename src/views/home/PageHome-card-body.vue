@@ -1,11 +1,12 @@
 <template>
-  <div class="section-body">
+  <div class="card-body">
     <slot />
   </div>
 </template>
 
 <style lang="scss" scoped>
-  .section-body {
+  .card-body {
+    width: 100%;
     gap: 2rem;
   }
 </style>
