@@ -17,7 +17,7 @@
   a.PageCode-preview {
     border-radius: 1em;
     width: 20rem;
-    max-width: 20rem;
+    max-width: 100%;
     img.PageCode-preview {
       width: 100%;
       width: inherit;

@@ -12,13 +12,6 @@ const routes = [
     path: "/",
     component: () => import("./views/home/PageHome.vue"),
   },
-  // { name: "art", path: "/art", component: () => import("./PageArt.vue") },
-  {
-    name: "fursona",
-    path: "/fursona",
-    component: () => import("./views/fursona/PageFursona.vue"),
-  },
-
   { path: "/:pathMatch(.*)*", redirect: { path: "/" } },
 ];
 

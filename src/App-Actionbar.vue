@@ -4,10 +4,8 @@
     components: { AppNav },
     data: () => ({
       routes: [
-        { path: "/", title: "About" },
-        // { path: "/code", title: "Projects" },
+        { path: "/", title: "Home" },
         // { path: "/art", title: "Art" },
-        { path: "/fursona", title: "Fursona" },
       ],
     }),
   };

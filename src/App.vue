@@ -4,13 +4,12 @@
 
   export default {
     components: { Actionbar, Footer },
-    data: (c) => ({}),
   };
 </script>
 
 <template>
   <div class="App">
-    <Actionbar style="z-index: 2" />
+    <!-- <Actionbar style="z-index: 2" /> -->
 
     <div class="App-body" style="z-index: 1">
       <router-view />
@@ -69,6 +68,7 @@
     position: relative;
 
     --color: #3c5f64;
+    --color-light: #6ac2cf;
     --color-dark: #143135;
 
     .App-body {
