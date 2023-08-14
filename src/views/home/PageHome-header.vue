@@ -38,11 +38,9 @@
 
 <template>
   <div class="PageHome-header">
-    <PFP class="PageHome-PFP" :style="{ 'grid-area': 'img' }" />
+    <PFP :style="{ 'grid-area': 'img' }" />
 
-    <span class="PageHome-name" :style="{ 'grid-area': 'name' }"
-      >Jimmy Chane</span
-    >
+    <h1 class="PageHome-name" :style="{ 'grid-area': 'name' }">Jimmy Chane</h1>
 
     <div class="PageHome-labels" :style="{ 'grid-area': 'labels' }">
       <div v-for="label of labels" :key="label">
@@ -61,7 +59,7 @@
         target="_blank"
         :href="social.href"
       >
-        <img :src="social.icon" />
+        <img :src="social.icon" :alt="social.title" />
         <span>{{ social.title }}</span>
       </a>
     </div>
@@ -92,16 +90,15 @@
 
     .PageHome-name {
       font-weight: 600;
-      font-size: 1.8em;
+      font-size: 2rem;
       text-align: center;
-      line-height: 1em;
     }
     .PageHome-labels {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: row;
-      gap: 0.5em;
+      gap: 0.5rem;
       & > * {
         display: inherit;
         flex-direction: inherit;
@@ -111,7 +108,7 @@
 
       .PageHome-labels-dot {
         display: flex;
-        line-height: 1em;
+        line-height: 1rem;
 
         --size: 4px;
         --width: var(--size);
@@ -130,18 +127,20 @@
       }
     }
     .PageHome-socials {
-      gap: 0.4em;
-      margin: 1em 0;
+      width: 100%;
+      gap: 0.4rem;
+      margin: 1rem 0;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
 
       & > * {
-        width: 8.5em;
-        gap: 0.8em;
-        padding: 0.6em 0.7em;
-        font-size: 1.2em;
-        border-radius: 0.8em;
+        width: 100%;
+        max-width: 10rem;
+        gap: 0.8rem;
+        padding: 0.6rem 0.7rem;
+        font-size: 1.2rem;
+        border-radius: 0.8rem;
         border: 1px solid hsla(0, 0%, 0%, 0.08);
 
         color: inherit;
@@ -151,6 +150,7 @@
 
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: center;
 
@@ -159,13 +159,39 @@
         }
 
         img {
-          width: 1.4em;
-          height: 1.4em;
+          width: 1.4rem;
+          height: 1.4rem;
+        }
+      }
+
+      @media (max-width: 28rem) {
+        gap: initial;
+        & > * {
+          max-width: initial;
+          width: 3.5rem;
+          height: 3.5rem;
+          padding: initial;
+
+          aspect-ratio: 1/1;
+          background: none;
+          border: none;
+
+          &:hover {
+            background: white;
+          }
+
+          span {
+            display: none;
+          }
+          img {
+            width: 1.6rem;
+            height: 1.6rem;
+          }
         }
       }
     }
     .PageHome-description {
-      font-size: 1.2em;
+      font-size: 1.2rem;
     }
   }
 
@@ -196,7 +222,7 @@
       .PageHome-name {
         width: 100%;
         grid-row: 0;
-        font-size: 3em;
+        font-size: 3rem;
         text-align: start;
         display: flex;
 

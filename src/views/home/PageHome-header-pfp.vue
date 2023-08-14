@@ -1,14 +1,23 @@
 <template>
   <div class="PFP">
     <div class="PFP-background"></div>
-    <img class="PFP-image" src="@/assets/jimmy_fox_pfp-v1.png" />
+    <img
+      class="PFP-image"
+      src="@/assets/jimmy_fox_pfp-v1.png"
+      alt="Jimmy Chane's Profile Image"
+    />
   </div>
 </template>
 
 <style lang="scss" scoped>
   .PFP {
-    width: 12em;
-    height: 15em;
+    width: 100%;
+    height: 100%;
+
+    max-width: 12em;
+    max-height: 15em;
+
+    aspect-ratio: 12/15;
 
     position: relative;
 

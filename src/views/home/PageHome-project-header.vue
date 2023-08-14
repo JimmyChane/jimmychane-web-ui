@@ -16,11 +16,11 @@
       :href="href"
       target="_blank"
     >
-      <h1>{{ title }}</h1>
+      <h3>{{ title }}</h3>
     </a>
-    <h1 class="PageCode-title" v-if="title.length && !href.length">{{
+    <h3 class="PageCode-title" v-if="title.length && !href.length">{{
       title
-    }}</h1>
+    }}</h3>
     <span class="PageCode-subtitle" v-if="subtitle.length">{{ subtitle }}</span>
   </div>
 </template>
@@ -35,8 +35,9 @@
       width: 100%;
       text-decoration: none;
       color: inherit;
+      font-size: 1.1em;
 
-      h1 {
+      h3 {
         width: 100%;
       }
     }

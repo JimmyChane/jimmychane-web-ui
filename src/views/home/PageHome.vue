@@ -6,24 +6,28 @@
   import Labels from "./PageHome-group-labels.vue";
   import Label from "./PageHome-group-label.vue";
 
-  import CodeHeader from "./PageCode-header.vue";
-  import Preview from "./PageCode-preview.vue";
+  import Section from "./PageHome-section.vue";
+  import SectionTitle from "./PageHome-section-title.vue";
+
+  import ProjectHeader from "./PageHome-project-header.vue";
+  import ProjectPreview from "./PageHome-project-preview.vue";
+  import FursonaHeader from "./PageHome-fursona-header.vue";
 
   import ImageFreshnet from "@/assets/showcase-freshnet-enterprise.png";
   import ImageRory from "@/assets/showcase-rory-xavier.png";
-
-  import FursonaHeader from "./PageFursona-header.vue";
 
   export default {
     components: {
       Header,
       Card,
+      CardBody,
       Group,
       Labels,
       Label,
-      CardBody,
-      CodeHeader,
-      Preview,
+      Section,
+      SectionTitle,
+      ProjectHeader,
+      ProjectPreview,
       FursonaHeader,
     },
     data: () => ({ ImageFreshnet, ImageRory }),
@@ -111,17 +115,21 @@
         </Card>
       </div>
 
-      <div class="PageHome-project" :style="{ 'grid-area': 'project' }">
-        <h2 class="PageHome-project-title">Projects</h2>
+      <Section class="PageHome-project" :style="{ 'grid-area': 'project' }">
+        <SectionTitle>Projects</SectionTitle>
 
         <div>
-          <CodeHeader
+          <ProjectHeader
             title="Freshnet Enterprise"
             subtitle="Commercial Website"
             href="https://www.freshnet.app"
           />
 
-          <Preview href="https://www.freshnet.app" :src="ImageFreshnet" />
+          <ProjectPreview
+            href="https://www.freshnet.app"
+            :src="ImageFreshnet"
+            alt="Freshnet Enterprise"
+          />
 
           <p
             >I'm developing a website for Freshnet Enterprise, a computer store
@@ -147,13 +155,17 @@
         </div>
 
         <div>
-          <CodeHeader
+          <ProjectHeader
             title="Rory Xavier, Reference"
             subtitle="Personal Website"
             href="https://ref.rorywolf.net/"
           />
 
-          <Preview href="https://ref.rorywolf.net/" :src="ImageRory" />
+          <ProjectPreview
+            href="https://ref.rorywolf.net/"
+            :src="ImageRory"
+            alt="Rory Xavier's Reference"
+          />
 
           <p
             >I built my boyfriend's personal website to showcase his fursona
@@ -177,17 +189,18 @@
             <Label>SCSS</Label>
           </Labels>
         </div>
-      </div>
+      </Section>
 
-      <div class="PageHome-fursona" :style="{ 'grid-area': 'fursona' }">
-        <h2 class="PageHome-fursona-title">Fursona</h2>
+      <Section class="PageHome-fursona" :style="{ 'grid-area': 'fursona' }">
+        <SectionTitle>Fursona</SectionTitle>
         <img
-          class="PageFursona-header"
+          class="PageHome-fursona-preview"
           src="@/assets/fursona-preview-v0.6.png"
+          alt="Jimmy Yellow Fox"
         />
 
         <FursonaHeader
-          class="PageFursona-title"
+          class="PageHome-fursona-title"
           title="Artwork and Character Design"
           subtitle="Captivating Appearance"
         />
@@ -200,7 +213,7 @@
         >
 
         <FursonaHeader
-          class="PageFursona-title"
+          class="PageHome-fursona-title"
           title="Personality"
           subtitle="Shy yet Intriguing"
         />
@@ -214,7 +227,7 @@
         >
 
         <FursonaHeader
-          class="PageFursona-title"
+          class="PageHome-fursona-title"
           title="Stylish Simplicity"
           subtitle="Fashionable Outfit"
         />
@@ -228,7 +241,7 @@
         >
 
         <FursonaHeader
-          class="PageFursona-title"
+          class="PageHome-fursona-title"
           title="Hobbies and Interests"
           subtitle="Drawing and Programming"
         />
@@ -242,7 +255,7 @@
           Jimmy's versatile pursuits showcase his unwavering dedication and
           passion for both artistic expression and technical innovation.</p
         >
-      </div>
+      </Section>
     </div>
   </div>
 </template>
@@ -254,6 +267,7 @@
     flex-direction: column;
     align-items: center;
 
+    margin-bottom: 16rem;
     padding: 0.5rem;
     @media (min-width: 700px) {
       padding: 2rem;
@@ -261,7 +275,6 @@
     @media (min-width: 1200px) {
       padding: 4rem;
     }
-    padding-bottom: 16rem;
 
     .PageHome-grid {
       width: 100%;
@@ -331,27 +344,15 @@
         }
       }
       .PageHome-project {
-        background: var(--color-dark);
+        --color: var(--color-dark);
 
         color: white;
-
         text-align: start;
         gap: 6rem 4rem;
-        border-radius: 2rem;
-
-        --padding: 2rem;
-        padding: var(--padding);
-        padding-top: calc(var(--padding) + 2rem);
-
         display: flex;
         flex-direction: column;
 
-        position: relative;
-
-        @media (min-width: 800px) {
-          --padding: 4rem;
-        }
-        @media (min-width: 1300px) {
+        @media (min-width: 1000px) {
           flex-direction: row;
 
           & > * {
@@ -370,21 +371,6 @@
           }
         }
 
-        .PageHome-project-title {
-          position: absolute;
-          background: white;
-          color: var(--color-dark);
-          padding: 0.5em;
-          padding-left: 1em;
-          width: 9em;
-          text-align: start;
-
-          border: 4px solid var(--color-dark);
-          border-radius: 1em;
-
-          top: -1em;
-          left: calc(var(--padding) - 4px);
-        }
         .PageHome-project-labels {
           & > * {
             color: var(--color-dark);
@@ -397,38 +383,11 @@
       .PageHome-fursona {
         --color: #9ed5ce;
 
-        background: var(--color);
-        border-radius: 2rem;
-
-        position: relative;
-
-        --padding: 2rem;
-        padding: var(--padding);
-        padding-top: calc(var(--padding) + 2rem);
-        @media (min-width: 800px) {
-          --padding: 4rem;
-        }
-
         display: flex;
         flex-direction: column;
         text-align: start;
 
-        .PageHome-fursona-title {
-          position: absolute;
-          background: white;
-          color: var(--color);
-          padding: 0.5em;
-          padding-left: 1em;
-          width: 9em;
-          text-align: start;
-
-          border: 4px solid var(--color);
-          border-radius: 1em;
-
-          top: -1em;
-          left: calc(var(--padding) - 4px);
-        }
-        .PageFursona-header {
+        .PageHome-fursona-preview {
           width: 100%;
           aspect-ratio: 16/9;
           object-fit: contain;
@@ -444,7 +403,7 @@
             padding: 2rem;
           }
         }
-        .PageFursona-title {
+        .PageHome-fursona-title {
           margin-top: 4em;
           margin-bottom: 2em;
         }
