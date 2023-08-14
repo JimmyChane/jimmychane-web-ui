@@ -168,16 +168,15 @@
           />
 
           <p
-            >I built my boyfriend's personal website to showcase his fursona
-            reference. The website features a clean and user-friendly design,
-            allowing visitors to easily navigate and explore his unique
-            character. It includes a gallery of high-quality artwork and
-            detailed descriptions that capture the essence of his fursona. The
-            site also provides a brief biography, highlighting his interests and
-            background within the furry community. With seamless integration of
-            social media links and a contact form, the website serves as a
-            comprehensive platform for my friend to connect with fellow furries
-            and share his passion for his fursona.</p
+            >The website features a clean and user-friendly design, allowing
+            visitors to easily navigate and explore his unique character. It
+            includes a gallery of high-quality artwork and detailed descriptions
+            that capture the essence of his fursona. The site also provides a
+            brief biography, highlighting his interests and background within
+            the furry community. With seamless integration of social media links
+            and a contact form, the website serves as a comprehensive platform
+            for my friend to connect with fellow furries and share his passion
+            for his fursona.</p
           >
 
           <Labels class="PageHome-project-labels">
