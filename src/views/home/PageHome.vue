@@ -1,4 +1,4 @@
-<script>
+<script setup>
   import Header from "./PageHome-header.vue";
   import Card from "./PageHome-card.vue";
   import CardBody from "./PageHome-card-body.vue";
@@ -15,23 +15,6 @@
 
   import ImageFreshnet from "@/assets/showcase-freshnet-enterprise.png";
   import ImageRory from "@/assets/showcase-rory-xavier.png";
-
-  export default {
-    components: {
-      Header,
-      Card,
-      CardBody,
-      Group,
-      Labels,
-      Label,
-      Section,
-      SectionTitle,
-      ProjectHeader,
-      ProjectPreview,
-      FursonaHeader,
-    },
-    data: () => ({ ImageFreshnet, ImageRory }),
-  };
 </script>
 
 <template>

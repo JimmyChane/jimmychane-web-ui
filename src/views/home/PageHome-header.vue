@@ -1,4 +1,4 @@
-<script>
+<script setup>
   import PFP from "./PageHome-header-pfp.vue";
 
   import TwitterLogo from "@/assets/twitter-color.svg";
@@ -6,34 +6,29 @@
   import GithubLogo from "@/assets/github-color.svg";
   import LindedInLogo from "@/assets/linkedIn.svg";
 
-  export default {
-    components: { PFP },
-    data: () => ({
-      labels: ["Programmer", "Artist"],
-      socials: [
-        {
-          href: "https://twitter.com/jimmykajun",
-          title: "Twitter",
-          icon: TwitterLogo,
-        },
-        {
-          href: "https://t.me/Jimmy612",
-          title: "Telegram",
-          icon: TelegramLogo,
-        },
-        {
-          href: "https://github.com/JimmyChane",
-          title: "Github",
-          icon: GithubLogo,
-        },
-        {
-          href: "https://www.linkedin.com/in/jimmy-chane-b9937a266/",
-          title: "LinkedIn",
-          icon: LindedInLogo,
-        },
-      ],
-    }),
-  };
+  const labels = ["Programmer", "Artist"];
+  const socials = [
+    {
+      href: "https://twitter.com/jimmykajun",
+      title: "Twitter",
+      icon: TwitterLogo,
+    },
+    {
+      href: "https://t.me/Jimmy612",
+      title: "Telegram",
+      icon: TelegramLogo,
+    },
+    {
+      href: "https://github.com/JimmyChane",
+      title: "Github",
+      icon: GithubLogo,
+    },
+    {
+      href: "https://www.linkedin.com/in/jimmy-chane-b9937a266/",
+      title: "LinkedIn",
+      icon: LindedInLogo,
+    },
+  ];
 </script>
 
 <template>

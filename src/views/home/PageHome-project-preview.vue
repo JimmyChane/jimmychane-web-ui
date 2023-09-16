@@ -1,11 +1,9 @@
-<script>
-  export default {
-    props: {
-      href: { type: String },
-      src: { type: String },
-      alt: { type: String },
-    },
-  };
+<script setup>
+  defineProps({
+    href: { type: String },
+    src: { type: String },
+    alt: { type: String },
+  });
 </script>
 
 <template>

@@ -1,10 +1,6 @@
-<script>
+<script setup>
   import Actionbar from "./App-Actionbar.vue";
   import Footer from "./App-Footer.vue";
-
-  export default {
-    components: { Actionbar, Footer },
-  };
 </script>
 
 <template>

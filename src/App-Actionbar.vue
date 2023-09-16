@@ -1,14 +1,10 @@
-<script>
+<script setup>
   import AppNav from "./App-Nav.vue";
-  export default {
-    components: { AppNav },
-    data: () => ({
-      routes: [
-        { path: "/", title: "Home" },
-        // { path: "/art", title: "Art" },
-      ],
-    }),
-  };
+
+  const routes = [
+    { path: "/", title: "Home" },
+    // { path: "/art", title: "Art" },
+  ];
 </script>
 
 <template>
