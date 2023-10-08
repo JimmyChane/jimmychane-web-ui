@@ -20,7 +20,6 @@
 
 <style lang="scss" scoped>
   .App-Nav {
-    width: 7rem;
     padding: 0.8em 1em;
     border-radius: 1em;
     line-height: 1em;
@@ -28,6 +27,7 @@
     font-size: 1rem;
     font-weight: 600;
     color: #101718;
+    color: var(--text-color);
     text-decoration: none;
     text-align: center;
 

@@ -37,7 +37,7 @@
     justify-content: flex-end;
 
     .PFP-background {
-      background: #ffffff;
+      background: var(--background-color-opacity70);
       position: absolute;
       bottom: 0;
       left: 0;

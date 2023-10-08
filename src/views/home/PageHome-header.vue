@@ -54,7 +54,11 @@
         target="_blank"
         :href="social.href"
       >
-        <img :src="social.icon" :alt="social.title" />
+        <img
+          :class="social.title === 'Github' ? 'useInvert' : ''"
+          :src="social.icon"
+          :alt="social.title"
+        />
         <span>{{ social.title }}</span>
       </a>
     </div>
@@ -117,6 +121,7 @@
         max-height: var(--height);
 
         background: hsl(0, 0%, 20%);
+        background: var(--text-color-opacity50);
         border-radius: 50%;
         overflow: hidden;
       }
@@ -141,7 +146,7 @@
         color: inherit;
         text-decoration: none;
         transition: 0.3s;
-        background: hsla(0, 0%, 100%, 0.9);
+        background: var(--background-color-opacity70);
 
         display: flex;
         flex-direction: row;
@@ -156,6 +161,9 @@
         img {
           width: 1.4rem;
           height: 1.4rem;
+        }
+        img.useInvert {
+          filter: var(--icon-dark-invert);
         }
       }
 

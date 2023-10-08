@@ -13,8 +13,9 @@
   import ProjectPreview from "./PageHome-project-preview.vue";
   import FursonaHeader from "./PageHome-fursona-header.vue";
 
-  import ImageFreshnet from "@/assets/showcase-freshnet-enterprise.png";
   import ImageRory from "@/assets/showcase-rory-xavier.png";
+  import ImageRhougous from "@/assets/showcase-rhougous-hiroki.png";
+  import ImageFreshnet from "@/assets/showcase-freshnet-enterprise.png";
 </script>
 
 <template>
@@ -103,6 +104,64 @@
 
         <div>
           <ProjectHeader
+            title="Rory Xavier, Reference"
+            subtitle="Personal Website"
+            href="https://ref.rorywolf.net/"
+          />
+
+          <ProjectPreview
+            href="https://ref.rorywolf.net/"
+            :src="ImageRory"
+            alt="Rory Xavier's Reference"
+          />
+
+          <p
+            >The website features a clean and user-friendly design, allowing
+            visitors to easily navigate and explore his unique character. It
+            includes a gallery of high-quality artwork and detailed descriptions
+            that capture the essence of his fursona. The site also provides a
+            brief biography, highlighting his interests and background within
+            the furry community. With seamless integration of social media links
+            and a contact form, the website serves as a comprehensive platform
+            for my friend to connect with fellow furries and share his passion
+            for his fursona.</p
+          >
+
+          <Labels class="PageHome-project-labels">
+            <Label>Svelte.js</Label>
+            <Label>HTML</Label>
+            <Label>TypeScript</Label>
+            <Label>JavaScript</Label>
+            <Label>CSS</Label>
+            <Label>SCSS</Label>
+          </Labels>
+        </div>
+
+        <div>
+          <ProjectHeader
+            title="Rhougous Hiroki"
+            subtitle="Personal Website"
+            href="https://rhougous.pages.dev/"
+          />
+
+          <ProjectPreview
+            href="https://rhougous.pages.dev/"
+            :src="ImageRhougous"
+            alt="Rhougous Hiroki's Website"
+          />
+
+          <Labels class="PageHome-project-labels">
+            <Label>Vue.js</Label>
+            <Label>HTML</Label>
+            <Label>TypeScript</Label>
+            <Label>JavaScript</Label>
+            <Label>CSS</Label>
+            <Label>SCSS</Label>
+          </Labels>
+        </div>
+
+        <div>
+          <ProjectHeader
             title="Freshnet Enterprise"
             subtitle="Commercial Website"
             href="https://www.freshnet.app"
@@ -134,41 +193,6 @@
             <Label>CSS</Label>
             <Label>SCSS</Label>
             <Label>PWA</Label>
-          </Labels>
-        </div>
-
-        <div>
-          <ProjectHeader
-            title="Rory Xavier, Reference"
-            subtitle="Personal Website"
-            href="https://ref.rorywolf.net/"
-          />
-
-          <ProjectPreview
-            href="https://ref.rorywolf.net/"
-            :src="ImageRory"
-            alt="Rory Xavier's Reference"
-          />
-
-          <p
-            >The website features a clean and user-friendly design, allowing
-            visitors to easily navigate and explore his unique character. It
-            includes a gallery of high-quality artwork and detailed descriptions
-            that capture the essence of his fursona. The site also provides a
-            brief biography, highlighting his interests and background within
-            the furry community. With seamless integration of social media links
-            and a contact form, the website serves as a comprehensive platform
-            for my friend to connect with fellow furries and share his passion
-            for his fursona.</p
-          >
-
-          <Labels class="PageHome-project-labels">
-            <Label>Svelte.js</Label>
-            <Label>HTML</Label>
-            <Label>TypeScript</Label>
-            <Label>JavaScript</Label>
-            <Label>CSS</Label>
-            <Label>SCSS</Label>
           </Labels>
         </div>
       </Section>
@@ -272,8 +296,8 @@
       grid-template-columns: 1fr;
       @media (min-width: 2000px) {
         grid-template-areas:
-          "intro fursona"
-          "project fursona";
+          "intro project"
+          "fursona project";
         grid-template-columns: repeat(2, 1fr);
         place-items: start;
       }
@@ -304,7 +328,7 @@
 
         // every sections
         & > *:not(:first-child) {
-          --background-color: hsla(0, 0%, 100%, 0.7);
+          --background-color: var(--background-color-opacity70);
         }
 
         .PageHome-groups {
@@ -336,9 +360,10 @@
 
         @media (min-width: 1000px) {
           flex-direction: row;
+          flex-wrap: wrap;
 
           & > * {
-            flex: 1;
+            flex: 1 14rem;
           }
         }
 
@@ -363,7 +388,7 @@
         }
       }
       .PageHome-fursona {
-        --color: #9ed5ce;
+        --color: var(--section-fursona-background-color);
 
         display: flex;
         flex-direction: column;
@@ -376,7 +401,7 @@
           margin: auto;
           border-radius: 2em;
 
-          background: rgb(180, 231, 224);
+          background: var(--section-fursona-header-background-color);
 
           @media (min-width: 800px) {
             padding: 1rem;

@@ -1,8 +1,8 @@
 <template>
   <div class="App-footer">
-    <span>2023 August 14</span>
+    <span>2023 October 8</span>
     <span class="App-footer-separator" />
-    <span>v0.7</span>
+    <span>v0.8</span>
   </div>
 </template>
 
@@ -15,7 +15,10 @@
     justify-content: center;
     align-items: center;
 
-    background-color: hsla(0, 0%, 100%, 0.5);
+    position: sticky;
+    bottom: -1px;
+
+    background-color: var(--background-color-opacity50);
 
     @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
       --blur: 1rem;
@@ -37,7 +40,7 @@
       max-width: var(--width);
       max-height: var(--height);
 
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: var(--text-color-opacity50);
     }
   }
 </style>
