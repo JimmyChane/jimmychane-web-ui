@@ -14,7 +14,10 @@
       :href="href"
       target="_blank"
     >
-      <h3>{{ title }}</h3>
+      <h3>
+        {{ title }}
+        <img class="PageCode-link-icon" src="@/assets/icon/link.svg" alt="Link Icon" />
+      </h3>
     </a>
     <h3 class="PageCode-title" v-if="title.length && !href.length">{{
       title
@@ -40,8 +43,18 @@
       }
     }
     a.PageCode-title {
+      width: max-content;
+      display: flex;
+      flex-direction: row;
+
       &:hover {
         text-decoration: underline;
+      }
+      .PageCode-link-icon {
+        width: 0.7em;
+        height: 0.7em;
+        transform: translateY(-0.3em) translateX(-0.1em);
+        filter: invert(100%);
       }
     }
 

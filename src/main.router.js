@@ -12,12 +12,11 @@ const routes = [
     path: "/",
     component: () => import("./views/home/PageHome.vue"),
   },
-  { path: "/:pathMatch(.*)*", redirect: { path: "/" } },
+  { path: "/:pathMatch(.*)*", redirect: { name: "home" } },
 ];
 
 const router = createRouter({
   history: createWebHistory(),
-  // history: createWebHashHistory(),
   routes,
 });
 
