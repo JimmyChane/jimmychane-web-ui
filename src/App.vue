@@ -1,39 +1,34 @@
-<script setup>
-  import { ref } from "vue";
-  import Actionbar from "./App-Actionbar.vue";
-  import Footer from "./App-Footer.vue";
+<script setup lang="ts">
+  import { ref } from 'vue';
+  import Actionbar from './App-Actionbar.vue';
+  import Footer from './App-Footer.vue';
 
-  const currentTheme = ref("dark");
+  const currentTheme = ref('dark');
 
-  const saveTheme = (theme) => {
-    localStorage.setItem("theme", theme);
-  };
-  const onChangeTheme = (theme, save = true) => {
+  function saveTheme(theme: string) {
+    localStorage.setItem('theme', theme);
+  }
+  function onChangeTheme(theme: string | null, save = true) {
     switch (theme) {
-      case "light":
-        currentTheme.value = "light";
+      case 'light':
+        currentTheme.value = 'light';
         break;
-      case "dark":
-        currentTheme.value = "dark";
+      case 'dark':
+        currentTheme.value = 'dark';
         break;
     }
     switch (theme) {
-      case "light":
-      case "dark":
+      case 'light':
+      case 'dark':
         if (save) saveTheme(theme);
     }
-  };
+  }
 
-  onChangeTheme(localStorage.getItem("theme"), false);
+  onChangeTheme(localStorage.getItem('theme'), false);
 </script>
 
 <template>
-  <div
-    :class="[
-      'App',
-      currentTheme === 'light' ? 'App-light-theme' : 'App-dark-theme',
-    ]"
-  >
+  <div :class="['App', currentTheme === 'light' ? 'App-light-theme' : 'App-dark-theme']">
     <Actionbar
       style="z-index: 2"
       :theme="currentTheme"
@@ -130,9 +125,9 @@
     --section-fursona-background-color: rgb(41, 58, 56);
   }
   .App {
-    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;400;600;900&display=swap");
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;400;600;900&display=swap');
 
-    font-family: "Inter", sans-serif;
+    font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 

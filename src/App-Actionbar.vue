@@ -1,44 +1,39 @@
-<script setup>
-  import { ref, defineEmits } from "vue";
-  import AppNav from "./App-Nav.vue";
-  import DarkTheme from "./DarkTheme.vue";
-  import LightTheme from "./LightTheme.vue";
+<script setup lang="ts">
+  import { ref } from 'vue';
+  import AppNav from './App-Nav.vue';
+  import DarkTheme from './DarkTheme.vue';
+  import LightTheme from './LightTheme.vue';
 
-  const emits = defineEmits(["change-theme"]);
+  const emits = defineEmits(['change-theme']);
   const props = defineProps({
     theme: { type: String, required: true },
   });
 
   const routes = [
-    { path: "/", title: "Home" },
+    { path: '/', title: 'Home' },
     // { path: "/art", title: "Art" },
   ];
 
   const themeIndex = ref(0);
   switch (props.theme) {
-    case "light":
+    case 'light':
       themeIndex.value = 0;
       break;
-    case "dark":
+    case 'dark':
       themeIndex.value = 1;
       break;
   }
 
-  const setIndex = (index) => {
+  function setIndex(index: number) {
     themeIndex.value = index;
-    emits("change-theme", themeIndex.value === 0 ? "light" : "dark");
-  };
+    emits('change-theme', themeIndex.value === 0 ? 'light' : 'dark');
+  }
 </script>
 
 <template>
   <div class="App-actionbar">
     <div class="App-actionbar-items">
-      <AppNav
-        v-for="route of routes"
-        :key="route.path"
-        :path="route.path"
-        :title="route.title"
-      />
+      <AppNav v-for="route of routes" :key="route.path" :path="route.path" :title="route.title" />
     </div>
 
     <div class="App-actionbar-theme">
@@ -132,8 +127,8 @@
       .App-actionbar-theme-highlight {
         position: absolute;
         left: calc(
-          var(--container-padding) +
-            calc(var(--item-width) + var(--container-gap)) * var(--item-index)
+          var(--container-padding) + calc(var(--item-width) + var(--container-gap)) *
+            var(--item-index)
         );
 
         transition: all 400ms ease;

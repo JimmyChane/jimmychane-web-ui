@@ -1,31 +1,31 @@
-<script setup>
-  import PFP from "./PageHome-header-pfp.vue";
+<script setup lang="ts">
+  import PFP from './PageHome-header-pfp.vue';
 
-  import TwitterLogo from "@/assets/twitter-color.svg";
-  import TelegramLogo from "@/assets/telegram-color.svg";
-  import GithubLogo from "@/assets/github-color.svg";
-  import LindedInLogo from "@/assets/linkedIn.svg";
+  import TwitterLogo from '@/assets/twitter-color.svg';
+  import TelegramLogo from '@/assets/telegram-color.svg';
+  import GithubLogo from '@/assets/github-color.svg';
+  import LindedInLogo from '@/assets/linkedIn.svg';
 
-  const labels = ["Programmer", "Artist"];
+  const labels = ['Programmer', 'Artist'];
   const socials = [
     {
-      href: "https://twitter.com/jimmykajun",
-      title: "Twitter",
+      href: 'https://twitter.com/jimmykajun',
+      title: 'Twitter',
       icon: TwitterLogo,
     },
     {
-      href: "https://t.me/Jimmy612",
-      title: "Telegram",
+      href: 'https://t.me/Jimmy612',
+      title: 'Telegram',
       icon: TelegramLogo,
     },
     {
-      href: "https://github.com/JimmyChane",
-      title: "Github",
+      href: 'https://github.com/JimmyChane',
+      title: 'Github',
       icon: GithubLogo,
     },
     {
-      href: "https://www.linkedin.com/in/jimmy-chane-b9937a266/",
-      title: "LinkedIn",
+      href: 'https://www.linkedin.com/in/jimmy-chane-b9937a266/',
+      title: 'LinkedIn',
       icon: LindedInLogo,
     },
   ];
@@ -40,20 +40,12 @@
     <div class="PageHome-labels" :style="{ 'grid-area': 'labels' }">
       <div v-for="label of labels" :key="label">
         <span>{{ label }}</span>
-        <div
-          v-if="labels.indexOf(label) < labels.length - 1"
-          class="PageHome-labels-dot"
-        ></div>
+        <div v-if="labels.indexOf(label) < labels.length - 1" class="PageHome-labels-dot"></div>
       </div>
     </div>
 
     <div class="PageHome-socials" :style="{ 'grid-area': 'socials' }">
-      <a
-        v-for="social in socials"
-        :key="social.title"
-        target="_blank"
-        :href="social.href"
-      >
+      <a v-for="social in socials" :key="social.title" target="_blank" :href="social.href">
         <img
           :class="social.title === 'Github' ? 'useInvert' : ''"
           :src="social.icon"
@@ -63,10 +55,10 @@
       </a>
     </div>
 
-    <p class="PageHome-description" :style="{ 'grid-area': 'description' }"
-      >Hi, I'm Jimmy Chane, and this is my website where I showcase my
-      programming and drawing talents.</p
-    >
+    <p class="PageHome-description" :style="{ 'grid-area': 'description' }">
+      Hi, I'm Jimmy Chane, and this is my website where I showcase my programming and drawing
+      talents.
+    </p>
   </div>
 </template>
 
@@ -77,11 +69,11 @@
 
     display: grid;
     grid-template-areas:
-      "img"
-      "name"
-      "labels"
-      "socials"
-      "description";
+      'img'
+      'name'
+      'labels'
+      'socials'
+      'description';
     justify-content: center;
     align-items: center;
     place-items: start;
@@ -214,10 +206,10 @@
     .PageHome-header {
       display: grid;
       grid-template-areas:
-        "img name"
-        "img labels"
-        "img socials"
-        "img description";
+        'img name'
+        'img labels'
+        'img socials'
+        'img description';
       justify-content: start;
       align-items: start;
       gap: 0.5rem 2rem;

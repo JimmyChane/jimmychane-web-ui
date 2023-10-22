@@ -1,21 +1,21 @@
-<script setup>
-  import Header from "./PageHome-header.vue";
-  import Card from "./PageHome-card.vue";
-  import CardBody from "./PageHome-card-body.vue";
-  import Group from "./PageHome-group.vue";
-  import Labels from "./PageHome-group-labels.vue";
-  import Label from "./PageHome-group-label.vue";
+<script setup lang="ts">
+  import Header from './PageHome-header.vue';
+  import Card from './PageHome-card.vue';
+  import CardBody from './PageHome-card-body.vue';
+  import Group from './PageHome-group.vue';
+  import Labels from './PageHome-group-labels.vue';
+  import Label from './PageHome-group-label.vue';
 
-  import Section from "./PageHome-section.vue";
-  import SectionTitle from "./PageHome-section-title.vue";
+  import Section from './PageHome-section.vue';
+  import SectionTitle from './PageHome-section-title.vue';
 
-  import ProjectHeader from "./PageHome-project-header.vue";
-  import ProjectPreview from "./PageHome-project-preview.vue";
-  import FursonaHeader from "./PageHome-fursona-header.vue";
+  import ProjectHeader from './PageHome-project-header.vue';
+  import ProjectPreview from './PageHome-project-preview.vue';
+  import FursonaHeader from './PageHome-fursona-header.vue';
 
-  import ImageRory from "@/assets/showcase-rory-xavier.png";
-  import ImageRhougous from "@/assets/showcase-rhougous-hiroki.png";
-  import ImageFreshnet from "@/assets/showcase-freshnet-enterprise.png";
+  import ImageRory from '@/assets/showcase-rory-xavier.png';
+  import ImageRhougous from '@/assets/showcase-rhougous-hiroki.png';
+  import ImageFreshnet from '@/assets/showcase-freshnet-enterprise.png';
 </script>
 
 <template>
@@ -115,17 +115,15 @@
             alt="Rory Xavier's Reference"
           />
 
-          <p
-            >The website features a clean and user-friendly design, allowing
-            visitors to easily navigate and explore his unique character. It
-            includes a gallery of high-quality artwork and detailed descriptions
-            that capture the essence of his fursona. The site also provides a
-            brief biography, highlighting his interests and background within
-            the furry community. With seamless integration of social media links
-            and a contact form, the website serves as a comprehensive platform
-            for my friend to connect with fellow furries and share his passion
-            for his fursona.</p
-          >
+          <p>
+            The website features a clean and user-friendly design, allowing visitors to easily
+            navigate and explore his unique character. It includes a gallery of high-quality artwork
+            and detailed descriptions that capture the essence of his fursona. The site also
+            provides a brief biography, highlighting his interests and background within the furry
+            community. With seamless integration of social media links and a contact form, the
+            website serves as a comprehensive platform for my friend to connect with fellow furries
+            and share his passion for his fursona.
+          </p>
 
           <Labels class="PageHome-project-labels">
             <Label>Svelte.js</Label>
@@ -173,15 +171,13 @@
             alt="Freshnet Enterprise"
           />
 
-          <p
-            >I'm developing a website for Freshnet Enterprise, a computer store
-            that offers a wide range of products. The website showcases detailed
-            information about each product, including specifications, pricing,
-            and availability. It features high-quality images and comprehensive
-            descriptions. The goal is to attract and retain customers, driving
-            sales and growth for Freshnet Enterprise in today's competitive
-            marketplace.</p
-          >
+          <p>
+            I'm developing a website for Freshnet Enterprise, a computer store that offers a wide
+            range of products. The website showcases detailed information about each product,
+            including specifications, pricing, and availability. It features high-quality images and
+            comprehensive descriptions. The goal is to attract and retain customers, driving sales
+            and growth for Freshnet Enterprise in today's competitive marketplace.
+          </p>
 
           <Labels class="PageHome-project-labels">
             <Label>Vue.js</Label>
@@ -210,57 +206,51 @@
           title="Artwork and Character Design"
           subtitle="Captivating Appearance"
         />
-        <p
-          >Create artwork and character designs that showcase Jimmy Fox's
-          captivating appearance. Highlight his striking yellow fur, blue hair,
-          and half-blackened ears with vibrant colors and attention to detail.
-          Capture the intrigue and complexity of his physical features in
-          visually stunning illustrations.</p
-        >
+        <p>
+          Create artwork and character designs that showcase Jimmy Fox's captivating appearance.
+          Highlight his striking yellow fur, blue hair, and half-blackened ears with vibrant colors
+          and attention to detail. Capture the intrigue and complexity of his physical features in
+          visually stunning illustrations.
+        </p>
 
         <FursonaHeader
           class="PageHome-fursona-title"
           title="Personality"
           subtitle="Shy yet Intriguing"
         />
-        <p
-          >Delve into Jimmy Fox's personality through character descriptions and
-          storytelling. Portray his shyness as a key trait that adds depth to
-          his character. Explore how his reserved nature influences his
-          interactions with others and his approach to social situations.
-          Showcase his quick wit, intelligence, and adaptability as underlying
-          qualities that make him fascinating.</p
-        >
+        <p>
+          Delve into Jimmy Fox's personality through character descriptions and storytelling.
+          Portray his shyness as a key trait that adds depth to his character. Explore how his
+          reserved nature influences his interactions with others and his approach to social
+          situations. Showcase his quick wit, intelligence, and adaptability as underlying qualities
+          that make him fascinating.
+        </p>
 
         <FursonaHeader
           class="PageHome-fursona-title"
           title="Stylish Simplicity"
           subtitle="Fashionable Outfit"
         />
-        <p
-          >Highlight Jimmy Fox's sense of style with his simple yet fashionable
-          outfit. Describe his choice of a white t-shirt and gray pants,
-          emphasizing how it reflects his personality. Focus on the clean and
-          crisp look of the white t-shirt that enhances his vibrant yellow fur,
-          and the touch of sophistication and balance brought by the gray
-          pants.</p
-        >
+        <p>
+          Highlight Jimmy Fox's sense of style with his simple yet fashionable outfit. Describe his
+          choice of a white t-shirt and gray pants, emphasizing how it reflects his personality.
+          Focus on the clean and crisp look of the white t-shirt that enhances his vibrant yellow
+          fur, and the touch of sophistication and balance brought by the gray pants.
+        </p>
 
         <FursonaHeader
           class="PageHome-fursona-title"
           title="Hobbies and Interests"
           subtitle="Drawing and Programming"
         />
-        <p
-          >Discover Jimmy Fox's diverse range of hobbies and interests as he
-          passionately engages in drawing and programming. With a love for art,
-          Jimmy immerses himself in sketching and creating intricate
-          illustrations, while his aptitude for programming allows him to
-          navigate the digital realm with skill and creativity. Whether
-          expressing his imagination on paper or solving complex coding puzzles,
-          Jimmy's versatile pursuits showcase his unwavering dedication and
-          passion for both artistic expression and technical innovation.</p
-        >
+        <p>
+          Discover Jimmy Fox's diverse range of hobbies and interests as he passionately engages in
+          drawing and programming. With a love for art, Jimmy immerses himself in sketching and
+          creating intricate illustrations, while his aptitude for programming allows him to
+          navigate the digital realm with skill and creativity. Whether expressing his imagination
+          on paper or solving complex coding puzzles, Jimmy's versatile pursuits showcase his
+          unwavering dedication and passion for both artistic expression and technical innovation.
+        </p>
       </Section>
     </div>
   </div>
@@ -289,15 +279,15 @@
 
       display: grid;
       grid-template-areas:
-        "intro"
-        "project"
-        "fursona";
+        'intro'
+        'project'
+        'fursona';
       place-items: center;
       grid-template-columns: 1fr;
       @media (min-width: 2000px) {
         grid-template-areas:
-          "intro project"
-          "fursona project";
+          'intro project'
+          'fursona project';
         grid-template-columns: repeat(2, 1fr);
         place-items: start;
       }
@@ -312,18 +302,18 @@
 
         display: grid;
         grid-template-areas:
-          "intro"
-          "programming"
-          "hobby"
-          "personality";
+          'intro'
+          'programming'
+          'hobby'
+          'personality';
         gap: 0.5rem;
 
         @media (min-width: 700px) {
           gap: 1rem;
           grid-template-areas:
-            "intro intro"
-            "programming programming"
-            "hobby personality";
+            'intro intro'
+            'programming programming'
+            'hobby personality';
         }
 
         // every sections

@@ -1,21 +1,19 @@
-<script setup>
-  import { computed } from "vue";
-  import { useRouter } from "vue-router";
+<script setup lang="ts">
+  import { computed } from 'vue';
+  import { useRoute } from 'vue-router';
 
   const props = defineProps({
-    path: { type: String, default: "" },
-    title: { type: String, default: "" },
+    path: { type: String, default: '' },
+    title: { type: String, default: '' },
   });
 
-  const router = useRouter();
+  const route = useRoute();
 
-  const isSelected = computed(() => router.path === props.path);
+  const isSelected = computed(() => route.path === props.path);
 </script>
 
 <template>
-  <router-link class="App-Nav" :isSelected="isSelected" :to="path">{{
-    title
-  }}</router-link>
+  <router-link class="App-Nav" :isSelected="isSelected" :to="path">{{ title }}</router-link>
 </template>
 
 <style lang="scss" scoped>
@@ -35,7 +33,7 @@
     align-items: center;
     justify-content: center;
   }
-  .App-Nav[isSelected="true"] {
+  .App-Nav[isSelected='true'] {
     background: var(--color-dark);
     color: white;
   }

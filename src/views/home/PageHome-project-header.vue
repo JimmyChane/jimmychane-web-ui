@@ -1,27 +1,22 @@
-<script setup>
+<script setup lang="ts">
   defineProps({
-    title: { type: String, default: "" },
-    subtitle: { type: String, default: "" },
-    href: { type: String, default: "" },
+    title: { type: String, default: '' },
+    subtitle: { type: String, default: '' },
+    href: { type: String, default: '' },
   });
 </script>
 
 <template>
   <div class="PageCode-header">
-    <a
-      class="PageCode-title"
-      v-if="title.length && href.length"
-      :href="href"
-      target="_blank"
-    >
+    <a class="PageCode-title" v-if="title.length && href.length" :href="href" target="_blank">
       <h3>
         {{ title }}
         <img class="PageCode-link-icon" src="@/assets/icon/link.svg" alt="Link Icon" />
       </h3>
     </a>
-    <h3 class="PageCode-title" v-if="title.length && !href.length">{{
-      title
-    }}</h3>
+    <h3 class="PageCode-title" v-if="title.length && !href.length">
+      {{ title }}
+    </h3>
     <span class="PageCode-subtitle" v-if="subtitle.length">{{ subtitle }}</span>
   </div>
 </template>
