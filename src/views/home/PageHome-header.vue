@@ -135,7 +135,7 @@
         border-radius: 0.8rem;
         border: 1px solid hsla(0, 0%, 0%, 0.08);
 
-        color: inherit;
+        color: var(--text-color);
         text-decoration: none;
         transition: 0.3s;
         background: var(--background-color-opacity70);

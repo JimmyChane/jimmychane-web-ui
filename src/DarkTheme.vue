@@ -25,6 +25,7 @@
   .dark-theme {
     path {
       fill: var(--text-color);
+      fill: var(--color-active);
     }
   }
 </style>

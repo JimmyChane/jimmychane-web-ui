@@ -379,6 +379,7 @@
       }
       .PageHome-fursona {
         --color: var(--section-fursona-background-color);
+        color: var(--text-color);
 
         display: flex;
         flex-direction: column;

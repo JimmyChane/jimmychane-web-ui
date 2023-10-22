@@ -24,7 +24,6 @@
 
     font-size: 1rem;
     font-weight: 600;
-    color: #101718;
     color: var(--text-color);
     text-decoration: none;
     text-align: center;
@@ -32,9 +31,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    transition: all 400ms ease;
   }
   .App-Nav[isSelected='true'] {
-    background: var(--color-dark);
-    color: white;
+    background: var(--color-active);
+    color: var(--background-color);
   }
 </style>

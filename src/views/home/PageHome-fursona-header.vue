@@ -27,7 +27,7 @@
     .PageCode-title {
       width: 100%;
       text-decoration: none;
-      color: inherit;
+      color: var(--text-color);
       font-size: 1.1em;
 
       h3 {
@@ -42,6 +42,7 @@
 
     .PageCode-subtitle {
       font-size: 0.8em;
+      color: var(--text-color);
     }
   }
 </style>
