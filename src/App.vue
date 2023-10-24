@@ -74,7 +74,8 @@
     // --color: #3c5f64;
     // --color-dark: #143135;
     --color: #fff48c;
-    --color-dark: #b6862d;
+    // --color-dark: #b6862d;
+    --color-dark: #74500e;
     --color-active: var(--color-dark);
 
     --text-color: hsl(0, 0%, 0%);
@@ -95,8 +96,10 @@
     --icon-light-invert: invert(100%);
     --icon-dark-invert: invert(0%);
 
+    // --section-fursona-header-background-color: rgb(180, 231, 224);
+    // --section-fursona-background-color: #9ed5ce;
     --section-fursona-header-background-color: rgb(180, 231, 224);
-    --section-fursona-background-color: #9ed5ce;
+    --section-fursona-background-color: #5ba097;
   }
   .App-dark-theme {
     // --color: #3c5f64;

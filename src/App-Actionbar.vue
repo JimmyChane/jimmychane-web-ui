@@ -43,10 +43,10 @@
           '--item-index': `${themeIndex}`,
         }"
       ></div>
-      <button @click="() => setIndex(0)">
+      <button @click="() => setIndex(0)" aria-label="Light Theme">
         <LightTheme :width="20" :height="20" />
       </button>
-      <button @click="() => setIndex(1)">
+      <button @click="() => setIndex(1)" aria-label="Dark Theme">
         <DarkTheme :width="18" :height="18" />
       </button>
     </div>
