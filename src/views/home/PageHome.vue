@@ -199,6 +199,7 @@
           class="PageHome-fursona-preview"
           src="@/assets/fursona-preview-v0.6.png"
           alt="Jimmy Yellow Fox"
+          loading="lazy"
         />
 
         <FursonaHeader

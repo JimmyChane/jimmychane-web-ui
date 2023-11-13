@@ -11,7 +11,12 @@
     <a class="PageCode-title" v-if="title.length && href.length" :href="href" target="_blank">
       <h3>
         {{ title }}
-        <img class="PageCode-link-icon" src="@/assets/icon/link.svg" alt="Link Icon" />
+        <img
+          class="PageCode-link-icon"
+          src="@/assets/icon/link.svg"
+          alt="Link Icon"
+          loading="lazy"
+        />
       </h3>
     </a>
     <h3 class="PageCode-title" v-if="title.length && !href.length">

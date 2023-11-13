@@ -50,6 +50,7 @@
           :class="social.title === 'Github' ? 'useInvert' : ''"
           :src="social.icon"
           :alt="social.title"
+          loading="lazy"
         />
         <span>{{ social.title }}</span>
       </a>

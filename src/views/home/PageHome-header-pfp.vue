@@ -1,7 +1,12 @@
 <template>
   <div class="PFP">
     <div class="PFP-background"></div>
-    <img class="PFP-image" src="@/assets/jimmy_fox_pfp-v1.png" alt="Jimmy Chane's Profile Image" />
+    <img
+      class="PFP-image"
+      src="@/assets/jimmy_fox_pfp-v1.png"
+      alt="Jimmy Chane's Profile Image"
+      loading="lazy"
+    />
   </div>
 </template>
 

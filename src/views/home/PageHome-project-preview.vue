@@ -8,7 +8,7 @@
 
 <template>
   <a class="PageCode-preview" :href="href" target="_blank">
-    <img class="PageCode-preview" :src="src" :alt="alt" />
+    <img class="PageCode-preview" :src="src" :alt="alt" loading="lazy" />
   </a>
 </template>
 
