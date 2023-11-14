@@ -13,9 +13,9 @@
   import ProjectPreview from './PageHome-project-preview.vue';
   import FursonaHeader from './PageHome-fursona-header.vue';
 
-  import ImageRory from '@/assets/showcase-rory-xavier.png';
-  import ImageRhougous from '@/assets/showcase-rhougous-hiroki.png';
-  import ImageFreshnet from '@/assets/showcase-freshnet-enterprise.png';
+  import ImageRory from '@/assets/showcase/showcase-rory-xavier.webp';
+  import ImageRhougous from '@/assets/showcase/showcase-rhougous-hiroki.webp';
+  import ImageFreshnet from '@/assets/showcase/showcase-freshnet-enterprise.webp';
 </script>
 
 <template>
@@ -197,7 +197,7 @@
         <SectionTitle>Fursona</SectionTitle>
         <img
           class="PageHome-fursona-preview"
-          src="@/assets/fursona-preview-v0.6.png"
+          src="@/assets/fursona/fursona-preview-v0.6.webp"
           alt="Jimmy Yellow Fox"
           loading="lazy"
         />

@@ -1,10 +1,10 @@
 <script setup lang="ts">
   import PFP from './PageHome-header-pfp.vue';
 
-  import TwitterLogo from '@/assets/twitter-color.svg';
-  import TelegramLogo from '@/assets/telegram-color.svg';
-  import GithubLogo from '@/assets/github-color.svg';
-  import LindedInLogo from '@/assets/linkedIn.svg';
+  import TwitterLogo from '@/assets/social/twitter-color.svg';
+  import TelegramLogo from '@/assets/social/telegram-color.svg';
+  import GithubLogo from '@/assets/social/github-color.svg';
+  import LindedInLogo from '@/assets/social/linkedIn-color.svg';
 
   const labels = ['Programmer', 'Artist'];
   const socials = [

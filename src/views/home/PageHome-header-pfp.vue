@@ -3,7 +3,7 @@
     <div class="PFP-background"></div>
     <img
       class="PFP-image"
-      src="@/assets/jimmy_fox_pfp-v1.png"
+      src="@/assets/jimmy_fox_pfp-v1.webp"
       alt="Jimmy Chane's Profile Image"
       loading="lazy"
     />
