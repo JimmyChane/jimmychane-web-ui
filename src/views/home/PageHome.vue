@@ -22,7 +22,7 @@
   <div class="PageHome">
     <div class="PageHome-grid">
       <div class="PageHome-intro" :style="{ 'grid-area': 'intro' }">
-        <Card :style="{ 'grid-area': 'intro' }">
+        <Card :style="{ 'grid-area': 'intro', '--background-color': 'transparent' }">
           <Header />
         </Card>
 
@@ -193,7 +193,7 @@
         </div>
       </Section>
 
-      <Section class="PageHome-fursona" :style="{ 'grid-area': 'fursona' }">
+      <Section class="PageHome-fursona" :style="{ 'grid-area': 'fursona', '--text-color' : 'var(--section-fursona-text-color)' }">
         <SectionTitle>Fursona</SectionTitle>
         <img
           class="PageHome-fursona-preview"

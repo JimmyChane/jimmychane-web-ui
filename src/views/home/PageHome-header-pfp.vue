@@ -1,6 +1,7 @@
 <template>
   <div class="PFP">
     <div class="PFP-background"></div>
+
     <img
       class="PFP-image"
       src="@/assets/jimmy_fox_pfp-v1.webp"
@@ -38,7 +39,7 @@
     justify-content: flex-end;
 
     .PFP-background {
-      background: var(--background-color-opacity70);
+      background: var(--cheese-color-pfp);
       position: absolute;
       bottom: 0;
       left: 0;
