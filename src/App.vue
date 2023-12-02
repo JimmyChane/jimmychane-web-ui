@@ -86,7 +86,7 @@
     --width: 100%;
     --height: calc(150dvh + var(--scroll-top) * 0.8);
 
-    @media (min-height: 1000px) { 
+    @media (min-height: 1000px) {
       --height: calc(100dvh + var(--scroll-top) * 0.8);
     }
 
@@ -190,32 +190,6 @@
     }
   }
 
-  * {
-    text-overflow: clip;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    word-break: break-word;
-  }
-  body {
-    width: 100%;
-    min-height: 100dvh;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  div {
-    display: flex;
-    flex-direction: column;
-  }
-  span,
-  p {
-    padding: 0;
-    margin: 0;
-    line-height: 1.4em;
-    white-space: pre-line;
-  }
-
   .App-light-theme {
     --color: #fff48c;
     --color-dark: #74500e;
@@ -275,9 +249,7 @@
     --cheese-color-pfp: var(--background-color-opacity70);
   }
   .App {
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;400;600;900&display=swap');
-
-    font-family: 'Inter', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
@@ -303,18 +275,5 @@
       align-items: center;
       justify-content: flex-start;
     }
-  }
-
-  :root {
-    @media (min-width: 600px) {
-      font-size: 1.2rem;
-    }
-  }
-
-  h1,
-  h2,
-  h3 {
-    margin: 0;
-    font-weight: 600;
   }
 </style>
