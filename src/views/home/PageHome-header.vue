@@ -5,6 +5,7 @@
   import TelegramLogo from '@/assets/social/telegram-color.svg';
   import GithubLogo from '@/assets/social/github-color.svg';
   import LindedInLogo from '@/assets/social/linkedIn-color.svg';
+  import BlueskyLogo from '@/assets/social/bluesky-color-w32.png';
 
   const labels = ['Programmer', 'Artist'];
   const socials = [
@@ -27,6 +28,11 @@
       href: 'https://www.linkedin.com/in/jimmy-chane-b9937a266/',
       title: 'LinkedIn',
       icon: LindedInLogo,
+    },
+    {
+      href: 'https://bsky.app/profile/jimmyfox.bsky.social',
+      title: 'Bluesky',
+      icon: BlueskyLogo,
     },
   ];
 </script>
@@ -134,7 +140,6 @@
         padding: 0.6rem 0.7rem;
         font-size: 1.2rem;
         border-radius: 0.8rem;
-        border: 1px solid hsla(0, 0%, 0%, 0.08);
 
         color: var(--text-color);
         text-decoration: none;
@@ -154,6 +159,7 @@
         img {
           width: 1.4rem;
           height: 1.4rem;
+          object-fit: contain;
         }
         img.useInvert {
           filter: var(--icon-dark-invert);

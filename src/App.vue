@@ -87,7 +87,7 @@
     --height: calc(150dvh + var(--scroll-top) * 0.8);
 
     @media (min-height: 1000px) {
-      --height: calc(100dvh + var(--scroll-top) * 0.8);
+      --height: calc(100lvh + var(--scroll-top) * 0.8);
     }
 
     min-width: var(--width);
