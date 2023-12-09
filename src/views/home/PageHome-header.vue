@@ -4,7 +4,6 @@
   import TwitterLogo from '@/assets/social/twitter-color.svg';
   import TelegramLogo from '@/assets/social/telegram-color.svg';
   import GithubLogo from '@/assets/social/github-color.svg';
-  import LindedInLogo from '@/assets/social/linkedIn-color.svg';
   import BlueskyLogo from '@/assets/social/bluesky-color-w32.png';
 
   const labels = ['Programmer', 'Artist'];
@@ -23,11 +22,6 @@
       href: 'https://github.com/JimmyChane',
       title: 'Github',
       icon: GithubLogo,
-    },
-    {
-      href: 'https://www.linkedin.com/in/jimmy-chane-b9937a266/',
-      title: 'LinkedIn',
-      icon: LindedInLogo,
     },
     {
       href: 'https://bsky.app/profile/jimmyfox.bsky.social',
