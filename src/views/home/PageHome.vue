@@ -139,11 +139,11 @@
           <ProjectHeader
             title="Rhougous Hiroki"
             subtitle="Personal Website"
-            href="https://rhougous.pages.dev/"
+            href="https://www.rhougous.net/"
           />
 
           <ProjectPreview
-            href="https://rhougous.pages.dev/"
+            href="https://www.rhougous.net/"
             :src="ImageRhougous"
             alt="Rhougous Hiroki's Website"
           />
@@ -193,7 +193,10 @@
         </div>
       </Section>
 
-      <Section class="PageHome-fursona" :style="{ 'grid-area': 'fursona', '--text-color' : 'var(--section-fursona-text-color)' }">
+      <Section
+        class="PageHome-fursona"
+        :style="{ 'grid-area': 'fursona', '--text-color': 'var(--section-fursona-text-color)' }"
+      >
         <SectionTitle>Fursona</SectionTitle>
         <img
           class="PageHome-fursona-preview"
