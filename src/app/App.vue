@@ -1,9 +1,9 @@
 <script setup lang="ts">
   import { ref, watch } from 'vue';
+  import { useRoute } from 'vue-router';
   import Actionbar from '@/app/actionbar/App-Actionbar.vue';
   import Statusbar from './statusbar/App-Statusbar.vue';
   import CheeseHoles from '@/app/background/CheeseHoles.vue';
-  import { useRoute } from 'vue-router';
 
   const currentTheme = ref('light');
 

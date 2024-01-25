@@ -1,18 +1,21 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
+  import { ref, type Component } from 'vue';
   import AppNav from './App-Nav.vue';
-  import DarkTheme from './DarkTheme.vue';
-  import LightTheme from './LightTheme.vue';
+  import DarkTheme from '@/app/actionbar/icon/IconDarkTheme.vue';
+  import LightTheme from '@/app/actionbar/icon/IconLightTheme.vue';
+
+  import IconHome from '@/app/actionbar/icon/IconHome.vue';
+  import IconFox from '@/app/actionbar/icon/IconFox.vue';
 
   const emits = defineEmits(['change-theme']);
   const props = defineProps({
     theme: { type: String, required: true },
   });
 
-  const routes = [
-    { path: '/', title: 'Home' },
-    { path: '/fursona', title: 'Fursona' },
-    { path: '/project', title: 'Project' },
+  const routes: { path: string; title: string; icon?: Component }[] = [
+    { path: '/', title: 'Home', icon: IconHome },
+    { path: '/fursona', title: 'Fursona', icon: IconFox },
+    { path: '/project', title: 'Project', icon: undefined },
   ];
 
   const themeIndex = ref(0);
@@ -35,7 +38,13 @@
   <div class="App-actionbar">
     <div class="App-actionbar-content">
       <div class="App-actionbar-items">
-        <AppNav v-for="route of routes" :key="route.path" :path="route.path" :title="route.title" />
+        <AppNav
+          v-for="route of routes"
+          :key="route.path"
+          :path="route.path"
+          :title="route.title"
+          :icon="route.icon"
+        />
       </div>
 
       <div class="App-actionbar-theme">
@@ -96,7 +105,7 @@
     }
 
     .App-actionbar-items {
-      gap: 1.2rem;
+      gap: 0.5rem;
 
       display: flex;
       flex-direction: row;

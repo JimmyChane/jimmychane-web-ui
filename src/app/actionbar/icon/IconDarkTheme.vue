@@ -24,8 +24,8 @@
 <style scoped lang="scss">
   .dark-theme {
     path {
-      fill: var(--text-color);
-      fill: var(--color-active);
+      --color: var(--color-active);
+      fill: var(--color);
     }
   }
 </style>
