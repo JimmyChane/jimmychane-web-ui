@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import Page from '@/components/Page.vue';
+
   import PFP from './PageHome-header-pfp.vue';
 
   import TwitterLogo from '@/assets/social/twitter-color.svg';
@@ -32,40 +34,51 @@
 </script>
 
 <template>
-  <div class="PageHome-header">
-    <PFP :style="{ 'grid-area': 'img' }" />
+  <Page>
+    <div class="PageHome">
+      <div class="PageHome-grid">
+        <PFP style="grid-area: img" />
 
-    <h1 class="PageHome-name" :style="{ 'grid-area': 'name' }">Jimmy Chane</h1>
+        <h1 class="PageHome-name" style="grid-area: name">Jimmy Chane</h1>
 
-    <div class="PageHome-labels" :style="{ 'grid-area': 'labels' }">
-      <div v-for="label of labels" :key="label">
-        <span>{{ label }}</span>
-        <div v-if="labels.indexOf(label) < labels.length - 1" class="PageHome-labels-dot"></div>
+        <div class="PageHome-labels" style="grid-area: labels">
+          <div v-for="label of labels" :key="label">
+            <span>{{ label }}</span>
+            <div v-if="labels.indexOf(label) < labels.length - 1" class="PageHome-labels-dot"></div>
+          </div>
+        </div>
+
+        <div class="PageHome-socials" style="grid-area: socials">
+          <a v-for="social in socials" :key="social.title" target="_blank" :href="social.href">
+            <img
+              :class="social.title === 'Github' ? 'useInvert' : ''"
+              :src="social.icon"
+              :alt="social.title"
+              loading="lazy"
+            />
+            <span>{{ social.title }}</span>
+          </a>
+        </div>
+
+        <p class="PageHome-description" style="grid-area: description">
+          Hi, I'm Jimmy Chane, and this is my website where I showcase my programming and drawing
+          talents.
+        </p>
       </div>
     </div>
-
-    <div class="PageHome-socials" :style="{ 'grid-area': 'socials' }">
-      <a v-for="social in socials" :key="social.title" target="_blank" :href="social.href">
-        <img
-          :class="social.title === 'Github' ? 'useInvert' : ''"
-          :src="social.icon"
-          :alt="social.title"
-          loading="lazy"
-        />
-        <span>{{ social.title }}</span>
-      </a>
-    </div>
-
-    <p class="PageHome-description" :style="{ 'grid-area': 'description' }">
-      Hi, I'm Jimmy Chane, and this is my website where I showcase my programming and drawing
-      talents.
-    </p>
-  </div>
+  </Page>
 </template>
 
 <style lang="scss" scoped>
-  .PageHome-header {
+  .PageHome {
+    min-height: 55dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .PageHome-grid {
     width: 100%;
+    max-width: var(--content-max-width);
     transition: all 0.3s;
 
     display: grid;
@@ -189,10 +202,8 @@
     .PageHome-description {
       font-size: 1.2rem;
     }
-  }
 
-  @media (max-width: 850px) {
-    .PageHome-header {
+    @media (max-width: 850px) {
       place-items: center;
       font-size: 0.8rem;
 
@@ -202,9 +213,7 @@
         text-align: center;
       }
     }
-  }
-  @media (min-width: 850px) {
-    .PageHome-header {
+    @media (min-width: 850px) {
       display: grid;
       grid-template-areas:
         'img name'

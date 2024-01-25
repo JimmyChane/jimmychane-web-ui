@@ -34,6 +34,9 @@
 
     transition: all 400ms ease;
   }
+  .App-Nav[isSelected='false'] {
+    color: var(--color-active);
+  }
   .App-Nav[isSelected='true'] {
     background: var(--color-active);
     color: var(--background-color);

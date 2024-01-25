@@ -11,7 +11,8 @@
 
   const routes = [
     { path: '/', title: 'Home' },
-    // { path: "/art", title: "Art" },
+    { path: '/fursona', title: 'Fursona' },
+    { path: '/project', title: 'Project' },
   ];
 
   const themeIndex = ref(0);
@@ -32,23 +33,23 @@
 
 <template>
   <div class="App-actionbar">
-    <div class="App-actionbar-items">
-      <AppNav v-for="route of routes" :key="route.path" :path="route.path" :title="route.title" />
-    </div>
+    <div class="App-actionbar-content">
+      <div class="App-actionbar-items">
+        <AppNav v-for="route of routes" :key="route.path" :path="route.path" :title="route.title" />
+      </div>
 
-    <div class="App-actionbar-theme">
-      <div
-        class="App-actionbar-theme-highlight"
-        :style="{
-          '--item-index': `${themeIndex}`,
-        }"
-      ></div>
-      <button @click="() => setIndex(0)" aria-label="Light Theme">
-        <LightTheme :width="20" :height="20" />
-      </button>
-      <button @click="() => setIndex(1)" aria-label="Dark Theme">
-        <DarkTheme :width="18" :height="18" />
-      </button>
+      <div class="App-actionbar-theme">
+        <div
+          class="App-actionbar-theme-highlight"
+          :style="{ '--item-index': `${themeIndex}` }"
+        ></div>
+        <button @click="() => setIndex(0)" aria-label="Light Theme">
+          <LightTheme :width="20" :height="20" />
+        </button>
+        <button @click="() => setIndex(1)" aria-label="Dark Theme">
+          <DarkTheme :width="18" :height="18" />
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -56,14 +57,14 @@
 <style lang="scss" scoped>
   .App-actionbar {
     width: 100%;
+    height: var(--actionbar-height);
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 
     position: sticky;
     top: 0;
-    padding-right: 0.5rem;
 
     background-color: var(--background-color-opacity50);
     border-bottom: 1px solid hsla(0, 0%, 0%, 0.05);
@@ -74,16 +75,33 @@
       backdrop-filter: blur(var(--blur));
     }
 
+    .App-actionbar-content {
+      width: 100%;
+      max-width: var(--content-max-width);
+      gap: 1rem;
+      padding: 1rem;
+      transition: all 200ms ease;
+
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      @media (min-width: 700px) {
+        padding: 2rem;
+      }
+      @media (min-width: 1200px) {
+        padding: 4rem;
+      }
+    }
+
     .App-actionbar-items {
       gap: 1.2rem;
-      padding: 1rem;
 
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
       align-items: center;
-
-      overflow-y: auto;
     }
     .App-actionbar-theme {
       display: flex;

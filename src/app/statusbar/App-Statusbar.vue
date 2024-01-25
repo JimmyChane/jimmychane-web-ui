@@ -1,14 +1,15 @@
 <template>
   <div class="App-footer">
-    <span>2023 December 09</span>
+    <span>2024 January 25</span>
     <span class="App-footer-separator" />
-    <span>v0.8.7</span>
+    <span>v0.9</span>
   </div>
 </template>
 
 <style lang="scss" scoped>
   .App-footer {
     width: 100%;
+    height: var(--statusbar-height);
     gap: 0.5rem;
     display: flex;
     flex-direction: row;
