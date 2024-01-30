@@ -126,8 +126,7 @@
         min-height: var(--height);
         max-height: var(--height);
 
-        background: hsl(0, 0%, 20%);
-        background: var(--text-color-opacity50);
+        background: var(--color-active);
         border-radius: 50%;
         overflow: hidden;
       }

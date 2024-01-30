@@ -2,7 +2,7 @@
   <div class="App-footer">
     <span>2024 January 25</span>
     <span class="App-footer-separator" />
-    <span>v0.9.1</span>
+    <span>v0.9.2</span>
   </div>
 </template>
 
