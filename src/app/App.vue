@@ -4,50 +4,48 @@
   import Actionbar from '@/app/actionbar/App-Actionbar.vue';
   import Statusbar from './statusbar/App-Statusbar.vue';
   import CheeseHoles from '@/app/background/CheeseHoles.vue';
-
-  const currentTheme = ref('light');
-
-  function saveTheme(theme: string) {
-    localStorage.setItem('theme', theme);
-  }
-  function onChangeTheme(theme: string | null, save = true) {
-    switch (theme) {
-      case 'light':
-        currentTheme.value = 'light';
-        break;
-      case 'dark':
-        currentTheme.value = 'dark';
-        break;
-    }
-    switch (theme) {
-      case 'light':
-      case 'dark':
-        if (save) saveTheme(theme);
-    }
-  }
-
-  onChangeTheme(localStorage.getItem('theme'), false);
+  import {
+    type Theme,
+    save as saveTheme,
+    get as getTheme,
+    DarkTheme,
+    LightTheme,
+  } from '@/data/Theme';
 
   const route = useRoute();
+  const currentTheme = ref<Theme>(getTheme());
 
-  watch(
-    () => route.name,
-    () => {
-      const html = document.querySelector('html');
-      html?.scrollTo({ top: 0 });
-    },
-  );
+  watch([route], () => {
+    const html = document.querySelector('html');
+    html?.scrollTo({ top: 0 });
+  });
+
+  function setTheme(theme: Theme) {
+    currentTheme.value = theme;
+    saveTheme(theme);
+    onTheme();
+  }
+
+  function onTheme() {
+    const html = document.querySelector('html');
+    switch (currentTheme.value.key) {
+      case LightTheme.key:
+        html?.style.setProperty('color-scheme', 'light');
+        break;
+      case DarkTheme.key:
+        html?.style.setProperty('color-scheme', 'dark');
+        break;
+    }
+  }
+
+  onTheme();
 </script>
 
 <template>
-  <div class="App" :data-dark="currentTheme !== 'light'">
+  <div class="App" :data-dark="currentTheme.key === DarkTheme.key">
     <CheeseHoles style="z-index: 0" />
 
-    <Actionbar
-      style="z-index: 2"
-      :theme="currentTheme"
-      @change-theme="(value) => onChangeTheme(value)"
-    />
+    <Actionbar style="z-index: 2" :theme="currentTheme" @set-theme="(value) => setTheme(value)" />
 
     <div class="App-body" style="z-index: 1">
       <router-view />

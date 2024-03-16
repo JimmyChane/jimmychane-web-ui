@@ -1,8 +1,8 @@
 <script setup lang="ts">
-  defineProps({
-    title: { type: String, default: '' },
-    subtitle: { type: String, default: '' },
-    href: { type: String, default: '' },
+  withDefaults(defineProps<{ title?: string; subtitle?: string; href?: string }>(), {
+    title: '',
+    subtitle: '',
+    href: '',
   });
 </script>
 

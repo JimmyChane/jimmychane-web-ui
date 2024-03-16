@@ -3,7 +3,7 @@
 
   import Section from '@/components/section/Section.vue';
 
-  import FursonaHeader from '@/pages/fursona/PageHome-fursona-header.vue';
+  import FursonaHeader from './components/PageFursona-fursona-header.vue';
 </script>
 
 <template>

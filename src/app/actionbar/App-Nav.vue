@@ -1,33 +1,22 @@
 <script setup lang="ts">
-  import { computed, type Component } from 'vue';
+  import type { Route } from '@/data/Route';
+  import { computed } from 'vue';
   import { useRoute } from 'vue-router';
 
-  const props = withDefaults(
-    defineProps<{
-      path: string;
-      title: string;
-      icon?: Component;
-    }>(),
-    {
-      path: '',
-      title: '',
-    },
-  );
-
+  const props = defineProps<{ item: Route }>();
   const route = useRoute();
-
-  const isSelected = computed(() => route.path === props.path);
+  const isSelected = computed(() => route.name === props.item.key);
 </script>
 
 <template>
   <router-link
     class="App-Nav"
-    :class="icon ? 'App-Nav-withIcon' : ''"
+    :class="item.icon ? 'App-Nav-withIcon' : ''"
     :isSelected="isSelected"
-    :to="path"
+    :to="item.path"
   >
-    <component v-if="icon" class="App-Nav-icon" :is="icon" :width="20" :height="20" />
-    <span class="App-Nav-title">{{ title }}</span>
+    <component v-if="item.icon" class="App-Nav-icon" :is="item.icon" :width="20" :height="20" />
+    <span class="App-Nav-title">{{ item.title }}</span>
   </router-link>
 </template>
 

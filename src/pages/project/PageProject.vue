@@ -3,19 +3,19 @@
 
   import Section from '@/components/section/Section.vue';
 
-  import ProjectHeader from '@/pages/project/PageHome-project-header.vue';
-  import ProjectPreview from '@/pages/project/PageHome-project-preview.vue';
+  import ProjectHeader from './components/PageProject-project-header.vue';
+  import ProjectPreview from './components/PageProject-project-preview.vue';
 
   import ImageRory from '@/assets/showcase/showcase-rory-xavier.webp';
   import ImageRhougous from '@/assets/showcase/showcase-rhougous-hiroki.webp';
   import ImageFreshnet from '@/assets/showcase/showcase-freshnet-enterprise.webp';
 
-  import Labels from '@/pages/project/PageHome-group-labels.vue';
-  import Label from '@/pages/project/PageHome-group-label.vue';
+  import Labels from './components/PageProject-group-labels.vue';
+  import Label from './components/PageProject-group-label.vue';
 
-  import CardBody from '@/pages/project/PageHome-card-body.vue';
-  import Group from '@/pages/project/PageHome-group.vue';
-  import Card from '@/pages/home/PageHome-card.vue';
+  import CardBody from './components/PageProject-card-body.vue';
+  import Group from './components/PageProject-group.vue';
+  import Card from './components/PageProject-card.vue';
 </script>
 
 <template>

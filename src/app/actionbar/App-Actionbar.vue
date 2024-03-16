@@ -1,36 +1,28 @@
 <script setup lang="ts">
-  import { ref, type Component } from 'vue';
+  import { computed } from 'vue';
   import AppNav from './App-Nav.vue';
-  import DarkTheme from '@/app/actionbar/icon/IconDarkTheme.vue';
-  import LightTheme from '@/app/actionbar/icon/IconLightTheme.vue';
 
-  import IconHome from '@/app/actionbar/icon/IconHome.vue';
-  import IconFox from '@/app/actionbar/icon/IconFox.vue';
+  import { DarkTheme, LightTheme, type Theme } from '@/data/Theme';
+  import { FursonaRoute, HomeRoute, ProjectRoute, type Route } from '@/data/Route';
 
-  const emits = defineEmits(['change-theme']);
-  const props = defineProps({
-    theme: { type: String, required: true },
+  const emits = defineEmits<{ setTheme: [Theme] }>();
+  const props = defineProps<{ theme: Theme }>();
+
+  const routes: Route[] = [HomeRoute, FursonaRoute, ProjectRoute];
+
+  const indexTheme = computed(() => {
+    switch (props.theme.key) {
+      case LightTheme.key:
+        return 0;
+      case DarkTheme.key:
+        return 1;
+      default:
+        return -1;
+    }
   });
 
-  const routes: { path: string; title: string; icon?: Component }[] = [
-    { path: '/', title: 'Home', icon: IconHome },
-    { path: '/fursona', title: 'Fursona', icon: IconFox },
-    { path: '/project', title: 'Project', icon: undefined },
-  ];
-
-  const themeIndex = ref(0);
-  switch (props.theme) {
-    case 'light':
-      themeIndex.value = 0;
-      break;
-    case 'dark':
-      themeIndex.value = 1;
-      break;
-  }
-
-  function setIndex(index: number) {
-    themeIndex.value = index;
-    emits('change-theme', themeIndex.value === 0 ? 'light' : 'dark');
+  function setTheme() {
+    emits('setTheme', indexTheme.value === 0 ? DarkTheme : LightTheme);
   }
 </script>
 
@@ -38,25 +30,19 @@
   <div class="App-actionbar">
     <div class="App-actionbar-content">
       <div class="App-actionbar-items">
-        <AppNav
-          v-for="route of routes"
-          :key="route.path"
-          :path="route.path"
-          :title="route.title"
-          :icon="route.icon"
-        />
+        <AppNav v-for="route of routes" :key="route.key" :item="route" />
       </div>
 
       <div class="App-actionbar-theme">
         <div
           class="App-actionbar-theme-highlight"
-          :style="{ '--item-index': `${themeIndex}` }"
+          :style="{ '--item-index': `${indexTheme}` }"
         ></div>
-        <button @click="() => setIndex(0)" aria-label="Light Theme">
-          <LightTheme :width="20" :height="20" />
+        <button @click="() => setTheme()" aria-label="Light Theme">
+          <component :is="LightTheme.icon" :width="20" :height="20" />
         </button>
-        <button @click="() => setIndex(1)" aria-label="Dark Theme">
-          <DarkTheme :width="18" :height="18" />
+        <button @click="() => setTheme()" aria-label="Dark Theme">
+          <component :is="DarkTheme.icon" :width="18" :height="18" />
         </button>
       </div>
     </div>

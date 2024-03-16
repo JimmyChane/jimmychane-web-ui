@@ -1,36 +1,11 @@
 <script setup lang="ts">
   import Page from '@/components/Page.vue';
-
-  import PFP from './PageHome-header-pfp.vue';
-
-  import TwitterLogo from '@/assets/social/twitter-color.svg';
-  import TelegramLogo from '@/assets/social/telegram-color.svg';
-  import GithubLogo from '@/assets/social/github-color.svg';
-  import BlueskyLogo from '@/assets/social/bluesky-color-w32.png';
+  import PFP from './components/PageHome-header-pfp.vue';
+  import SocialVue from './components/PageHome-social.vue';
+  import { Twitter, type Social, Telegram, Github, Bluesky } from '@/data/Social';
 
   const labels = ['Programmer', 'Artist'];
-  const socials = [
-    {
-      href: 'https://twitter.com/jimmykajun',
-      title: 'Twitter',
-      icon: TwitterLogo,
-    },
-    {
-      href: 'https://t.me/Jimmy612',
-      title: 'Telegram',
-      icon: TelegramLogo,
-    },
-    {
-      href: 'https://github.com/JimmyChane',
-      title: 'Github',
-      icon: GithubLogo,
-    },
-    {
-      href: 'https://bsky.app/profile/jimmyfox.bsky.social',
-      title: 'Bluesky',
-      icon: BlueskyLogo,
-    },
-  ];
+  const socials: Social[] = [Twitter, Telegram, Github, Bluesky];
 </script>
 
 <template>
@@ -49,15 +24,7 @@
         </div>
 
         <div class="PageHome-socials" style="grid-area: socials">
-          <a v-for="social in socials" :key="social.title" target="_blank" :href="social.href">
-            <img
-              :class="social.title === 'Github' ? 'useInvert' : ''"
-              :src="social.icon"
-              :alt="social.title"
-              loading="lazy"
-            />
-            <span>{{ social.title }}</span>
-          </a>
+          <SocialVue v-for="social in socials" :key="social.title" :item="social" />
         </div>
 
         <p class="PageHome-description" style="grid-area: description">
@@ -139,63 +106,8 @@
       flex-direction: row;
       flex-wrap: wrap;
 
-      & > * {
-        width: 100%;
-        max-width: 10rem;
-        gap: 0.8rem;
-        padding: 0.6rem 0.7rem;
-        font-size: 1.2rem;
-        border-radius: 0.8rem;
-
-        color: var(--text-color);
-        text-decoration: none;
-        transition: 0.3s;
-        background: var(--background-color-opacity70);
-
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-
-        &:hover {
-          transform: translateY(-0.1em);
-        }
-
-        img {
-          width: 1.4rem;
-          height: 1.4rem;
-          object-fit: contain;
-        }
-        img.useInvert {
-          filter: var(--icon-dark-invert);
-        }
-      }
-
       @media (max-width: 28rem) {
         gap: initial;
-        & > * {
-          max-width: initial;
-          width: 3.5rem;
-          height: 3.5rem;
-          padding: initial;
-
-          aspect-ratio: 1/1;
-          background: none;
-          border: none;
-
-          &:hover {
-            background: white;
-          }
-
-          span {
-            display: none;
-          }
-          img {
-            width: 1.6rem;
-            height: 1.6rem;
-          }
-        }
       }
     }
     .PageHome-description {

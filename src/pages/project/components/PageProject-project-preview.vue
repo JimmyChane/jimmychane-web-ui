@@ -1,8 +1,8 @@
 <script setup lang="ts">
-  defineProps({
-    href: { type: String },
-    src: { type: String },
-    alt: { type: String },
+  withDefaults(defineProps<{ href?: string; src?: string; alt?: string }>(), {
+    href: '',
+    src: '',
+    alt: '',
   });
 </script>
 

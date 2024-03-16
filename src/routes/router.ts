@@ -1,24 +1,25 @@
+import { FursonaRoute, HomeRoute, ProjectRoute } from '@/data/Route';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      name: 'home',
-      path: '/',
+      name: HomeRoute.key,
+      path: HomeRoute.path,
       component: () => import('@/pages/home/PageHome.vue'),
     },
     {
-      name: 'fursona',
-      path: '/fursona',
+      name: FursonaRoute.key,
+      path: FursonaRoute.path,
       component: () => import('@/pages/fursona/PageFursona.vue'),
     },
     {
-      name: 'project',
-      path: '/project',
+      name: ProjectRoute.key,
+      path: ProjectRoute.path,
       component: () => import('@/pages/project/PageProject.vue'),
     },
-    { path: '/:pathMatch(.*)*', redirect: { name: 'home' } },
+    { path: '/:pathMatch(.*)*', redirect: { name: HomeRoute.key } },
   ],
 });
 

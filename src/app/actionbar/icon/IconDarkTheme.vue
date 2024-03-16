@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  defineProps({
-    width: { type: Number, default: 512 },
-    height: { type: Number, default: 512 },
+  withDefaults(defineProps<{ width?: number; height?: number }>(), {
+    width: 512,
+    height: 512,
   });
 </script>
 
