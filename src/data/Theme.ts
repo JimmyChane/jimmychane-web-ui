@@ -17,10 +17,10 @@ export const DarkTheme: Theme = {
   icon: DarkThemeIcon,
 };
 
-export function save(theme: Theme) {
+export function save(theme: Theme): void {
   localStorage.setItem('theme', theme.key);
 }
-export function get() {
+export function get(): Theme {
   const theme = localStorage.getItem('theme');
 
   if (theme === 'light') return LightTheme;

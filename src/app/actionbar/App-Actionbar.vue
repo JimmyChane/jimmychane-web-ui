@@ -4,14 +4,14 @@
 
   import { DarkTheme, LightTheme, type Theme } from '@/data/Theme';
   import { FursonaRoute, HomeRoute, ProjectRoute, type Route } from '@/data/Route';
+  import { useThemeStore } from '@/stores/theme/theme.store';
 
-  const emits = defineEmits<{ setTheme: [Theme] }>();
-  const props = defineProps<{ theme: Theme }>();
+  const themeStore = useThemeStore();
 
   const routes: Route[] = [HomeRoute, FursonaRoute, ProjectRoute];
 
   const indexTheme = computed(() => {
-    switch (props.theme.key) {
+    switch (themeStore.theme.key) {
       case LightTheme.key:
         return 0;
       case DarkTheme.key:
@@ -20,10 +20,6 @@
         return -1;
     }
   });
-
-  function setTheme() {
-    emits('setTheme', indexTheme.value === 0 ? DarkTheme : LightTheme);
-  }
 </script>
 
 <template>
@@ -38,10 +34,10 @@
           class="App-actionbar-theme-highlight"
           :style="{ '--item-index': `${indexTheme}` }"
         ></div>
-        <button @click="() => setTheme()" aria-label="Light Theme">
+        <button @click="() => themeStore.toggleThemes()" aria-label="Light Theme">
           <component :is="LightTheme.icon" :width="20" :height="20" />
         </button>
-        <button @click="() => setTheme()" aria-label="Dark Theme">
+        <button @click="() => themeStore.toggleThemes()" aria-label="Dark Theme">
           <component :is="DarkTheme.icon" :width="18" :height="18" />
         </button>
       </div>

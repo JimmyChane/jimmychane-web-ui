@@ -1,8 +1,8 @@
 <template>
   <div class="App-footer">
-    <span>2024 March 16</span>
+    <span>2024 April 03</span>
     <span class="App-footer-separator" />
-    <span>v0.9.3</span>
+    <span>v0.9.4</span>
   </div>
 </template>
 

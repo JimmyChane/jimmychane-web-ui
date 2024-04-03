@@ -1,51 +1,26 @@
 <script setup lang="ts">
-  import { ref, watch } from 'vue';
+  import { watch } from 'vue';
   import { useRoute } from 'vue-router';
   import Actionbar from '@/app/actionbar/App-Actionbar.vue';
   import Statusbar from './statusbar/App-Statusbar.vue';
   import CheeseHoles from '@/app/background/CheeseHoles.vue';
-  import {
-    type Theme,
-    save as saveTheme,
-    get as getTheme,
-    DarkTheme,
-    LightTheme,
-  } from '@/data/Theme';
+  import { DarkTheme } from '@/data/Theme';
+  import { useThemeStore } from '@/stores/theme/theme.store';
 
   const route = useRoute();
-  const currentTheme = ref<Theme>(getTheme());
+  const themeStore = useThemeStore();
 
   watch([route], () => {
     const html = document.querySelector('html');
     html?.scrollTo({ top: 0 });
   });
-
-  function setTheme(theme: Theme) {
-    currentTheme.value = theme;
-    saveTheme(theme);
-    onTheme();
-  }
-
-  function onTheme() {
-    const html = document.querySelector('html');
-    switch (currentTheme.value.key) {
-      case LightTheme.key:
-        html?.style.setProperty('color-scheme', 'light');
-        break;
-      case DarkTheme.key:
-        html?.style.setProperty('color-scheme', 'dark');
-        break;
-    }
-  }
-
-  onTheme();
 </script>
 
 <template>
-  <div class="App" :data-dark="currentTheme.key === DarkTheme.key">
+  <div class="App" :data-dark="themeStore.theme.key === DarkTheme.key">
     <CheeseHoles style="z-index: 0" />
 
-    <Actionbar style="z-index: 2" :theme="currentTheme" @set-theme="(value) => setTheme(value)" />
+    <Actionbar style="z-index: 2" />
 
     <div class="App-body" style="z-index: 1">
       <router-view />
