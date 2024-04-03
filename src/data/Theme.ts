@@ -2,6 +2,9 @@ import type { Component } from 'vue';
 
 import LightThemeIcon from '@/app/actionbar/icon/IconLightTheme.vue';
 import DarkThemeIcon from '@/app/actionbar/icon/IconDarkTheme.vue';
+import { useLocalStorage } from '@vueuse/core';
+
+const useThemeStorage = () => useLocalStorage('theme', LightTheme.key);
 
 export interface Theme {
   key: string;
@@ -18,13 +21,14 @@ export const DarkTheme: Theme = {
 };
 
 export function save(theme: Theme): void {
-  localStorage.setItem('theme', theme.key);
+  const storageTheme = useThemeStorage();
+  storageTheme.value = theme.key;
 }
 export function get(): Theme {
-  const theme = localStorage.getItem('theme');
+  const theme = useThemeStorage();
 
-  if (theme === 'light') return LightTheme;
-  if (theme === 'dark') return DarkTheme;
+  if (theme.value === LightTheme.key) return LightTheme;
+  if (theme.value === DarkTheme.key) return DarkTheme;
 
   return LightTheme;
 }
