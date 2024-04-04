@@ -43,6 +43,10 @@
   .App-Nav[isSelected='false'] {
     --color: var(--color-active);
     color: var(--color);
+
+    &:hover {
+      background-color: var(--color-hover);
+    }
   }
   .App-Nav[isSelected='true'] {
     --color: var(--background-color);

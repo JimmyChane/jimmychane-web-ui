@@ -71,6 +71,7 @@
       --color: #fff48c;
       --color-dark: #74500e;
       --color-active: var(--color-dark);
+      --color-hover: rgba(231, 220, 124, 0.4);
 
       --text-color: hsl(0, 0%, 0%);
       --text-color-opacity5: hsla(0, 0%, 0%, 0.05);

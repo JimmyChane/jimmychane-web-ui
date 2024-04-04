@@ -1,7 +1,6 @@
 import type { Component } from 'vue';
-
-import LightThemeIcon from '@/app/actionbar/icon/IconLightTheme.vue';
-import DarkThemeIcon from '@/app/actionbar/icon/IconDarkTheme.vue';
+import LightThemeIcon from '@/components/icon/LightTheme.icon.vue';
+import DarkThemeIcon from '@/components/icon/DarkTheme.icon.vue';
 import { useLocalStorage } from '@vueuse/core';
 
 const useThemeStorage = () => useLocalStorage('theme', LightTheme.key);
