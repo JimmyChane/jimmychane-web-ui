@@ -1,13 +1,19 @@
 <script setup lang="ts">
-  import { watch } from 'vue';
+  import { defineAsyncComponent, watch } from 'vue';
   import { useRoute } from 'vue-router';
   import Actionbar from '@/app/actionbar/App-Actionbar.vue';
   import Statusbar from './statusbar/App-Statusbar.vue';
   import CheeseHoles from '@/app/background/CheeseHoles.vue';
   import { DarkTheme } from '@/data/Theme';
   import { useThemeStore } from '@/stores/theme/theme.store';
+  import { useWindowStore } from '@/stores/window/window.store';
+
+  const NavigationDrawer = defineAsyncComponent(
+    () => import('./navigation-drawer/NavigationDrawer.vue'),
+  );
 
   const route = useRoute();
+  const windowStore = useWindowStore();
   const themeStore = useThemeStore();
 
   watch([route], () => {
@@ -22,11 +28,13 @@
 
     <Actionbar style="z-index: 2" />
 
-    <div class="App-body" style="z-index: 1">
+    <div class="App-router-view" style="z-index: 1">
       <router-view />
     </div>
 
     <Statusbar style="z-index: 2" />
+
+    <NavigationDrawer v-if="!windowStore.isLargerThanMobile" style="z-index: 3" />
   </div>
 </template>
 
@@ -36,6 +44,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
+    --navigation-drawer-width: 16rem;
     --actionbar-height: 5rem;
     --statusbar-height: 2.5rem;
     --content-max-width: 70rem;
@@ -44,7 +53,7 @@
     background: var(--background-color);
 
     width: 100%;
-    min-height: 100dvh;
+    height: 100dvh;
     flex-grow: 1;
 
     display: flex;
@@ -54,10 +63,10 @@
 
     position: relative;
 
-    .App-body {
+    overflow-y: auto;
+
+    .App-router-view {
       width: 100%;
-      min-height: calc(100dvh - var(--actionbar-height) - var(--statusbar-height));
-      height: max-content;
 
       flex-grow: 1;
 

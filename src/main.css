@@ -31,6 +31,9 @@ p {
   line-height: 1.4em;
   white-space: pre-line;
 }
+button {
+  cursor: pointer;
+}
 
 h1,
 h2,

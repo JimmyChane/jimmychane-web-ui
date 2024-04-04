@@ -1,14 +1,18 @@
 <script setup lang="ts">
-  import { computed } from 'vue';
-  import AppNav from './App-Nav.vue';
-
+  import { computed, defineAsyncComponent, watch } from 'vue';
   import { DarkTheme, LightTheme, type Theme } from '@/data/Theme';
-  import { FursonaRoute, HomeRoute, ProjectRoute, type Route } from '@/data/Route';
   import { useThemeStore } from '@/stores/theme/theme.store';
+  import { useNavigationDrawerStore } from '@/stores/navigation-drawer/navigation-drawer.store';
+  import { useNavigationStore } from '@/stores/navigation/navigation.store';
+  import { useWindowStore } from '@/stores/window/window.store';
 
+  const HamburgerIcon = defineAsyncComponent(() => import('@/components/icon/Hamburger.icon.vue'));
+  const AppNav = defineAsyncComponent(() => import('./App-Nav.vue'));
+
+  const navigationStore = useNavigationStore();
+  const navigationDrawerStore = useNavigationDrawerStore();
   const themeStore = useThemeStore();
-
-  const routes: Route[] = [HomeRoute, FursonaRoute, ProjectRoute];
+  const windowStore = useWindowStore();
 
   const indexTheme = computed(() => {
     switch (themeStore.theme.key) {
@@ -20,13 +24,29 @@
         return -1;
     }
   });
+
+  watch(() => windowStore.isLargerThanMobile, onSizeChange);
+
+  function onSizeChange() {
+    if (windowStore.isLargerThanMobile) {
+      navigationDrawerStore.close();
+    }
+  }
 </script>
 
 <template>
   <div class="App-actionbar">
     <div class="App-actionbar-content">
-      <div class="App-actionbar-items">
-        <AppNav v-for="route of routes" :key="route.key" :item="route" />
+      <div class="App-actionbar-title" v-if="!windowStore.isLargerThanMobile">
+        <button class="App-actionbar-hamburger" @click="() => navigationDrawerStore.toggle()">
+          <HamburgerIcon :width="24" :height="24" />
+        </button>
+
+        <span>Home</span>
+      </div>
+
+      <div v-if="windowStore.isLargerThanMobile" class="App-actionbar-items">
+        <AppNav v-for="route of navigationStore.routes" :key="route.key" :item="route" />
       </div>
 
       <div class="App-actionbar-theme">
@@ -83,6 +103,40 @@
       }
       @media (min-width: 1200px) {
         padding: 4rem;
+      }
+
+      .App-actionbar-title {
+        gap: 1rem;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+
+        .App-actionbar-hamburger {
+          aspect-ratio: 1/1;
+
+          display: grid;
+          place-items: center;
+
+          --size: 2.5rem;
+          width: var(--size);
+          height: var(--size);
+
+          border-radius: 50%;
+          border: none;
+          background: none;
+
+          & > * {
+            --color: var(--color-active);
+          }
+        }
+
+        & > span {
+          font-size: 1.1rem;
+          font-weight: 600;
+          line-height: 1rem;
+        }
       }
     }
 

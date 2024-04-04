@@ -112,6 +112,7 @@
     }
     .PageHome-description {
       font-size: 1.2rem;
+      text-wrap: balance;
     }
 
     @media (max-width: 850px) {
