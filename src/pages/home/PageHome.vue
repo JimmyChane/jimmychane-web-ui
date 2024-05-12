@@ -20,14 +20,14 @@
         <h1 class="PageHome-name" style="grid-area: name">{{ name }}</h1>
 
         <div class="PageHome-labels" style="grid-area: labels">
-          <div v-for="label of labels" :key="label">
+          <div v-for="(label, index) of labels" :key="label">
             <span>{{ label }}</span>
-            <div v-if="labels.indexOf(label) < labels.length - 1" class="PageHome-labels-dot"></div>
+            <div v-if="index < labels.length - 1" class="PageHome-labels-dot"></div>
           </div>
         </div>
 
         <div class="PageHome-socials" style="grid-area: socials">
-          <SocialVue v-for="social in socials" :key="social.socialPlatform.title" :item="social" />
+          <SocialVue v-for="social of socials" :key="social.socialPlatform.title" :item="social" />
         </div>
 
         <p class="PageHome-description" style="grid-area: description">

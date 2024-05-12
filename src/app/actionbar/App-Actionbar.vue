@@ -27,7 +27,7 @@
     }
   });
   const navigation = computed(() => {
-    return navigationStore.routes.find((navigationRoute) => navigationRoute.key === route.name);
+    return navigationStore.navigations.find((navigationRoute) => navigationRoute.key === route.name);
   });
 
   function onSizeChange() {
@@ -51,7 +51,7 @@
       </div>
 
       <div v-if="windowStore.isLargerThanMobile" class="App-actionbar-items">
-        <AppNav v-for="route of navigationStore.routes" :key="route.key" :item="route" />
+        <AppNav v-for="route of navigationStore.navigations" :key="route.key" :item="route" />
       </div>
 
       <div class="App-actionbar-theme">

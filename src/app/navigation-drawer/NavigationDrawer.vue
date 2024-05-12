@@ -10,7 +10,7 @@
   <NavigationDrawerController>
     <div class="navigation-drawer">
       <NavigationDrawerItem
-        v-for="route of navigationStore.routes"
+        v-for="route of navigationStore.navigations"
         :key="route.key"
         :item="route"
       />

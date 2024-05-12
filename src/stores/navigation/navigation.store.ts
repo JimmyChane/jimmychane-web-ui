@@ -1,11 +1,31 @@
-import { FursonaRoute, HomeRoute, ProjectRoute, type Route } from '@/data/Route';
+import { FursonaRoute, HomeRoute, ProjectRoute } from '@/data/Route';
 import { defineStore } from 'pinia';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
+import { useRoute } from 'vue-router';
 
 export const useNavigationStore = defineStore('navigation', () => {
-  const routes: Route[] = [HomeRoute, FursonaRoute, ProjectRoute];
+  const route = useRoute();
+
+  const navigations = ref([HomeRoute, FursonaRoute, ProjectRoute]);
+
+  const nextNavigation = computed(() => {
+    const currentRouteName = route.name;
+    const currentNavigation = navigations.value.find((navigation) => {
+      return navigation.key === currentRouteName;
+    });
+
+    if (!currentNavigation) return;
+
+    const currentNavigationIndex = navigations.value.indexOf(currentNavigation);
+    const nextNavigationIndex = currentNavigationIndex + 1;
+
+    if (nextNavigationIndex >= navigations.value.length) return;
+
+    return navigations.value[nextNavigationIndex];
+  });
 
   return {
-    routes: computed(() => routes),
+    navigations: computed(() => navigations.value),
+    nextNavigation,
   };
 });
