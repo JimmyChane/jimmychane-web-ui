@@ -1,41 +1,58 @@
 import { defineStore } from 'pinia';
-import { computed, ref } from 'vue';
-import { type Theme, LightTheme, DarkTheme, save, get } from '@/data/Theme';
+import { computed, watch } from 'vue';
+import { type Theme, LightTheme, DarkTheme } from '@/data/Theme';
+import { tryOnMounted, useLocalStorage } from '@vueuse/core';
 
 export const useThemeStore = defineStore('theme', () => {
-  const theme = ref(get());
+  const themeStorage = useLocalStorage('theme', LightTheme.key, { writeDefaults: false });
+
+  const theme = computed(() => {
+    if (themeStorage.value === LightTheme.key) return LightTheme;
+    if (themeStorage.value === DarkTheme.key) return DarkTheme;
+
+    return LightTheme;
+  });
 
   function setTheme(theme: Theme): void {
     theme.key === LightTheme.key ? setLightTheme() : setDarkTheme();
   }
   function setDarkTheme(): void {
-    theme.value = DarkTheme;
-
-    const html = document.querySelector('html');
-    if (!html?.classList.contains('dark')) {
-      html?.classList.add('dark');
-      html?.style.setProperty('color-scheme', 'dark');
-    }
-
-    save(DarkTheme);
+    themeStorage.value = DarkTheme.key;
   }
   function setLightTheme(): void {
-    theme.value = LightTheme;
-
-    const html = document.querySelector('html');
-    if (html?.classList.contains('dark')) {
-      html?.classList.remove('dark');
-      html?.style.setProperty('color-scheme', 'light');
-    }
-
-    save(LightTheme);
+    themeStorage.value = LightTheme.key;
   }
   function toggleThemes(): void {
     theme.value.key === LightTheme.key ? setDarkTheme() : setLightTheme();
   }
 
+  function onThemeStorageChange() {
+    if (themeStorage.value === LightTheme.key) {
+      const html = document.querySelector('html');
+      if (html?.classList.contains('dark')) {
+        html?.classList.remove('dark');
+        html?.style.setProperty('color-scheme', 'light');
+      }
+      return;
+    }
+
+    if (themeStorage.value === DarkTheme.key) {
+      const html = document.querySelector('html');
+      if (!html?.classList.contains('dark')) {
+        html?.classList.add('dark');
+        html?.style.setProperty('color-scheme', 'dark');
+      }
+      return;
+    }
+  }
+
+  tryOnMounted(() => {
+    watch(() => themeStorage.value, onThemeStorageChange);
+    onThemeStorageChange();
+  });
+
   return {
-    theme: computed(() => theme.value),
+    theme,
     setTheme,
     setLightTheme,
     setDarkTheme,

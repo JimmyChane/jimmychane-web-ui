@@ -1,9 +1,8 @@
 import { defineStore } from 'pinia';
 import { computed, ref, watch } from 'vue';
 import { useWindowStore } from '../window/window.store';
-import { State } from './NavigationDrawer';
+import { State } from './data/NavigationDrawer';
 import { useRoute } from 'vue-router';
-import { useWindowSize } from '@vueuse/core';
 
 export const useNavigationDrawerStore = defineStore('navigation-drawer', () => {
   const route = useRoute();
@@ -21,9 +20,6 @@ export const useNavigationDrawerStore = defineStore('navigation-drawer', () => {
   const isWide = computed(() =>
     [State.SNAP_WIDE, State.DRAWER_WIDE_HIDE, State.DRAWER_WIDE_SHOW].includes(state.value),
   );
-
-  watch(() => useWindowStore().width, onScreenWidth);
-  watch(() => route.fullPath, close);
 
   function toggle() {
     return isShowing.value ? close() : open();
@@ -106,6 +102,8 @@ export const useNavigationDrawerStore = defineStore('navigation-drawer', () => {
     previousView.value = 'else';
   }
 
+  watch(() => useWindowStore().width, onScreenWidth);
+  watch(() => route.fullPath, close);
   close();
 
   return {

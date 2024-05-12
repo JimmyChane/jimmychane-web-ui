@@ -34,6 +34,8 @@
     border-bottom-left-radius: 45%;
     border-bottom-right-radius: 45%;
 
+    user-select: none;
+
     display: flex;
     align-items: center;
     justify-content: flex-end;

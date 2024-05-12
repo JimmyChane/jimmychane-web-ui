@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import NavigationDrawerController from '@/stores/navigation-drawer/NavigationDrawerController.vue';
+  import NavigationDrawerController from '@/stores/navigation-drawer/components/NavigationDrawerController.vue';
   import NavigationDrawerItem from './NavigationDrawer-Item.vue';
   import { useNavigationStore } from '@/stores/navigation/navigation.store';
 

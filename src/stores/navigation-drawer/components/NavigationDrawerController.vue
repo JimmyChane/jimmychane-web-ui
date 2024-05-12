@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import { computed } from "vue";
-  import { State } from "./NavigationDrawer";
-  import { useNavigationDrawerStore } from "./navigation-drawer.store";
+  import { computed } from 'vue';
+  import { State } from '../data/NavigationDrawer';
+  import { useNavigationDrawerStore } from '../navigation-drawer.store';
 
   const navigationDrawerStore = useNavigationDrawerStore();
 
@@ -33,7 +33,7 @@
 <style lang="scss" scoped>
   .nav-drawer-controller {
     display: grid;
-    grid-template-areas: "content dismiss";
+    grid-template-areas: 'content dismiss';
 
     .nav-drawer-controller-blur {
       position: absolute;
@@ -68,7 +68,7 @@
       transition: all 400ms cubic-bezier(0.075, 0.82, 0.165, 1);
     }
 
-    &[data-snap="true"] {
+    &[data-snap='true'] {
       width: var(--navigation-drawer-width);
       transition: all 400ms cubic-bezier(0.075, 0.82, 0.165, 1);
       .nav-drawer-controller-dismiss {
@@ -86,7 +86,7 @@
       }
     }
 
-    &[data-drawer="true"] {
+    &[data-drawer='true'] {
       width: 100vw;
       position: fixed;
       grid-template-columns: var(--navigation-drawer-width) 1fr;
@@ -96,7 +96,7 @@
         max-width: 100vw;
       }
     }
-    &[data-drawer-wide-hide="true"] {
+    &[data-drawer-wide-hide='true'] {
       pointer-events: none;
 
       .nav-drawer-controller-blur {
@@ -107,7 +107,7 @@
         transform: translateX(-100%);
       }
     }
-    &[data-drawer-wide-show="true"] {
+    &[data-drawer-wide-show='true'] {
       .nav-drawer-controller-blur {
         opacity: 1;
       }
