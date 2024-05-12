@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { Github, type Social } from '@/data/Social';
+  import { type Social } from '@/data/Social';
 
   defineProps<{ item: Social }>();
 </script>
@@ -7,12 +7,12 @@
 <template>
   <a class="page-home-social" target="_blank" :href="item.href">
     <img
-      :src="item.icon"
-      :alt="item.title"
+      :src="item.socialPlatform.icon"
+      :alt="item.socialPlatform.title"
       loading="lazy"
-      :data-invert="item.title === Github.title"
+      :data-invert="item.socialPlatform.useInvertColorOnDark"
     />
-    <span>{{ item.title }}</span>
+    <span>{{ item.socialPlatform.title }}</span>
   </a>
 </template>
 

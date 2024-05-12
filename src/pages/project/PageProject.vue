@@ -16,6 +16,13 @@
   import CardBody from './components/PageProject-card-body.vue';
   import Group from './components/PageProject-group.vue';
   import Card from './components/PageProject-card.vue';
+
+  import { JimmyChane } from '@/data/Profile';
+  import { computed } from 'vue';
+
+  const skill = computed(() => JimmyChane.skill);
+  const personalities = computed(() => JimmyChane.personalities);
+  const hobbies = computed(() => JimmyChane.hobbies);
 </script>
 
 <template>
@@ -24,51 +31,12 @@
       <div class="PageProject-skill">
         <Card style="grid-area: programming">
           <CardBody>
-            <h2>Programming</h2>
+            <h2>{{ skill.title }}</h2>
 
             <div class="PageHome-groups">
-              <Group title="Build a functional web interface">
+              <Group v-for="category of skill.categories" :title="category.title">
                 <Labels>
-                  <Label>Vue.js</Label>
-                  <Label>HTML</Label>
-                  <Label>JavaScript</Label>
-                  <Label>TypeScript</Label>
-                  <Label>CSS</Label>
-                  <Label>SCSS</Label>
-                  <Label>Svelte</Label>
-                  <Label>Node.js</Label>
-                </Labels>
-              </Group>
-
-              <Group title="UI Tool">
-                <Labels>
-                  <Label>Figma</Label>
-                </Labels>
-              </Group>
-
-              <Group title="Serve website and API">
-                <Labels>
-                  <Label>RESTful API</Label>
-                  <Label>JSON</Label>
-                  <Label>Express.js</Label>
-                  <Label>MongoDB</Label>
-                </Labels>
-              </Group>
-
-              <Group title="IDE">
-                <Labels>
-                  <Label>Visual Studio Code</Label>
-                  <Label>Android Studio</Label>
-                  <Label>JetBrains IntelliJ</Label>
-                </Labels>
-              </Group>
-
-              <Group title="Mobile App">
-                <Labels>
-                  <Label>Android</Label>
-                  <Label>Java</Label>
-                  <Label>Flutter</Label>
-                  <Label>Dart</Label>
+                  <Label v-for="skill of category.skills">{{ skill }}</Label>
                 </Labels>
               </Group>
             </div>
@@ -79,8 +47,7 @@
           <CardBody>
             <h2>Hobbies</h2>
             <Labels>
-              <Label>Draw</Label>
-              <Label>Code</Label>
+              <Label v-for="hobby of hobbies">{{ hobby }}</Label>
             </Labels>
           </CardBody>
         </Card>
@@ -89,7 +56,7 @@
           <CardBody>
             <h2>Personality</h2>
             <Labels>
-              <Label>Quiet</Label>
+              <Label v-for="personality of personalities">{{ personality }}</Label>
             </Labels>
           </CardBody>
         </Card>

@@ -1,14 +1,16 @@
 <script setup lang="ts">
   import { computed, defineAsyncComponent, watch } from 'vue';
-  import { DarkTheme, LightTheme, type Theme } from '@/data/Theme';
+  import { DarkTheme, LightTheme } from '@/data/Theme';
   import { useThemeStore } from '@/stores/theme/theme.store';
   import { useNavigationDrawerStore } from '@/stores/navigation-drawer/navigation-drawer.store';
   import { useNavigationStore } from '@/stores/navigation/navigation.store';
   import { useWindowStore } from '@/stores/window/window.store';
+  import { useRoute } from 'vue-router';
 
   const HamburgerIcon = defineAsyncComponent(() => import('@/components/icon/Hamburger.icon.vue'));
   const AppNav = defineAsyncComponent(() => import('./App-Nav.vue'));
 
+  const route = useRoute();
   const navigationStore = useNavigationStore();
   const navigationDrawerStore = useNavigationDrawerStore();
   const themeStore = useThemeStore();
@@ -24,14 +26,17 @@
         return -1;
     }
   });
-
-  watch(() => windowStore.isLargerThanMobile, onSizeChange);
+  const navigation = computed(() => {
+    return navigationStore.routes.find((navigationRoute) => navigationRoute.key === route.name);
+  });
 
   function onSizeChange() {
     if (windowStore.isLargerThanMobile) {
       navigationDrawerStore.close();
     }
   }
+
+  watch(() => windowStore.isLargerThanMobile, onSizeChange);
 </script>
 
 <template>
@@ -42,7 +47,7 @@
           <HamburgerIcon :width="24" :height="24" />
         </button>
 
-        <span>Home</span>
+        <span v-if="navigation">{{ navigation.title }}</span>
       </div>
 
       <div v-if="windowStore.isLargerThanMobile" class="App-actionbar-items">

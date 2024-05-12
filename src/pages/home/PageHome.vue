@@ -2,10 +2,13 @@
   import Page from '@/components/Page.vue';
   import PFP from './components/PageHome-header-pfp.vue';
   import SocialVue from './components/PageHome-social.vue';
-  import { Twitter, type Social, Telegram, Github, Bluesky } from '@/data/Social';
+  import { JimmyChane } from '@/data/Profile';
+  import { computed } from 'vue';
 
-  const labels = ['Programmer', 'Artist'];
-  const socials: Social[] = [Twitter, Telegram, Github, Bluesky];
+  const name = computed(() => JimmyChane.name);
+  const labels = computed(() => JimmyChane.labels);
+  const socials = computed(() => JimmyChane.socials);
+  const description = computed(() => JimmyChane.description);
 </script>
 
 <template>
@@ -14,7 +17,7 @@
       <div class="PageHome-grid">
         <PFP style="grid-area: img" />
 
-        <h1 class="PageHome-name" style="grid-area: name">Jimmy Chane</h1>
+        <h1 class="PageHome-name" style="grid-area: name">{{ name }}</h1>
 
         <div class="PageHome-labels" style="grid-area: labels">
           <div v-for="label of labels" :key="label">
@@ -24,12 +27,11 @@
         </div>
 
         <div class="PageHome-socials" style="grid-area: socials">
-          <SocialVue v-for="social in socials" :key="social.title" :item="social" />
+          <SocialVue v-for="social in socials" :key="social.socialPlatform.title" :item="social" />
         </div>
 
         <p class="PageHome-description" style="grid-area: description">
-          Hi, I'm Jimmy Chane, and this is my website where I showcase my programming and drawing
-          talents.
+          {{ description }}
         </p>
       </div>
     </div>
