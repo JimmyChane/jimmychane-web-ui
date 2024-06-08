@@ -9,11 +9,16 @@ export interface Route {
   icon?: Component;
 }
 
-export const HomeRoute = { key: 'home', path: '/', title: 'Home', icon: markRaw(HomeIcon) };
-export const FursonaRoute = {
+export const HomeRoute: Route = { key: 'home', path: '/', title: 'Home', icon: markRaw(HomeIcon) };
+export const FursonaRoute: Route = {
   key: 'fursona',
   path: '/fursona',
   title: 'Fursona',
   icon: markRaw(FoxIcon),
 };
-export const ProjectRoute = { key: 'project', path: '/project', title: 'Project' };
+export const FavouriteRoute: Route = {
+  key: 'favourite',
+  path: '/favourite',
+  title: 'Favourite',
+};
+export const ProjectRoute: Route = { key: 'project', path: '/project', title: 'Project' };

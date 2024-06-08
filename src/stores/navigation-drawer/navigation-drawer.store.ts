@@ -4,13 +4,20 @@ import { useWindowStore } from '../window/window.store';
 import { State } from './data/NavigationDrawer';
 import { useRoute } from 'vue-router';
 
+enum ViewState {
+  DESKTOP,
+  TABLET,
+  ELSE,
+}
+
 export const useNavigationDrawerStore = defineStore('navigation-drawer', () => {
   const route = useRoute();
+  const windowStore = useWindowStore();
 
   const state = ref(State.SNAP_WIDE);
-  const previousView = ref('');
+  const previousView = ref<ViewState>();
 
-  const viewStates = ref<Record<string, State>>({});
+  const viewStates = ref<Partial<Record<ViewState, State>>>({});
 
   const isShowing = computed(() => [State.SNAP_WIDE, State.DRAWER_WIDE_SHOW].includes(state.value));
   const isSnap = computed(() => [State.SNAP_THIN, State.SNAP_WIDE].includes(state.value));
@@ -28,51 +35,49 @@ export const useNavigationDrawerStore = defineStore('navigation-drawer', () => {
     const store = useWindowStore();
     if (store.isLargerThanTablet) {
       state.value = State.SNAP_WIDE;
-      viewStates.value['desktop'] = State.SNAP_WIDE;
-      viewStates.value['tablet'] = State.SNAP_WIDE;
+      viewStates.value[ViewState.DESKTOP] = State.SNAP_WIDE;
+      viewStates.value[ViewState.TABLET] = State.SNAP_WIDE;
       return;
     }
 
     if (store.isLargerThanMobile) {
       state.value = State.SNAP_WIDE;
-      viewStates.value['desktop'] = State.SNAP_WIDE;
-      viewStates.value['tablet'] = State.SNAP_WIDE;
+      viewStates.value[ViewState.DESKTOP] = State.SNAP_WIDE;
+      viewStates.value[ViewState.TABLET] = State.SNAP_WIDE;
       return;
     }
 
     state.value = State.DRAWER_WIDE_SHOW;
-    viewStates.value['else'] = State.DRAWER_WIDE_SHOW;
+    viewStates.value[ViewState.ELSE] = State.DRAWER_WIDE_SHOW;
   }
   function close() {
     const store = useWindowStore();
 
     if (store.isLargerThanTablet) {
       state.value = State.SNAP_THIN;
-      viewStates.value['desktop'] = State.SNAP_THIN;
-      viewStates.value['tablet'] = State.SNAP_THIN;
+      viewStates.value[ViewState.DESKTOP] = State.SNAP_THIN;
+      viewStates.value[ViewState.TABLET] = State.SNAP_THIN;
       return;
     }
 
     if (store.isLargerThanMobile) {
       state.value = State.SNAP_THIN;
-      viewStates.value['desktop'] = State.SNAP_THIN;
-      viewStates.value['tablet'] = State.SNAP_THIN;
+      viewStates.value[ViewState.DESKTOP] = State.SNAP_THIN;
+      viewStates.value[ViewState.TABLET] = State.SNAP_THIN;
       return;
     }
 
     state.value = State.DRAWER_WIDE_HIDE;
-    viewStates.value['else'] = State.DRAWER_WIDE_HIDE;
+    viewStates.value[ViewState.ELSE] = State.DRAWER_WIDE_HIDE;
   }
 
   function onScreenWidth() {
-    const store = useWindowStore();
+    if (windowStore.isLargerThanTablet) {
+      if (previousView.value === ViewState.DESKTOP) return;
 
-    if (store.isLargerThanTablet) {
-      if (previousView.value === 'desktop') return;
+      previousView.value = ViewState.DESKTOP;
 
-      previousView.value = 'desktop';
-
-      const previewViewState = viewStates.value['desktop'];
+      const previewViewState = viewStates.value[ViewState.DESKTOP];
       if (previewViewState !== undefined) {
         state.value = previewViewState;
         return;
@@ -82,12 +87,12 @@ export const useNavigationDrawerStore = defineStore('navigation-drawer', () => {
       return;
     }
 
-    if (store.isLargerThanMobile) {
-      if (previousView.value === 'tablet') return;
+    if (windowStore.isLargerThanMobile) {
+      if (previousView.value === ViewState.TABLET) return;
 
-      previousView.value = 'tablet';
+      previousView.value = ViewState.TABLET;
 
-      const previewViewState = viewStates.value['tablet'];
+      const previewViewState = viewStates.value[ViewState.TABLET];
       if (previewViewState !== undefined) {
         state.value = previewViewState;
         return;
@@ -97,9 +102,9 @@ export const useNavigationDrawerStore = defineStore('navigation-drawer', () => {
       return;
     }
 
-    if (previousView.value === 'else') return;
+    if (previousView.value === ViewState.ELSE) return;
     state.value = State.DRAWER_WIDE_HIDE;
-    previousView.value = 'else';
+    previousView.value = ViewState.ELSE;
   }
 
   watch(() => useWindowStore().width, onScreenWidth);
