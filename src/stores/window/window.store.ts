@@ -1,4 +1,4 @@
-import { tryOnMounted, useThrottleFn, useWindowSize } from '@vueuse/core';
+import { useThrottleFn, useWindowSize } from '@vueuse/core';
 import { defineStore } from 'pinia';
 import { computed, ref, watch } from 'vue';
 
@@ -8,19 +8,15 @@ export const useWindowStore = defineStore('window', () => {
   const isLargerThanMobile = computed(() => width.value >= 650);
   const isLargerThanTablet = computed(() => width.value > 1200);
 
-  const onScreenWidth = useThrottleFn(
-    (windowWidth: number) => {
-      width.value = windowWidth;
-    },
+  const onWidthChange = useThrottleFn(
+    (windowWidth: number) => (width.value = windowWidth),
     200,
     true,
   );
 
-  tryOnMounted(() => {
-    const { width } = useWindowSize();
-    watch(() => width.value, onScreenWidth);
-    onScreenWidth(width.value);
-  });
+  const { width: windowWidth } = useWindowSize();
+  watch(() => windowWidth.value, onWidthChange);
+  onWidthChange(windowWidth.value);
 
   return {
     width: computed(() => width.value),

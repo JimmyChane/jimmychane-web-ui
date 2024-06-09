@@ -1,61 +1,61 @@
 import { defineStore } from 'pinia';
 import { computed, watch } from 'vue';
 import { type Theme, LightTheme, DarkTheme } from '@/data/Theme';
-import { tryOnMounted, useLocalStorage } from '@vueuse/core';
+import { useLocalStorage } from '@vueuse/core';
 
 export const useThemeStore = defineStore('theme', () => {
-  const themeStorage = useLocalStorage('theme', LightTheme.key, { writeDefaults: false });
-
+  const themeKey = useLocalStorage('theme', LightTheme.key, { writeDefaults: false });
   const theme = computed(() => {
-    if (themeStorage.value === LightTheme.key) return LightTheme;
-    if (themeStorage.value === DarkTheme.key) return DarkTheme;
-
-    return LightTheme;
+    switch (themeKey.value) {
+      case DarkTheme.key:
+        return DarkTheme;
+      case LightTheme.key:
+      default:
+        return LightTheme;
+    }
   });
 
   function setTheme(theme: Theme): void {
     theme.key === LightTheme.key ? setLightTheme() : setDarkTheme();
   }
   function setDarkTheme(): void {
-    themeStorage.value = DarkTheme.key;
+    themeKey.value = DarkTheme.key;
   }
   function setLightTheme(): void {
-    themeStorage.value = LightTheme.key;
+    themeKey.value = LightTheme.key;
   }
-  function toggleThemes(): void {
+  function toggleTheme(): void {
     theme.value.key === LightTheme.key ? setDarkTheme() : setLightTheme();
   }
 
   function onThemeStorageChange() {
-    if (themeStorage.value === LightTheme.key) {
-      const html = document.querySelector('html');
-      if (html?.classList.contains('dark')) {
-        html?.classList.remove('dark');
-        html?.style.setProperty('color-scheme', 'light');
-      }
-      return;
-    }
+    const html = document.querySelector('html');
+    const isDark = html?.classList.contains('dark');
 
-    if (themeStorage.value === DarkTheme.key) {
-      const html = document.querySelector('html');
-      if (!html?.classList.contains('dark')) {
-        html?.classList.add('dark');
-        html?.style.setProperty('color-scheme', 'dark');
-      }
-      return;
+    switch (themeKey.value) {
+      case LightTheme.key:
+        if (isDark) {
+          html?.classList.remove('dark');
+          html?.style.setProperty('color-scheme', 'light');
+        }
+        break;
+      case DarkTheme.key:
+        if (!isDark) {
+          html?.classList.add('dark');
+          html?.style.setProperty('color-scheme', 'dark');
+        }
+        break;
     }
   }
 
-  tryOnMounted(() => {
-    watch(() => themeStorage.value, onThemeStorageChange);
-    onThemeStorageChange();
-  });
+  watch(() => themeKey.value, onThemeStorageChange);
+  onThemeStorageChange();
 
   return {
     theme,
     setTheme,
     setLightTheme,
     setDarkTheme,
-    toggleThemes,
+    toggleThemes: toggleTheme,
   };
 });

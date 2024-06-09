@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import Page from '@/components/Page.vue';
-  import Section from '@/components/section/Section.vue';
-  import FursonaHeader from './components/PageFursona-fursona-header.vue';
+  import Page from '@/components/AppPage.vue';
+  import Section from './components/PageFursona-section.vue';
+  import FursonaHeader from './components/PageFursona-header.vue';
   import { JimmyChane } from '@/data/Profile';
 </script>
 
@@ -29,7 +29,7 @@
 
 <style scoped lang="scss">
   .PageFursona {
-    --color: var(--section-fursona-background-color);
+    --section-color: var(--section-fursona-background-color);
     color: white;
 
     display: flex;

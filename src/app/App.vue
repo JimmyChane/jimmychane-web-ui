@@ -45,7 +45,7 @@
     -moz-osx-font-smoothing: grayscale;
 
     --navigation-drawer-width: 16rem;
-    --actionbar-height: 5rem;
+    --actionbar-height: 4.5rem;
     --statusbar-height: 2.5rem;
     --content-max-width: 70rem;
 

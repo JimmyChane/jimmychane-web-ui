@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import Page from '@/components/Page.vue';
+  import Page from '@/components/AppPage.vue';
   import PageFavouriteSection from './components/PageFavourite-section.vue';
 </script>
 

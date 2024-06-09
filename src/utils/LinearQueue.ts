@@ -8,10 +8,6 @@ export class LinearQueue {
   private resolvers: Resolver<any>[] = [];
   private currentResolver?: Resolver<any>;
 
-  isLoading(): boolean {
-    return this.currentResolver !== undefined || this.resolvers.length > 0;
-  }
-
   private async runNext() {
     if (this.currentResolver) return;
     if (this.resolvers.length === 0) return;

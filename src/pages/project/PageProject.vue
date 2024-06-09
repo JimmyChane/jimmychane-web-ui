@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import Page from '@/components/Page.vue';
+  import Page from '@/components/AppPage.vue';
 
-  import Section from '@/components/section/Section.vue';
+  import Section from './components/PageProject-project-section.vue';
 
   import ProjectHeader from './components/PageProject-project-header.vue';
   import ProjectPreview from './components/PageProject-project-preview.vue';
@@ -63,7 +63,7 @@
       </div>
 
       <Section class="PageProject-project">
-        <div>
+        <div class="PageProject-project-sub-section">
           <ProjectHeader
             title="Rory Xavier, Reference"
             subtitle="Personal Website"
@@ -96,7 +96,7 @@
           </Labels>
         </div>
 
-        <div>
+        <div class="PageProject-project-sub-section">
           <ProjectHeader
             title="Rhougous Hiroki"
             subtitle="Personal Website"
@@ -119,7 +119,7 @@
           </Labels>
         </div>
 
-        <div>
+        <div class="PageProject-project-sub-section">
           <ProjectHeader
             title="Freshnet Enterprise"
             subtitle="Commercial Website"
@@ -205,7 +205,7 @@
     }
   }
   .PageProject-project {
-    --color: var(--color-dark);
+    --section-color: var(--color-dark);
 
     color: white;
     text-align: start;
@@ -217,12 +217,12 @@
       flex-direction: row;
       flex-wrap: wrap;
 
-      & > * {
+      .PageProject-project-sub-section {
         flex: 1 14rem;
       }
     }
 
-    & > * {
+    .PageProject-project-sub-section {
       display: flex;
       flex-direction: column;
       text-align: start;

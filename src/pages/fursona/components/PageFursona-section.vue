@@ -1,12 +1,18 @@
 <template>
-  <div class="PageHome-section" :style="{ 'grid-area': 'project' }">
-    <slot />
+  <div class="PageHome-section">
+    <slot></slot>
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .PageHome-section {
-    background: var(--color);
+    --section-color: white;
+  }
+</style>
+
+<style scoped lang="scss">
+  .PageHome-section {
+    background: var(--section-color);
 
     position: relative;
     border-radius: 2rem;

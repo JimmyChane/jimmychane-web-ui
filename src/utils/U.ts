@@ -25,7 +25,9 @@ export function optBoolean(value?: unknown, fallback = false): boolean {
   return typeof value === 'boolean' ? value : fallback;
 }
 export function optArray<T>(value?: T[] | T, fallback: T[] = []): T[] {
-  return Array.isArray(value) ? value : fallback;
+  if (Array.isArray(value)) return value;
+  if (value === undefined) return [value] as T[];
+  return fallback;
 }
 
 // array getter

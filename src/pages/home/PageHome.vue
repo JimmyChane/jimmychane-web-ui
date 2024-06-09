@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import Page from '@/components/Page.vue';
+  import Page from '@/components/AppPage.vue';
   import PFP from './components/PageHome-header-pfp.vue';
   import SocialVue from './components/PageHome-social.vue';
   import { JimmyChane } from '@/data/Profile';
