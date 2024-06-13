@@ -28,7 +28,7 @@
     color: var(--text-color);
     text-decoration: none;
     transition: 0.3s;
-    background: var(--background-color-opacity70);
+    background: var(--background-color-opacity60);
 
     display: flex;
     flex-direction: row;

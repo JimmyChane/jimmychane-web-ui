@@ -57,6 +57,9 @@
     align-items: center;
     justify-content: flex-start;
 
+    pointer-events: none;
+    user-select: none;
+
     .CheeseHoles-body {
       --width: 100%;
       --height: calc(100dvh - var(--scroll-top) * 0.8);

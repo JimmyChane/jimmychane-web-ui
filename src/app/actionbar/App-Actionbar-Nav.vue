@@ -9,7 +9,7 @@
 </script>
 
 <template>
-  <router-link
+  <RouterLink
     class="App-Nav"
     :class="item.icon ? 'App-Nav-withIcon' : ''"
     :isSelected="isSelected"
@@ -17,17 +17,17 @@
   >
     <component v-if="item.icon" class="App-Nav-icon" :is="item.icon" :width="20" :height="20" />
     <span class="App-Nav-title">{{ item.title }}</span>
-  </router-link>
+  </RouterLink>
 </template>
 
 <style lang="scss" scoped>
   .App-Nav {
-    padding: 0.8em 1em;
-    border-radius: 1em;
-    line-height: 1em;
+    padding: 0.6rem 0.8rem;
+    border-radius: 2em;
+    line-height: 1rem;
     gap: 0.5em;
 
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--text-color);
     text-decoration: none;

@@ -9,7 +9,7 @@
 </script>
 
 <template>
-  <router-link
+  <RouterLink
     class="App-Nav"
     :class="item.icon ? 'App-Nav-withIcon' : ''"
     :isSelected="isSelected"
@@ -17,7 +17,7 @@
   >
     <component v-if="item.icon" class="App-Nav-icon" :is="item.icon" :width="20" :height="20" />
     <span class="App-Nav-title">{{ item.title }}</span>
-  </router-link>
+  </RouterLink>
 </template>
 
 <style lang="scss" scoped>

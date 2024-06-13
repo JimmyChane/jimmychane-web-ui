@@ -1,20 +1,22 @@
 <script setup lang="ts">
-  import { defineAsyncComponent, watch } from 'vue';
+  import { computed, watch } from 'vue';
   import { useRoute } from 'vue-router';
   import Actionbar from '@/app/actionbar/App-Actionbar.vue';
   import Statusbar from './statusbar/App-Statusbar.vue';
   import CheeseHoles from '@/app/background/CheeseHoles.vue';
   import { DarkTheme } from '@/data/Theme';
   import { useThemeStore } from '@/stores/theme/theme.store';
-  import { useWindowStore } from '@/stores/window/window.store';
-
-  const NavigationDrawer = defineAsyncComponent(
-    () => import('./navigation-drawer/NavigationDrawer.vue'),
-  );
+  import NavigationDrawer from './navigation-drawer/NavigationDrawer.vue';
+  import { useNavigationDrawerStore } from '@/stores/navigation-drawer/navigation-drawer.store';
 
   const route = useRoute();
-  const windowStore = useWindowStore();
   const themeStore = useThemeStore();
+  const navigationDrawerStore = useNavigationDrawerStore();
+
+  const cssViewMode = computed(() => {
+    if (navigationDrawerStore.isSnap) return 'snap';
+    if (navigationDrawerStore.isDrawer) return 'drawer';
+  });
 
   watch([route], () => {
     const html = document.querySelector('html');
@@ -23,18 +25,24 @@
 </script>
 
 <template>
-  <div class="App" :data-dark="themeStore.theme.key === DarkTheme.key">
+  <div
+    class="App"
+    :data-view-mode="cssViewMode"
+    :data-dark="themeStore.theme.key === DarkTheme.key"
+  >
     <CheeseHoles style="z-index: 0" />
 
-    <Actionbar style="z-index: 2" />
+    <div class="App-body" style="z-index: 1">
+      <Actionbar v-if="navigationDrawerStore.isDrawer" style="z-index: 2" />
 
-    <div class="App-router-view" style="z-index: 1">
-      <router-view />
+      <div class="App-router-view" style="z-index: 1">
+        <RouterView />
+      </div>
+
+      <Statusbar style="z-index: 2" />
     </div>
 
-    <Statusbar style="z-index: 2" />
-
-    <NavigationDrawer v-if="!windowStore.isLargerThanMobile" style="z-index: 3" />
+    <NavigationDrawer style="z-index: 2" />
   </div>
 </template>
 
@@ -44,36 +52,51 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    --navigation-drawer-width: 16rem;
     --actionbar-height: 4.5rem;
-    --statusbar-height: 2.5rem;
+    --statusbar-height: 1.5rem;
     --content-max-width: 70rem;
+    &[data-view-mode='snap'] {
+      --navigation-drawer-width: 12rem;
+    }
+    &[data-view-mode='drawer'] {
+      --navigation-drawer-width: 16rem;
+    }
 
     color: var(--color-active);
     background: var(--background-color);
 
     width: 100%;
-    height: 100dvh;
+    height: max-content;
+    min-height: 100dvh;
     flex-grow: 1;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;
     align-items: stretch;
     justify-content: stretch;
 
-    position: relative;
+    .App-body {
+      width: inherit;
+      height: inherit;
+      min-height: 100dvh;
 
-    overflow-y: auto;
-
-    .App-router-view {
-      width: 100%;
-
-      flex-grow: 1;
-
-      display: flex;
+      display: inherit;
       flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
+      align-items: inherit;
+      justify-content: inherit;
+
+      .App-router-view {
+        width: inherit;
+        height: 100%;
+        min-height: calc(100dvh - var(--actionbar-height) - var(--statusbar-height));
+
+        flex-grow: 1;
+
+        display: inherit;
+        flex-direction: inherit;
+        align-items: center;
+        justify-content: inherit;
+      }
     }
 
     &[data-dark='false'] {
@@ -92,9 +115,12 @@
       --background-color: #fdf8c8;
       --background-color-opacity5: hsla(0, 0%, 100%, 0.05);
       --background-color-opacity50: hsla(0, 0%, 100%, 0.5);
+      --background-color-opacity60: hsla(0, 0%, 100%, 0.6);
       --background-color-opacity70: hsla(0, 0%, 100%, 0.7);
       --background-color-opacity90: hsla(0, 0%, 100%, 0.9);
       --background-color-opacity100: hsla(0, 0%, 100%, 1);
+
+      --actionbar-background-color-opacity70: hsla(54, 96%, 89%, 0.7);
 
       --icon-light-invert: invert(100%);
       --icon-dark-invert: invert(0%);
@@ -110,6 +136,7 @@
       --color: #b6862d;
       --color-dark: #3a2807;
       --color-active: var(--text-color);
+      --color-hover: rgba(69, 68, 65, 0.4);
 
       --text-color: hsl(0, 0%, 100%);
       --text-color-opacity5: hsla(0, 0%, 100%, 0.05);
@@ -121,9 +148,12 @@
       --background-color-opacity5: hsla(0, 0%, 0%, 0.05);
       --background-color-opacity20: hsla(0, 0%, 0%, 0.2);
       --background-color-opacity50: hsla(0, 0%, 0%, 0.5);
+      --background-color-opacity60: hsla(0, 0%, 0%, 0.6);
       --background-color-opacity70: hsla(0, 0%, 0%, 0.7);
       --background-color-opacity90: hsla(0, 0%, 0%, 0.9);
       --background-color-opacity100: hsla(0, 0%, 0%, 1);
+
+      --actionbar-background-color-opacity70: hsla(0, 0%, 0%, 0.7);
 
       --icon-light-invert: invert(0%);
       --icon-dark-invert: invert(100%);

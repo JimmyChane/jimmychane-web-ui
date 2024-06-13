@@ -162,7 +162,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4rem;
+    gap: 1rem;
   }
   .PageProject-skill {
     width: 100%;
@@ -183,7 +183,7 @@
     }
 
     & > * {
-      --background-color: var(--background-color-opacity70);
+      --background-color: var(--background-color-opacity60);
     }
 
     .PageHome-groups {

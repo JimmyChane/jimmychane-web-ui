@@ -1,4 +1,4 @@
-import { FursonaRoute, HomeRoute, ProjectRoute } from '@/data/Route';
+import { FavouriteRoute, FursonaRoute, HomeRoute, ProjectRoute } from '@/data/Route';
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
 import { useRoute } from 'vue-router';
@@ -6,8 +6,11 @@ import { useRoute } from 'vue-router';
 export const useNavigationStore = defineStore('navigation', () => {
   const route = useRoute();
 
-  const navigations = ref([HomeRoute, FursonaRoute, ProjectRoute]);
+  const navigations = ref([HomeRoute, FursonaRoute, ProjectRoute, FavouriteRoute]);
 
+  const currentNavigation = computed(() => {
+    return navigations.value.find((navigationRoute) => navigationRoute.key === route.name);
+  });
   const nextNavigation = computed(() => {
     const currentRouteName = route.name;
     const currentNavigation = navigations.value.find((navigation) => {
@@ -26,6 +29,7 @@ export const useNavigationStore = defineStore('navigation', () => {
 
   return {
     navigations: computed(() => navigations.value),
+    currentNavigation,
     nextNavigation,
   };
 });

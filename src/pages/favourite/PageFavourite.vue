@@ -9,6 +9,8 @@
       <PageFavouriteSection title="Foods">
         <span>Fried Rice</span>
         <span>Spaghetti</span>
+        <span>Pizza</span>
+        <span>Ramen</span>
       </PageFavouriteSection>
 
       <PageFavouriteSection title="Games">

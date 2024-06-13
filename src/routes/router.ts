@@ -1,4 +1,4 @@
-import { FursonaRoute, HomeRoute, ProjectRoute } from '@/data/Route';
+import { FavouriteRoute, FursonaRoute, HomeRoute, ProjectRoute } from '@/data/Route';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
@@ -18,6 +18,11 @@ const router = createRouter({
       name: ProjectRoute.key,
       path: ProjectRoute.path,
       component: () => import('@/pages/project/PageProject.vue'),
+    },
+    {
+      name: FavouriteRoute.key,
+      path: FavouriteRoute.path,
+      component: () => import('@/pages/favourite/PageFavourite.vue'),
     },
     { path: '/:pathMatch(.*)*', redirect: { name: HomeRoute.key } },
   ],

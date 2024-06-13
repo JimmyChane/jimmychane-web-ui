@@ -1,8 +1,8 @@
 <template>
   <div class="App-footer">
-    <span>2024 May 12</span>
+    <span>2024 June 13</span>
     <span class="App-footer-separator" />
-    <span>v0.10.4</span>
+    <span>v0.11.0</span>
   </div>
 </template>
 
@@ -10,14 +10,15 @@
   .App-footer {
     width: 100%;
     height: var(--statusbar-height);
+
     gap: 0.5rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 
-    position: sticky;
-    bottom: -1px;
+    padding: 0.5rem 1rem;
+    font-size: 0.6rem;
 
     background-color: var(--background-color-opacity50);
 
@@ -26,9 +27,6 @@
       -webkit-backdrop-filter: blur(var(--blur));
       backdrop-filter: blur(var(--blur));
     }
-
-    padding: 0.5em 1em;
-    font-size: 0.8em;
 
     .App-footer-separator {
       display: flex;

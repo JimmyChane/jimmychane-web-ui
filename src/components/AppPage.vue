@@ -1,27 +1,49 @@
+<script setup lang="ts">
+  import { useNavigationDrawerStore } from '@/stores/navigation-drawer/navigation-drawer.store';
+  import { computed } from 'vue';
+
+  const navigationDrawerStore = useNavigationDrawerStore();
+
+  const cssViewMode = computed(() => {
+    if (navigationDrawerStore.isSnap) return 'snap';
+    if (navigationDrawerStore.isDrawer) return 'drawer';
+  });
+</script>
+
 <template>
-  <div class="Page">
-    <slot />
+  <div class="App-page" :data-view-mode="cssViewMode">
+    <slot></slot>
   </div>
 </template>
 
 <style scoped lang="scss">
-  .Page {
+  .App-page {
     width: 100%;
-    max-width: var(--content-max-width);
     height: 100%;
-    transition: all 200ms ease;
+    min-height: 100%;
+    max-width: var(--content-max-width);
+
+    transition:
+      width 200ms ease,
+      height 200ms ease;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    padding: 1rem;
-    @media (min-width: 700px) {
-      padding: 2rem;
+    padding: var(--App-page-padding);
+
+    &[data-view-mode='drawer'] {
+      padding-top: 0;
     }
-    @media (min-width: 1200px) {
-      padding: 4rem;
+
+    --App-page-padding: 1rem;
+    @media (min-width: 700px) {
+      --App-page-padding: 1.5rem;
+    }
+    @media (min-width: 1400px) {
+      --App-page-padding: 4rem;
     }
   }
 </style>
