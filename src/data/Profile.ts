@@ -27,15 +27,14 @@ export interface Profile {
 
 export const JimmyChane: Profile = {
   name: 'Jimmy Chane',
-  labels: ['Programmer', 'Artist'],
+  labels: ['Website builders', 'Draw for fun'],
   socials: [
     { socialPlatform: Twitter, href: 'https://twitter.com/jimmykajun' },
     { socialPlatform: Telegram, href: 'https://t.me/Jimmy612' },
     { socialPlatform: Github, href: 'https://github.com/JimmyChane' },
     { socialPlatform: Bluesky, href: 'https://bsky.app/profile/jimmyfox.bsky.social' },
   ],
-  description:
-    "Hi, I'm Jimmy Chane, and this is my website where I showcase my programming and drawing  talents.",
+  description: 'Hi, feel free to chat with me',
 
   fursona: {
     image: FursonaImage,
@@ -65,7 +64,7 @@ export const JimmyChane: Profile = {
   },
 
   skill: {
-    title: 'Programming',
+    title: 'Frameworks and Tools',
     categories: [
       {
         title: 'Build a functional web interface',

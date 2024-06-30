@@ -21,52 +21,16 @@
   import { computed } from 'vue';
 
   const skill = computed(() => JimmyChane.skill);
-  const personalities = computed(() => JimmyChane.personalities);
-  const hobbies = computed(() => JimmyChane.hobbies);
 </script>
 
 <template>
   <Page>
     <div class="PageProject">
-      <div class="PageProject-skill">
-        <Card style="grid-area: programming">
-          <CardBody>
-            <h2>{{ skill.title }}</h2>
-
-            <div class="PageHome-groups">
-              <Group v-for="category of skill.categories" :title="category.title">
-                <Labels>
-                  <Label v-for="skill of category.skills">{{ skill }}</Label>
-                </Labels>
-              </Group>
-            </div>
-          </CardBody>
-        </Card>
-
-        <Card style="grid-area: hobby">
-          <CardBody>
-            <h2>Hobbies</h2>
-            <Labels>
-              <Label v-for="hobby of hobbies">{{ hobby }}</Label>
-            </Labels>
-          </CardBody>
-        </Card>
-
-        <Card style="grid-area: personality">
-          <CardBody>
-            <h2>Personality</h2>
-            <Labels>
-              <Label v-for="personality of personalities">{{ personality }}</Label>
-            </Labels>
-          </CardBody>
-        </Card>
-      </div>
-
       <Section class="PageProject-project">
         <div class="PageProject-project-sub-section">
           <ProjectHeader
             title="Rory Xavier, Reference"
-            subtitle="Personal Website"
+            subtitle="Contributations"
             href="https://ref.rorywolf.net/"
           />
 
@@ -77,13 +41,8 @@
           />
 
           <p>
-            The website features a clean and user-friendly design, allowing visitors to easily
-            navigate and explore his unique character. It includes a gallery of high-quality artwork
-            and detailed descriptions that capture the essence of his fursona. The site also
-            provides a brief biography, highlighting his interests and background within the furry
-            community. With seamless integration of social media links and a contact form, the
-            website serves as a comprehensive platform for my friend to connect with fellow furries
-            and share his passion for his fursona.
+            I'm helping develop a user-friendly website with smooth profile picture header
+            animations, a biography, and seamless integration of social media and contact options.
           </p>
 
           <Labels class="PageProject-project-labels">
@@ -99,7 +58,7 @@
         <div class="PageProject-project-sub-section">
           <ProjectHeader
             title="Rhougous Hiroki"
-            subtitle="Personal Website"
+            subtitle="Helps from the start"
             href="https://www.rhougous.net/"
           />
 
@@ -108,6 +67,12 @@
             :src="ImageRhougous"
             alt="Rhougous Hiroki's Website"
           />
+
+          <p>
+            I built a website from scratch to help my friend create a visually appealing online
+            presence for his fursona. The site features a well-designed layout, intuitive background
+            use, and smooth transitions between pages for an enhanced user experience.
+          </p>
 
           <Labels class="PageProject-project-labels">
             <Label>Vue.js</Label>
@@ -122,7 +87,7 @@
         <div class="PageProject-project-sub-section">
           <ProjectHeader
             title="Freshnet Enterprise"
-            subtitle="Commercial Website"
+            subtitle="Computer store's website"
             href="https://www.freshnet.app"
           />
 
@@ -133,11 +98,11 @@
           />
 
           <p>
-            I'm developing a website for Freshnet Enterprise, a computer store that offers a wide
-            range of products. The website showcases detailed information about each product,
-            including specifications, pricing, and availability. It features high-quality images and
-            comprehensive descriptions. The goal is to attract and retain customers, driving sales
-            and growth for Freshnet Enterprise in today's competitive marketplace.
+            I built a website for Freshnet Enterprise, a computer store, to enhance its online
+            presence. The website provides detailed information about the company's contacts,
+            business hours, services, and location. With a user-friendly layout, it focuses on
+            retaining customers and driving growth for Freshnet Enterprise in today's competitive
+            marketplace.
           </p>
 
           <Labels class="PageProject-project-labels">
@@ -153,6 +118,22 @@
           </Labels>
         </div>
       </Section>
+
+      <div class="PageProject-skill">
+        <Card style="grid-area: programming">
+          <CardBody>
+            <h2>{{ skill.title }}</h2>
+
+            <div class="PageHome-groups">
+              <Group v-for="category of skill.categories" :title="category.title">
+                <Labels>
+                  <Label v-for="skill of category.skills">{{ skill }}</Label>
+                </Labels>
+              </Group>
+            </div>
+          </CardBody>
+        </Card>
+      </div>
     </div>
   </Page>
 </template>

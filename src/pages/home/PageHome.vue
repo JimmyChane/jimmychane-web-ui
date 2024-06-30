@@ -4,6 +4,7 @@
   import SocialVue from './components/PageHome-social.vue';
   import { JimmyChane } from '@/data/Profile';
   import { computed } from 'vue';
+  import Labels from './components/PageHome-labels.vue';
 
   const name = computed(() => JimmyChane.name);
   const labels = computed(() => JimmyChane.labels);
@@ -19,12 +20,7 @@
 
         <h1 class="PageHome-name" style="grid-area: name">{{ name }}</h1>
 
-        <div class="PageHome-labels" style="grid-area: labels">
-          <div v-for="(label, index) of labels" :key="label">
-            <span>{{ label }}</span>
-            <div v-if="index < labels.length - 1" class="PageHome-labels-dot"></div>
-          </div>
-        </div>
+        <Labels :labels="labels" />
 
         <div class="PageHome-socials" style="grid-area: socials">
           <SocialVue v-for="social of socials" :key="social.socialPlatform.title" :item="social" />
@@ -69,39 +65,6 @@
         font-weight: 600;
         font-size: 2rem;
         text-align: center;
-      }
-      .PageHome-labels {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: row;
-        gap: 0.5rem;
-        & > * {
-          display: inherit;
-          flex-direction: inherit;
-          align-items: inherit;
-          gap: inherit;
-        }
-
-        .PageHome-labels-dot {
-          display: flex;
-          line-height: 1rem;
-
-          --size: 4px;
-          --width: var(--size);
-          --height: var(--size);
-
-          width: var(--width);
-          min-width: var(--width);
-          max-width: var(--width);
-          height: var(--height);
-          min-height: var(--height);
-          max-height: var(--height);
-
-          background: var(--color-active);
-          border-radius: 50%;
-          overflow: hidden;
-        }
       }
       .PageHome-socials {
         width: 100%;
@@ -149,12 +112,6 @@
           display: flex;
 
           place-self: end;
-        }
-        .PageHome-labels {
-          width: 100%;
-          grid-row: 0;
-          place-self: start;
-          justify-content: flex-start;
         }
         .PageHome-socials {
           grid-row: 1fr;
