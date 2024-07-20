@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import type { Route } from '@/data/Route';
+  import type { Route } from '@/stores/navigation/navigation.store';
   import { computed } from 'vue';
   import { useRoute } from 'vue-router';
 

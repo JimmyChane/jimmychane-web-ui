@@ -1,12 +1,12 @@
 <script setup lang="ts">
-  import Page from '@/components/AppPage.vue';
+  import AppPage from '@/app/page/AppPage.vue';
   import Section from './components/PageFursona-section.vue';
   import FursonaHeader from './components/PageFursona-header.vue';
   import { JimmyChane } from '@/data/Profile';
 </script>
 
 <template>
-  <Page>
+  <AppPage>
     <Section class="PageFursona" style="--text-color: var(--section-fursona-text-color)">
       <img
         class="PageFursona-fursona-preview"
@@ -24,7 +24,7 @@
         <p>{{ section.description }}</p>
       </template>
     </Section>
-  </Page>
+  </AppPage>
 </template>
 
 <style scoped lang="scss">

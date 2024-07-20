@@ -6,23 +6,16 @@
 
 <style lang="scss">
   .PageHome-section {
-    --section-color: white;
+    --background-color: white;
+    --padding: 2rem;
   }
 </style>
 
 <style scoped lang="scss">
   .PageHome-section {
-    background: var(--section-color);
-
-    position: relative;
+    padding: var(--padding);
     border-radius: 2rem;
 
-    --padding: 2rem;
-    padding: var(--padding);
-    padding-top: calc(var(--padding) + 2rem);
-
-    @media (min-width: 800px) {
-      --padding: 4rem;
-    }
+    background: var(--background-color);
   }
 </style>

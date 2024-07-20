@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import Page from '@/components/AppPage.vue';
+  import AppPage from '@/app/page/AppPage.vue';
   import PFP from './components/PageHome-header-pfp.vue';
   import SocialVue from './components/PageHome-social.vue';
   import { JimmyChane } from '@/data/Profile';
@@ -13,7 +13,7 @@
 </script>
 
 <template>
-  <Page>
+  <AppPage>
     <div class="PageHome">
       <div class="PageHome-grid">
         <PFP style="grid-area: img" />
@@ -31,7 +31,7 @@
         </p>
       </div>
     </div>
-  </Page>
+  </AppPage>
 </template>
 
 <style lang="scss" scoped>
@@ -83,7 +83,7 @@
         text-wrap: balance;
       }
 
-      @media (max-width: 850px) {
+      @media (max-width: 849px) {
         place-items: center;
         font-size: 0.8rem;
 

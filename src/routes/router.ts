@@ -1,4 +1,9 @@
-import { FavouriteRoute, FursonaRoute, HomeRoute, ProjectRoute } from '@/data/Route';
+import {
+  FavouriteRoute,
+  FursonaRoute,
+  HomeRoute,
+  ProjectRoute,
+} from '@/stores/navigation/navigation.store';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({

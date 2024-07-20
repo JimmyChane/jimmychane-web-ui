@@ -4,8 +4,7 @@
   import Actionbar from '@/app/actionbar/App-Actionbar.vue';
   import Statusbar from './statusbar/App-Statusbar.vue';
   import CheeseHoles from '@/app/background/CheeseHoles.vue';
-  import { DarkTheme } from '@/data/Theme';
-  import { useThemeStore } from '@/stores/theme/theme.store';
+  import { DarkTheme, useThemeStore } from '@/stores/theme/theme.store';
   import NavigationDrawer from './navigation-drawer/NavigationDrawer.vue';
   import { useNavigationDrawerStore } from '@/stores/navigation-drawer/navigation-drawer.store';
 

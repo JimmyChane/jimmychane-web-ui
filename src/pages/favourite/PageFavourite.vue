@@ -1,10 +1,10 @@
 <script setup lang="ts">
-  import Page from '@/components/AppPage.vue';
+  import AppPage from '@/app/page/AppPage.vue';
   import PageFavouriteSection from './components/PageFavourite-section.vue';
 </script>
 
 <template>
-  <Page>
+  <AppPage>
     <div class="page-favourite">
       <PageFavouriteSection title="Foods">
         <span>Fried Rice</span>
@@ -18,7 +18,7 @@
         <span>Factorio</span>
       </PageFavouriteSection>
     </div>
-  </Page>
+  </AppPage>
 </template>
 
 <style scoped lang="scss">

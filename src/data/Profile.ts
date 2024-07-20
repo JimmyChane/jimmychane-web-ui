@@ -1,5 +1,5 @@
+import { BLUESKY, GITHUB, TELEGRAM, TWITTER } from '@/stores/social-platform/social-platform.store';
 import type { Social } from './Social';
-import { Bluesky, Github, Telegram, Twitter } from './SocialPlatform';
 import FursonaImage from '@/assets/fursona/fursona-preview-v0.6.webp';
 
 export interface Profile {
@@ -27,12 +27,12 @@ export interface Profile {
 
 export const JimmyChane: Profile = {
   name: 'Jimmy Chane',
-  labels: ['Website builders', 'Draw for fun'],
+  labels: ['Build website', 'Draw for fun'],
   socials: [
-    { socialPlatform: Twitter, href: 'https://twitter.com/jimmykajun' },
-    { socialPlatform: Telegram, href: 'https://t.me/Jimmy612' },
-    { socialPlatform: Github, href: 'https://github.com/JimmyChane' },
-    { socialPlatform: Bluesky, href: 'https://bsky.app/profile/jimmyfox.bsky.social' },
+    { socialPlatform: TWITTER, href: 'https://twitter.com/jimmykajun' },
+    { socialPlatform: TELEGRAM, href: 'https://t.me/Jimmy612' },
+    { socialPlatform: GITHUB, href: 'https://github.com/JimmyChane' },
+    { socialPlatform: BLUESKY, href: 'https://bsky.app/profile/jimmyfox.bsky.social' },
   ],
   description: 'Hi, feel free to chat with me',
 
