@@ -1,4 +1,4 @@
-import { defineListableStore } from '../list/item.list.store';
+import { defineListableStore } from '@/stores/item.list.store';
 import TwitterLogo from '@/assets/social/twitter-color.svg';
 import TelegramLogo from '@/assets/social/telegram-color.svg';
 import GithubLogo from '@/assets/social/github-color.svg';

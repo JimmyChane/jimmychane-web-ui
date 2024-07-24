@@ -4,7 +4,7 @@
   import Actionbar from '@/app/actionbar/App-Actionbar.vue';
   import Statusbar from './statusbar/App-Statusbar.vue';
   import CheeseHoles from '@/app/background/CheeseHoles.vue';
-  import { DarkTheme, useThemeStore } from '@/stores/theme/theme.store';
+  import { DarkTheme, useThemeStore } from '@/stores/theme.store';
   import NavigationDrawer from './navigation-drawer/NavigationDrawer.vue';
   import { useNavigationDrawerStore } from '@/stores/navigation-drawer/navigation-drawer.store';
 
@@ -35,7 +35,11 @@
       <Actionbar v-if="navigationDrawerStore.isDrawer" style="z-index: 2" />
 
       <div class="App-router-view" style="z-index: 1">
-        <RouterView />
+        <RouterView v-slot="{ Component }">
+          <transition name="route" mode="out-in">
+            <component :is="Component"></component>
+          </transition>
+        </RouterView>
       </div>
 
       <Statusbar style="z-index: 2" />
@@ -164,5 +168,11 @@
       --cheese-color: hsla(0, 0%, 0%, 0.15);
       --cheese-color-pfp: var(--background-color-opacity70);
     }
+  }
+  .route-enter-from {
+    opacity: 0;
+  }
+  .route-leave-to {
+    opacity: 0;
   }
 </style>

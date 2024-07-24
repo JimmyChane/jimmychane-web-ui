@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { computed, ref, watch } from 'vue';
-import { useWindowStore } from '../window/window.store';
+import { useWindowStore } from '@/stores/window.store';
 import { useRoute } from 'vue-router';
 
 enum ViewState {

@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import NavigationDrawerController from '@/stores/navigation-drawer/components/NavigationDrawerController.vue';
   import NavigationDrawerItem from './NavigationDrawer-Item.vue';
-  import { useNavigationStore } from '@/stores/navigation/navigation.store';
+  import { useNavigationStore } from '@/stores/navigation.store';
   import { useNavigationDrawerStore } from '@/stores/navigation-drawer/navigation-drawer.store';
   import { computed } from 'vue';
   import ThemeToggler from '../actionbar/App-Actionbar-ThemeToggler.vue';

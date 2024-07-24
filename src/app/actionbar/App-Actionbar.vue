@@ -1,8 +1,8 @@
 <script setup lang="ts">
   import { computed, defineAsyncComponent } from 'vue';
   import { useNavigationDrawerStore } from '@/stores/navigation-drawer/navigation-drawer.store';
-  import { useNavigationStore } from '@/stores/navigation/navigation.store';
-  import { useWindowStore } from '@/stores/window/window.store';
+  import { useNavigationStore } from '@/stores/navigation.store';
+  import { useWindowStore } from '@/stores/window.store';
   import ThemeToggler from './App-Actionbar-ThemeToggler.vue';
   import { useWindowScroll } from '@vueuse/core';
 

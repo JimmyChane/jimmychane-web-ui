@@ -24,6 +24,7 @@
     max-width: var(--content-max-width);
 
     transition:
+      all 200ms ease-in-out,
       width 200ms ease,
       height 200ms ease;
 

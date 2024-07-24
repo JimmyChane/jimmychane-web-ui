@@ -1,4 +1,4 @@
-import { BLUESKY, GITHUB, TELEGRAM, TWITTER } from '@/stores/social-platform/social-platform.store';
+import { BLUESKY, GITHUB, TELEGRAM, TWITTER } from '@/data-stores/social-platform.store';
 import type { Social } from './Social';
 import FursonaImage from '@/assets/fursona/fursona-preview-v0.6.webp';
 
