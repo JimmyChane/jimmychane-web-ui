@@ -1,8 +1,8 @@
 <script setup lang="ts">
-  import AppPage from '@/app/page/AppPage.vue';
-  import Section from './components/PageFursona-section.vue';
-  import FursonaHeader from './components/PageFursona-header.vue';
-  import { JimmyChane } from '@/data/Profile';
+import AppPage from '@/app/page/AppPage.vue';
+import Section from './components/PageFursona-section.vue';
+import FursonaHeader from './components/PageFursona-header.vue';
+import { JimmyChane } from '@/data/Profile';
 </script>
 
 <template>
@@ -16,11 +16,7 @@
       />
 
       <template v-for="section of JimmyChane.fursona.sections">
-        <FursonaHeader
-          class="PageFursona-fursona-title"
-          :title="section.titles.title"
-          :subtitle="section.titles.subtitle"
-        />
+        <FursonaHeader :title="section.titles.title" :subtitle="section.titles.subtitle" />
         <p>{{ section.description }}</p>
       </template>
     </Section>
@@ -28,33 +24,29 @@
 </template>
 
 <style scoped lang="scss">
-  .PageFursona {
-    --section-color: var(--section-fursona-background-color);
-    color: white;
+.PageFursona {
+  --section-color: var(--section-fursona-background-color);
+  color: white;
 
-    display: flex;
-    flex-direction: column;
-    text-align: start;
+  display: flex;
+  flex-direction: column;
+  text-align: start;
 
-    .PageFursona-fursona-preview {
-      width: 100%;
-      aspect-ratio: 16/9;
-      object-fit: contain;
-      margin: auto;
-      border-radius: 2em;
+  .PageFursona-fursona-preview {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: contain;
+    margin: auto;
+    border-radius: 1.5em;
 
-      background: var(--section-fursona-header-background-color);
+    background: var(--section-fursona-header-background-color);
 
-      @media (min-width: 800px) {
-        padding: 1rem;
-      }
-      @media (min-width: 1000px) {
-        padding: 2rem;
-      }
+    @media (min-width: 800px) {
+      padding: 1rem;
     }
-    .PageFursona-fursona-title {
-      margin-top: 4em;
-      margin-bottom: 2em;
+    @media (min-width: 1000px) {
+      padding: 2rem;
     }
   }
+}
 </style>

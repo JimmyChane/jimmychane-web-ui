@@ -5,24 +5,23 @@
 </template>
 
 <style lang="scss">
-  .PageHome-section {
-    --section-color: white;
-  }
+.PageHome-section {
+  --section-color: white;
+}
 </style>
 
 <style scoped lang="scss">
-  .PageHome-section {
-    background: var(--section-color);
+.PageHome-section {
+  background: var(--section-color);
 
-    position: relative;
-    border-radius: 2rem;
+  position: relative;
+  border-radius: 2rem;
 
-    --padding: 2rem;
-    padding: var(--padding);
-    padding-top: calc(var(--padding) + 2rem);
+  --padding: 2rem;
+  padding: var(--padding);
 
-    @media (min-width: 800px) {
-      --padding: 4rem;
-    }
+  @media (min-width: 800px) {
+    --padding: 4rem;
   }
+}
 </style>
