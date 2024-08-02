@@ -143,8 +143,14 @@ const routes = computed(() => {
       font-size: 1rem;
       padding: 1rem;
       border-radius: 0.5rem;
-      aspect-ratio: 1/1;
       transition: all 200ms ease;
+
+      @media (min-width: 700px) {
+        aspect-ratio: 4/3;
+      }
+      @media (max-width: 699px) {
+        aspect-ratio: 4/2;
+      }
 
       &:nth-child(1) {
         background-color: var(--section-fursona-background-color);

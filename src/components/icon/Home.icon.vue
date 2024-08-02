@@ -1,15 +1,12 @@
 <script setup lang="ts">
-  withDefaults(defineProps<{ width?: number; height?: number }>(), {
-    width: 512,
-    height: 512,
-  });
+withDefaults(defineProps<{ size?: number }>(), { size: 32 });
 </script>
 
 <template>
   <svg
     class="icon-home"
-    :width="width"
-    :height="height"
+    :width="size"
+    :height="size"
     viewBox="0 0 512 512"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -33,9 +30,9 @@
 </template>
 
 <style scoped lang="scss">
-  .icon-home {
-    path {
-      fill: var(--color);
-    }
+.icon-home {
+  path {
+    fill: var(--color);
   }
+}
 </style>

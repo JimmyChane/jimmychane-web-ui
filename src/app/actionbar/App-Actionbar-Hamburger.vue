@@ -1,8 +1,8 @@
 <script setup lang="ts">
-  import { useNavigationDrawerStore } from '@/stores/navigation-drawer/navigation-drawer.store';
-  import HamburgerIcon from '@/components/icon/Hamburger.icon.vue';
+import { useNavigationDrawerStore } from '@/stores/navigation-drawer/navigation-drawer.store';
+import HamburgerIcon from '@/components/icon/Hamburger.icon.vue';
 
-  const navigationDrawerStore = useNavigationDrawerStore();
+const navigationDrawerStore = useNavigationDrawerStore();
 </script>
 
 <template>
@@ -11,27 +11,27 @@
     aria-label="Hamburger"
     @click="() => navigationDrawerStore.toggle()"
   >
-    <HamburgerIcon :width="24" :height="24" />
+    <HamburgerIcon :size="24" />
   </button>
 </template>
 
 <style lang="scss" scoped>
-  .App-actionbar-hamburger {
-    aspect-ratio: 1/1;
+.App-actionbar-hamburger {
+  aspect-ratio: 1/1;
 
-    display: grid;
-    place-items: center;
+  display: grid;
+  place-items: center;
 
-    --size: 2.5rem;
-    width: var(--size);
-    height: var(--size);
+  --size: 2.5rem;
+  width: var(--size);
+  height: var(--size);
 
-    border-radius: 50%;
-    border: none;
-    background: none;
+  border-radius: 50%;
+  border: none;
+  background: none;
 
-    & > * {
-      --color: var(--color-active);
-    }
+  & > * {
+    --color: var(--color-active);
   }
+}
 </style>
