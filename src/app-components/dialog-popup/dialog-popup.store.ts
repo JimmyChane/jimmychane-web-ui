@@ -99,7 +99,7 @@ export class DialogPopup<D = any> {
 }
 
 export const useDialogPopupStore = defineStore('dialog-popup', () => {
-  useAppStore().onInstallDialog();
+  useAppStore().onInstallDialogPopup();
 
   const route = useRoute();
 

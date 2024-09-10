@@ -80,6 +80,7 @@ const { y } = useScroll(appBodyRef, { behavior: 'smooth' });
       :bottomsheet="item"
     />
     <DialogPopup
+      v-if="appStore.isDialogPopupInstalled"
       v-for="item of useDialogPopupStore().items"
       :style="{ 'z-index': `${4 + useDialogPopupStore().items.length} ` }"
       :key="item.id"

@@ -4,7 +4,7 @@ import { computed, ref } from 'vue';
 export const useAppStore = defineStore('app', () => {
   const isNavigationDrawerInstalled = ref(false);
   const isBottomsheetInstalled = ref(false);
-  const isDialogInstalled = ref(false);
+  const isDialogPopupInstalled = ref(false);
 
   function onInstallNavigationDrawer() {
     isNavigationDrawerInstalled.value = true;
@@ -12,16 +12,17 @@ export const useAppStore = defineStore('app', () => {
   function onInstallBottomsheet() {
     isBottomsheetInstalled.value = true;
   }
-  function onInstallDialog() {
-    isDialogInstalled.value = true;
+  function onInstallDialogPopup() {
+    isDialogPopupInstalled.value = true;
   }
 
   return {
     isNavigationDrawerInstalled: computed(() => isNavigationDrawerInstalled.value),
     isBottomsheetInstalled: computed(() => isBottomsheetInstalled.value),
+    isDialogPopupInstalled: computed(() => isDialogPopupInstalled.value),
 
     onInstallNavigationDrawer,
     onInstallBottomsheet,
-    onInstallDialog,
+    onInstallDialogPopup,
   };
 });
