@@ -1,5 +1,7 @@
 import { ref } from 'vue';
 
+export type MaybeUndefined<T> = T | undefined;
+export type MaybeArray<T> = T | T[];
 export type MaybePromise<T> = T | Promise<T>;
 export type MaybeFunction<T> = T | (() => T);
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useNavigationDrawerStore } from '@/stores/navigation-drawer/navigation-drawer.store';
+import { useNavigationDrawerStore } from '@/app-components/navigation-drawer/navigation-drawer.store';
 import { computed } from 'vue';
 
 const navigationDrawerStore = useNavigationDrawerStore();
@@ -30,7 +30,7 @@ const cssViewMode = computed(() => {
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 
   padding: var(--App-page-padding);

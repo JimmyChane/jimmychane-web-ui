@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { computed, ref, watch } from 'vue';
 import { useWindowStore } from '@/stores/window.store';
 import { useRoute } from 'vue-router';
-import { useAppStore } from '../app.store';
+import { useAppStore } from '@/stores/app.store';
 
 enum ViewState {
   DESKTOP,
