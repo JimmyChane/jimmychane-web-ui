@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 import { computed, ref, watch } from 'vue';
 import { useWindowStore } from '@/stores/window.store';
 import { useRoute } from 'vue-router';
+import { useAppStore } from '../app.store';
 
 enum ViewState {
   DESKTOP,
@@ -17,6 +18,8 @@ export enum NavigationDrawerState {
 }
 
 export const useNavigationDrawerStore = defineStore('navigation-drawer', () => {
+  useAppStore().onInstallNavigationDrawer();
+
   const route = useRoute();
   const windowStore = useWindowStore();
 

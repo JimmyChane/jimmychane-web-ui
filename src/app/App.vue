@@ -1,20 +1,27 @@
 <script setup lang="ts">
-import { computed, watch } from 'vue';
+import { computed, defineAsyncComponent, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import Actionbar from '@/app/actionbar/App-Actionbar.vue';
 import Statusbar from './statusbar/App-Statusbar.vue';
 import CheeseHoles from '@/app/background/CheeseHoles.vue';
 import { DarkTheme, useThemeStore } from '@/stores/theme.store';
-import NavigationDrawer from './navigation-drawer/NavigationDrawer.vue';
 import { useNavigationDrawerStore } from '@/stores/navigation-drawer/navigation-drawer.store';
+import { useAppStore } from '@/stores/app.store';
+
+const NavigationDrawer = defineAsyncComponent(
+  () => import('./navigation-drawer/NavigationDrawer.vue'),
+);
 
 const route = useRoute();
+const appStore = useAppStore();
 const themeStore = useThemeStore();
 const navigationDrawerStore = useNavigationDrawerStore();
 
 const cssViewMode = computed(() => {
-  if (navigationDrawerStore.isSnap) return 'snap';
-  if (navigationDrawerStore.isDrawer) return 'drawer';
+  if (appStore.isNavigationDrawerInstalled) {
+    if (navigationDrawerStore.isSnap) return 'snap';
+    if (navigationDrawerStore.isDrawer) return 'drawer';
+  }
 });
 
 watch([route], () => {
@@ -32,7 +39,7 @@ watch([route], () => {
     <CheeseHoles style="z-index: 0" />
 
     <div class="App-body" style="z-index: 1">
-      <Actionbar v-if="navigationDrawerStore.isDrawer" style="z-index: 2" />
+      <Actionbar v-if="useNavigationDrawerStore().isDrawer" style="z-index: 2" />
 
       <div class="App-router-view" style="z-index: 1">
         <RouterView v-slot="{ Component }">
@@ -45,7 +52,7 @@ watch([route], () => {
       <Statusbar style="z-index: 2" />
     </div>
 
-    <NavigationDrawer style="z-index: 2" />
+    <NavigationDrawer v-if="useAppStore().isNavigationDrawerInstalled" style="z-index: 2" />
   </div>
 </template>
 
