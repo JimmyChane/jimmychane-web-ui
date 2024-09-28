@@ -37,7 +37,7 @@ const routes = computed(() => {
       </div>
 
       <div class="PageHome-routes">
-        <RouterLink v-for="route of routes" :to="{ name: route.key }">
+        <RouterLink v-for="route of routes" :key="route.key" :to="{ name: route.key }">
           {{ route.title }}
         </RouterLink>
       </div>
@@ -136,14 +136,18 @@ const routes = computed(() => {
     gap: 0.5rem;
 
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
 
     & > * {
       text-decoration: none;
+      text-align: center;
       font-size: 1rem;
       padding: 1rem;
       border-radius: 0.5rem;
       transition: all 200ms ease;
+
+      display: grid;
+      place-items: center;
 
       @media (min-width: 700px) {
         aspect-ratio: 4/3;
