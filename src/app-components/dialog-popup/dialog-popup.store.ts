@@ -3,6 +3,7 @@ import { defineStore } from 'pinia';
 import { markRaw, ref, watch, type Component } from 'vue';
 import { useRoute } from 'vue-router';
 import { useAppStore } from '@/stores/app.store';
+import { wait, waitFrame } from '@/utils/Await';
 
 export type DialogPopupProps<D = undefined> = {
   dialog: DialogPopup<D>;
@@ -88,8 +89,8 @@ export class DialogPopup<D = any> {
     this.isShowing = false;
     if (this.onClosed) this.onClosed(this);
 
-    await new Promise((r) => requestAnimationFrame(() => r(undefined)));
-    await new Promise((r) => setTimeout(r, 400));
+    await waitFrame();
+    await wait(400);
 
     const index = this.siblings.indexOf(this as unknown as DialogPopup);
     this.siblings.splice(index, 1);
@@ -99,7 +100,7 @@ export class DialogPopup<D = any> {
 }
 
 export const useDialogPopupStore = defineStore('dialog-popup', () => {
-  useAppStore().onInstallDialogPopup();
+  useAppStore().useDialogPopupComponent = true;
 
   const route = useRoute();
 

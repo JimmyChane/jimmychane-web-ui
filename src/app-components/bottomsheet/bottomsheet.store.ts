@@ -69,7 +69,7 @@ export class Bottomsheet<D = undefined> {
 }
 
 export const useBottomsheetStore = defineStore('bottomsheet', () => {
-  useAppStore().onInstallBottomsheet();
+  useAppStore().useBottomsheetComponent = true;
 
   const items = ref<Bottomsheet[]>([]);
 

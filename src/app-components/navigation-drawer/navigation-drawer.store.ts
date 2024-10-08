@@ -18,7 +18,7 @@ export enum NavigationDrawerState {
 }
 
 export const useNavigationDrawerStore = defineStore('navigation-drawer', () => {
-  useAppStore().onInstallNavigationDrawer();
+  // useAppStore().onInstallNavigationDrawer();
 
   const route = useRoute();
   const windowStore = useWindowStore();
@@ -63,13 +63,6 @@ export const useNavigationDrawerStore = defineStore('navigation-drawer', () => {
       viewStates.value[ViewState.TABLET] = NavigationDrawerState.SNAP_WIDE;
       return;
     }
-
-    // if (store.isLargerThanMobile) {
-    //   currentViewState.value = NavigationDrawerState.SNAP_WIDE;
-    //   viewStates.value[ViewState.DESKTOP] = NavigationDrawerState.SNAP_WIDE;
-    //   viewStates.value[ViewState.TABLET] = NavigationDrawerState.SNAP_WIDE;
-    //   return;
-    // }
 
     currentViewState.value = NavigationDrawerState.DRAWER_WIDE_SHOW;
     viewStates.value[ViewState.ELSE] = NavigationDrawerState.DRAWER_WIDE_SHOW;
@@ -137,6 +130,13 @@ export const useNavigationDrawerStore = defineStore('navigation-drawer', () => {
   watch(() => windowStore.width, onScreenWidthChange);
   watch(() => windowStore.isLargerThanMobile, onScreenModeChange);
   watch(() => route.fullPath, close);
+  watch(
+    isShowing,
+    () => {
+      if (isShowing.value) useAppStore().useNavigationDrawerComponent = true;
+    },
+    { immediate: true },
+  );
 
   close();
 

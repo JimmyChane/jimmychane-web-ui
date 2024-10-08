@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import { useNavigationDrawerStore } from '@/app-components/navigation-drawer/navigation-drawer.store';
 import HamburgerIcon from '@/components/icon/Hamburger.icon.vue';
-
-const navigationDrawerStore = useNavigationDrawerStore();
 </script>
 
 <template>
   <button
     class="App-actionbar-hamburger"
     aria-label="Hamburger"
-    @click="() => navigationDrawerStore.toggle()"
+    @click="() => useNavigationDrawerStore().toggle()"
   >
     <HamburgerIcon :size="24" />
   </button>

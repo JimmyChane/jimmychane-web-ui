@@ -32,7 +32,7 @@ const navigationDrawerStore = useNavigationDrawerStore();
 const appBodyRef = ref<HTMLDivElement>();
 
 const cssViewMode = computed(() => {
-  if (appStore.isNavigationDrawerInstalled) {
+  if (appStore.useNavigationDrawerComponent) {
     if (navigationDrawerStore.isSnap) return 'snap';
     if (navigationDrawerStore.isDrawer) return 'drawer';
   }
@@ -53,7 +53,7 @@ const { y } = useScroll(appBodyRef, { behavior: 'smooth' });
 
     <div ref="appBodyRef" class="App-body" style="z-index: 1">
       <AppActionbar
-        v-if="useNavigationDrawerStore().isDrawer"
+        v-if="navigationDrawerStore.isDrawer"
         :parent-scroll-top="y"
         style="z-index: 2"
       />
@@ -69,18 +69,18 @@ const { y } = useScroll(appBodyRef, { behavior: 'smooth' });
       <AppStatusbar style="z-index: 2" />
     </div>
 
-    <NavigationDrawer v-if="appStore.isNavigationDrawerInstalled" style="z-index: 2">
+    <NavigationDrawer v-if="appStore.useNavigationDrawerComponent" style="z-index: 2">
       <AppNavigationDrawer />
     </NavigationDrawer>
     <Bottomsheet
-      v-if="appStore.isBottomsheetInstalled"
+      v-if="appStore.useBottomsheetComponent"
       v-for="item of useBottomsheetStore().items"
       :style="{ 'z-index': `${3 + useBottomsheetStore().items.length}` }"
       :key="item.id"
       :bottomsheet="item"
     />
     <DialogPopup
-      v-if="appStore.isDialogPopupInstalled"
+      v-if="appStore.useDialogPopupComponent"
       v-for="item of useDialogPopupStore().items"
       :style="{ 'z-index': `${4 + useDialogPopupStore().items.length} ` }"
       :key="item.id"

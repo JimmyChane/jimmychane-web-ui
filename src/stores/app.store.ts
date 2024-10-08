@@ -1,28 +1,14 @@
 import { defineStore } from 'pinia';
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 
 export const useAppStore = defineStore('app', () => {
-  const isNavigationDrawerInstalled = ref(false);
-  const isBottomsheetInstalled = ref(false);
-  const isDialogPopupInstalled = ref(false);
-
-  function onInstallNavigationDrawer() {
-    isNavigationDrawerInstalled.value = true;
-  }
-  function onInstallBottomsheet() {
-    isBottomsheetInstalled.value = true;
-  }
-  function onInstallDialogPopup() {
-    isDialogPopupInstalled.value = true;
-  }
+  const useNavigationDrawerComponent = ref(false);
+  const useBottomsheetComponent = ref(false);
+  const useDialogPopupComponent = ref(false);
 
   return {
-    isNavigationDrawerInstalled: computed(() => isNavigationDrawerInstalled.value),
-    isBottomsheetInstalled: computed(() => isBottomsheetInstalled.value),
-    isDialogPopupInstalled: computed(() => isDialogPopupInstalled.value),
-
-    onInstallNavigationDrawer,
-    onInstallBottomsheet,
-    onInstallDialogPopup,
+    useNavigationDrawerComponent,
+    useBottomsheetComponent,
+    useDialogPopupComponent,
   };
 });

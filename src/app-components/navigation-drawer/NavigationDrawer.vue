@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { NavigationDrawerState, useNavigationDrawerStore } from './navigation-drawer.store';
+import { computedAsync } from '@vueuse/core';
+import { waitFrame } from '@/utils/Await';
 
 const navigationDrawerStore = useNavigationDrawerStore();
 
@@ -8,14 +10,15 @@ const cssViewMode = computed(() => {
   if (navigationDrawerStore.isSnap) return 'snap';
   if (navigationDrawerStore.isDrawer) return 'drawer';
 });
-const cssViewState = computed(() => {
+const cssViewState = computedAsync(async () => {
   switch (navigationDrawerStore.currentViewState) {
     case NavigationDrawerState.DRAWER_WIDE_HIDE:
       return 'drawer-hide';
     case NavigationDrawerState.DRAWER_WIDE_SHOW:
+      await waitFrame();
       return 'drawer-show';
   }
-});
+}, 'drawer-hide');
 </script>
 
 <template>
