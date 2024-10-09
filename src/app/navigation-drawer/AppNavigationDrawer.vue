@@ -33,6 +33,7 @@ const cssViewMode = computed(() => {
   height: 100%;
   padding: 1rem;
   gap: 1rem;
+  overflow-y: auto;
 
   display: flex;
   flex-direction: column;

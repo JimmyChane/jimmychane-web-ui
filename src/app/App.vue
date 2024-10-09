@@ -105,9 +105,7 @@ const { y } = useScroll(appBodyRef, { behavior: 'smooth' });
   position: relative;
 
   width: 100%;
-  height: max-content;
   height: 100dvh;
-  min-height: 100dvh;
   flex-grow: 1;
 
   display: flex;
@@ -119,7 +117,6 @@ const { y } = useScroll(appBodyRef, { behavior: 'smooth' });
     width: 100%;
     height: 100dvh;
     overflow-y: auto;
-    min-height: 100dvh;
 
     display: flex;
     flex-direction: column;
@@ -128,7 +125,6 @@ const { y } = useScroll(appBodyRef, { behavior: 'smooth' });
 
     .App-router-view {
       width: 100%;
-      height: max-content;
 
       flex-grow: 1;
 

@@ -18,13 +18,15 @@ export enum NavigationDrawerState {
 }
 
 export const useNavigationDrawerStore = defineStore('navigation-drawer', () => {
-  // useAppStore().onInstallNavigationDrawer();
-
   const route = useRoute();
   const windowStore = useWindowStore();
 
   const previousViewState = ref<ViewState>();
-  const currentViewState = ref(NavigationDrawerState.SNAP_WIDE);
+  const currentViewState = ref(
+    windowStore.isLargerThanTablet
+      ? NavigationDrawerState.SNAP_WIDE
+      : NavigationDrawerState.DRAWER_WIDE_HIDE,
+  );
 
   const viewStates = ref<Partial<Record<ViewState, NavigationDrawerState>>>({});
 

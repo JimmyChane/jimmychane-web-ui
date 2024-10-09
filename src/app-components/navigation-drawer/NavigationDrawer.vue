@@ -41,8 +41,11 @@ const cssViewState = computedAsync(async () => {
 
 <style lang="scss" scoped>
 .navigation-drawer-controller {
+  width: 100%;
+  height: 100%;
   display: grid;
   grid-template-areas: 'content dismiss';
+  overflow: hidden;
 
   .navigation-drawer-controller-blur {
     position: absolute;
@@ -50,6 +53,7 @@ const cssViewState = computedAsync(async () => {
     right: 0;
     bottom: 0;
     left: 0;
+
     background: rgba(0, 0, 0, 0.7);
     pointer-events: none;
     transition: opacity 400ms ease;
@@ -62,21 +66,22 @@ const cssViewState = computedAsync(async () => {
   }
   .navigation-drawer-controller-dismiss {
     position: absolute;
-    display: flex;
     width: 100%;
     height: 100%;
+    display: flex;
   }
   .navigation-drawer-controller-body {
-    height: 100dvh;
+    position: sticky;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    overflow: hidden;
 
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: stretch;
-
-    position: sticky;
-    top: 0;
-    left: 0;
   }
 
   &[data-view-mode='snap'] {
@@ -84,7 +89,8 @@ const cssViewState = computedAsync(async () => {
     top: 0;
     left: 0;
 
-    width: var(--navigation-drawer-width);
+    min-width: var(--navigation-drawer-width);
+    max-width: var(--navigation-drawer-width);
 
     .navigation-drawer-controller-dismiss {
       pointer-events: none;
@@ -95,13 +101,13 @@ const cssViewState = computedAsync(async () => {
       display: none;
     }
     .navigation-drawer-controller-body {
-      width: var(--navigation-drawer-width);
+      width: 100%;
       height: 100dvh;
       border-right: 1px solid var(--background-color-opacity5);
     }
   }
   &[data-view-mode='drawer'] {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
