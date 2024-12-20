@@ -1,17 +1,18 @@
 <script setup lang="ts">
-  import AppPage from '@/app/page/AppPage.vue';
+import AppPage from '@/app/page/AppPage.vue';
 
-  import Section from './components/PageProject-project-section.vue';
+import Section from './components/PageProject-project-section.vue';
 
-  import ProjectHeader from './components/PageProject-project-header.vue';
-  import ProjectPreview from './components/PageProject-project-preview.vue';
+import ProjectHeader from './components/PageProject-project-header.vue';
+import ProjectPreview from './components/PageProject-project-preview.vue';
 
-  import ImageRory from '@/assets/showcase/showcase-rory-xavier.webp';
-  import ImageRhougous from '@/assets/showcase/showcase-rhougous-hiroki.webp';
-  import ImageFreshnet from '@/assets/showcase/showcase-freshnet-enterprise.webp';
+import ImageRory from '@/assets/showcase/showcase-rory-xavier.webp';
+import ImageRhougous from '@/assets/showcase/showcase-rhougous-hiroki.webp';
+import ImageFreshnet from '@/assets/showcase/showcase-freshnet-enterprise.webp';
+import ImageGryfder from '@/assets/showcase/showcase-gryfder-deficere.webp';
 
-  import Labels from './components/PageProject-group-labels.vue';
-  import Label from './components/PageProject-group-label.vue';
+import Labels from './components/PageProject-group-labels.vue';
+import Label from './components/PageProject-group-label.vue';
 </script>
 
 <template>
@@ -37,6 +38,29 @@
 
         <Labels class="PageProject-project-labels">
           <Label>Svelte.js</Label>
+          <Label>HTML</Label>
+          <Label>TypeScript</Label>
+          <Label>JavaScript</Label>
+          <Label>CSS</Label>
+          <Label>SCSS</Label>
+        </Labels>
+      </Section>
+
+      <Section>
+        <ProjectHeader
+          title="Gryfder Deficere"
+          subtitle="Setup Github"
+          href="https://gryfder.github.io/"
+        />
+
+        <ProjectPreview
+          href="https://gryfder.github.io/"
+          :src="ImageGryfder"
+          alt="Gryfder Deficere's Website"
+        />
+
+        <Labels class="PageProject-project-labels">
+          <Label>Vue.js</Label>
           <Label>HTML</Label>
           <Label>TypeScript</Label>
           <Label>JavaScript</Label>
@@ -111,49 +135,49 @@
 </template>
 
 <style scoped lang="scss">
-  .PageProject {
+.PageProject {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  & > * {
+    --background-color: var(--color-dark);
+
+    color: white;
+    text-align: start;
+    gap: 6rem 4rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1rem;
 
-    & > * {
-      --background-color: var(--color-dark);
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    gap: 0.5rem;
 
-      color: white;
-      text-align: start;
-      gap: 6rem 4rem;
-      display: flex;
-      flex-direction: column;
-
-      display: flex;
-      flex-direction: column;
-      text-align: start;
-      gap: 0.5rem;
-
-      p {
-        margin: 1rem 0;
-      }
-
-      .PageProject-project-labels {
-        & > * {
-          color: var(--color-dark);
-          background-color: white;
-          font-weight: 600;
-          font-size: 0.6em;
-        }
-      }
+    p {
+      margin: 1rem 0;
     }
 
-    @media (min-width: 1000px) {
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items: stretch;
-
+    .PageProject-project-labels {
       & > * {
-        flex: 1 14rem;
-        --padding: 4rem;
+        color: var(--color-dark);
+        background-color: white;
+        font-weight: 600;
+        font-size: 0.6em;
       }
     }
   }
+
+  @media (min-width: 1000px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+
+    & > * {
+      flex: 1 14rem;
+      --padding: 4rem;
+    }
+  }
+}
 </style>

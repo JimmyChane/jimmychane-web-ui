@@ -13,6 +13,7 @@
 
 <style scoped lang="scss">
   .PageHome-section {
+    width: 100%;
     padding: var(--padding);
     border-radius: 2rem;
 
