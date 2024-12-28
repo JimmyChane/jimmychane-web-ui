@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
-import { LinearQueue } from '@/utils/LinearQueue';
-import type { MaybePromise } from '@/utils/U';
+import { LinearQueue } from '@chanzor/utils';
+import type { MaybePromise } from '@chanzor/utils';
 
 export interface Item {
   id: string;

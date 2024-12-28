@@ -1,8 +1,6 @@
 <template>
   <div class="App-footer">
-    <span>2024 August 02</span>
-    <span class="App-footer-separator"></span>
-    <span>v0.11.3</span>
+    <span>v0.11.4</span>
   </div>
 </template>
 
@@ -26,20 +24,6 @@
     --blur: 1rem;
     -webkit-backdrop-filter: blur(var(--blur));
     backdrop-filter: blur(var(--blur));
-  }
-
-  .App-footer-separator {
-    display: flex;
-    --width: 0.5px;
-    --height: 1em;
-    width: var(--width);
-    height: var(--height);
-    min-width: var(--width);
-    min-height: var(--height);
-    max-width: var(--width);
-    max-height: var(--height);
-
-    background-color: var(--text-color-opacity50);
   }
 }
 </style>
