@@ -1,8 +1,9 @@
-import { defineListableStore } from '@/stores/item.list.store';
+import { defineListStoreDefinition } from '@chanzor/vue-utils';
 import TwitterLogo from '@/assets/social/twitter-color.svg';
 import TelegramLogo from '@/assets/social/telegram-color.svg';
 import GithubLogo from '@/assets/social/github-color.svg';
 import BlueskyLogo from '@/assets/social/bluesky-color-w32.png';
+import { defineStore } from 'pinia';
 
 export enum SocialPlatformId {
   TWITTER = 'twitter',
@@ -43,8 +44,10 @@ export const BLUESKY: SocialPlatform = {
   useInvertColorOnDark: false,
 };
 
-export const useSocialPlatformStore = defineListableStore('social-platform', {
-  fetchList() {
-    return [TWITTER, TELEGRAM, GITHUB, BLUESKY];
-  },
+export const useSocialPlatformStore = defineStore('social-platform', () => {
+  return defineListStoreDefinition({
+    fetchList() {
+      return [TWITTER, TELEGRAM, GITHUB, BLUESKY];
+    },
+  });
 });

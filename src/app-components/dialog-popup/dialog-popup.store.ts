@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { markRaw, ref, watch, type Component } from 'vue';
 import { useRoute } from 'vue-router';
-import { useAppStore } from '@/stores/app.store';
+import { useAppStore } from '@/stores/store';
 import { waitFrame } from '@/utils/Await';
 import { newKey, wait } from '@chanzor/utils';
 

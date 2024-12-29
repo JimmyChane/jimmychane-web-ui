@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DarkTheme, LightTheme, useThemeStore } from '@/stores/theme.store';
+import { useThemeStore } from '@/stores/store';
+import { ThemeId } from '@chanzor/vue-utils';
 
 const themeStore = useThemeStore();
 
 const indexTheme = computed(() => {
-  switch (themeStore.theme.key) {
-    case LightTheme.key:
+  switch (themeStore.theme.id) {
+    case ThemeId.LIGHT:
       return 0;
-    case DarkTheme.key:
+    case ThemeId.DARK:
       return 1;
     default:
       return -1;
@@ -20,14 +21,14 @@ const indexTheme = computed(() => {
   <div class="App-actionbar-theme">
     <div class="App-actionbar-theme-highlight" :style="{ '--item-index': `${indexTheme}` }"></div>
     <button aria-label="Light Theme" @click="() => themeStore.toggleThemes()">
-      <component :is="LightTheme.icon" :size="20" />
+      <component :is="themeStore.LIGHT_THEME.icon" :size="20" />
     </button>
     <button
       style="padding-left: 4%"
       aria-label="Dark Theme"
       @click="() => themeStore.toggleThemes()"
     >
-      <component :is="DarkTheme.icon" :size="18" />
+      <component :is="themeStore.DARK_THEME.icon" :size="18" />
     </button>
   </div>
 </template>

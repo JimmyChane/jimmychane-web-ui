@@ -4,12 +4,12 @@ import { useRoute } from 'vue-router';
 import AppActionbar from '@/app/actionbar/App-Actionbar.vue';
 import AppStatusbar from './statusbar/App-Statusbar.vue';
 import CheeseHoles from '@/app/background/CheeseHoles.vue';
-import { DarkTheme, useThemeStore } from '@/stores/theme.store';
 import { useNavigationDrawerStore } from '@/app-components/navigation-drawer/navigation-drawer.store';
-import { useAppStore } from '@/stores/app.store';
+import { useAppStore, useThemeStore } from '@/stores/store';
 import { useBottomsheetStore } from '@/app-components/bottomsheet/bottomsheet.store';
 import { useScroll } from '@vueuse/core';
 import { useDialogPopupStore } from '@/app-components/dialog-popup/dialog-popup.store';
+import { ThemeId } from '@chanzor/vue-utils';
 
 const AppNavigationDrawer = defineAsyncComponent(
   () => import('./navigation-drawer/AppNavigationDrawer.vue'),
@@ -44,11 +44,7 @@ const { y } = useScroll(appBodyRef, { behavior: 'smooth' });
 </script>
 
 <template>
-  <div
-    class="App"
-    :data-view-mode="cssViewMode"
-    :data-dark="themeStore.theme.key === DarkTheme.key"
-  >
+  <div class="App" :data-view-mode="cssViewMode" :data-dark="themeStore.theme.id === ThemeId.DARK">
     <CheeseHoles style="z-index: 0" />
 
     <div ref="appBodyRef" class="App-body" style="z-index: 1">

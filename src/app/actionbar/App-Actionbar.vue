@@ -2,7 +2,7 @@
 import { computed, defineAsyncComponent } from 'vue';
 import { useNavigationDrawerStore } from '@/app-components/navigation-drawer/navigation-drawer.store';
 import { useNavigationStore } from '@/stores/navigation.store';
-import { useWindowStore } from '@/stores/window.store';
+import { useWindowStore } from '@/stores/store';
 import ThemeToggler from './App-Actionbar-ThemeToggler.vue';
 
 const Hamburger = defineAsyncComponent(() => import('./App-Actionbar-Hamburger.vue'));

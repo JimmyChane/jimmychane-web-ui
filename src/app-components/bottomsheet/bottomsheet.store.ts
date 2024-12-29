@@ -1,7 +1,7 @@
 import { waitFrame } from '@/utils/Await';
 import { defineStore } from 'pinia';
 import { markRaw, ref, type Component } from 'vue';
-import { useAppStore } from '@/stores/app.store';
+import { useAppStore } from '@/stores/store';
 import { wait } from '@chanzor/utils';
 
 export type BottomsheetProps<D = undefined> = {
