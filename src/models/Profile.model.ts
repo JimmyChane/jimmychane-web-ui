@@ -1,11 +1,11 @@
-import { BLUESKY, GITHUB, TELEGRAM, TWITTER } from '@/data-stores/social-platform.store';
-import type { Social } from './Social';
+import { TWITTER, TELEGRAM, GITHUB, BLUESKY } from './SocialPlatform.model';
+import type { SocialModel } from './Social.model';
 import FursonaImage from '@/assets/fursona/fursona-preview-v0.6.webp';
 
-export interface Profile {
+export interface ProfileModel {
   name: string;
   labels: string[];
-  socials: Social[];
+  socials: SocialModel[];
   description: string;
 
   fursona: {
@@ -25,7 +25,7 @@ export interface Profile {
   personalities: string[];
 }
 
-export const JimmyChane: Profile = {
+export const JimmyChane: ProfileModel = {
   name: 'Jimmy Chane',
   labels: ['Build website', 'Draw for fun'],
   socials: [

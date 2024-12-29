@@ -1,9 +1,7 @@
-import { defineListStoreDefinition } from '@chanzor/vue-utils';
 import TwitterLogo from '@/assets/social/twitter-color.svg';
 import TelegramLogo from '@/assets/social/telegram-color.svg';
 import GithubLogo from '@/assets/social/github-color.svg';
 import BlueskyLogo from '@/assets/social/bluesky-color-w32.png';
-import { defineStore } from 'pinia';
 
 export enum SocialPlatformId {
   TWITTER = 'twitter',
@@ -12,42 +10,34 @@ export enum SocialPlatformId {
   BLUESKY = 'bluesky',
 }
 
-export interface SocialPlatform {
+export interface SocialPlatformModel {
   id: SocialPlatformId;
   title: string;
   icon: string;
   useInvertColorOnDark: boolean;
 }
 
-export const TWITTER: SocialPlatform = {
+export const TWITTER: SocialPlatformModel = {
   id: SocialPlatformId.TWITTER,
   title: 'Twitter',
   icon: TwitterLogo,
   useInvertColorOnDark: false,
 };
-export const TELEGRAM: SocialPlatform = {
+export const TELEGRAM: SocialPlatformModel = {
   id: SocialPlatformId.TELEGRAM,
   title: 'Telegram',
   icon: TelegramLogo,
   useInvertColorOnDark: false,
 };
-export const GITHUB: SocialPlatform = {
+export const GITHUB: SocialPlatformModel = {
   id: SocialPlatformId.TWITTER,
   title: 'Github',
   icon: GithubLogo,
   useInvertColorOnDark: true,
 };
-export const BLUESKY: SocialPlatform = {
+export const BLUESKY: SocialPlatformModel = {
   id: SocialPlatformId.BLUESKY,
   title: 'Bluesky',
   icon: BlueskyLogo,
   useInvertColorOnDark: false,
 };
-
-export const useSocialPlatformStore = defineStore('social-platform', () => {
-  return defineListStoreDefinition({
-    fetchList() {
-      return [TWITTER, TELEGRAM, GITHUB, BLUESKY];
-    },
-  });
-});

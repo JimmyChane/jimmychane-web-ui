@@ -5,10 +5,8 @@ import AppActionbar from '@/app/actionbar/App-Actionbar.vue';
 import AppStatusbar from './statusbar/App-Statusbar.vue';
 import CheeseHoles from '@/app/background/CheeseHoles.vue';
 import { useNavigationDrawerStore } from '@/app-components/navigation-drawer/navigation-drawer.store';
-import { useAppStore, useThemeStore } from '@/stores/store';
-import { useBottomsheetStore } from '@/app-components/bottomsheet/bottomsheet.store';
+import { useAppStore, useBottomsheetStore, useDialogStore, useThemeStore } from '@/stores/store';
 import { useScroll } from '@vueuse/core';
-import { useDialogPopupStore } from '@/app-components/dialog-popup/dialog-popup.store';
 import { ThemeId } from '@chanzor/vue-utils';
 
 const AppNavigationDrawer = defineAsyncComponent(
@@ -77,8 +75,8 @@ const { y } = useScroll(appBodyRef, { behavior: 'smooth' });
     />
     <DialogPopup
       v-if="appStore.useDialogPopupComponent"
-      v-for="item of useDialogPopupStore().items"
-      :style="{ 'z-index': `${4 + useDialogPopupStore().items.length} ` }"
+      v-for="item of useDialogStore().items"
+      :style="{ 'z-index': `${4 + useDialogStore().items.length} ` }"
       :key="item.id"
       :dialog="item"
     />

@@ -2,7 +2,7 @@
 import AppPage from '@/app/page/AppPage.vue';
 import Section from './components/PageFursona-section.vue';
 import FursonaHeader from './components/PageFursona-header.vue';
-import { JimmyChane } from '@/data/Profile';
+import { JimmyChane } from '@/models/Profile.model';
 </script>
 
 <template>

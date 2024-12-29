@@ -1,6 +1,6 @@
 <template>
   <div class="App-footer">
-    <span>v0.11.5</span>
+    <span>v0.11.6</span>
   </div>
 </template>
 

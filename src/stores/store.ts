@@ -2,7 +2,12 @@ import { defineStore } from 'pinia';
 import { ref } from 'vue';
 import LightThemeIcon from '@/components/icon/LightTheme.icon.vue';
 import DarkThemeIcon from '@/components/icon/DarkTheme.icon.vue';
-import { defineThemeStoreDefinition, defineWindowStoreDefinition } from '@chanzor/vue-utils';
+import {
+  defineBottomsheetStoreDefinition,
+  defineDialogStoreDefinition,
+  defineThemeStoreDefinition,
+  defineWindowStoreDefinition,
+} from '@chanzor/vue-utils';
 
 export const useAppStore = defineStore('app', () => {
   const useNavigationDrawerComponent = ref(false);
@@ -25,4 +30,20 @@ export const useThemeStore = defineStore('theme', () => {
 
 export const useWindowStore = defineStore('window', () => {
   return defineWindowStoreDefinition();
+});
+
+export const useBottomsheetStore = defineStore('bottomsheet', () => {
+  return defineBottomsheetStoreDefinition({
+    onCreated() {
+      useAppStore().useBottomsheetComponent = true;
+    },
+  });
+});
+
+export const useDialogStore = defineStore('dialog-popup', () => {
+  return defineDialogStoreDefinition({
+    onCreated() {
+      useAppStore().useDialogPopupComponent = true;
+    },
+  });
 });

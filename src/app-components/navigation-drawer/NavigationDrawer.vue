@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { NavigationDrawerState, useNavigationDrawerStore } from './navigation-drawer.store';
 import { computedAsync } from '@vueuse/core';
-import { waitFrame } from '@/utils/Await';
+import { waitFrame } from '@chanzor/vue-utils';
 
 const navigationDrawerStore = useNavigationDrawerStore();
 

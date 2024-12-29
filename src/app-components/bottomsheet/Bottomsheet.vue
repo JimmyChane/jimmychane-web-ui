@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import type { BottomsheetProps } from '@chanzor/vue-utils';
 import { computed, onMounted } from 'vue';
-import type { Bottomsheet } from './bottomsheet.store';
 
-const props = defineProps<{ bottomsheet: Bottomsheet }>();
+const props = defineProps<BottomsheetProps>();
 
 const isShowing = computed(() => props.bottomsheet.isShowing);
 

@@ -2,7 +2,7 @@
 import AppPage from '@/app/page/AppPage.vue';
 import PFP from './components/PageHome-header-pfp.vue';
 import SocialVue from './components/PageHome-social.vue';
-import { JimmyChane } from '@/data/Profile';
+import { JimmyChane } from '@/models/Profile.model';
 import { computed } from 'vue';
 import Labels from './components/PageHome-labels.vue';
 import { FavouriteRoute, FursonaRoute, ProjectRoute } from '@/stores/navigation.store';

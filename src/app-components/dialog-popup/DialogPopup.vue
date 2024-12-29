@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue';
 import DismissableContainer from './DismissableContainer.vue';
-import type { DialogPopup } from './dialog-popup.store';
+import type { DialogProps } from '@chanzor/vue-utils';
 
 const emits = defineEmits<{ clickShow: [void]; clickDismiss: [void] }>();
-const props = defineProps<{ dialog: DialogPopup }>();
+const props = defineProps<DialogProps>();
 
 let dismissTime = 0;
 
@@ -60,24 +60,24 @@ onUnmounted(() => {
 .dialog {
   --hitbox-size: 30px;
 
-  @media (max-width: 500px) {
-    --hitbox-size: 10px;
-  }
-
   --default-size-top: var(--hitbox-size);
   --default-size-right: var(--hitbox-size);
   --default-size-bottom: var(--hitbox-size);
   --default-size-left: var(--hitbox-size);
 
-  @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-    -webkit-backdrop-filter: blur(1px);
-    backdrop-filter: blur(1px);
-  }
   background-color: rgba(0, 0, 0, 0.5);
 
   transition:
     background-color,
     opacity 200ms ease;
+
+  @media (max-width: 500px) {
+    --hitbox-size: 10px;
+  }
+  @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+    -webkit-backdrop-filter: blur(1px);
+    backdrop-filter: blur(1px);
+  }
 
   .dialog-body {
     height: 100%;
