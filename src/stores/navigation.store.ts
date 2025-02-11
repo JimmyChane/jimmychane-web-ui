@@ -18,7 +18,7 @@ export class AppRoute {
   readonly title: string;
   readonly icon?: Component;
 
-  private readonly page: () => Component;
+  readonly page: () => Component;
 
   constructor(option: AppRouteOption) {
     this.key = option.key;
