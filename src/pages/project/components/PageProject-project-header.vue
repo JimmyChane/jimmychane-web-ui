@@ -1,9 +1,9 @@
 <script setup lang="ts">
-  withDefaults(defineProps<{ title?: string; subtitle?: string; href?: string }>(), {
-    title: '',
-    subtitle: '',
-    href: '',
-  });
+withDefaults(defineProps<{ title?: string; subtitle?: string; href?: string }>(), {
+  title: '',
+  subtitle: '',
+  href: '',
+});
 </script>
 
 <template>
@@ -27,40 +27,40 @@
 </template>
 
 <style lang="scss" scoped>
-  .PageCode-header {
+.PageCode-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .PageCode-title {
     width: 100%;
-    display: flex;
-    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.1em;
 
-    .PageCode-title {
+    h3 {
       width: 100%;
-      text-decoration: none;
-      color: inherit;
-      font-size: 1.1em;
-
-      h3 {
-        width: 100%;
-      }
-    }
-    a.PageCode-title {
-      width: max-content;
-      display: flex;
-      flex-direction: row;
-
-      &:hover {
-        text-decoration: underline;
-      }
-      .PageCode-link-icon {
-        width: 0.7em;
-        height: 0.7em;
-        transform: translateY(-0.3em) translateX(-0.1em);
-        filter: invert(100%);
-      }
-    }
-
-    .PageCode-subtitle {
-      color: hsla(0, 0%, 100%, 0.8);
-      font-size: 0.9em;
     }
   }
+  a.PageCode-title {
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+
+    &:hover {
+      text-decoration: underline;
+    }
+    .PageCode-link-icon {
+      width: 0.7em;
+      height: 0.7em;
+      transform: translateY(-0.3em) translateX(-0.1em);
+      filter: invert(100%);
+    }
+  }
+
+  .PageCode-subtitle {
+    color: hsla(0, 0%, 100%, 0.8);
+    font-size: 0.9em;
+  }
+}
 </style>

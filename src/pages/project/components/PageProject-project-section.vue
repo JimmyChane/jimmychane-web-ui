@@ -5,18 +5,18 @@
 </template>
 
 <style lang="scss">
-  .PageHome-section {
-    --background-color: white;
-    --padding: 2rem;
-  }
+.PageHome-section {
+  --background-color: white;
+  --padding: 2rem;
+}
 </style>
 
 <style scoped lang="scss">
-  .PageHome-section {
-    width: 100%;
-    padding: var(--padding);
-    border-radius: 2rem;
+.PageHome-section {
+  width: 100%;
+  padding: var(--padding);
+  border-radius: 2rem;
 
-    background: var(--background-color);
-  }
+  background: var(--background-color);
+}
 </style>

@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useThemeStore } from '@/stores/store';
 import { ThemeId } from '@chanzor/vue-utils';
+import { computed } from 'vue';
+
+import { useThemeStore } from '@/stores/store';
 
 const themeStore = useThemeStore();
 

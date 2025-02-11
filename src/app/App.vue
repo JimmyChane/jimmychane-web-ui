@@ -1,13 +1,16 @@
 <script setup lang="ts">
+import { ThemeId } from '@chanzor/vue-utils';
+import { useScroll } from '@vueuse/core';
 import { computed, defineAsyncComponent, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
-import AppActionbar from '@/app/actionbar/App-Actionbar.vue';
-import AppStatusbar from './statusbar/App-Statusbar.vue';
-import CheeseHoles from '@/app/background/CheeseHoles.vue';
+
 import { useNavigationDrawerStore } from '@/app-components/navigation-drawer/navigation-drawer.store';
 import { useAppStore, useBottomsheetStore, useDialogStore, useThemeStore } from '@/stores/store';
-import { useScroll } from '@vueuse/core';
-import { ThemeId } from '@chanzor/vue-utils';
+
+import AppActionbar from '@/app/actionbar/App-Actionbar.vue';
+import CheeseHoles from '@/app/background/CheeseHoles.vue';
+
+import AppStatusbar from './statusbar/App-Statusbar.vue';
 
 const AppNavigationDrawer = defineAsyncComponent(
   () => import('./navigation-drawer/AppNavigationDrawer.vue'),

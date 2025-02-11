@@ -1,6 +1,7 @@
-import { TWITTER, TELEGRAM, GITHUB, BLUESKY } from './SocialPlatform.model';
-import type { SocialModel } from './Social.model';
 import FursonaImage from '@/assets/fursona/fursona-preview-v0.6.webp';
+
+import type { SocialModel } from './Social.model';
+import { BLUESKY, GITHUB, TELEGRAM, TWITTER } from './SocialPlatform.model';
 
 export interface ProfileModel {
   name: string;

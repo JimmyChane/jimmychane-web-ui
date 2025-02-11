@@ -1,13 +1,14 @@
-import { defineStore } from 'pinia';
-import { ref } from 'vue';
-import LightThemeIcon from '@/components/icon/LightTheme.icon.vue';
-import DarkThemeIcon from '@/components/icon/DarkTheme.icon.vue';
 import {
   defineBottomsheetStoreDefinition,
   defineDialogStoreDefinition,
   defineThemeStoreDefinition,
   defineWindowStoreDefinition,
 } from '@chanzor/vue-utils';
+import { defineStore } from 'pinia';
+import { ref } from 'vue';
+
+import DarkThemeIcon from '@/components/icon/DarkTheme.icon.vue';
+import LightThemeIcon from '@/components/icon/LightTheme.icon.vue';
 
 export const useAppStore = defineStore('app', () => {
   const useNavigationDrawerComponent = ref(false);

@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import AppPage from '@/app/page/AppPage.vue';
-import Section from './components/PageFursona-section.vue';
-import FursonaHeader from './components/PageFursona-header.vue';
 import { JimmyChane } from '@/models/Profile.model';
+
+import AppPage from '@/app/page/AppPage.vue';
+
+import FursonaHeader from './components/PageFursona-header.vue';
+import Section from './components/PageFursona-section.vue';
 </script>
 
 <template>

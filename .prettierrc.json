@@ -5,5 +5,16 @@
   "printWidth": 100,
   "trailingComma": "all",
   "vueIndentScriptAndStyle": false,
-  "htmlWhitespaceSensitivity": "ignore"
+  "htmlWhitespaceSensitivity": "ignore",
+
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
+  "importOrder": [
+    "<THIRD_PARTY_MODULES>",
+    "^(?!.*\\.vue$)@/(.*)$",
+    "^[./](?!.*\\.vue$)",
+    "^@/.*\\.vue$",
+    "^[./].*\\.vue$"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }

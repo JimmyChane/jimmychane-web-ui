@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { NavigationDrawerState, useNavigationDrawerStore } from './navigation-drawer.store';
-import { computedAsync } from '@vueuse/core';
 import { waitFrame } from '@chanzor/vue-utils';
+import { computedAsync } from '@vueuse/core';
+import { computed } from 'vue';
+
+import { NavigationDrawerState, useNavigationDrawerStore } from './navigation-drawer.store';
 
 const navigationDrawerStore = useNavigationDrawerStore();
 

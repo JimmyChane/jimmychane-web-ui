@@ -1,8 +1,9 @@
 import { defineStore } from 'pinia';
-import { computed, markRaw, ref, type Component } from 'vue';
+import { type Component, computed, markRaw, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import HomeIcon from '@/components/icon/Home.icon.vue';
+
 import FoxIcon from '@/components/icon/Fox.icon.vue';
+import HomeIcon from '@/components/icon/Home.icon.vue';
 
 export interface Route {
   key: string;

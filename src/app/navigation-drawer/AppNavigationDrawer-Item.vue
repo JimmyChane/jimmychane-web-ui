@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import type { Route } from '@/stores/navigation.store';
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
+
+import type { Route } from '@/stores/navigation.store';
 
 const props = defineProps<{ item: Route }>();
 const route = useRoute();

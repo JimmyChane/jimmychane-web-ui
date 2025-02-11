@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useNavigationDrawerStore } from '@/app-components/navigation-drawer/navigation-drawer.store';
+
 import HamburgerIcon from '@/components/icon/Hamburger.icon.vue';
 </script>
 

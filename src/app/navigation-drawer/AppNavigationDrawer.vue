@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import AppNavigationDrawerItem from './AppNavigationDrawer-Item.vue';
-import { useNavigationStore } from '@/stores/navigation.store';
-import { useNavigationDrawerStore } from '@/app-components/navigation-drawer/navigation-drawer.store';
 import { computed } from 'vue';
+
+import { useNavigationDrawerStore } from '@/app-components/navigation-drawer/navigation-drawer.store';
+import { useNavigationStore } from '@/stores/navigation.store';
+
 import ThemeToggler from '../actionbar/App-Actionbar-ThemeToggler.vue';
+import AppNavigationDrawerItem from './AppNavigationDrawer-Item.vue';
 
 const navigationStore = useNavigationStore();
 const navigationDrawerStore = useNavigationDrawerStore();

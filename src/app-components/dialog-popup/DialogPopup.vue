@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue';
-import DismissableContainer from './DismissableContainer.vue';
 import type { DialogProps } from '@chanzor/vue-utils';
+import { onMounted, onUnmounted, ref } from 'vue';
+
+import DismissableContainer from './DismissableContainer.vue';
 
 const emits = defineEmits<{ clickShow: [void]; clickDismiss: [void] }>();
 const props = defineProps<DialogProps>();

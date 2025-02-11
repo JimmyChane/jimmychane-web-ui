@@ -5,8 +5,8 @@
 </template>
 
 <style lang="scss" scoped>
-  .card-body {
-    width: 100%;
-    gap: 2rem;
-  }
+.card-body {
+  width: 100%;
+  gap: 2rem;
+}
 </style>

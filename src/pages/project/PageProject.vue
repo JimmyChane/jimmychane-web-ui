@@ -1,18 +1,16 @@
 <script setup lang="ts">
-import AppPage from '@/app/page/AppPage.vue';
-
-import Section from './components/PageProject-project-section.vue';
-
-import ProjectHeader from './components/PageProject-project-header.vue';
-import ProjectPreview from './components/PageProject-project-preview.vue';
-
-import ImageRory from '@/assets/showcase/showcase-rory-xavier.webp';
-import ImageRhougous from '@/assets/showcase/showcase-rhougous-hiroki.webp';
 import ImageFreshnet from '@/assets/showcase/showcase-freshnet-enterprise.webp';
 import ImageGryfder from '@/assets/showcase/showcase-gryfder-deficere.webp';
+import ImageRhougous from '@/assets/showcase/showcase-rhougous-hiroki.webp';
+import ImageRory from '@/assets/showcase/showcase-rory-xavier.webp';
 
-import Labels from './components/PageProject-group-labels.vue';
+import AppPage from '@/app/page/AppPage.vue';
+
 import Label from './components/PageProject-group-label.vue';
+import Labels from './components/PageProject-group-labels.vue';
+import ProjectHeader from './components/PageProject-project-header.vue';
+import ProjectPreview from './components/PageProject-project-preview.vue';
+import Section from './components/PageProject-project-section.vue';
 </script>
 
 <template>

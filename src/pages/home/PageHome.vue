@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import AppPage from '@/app/page/AppPage.vue';
-import PFP from './components/PageHome-header-pfp.vue';
-import SocialVue from './components/PageHome-social.vue';
-import { JimmyChane } from '@/models/Profile.model';
 import { computed } from 'vue';
-import Labels from './components/PageHome-labels.vue';
+
+import { JimmyChane } from '@/models/Profile.model';
 import { FavouriteRoute, FursonaRoute, ProjectRoute } from '@/stores/navigation.store';
+
+import AppPage from '@/app/page/AppPage.vue';
+
+import PFP from './components/PageHome-header-pfp.vue';
+import Labels from './components/PageHome-labels.vue';
+import SocialVue from './components/PageHome-social.vue';
 
 const name = computed(() => JimmyChane.name);
 const labels = computed(() => JimmyChane.labels);

@@ -1,5 +1,6 @@
-import { FavouriteRoute, FursonaRoute, HomeRoute, ProjectRoute } from '@/stores/navigation.store';
 import { createRouter, createWebHistory } from 'vue-router';
+
+import { FavouriteRoute, FursonaRoute, HomeRoute, ProjectRoute } from '@/stores/navigation.store';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
