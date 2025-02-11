@@ -1,44 +1,27 @@
 <script setup lang="ts">
-import { computed, defineAsyncComponent } from 'vue';
-
 import { useNavigationDrawerStore } from '@/stores/navigation-drawer.store';
 import { useNavigationStore } from '@/stores/navigation.store';
-import { useWindowStore } from '@/stores/store';
 
-import AppActionbarThemeToggler from './App-Actionbar-ThemeToggler.vue';
-
-const Hamburger = defineAsyncComponent(() => import('./App-Actionbar-Hamburger.vue'));
-const Nav = defineAsyncComponent(() => import('./App-Actionbar-Nav.vue'));
+import AppActionbarThemeToggler from '@/app/actionbar/App-Actionbar-ThemeToggler.vue';
 
 defineProps<{ parentScrollTop: number }>();
 
 const navigationStore = useNavigationStore();
 const navigationDrawerStore = useNavigationDrawerStore();
-const windowStore = useWindowStore();
-
-const isUsingDrawer = computed(() => {
-  return navigationDrawerStore.isDrawer && !windowStore.isLargerThanMobile;
-});
 </script>
 
 <template>
   <div
-    class="App-actionbar"
+    class="FullLayout-actionbar"
     :data-background="parentScrollTop > 0"
     :data-snap="navigationDrawerStore.isSnap"
     :data-drawer="navigationDrawerStore.isDrawer"
   >
-    <div class="App-actionbar-content">
-      <div class="App-actionbar-title" v-if="isUsingDrawer">
-        <Hamburger />
-
+    <div class="FullLayout-actionbar-content">
+      <div class="FullLayout-actionbar-title">
         <span v-if="navigationStore.currentNavigation">
           {{ navigationStore.currentNavigation.title }}
         </span>
-      </div>
-
-      <div v-if="!isUsingDrawer" class="App-actionbar-items">
-        <Nav v-for="route of navigationStore.navigations" :key="route.id" :item="route" />
       </div>
 
       <AppActionbarThemeToggler />
@@ -47,7 +30,7 @@ const isUsingDrawer = computed(() => {
 </template>
 
 <style lang="scss" scoped>
-.App-actionbar {
+.FullLayout-actionbar {
   position: sticky;
   top: 0;
 
@@ -65,9 +48,8 @@ const isUsingDrawer = computed(() => {
     background-color 700ms ease,
     border-color 700ms ease;
 
-  .App-actionbar-content {
+  .FullLayout-actionbar-content {
     width: 100%;
-    max-width: var(--content-max-width);
 
     gap: 1rem;
     padding-inline: 1rem;
@@ -85,7 +67,7 @@ const isUsingDrawer = computed(() => {
       padding-inline: 4rem;
     }
 
-    .App-actionbar-title {
+    .FullLayout-actionbar-title {
       gap: 1rem;
 
       display: flex;
@@ -101,7 +83,7 @@ const isUsingDrawer = computed(() => {
     }
   }
 
-  .App-actionbar-items {
+  .FullLayout-actionbar-items {
     flex-grow: 1;
     gap: 0.2rem;
 

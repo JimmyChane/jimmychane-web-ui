@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 
 import { JimmyChane } from '@/models/Profile.model';
-import { FavouriteRoute, FursonaRoute, ProjectRoute } from '@/stores/navigation.store';
+import { FAVOURITE_ROUTE, FURSONA_ROUTE, PROJECT_ROUTE } from '@/stores/navigation.store';
 
 import AppPage from '@/app/page/AppPage.vue';
 
@@ -16,7 +16,7 @@ const socials = computed(() => JimmyChane.socials);
 const description = computed(() => JimmyChane.description);
 
 const routes = computed(() => {
-  return [FursonaRoute, ProjectRoute, FavouriteRoute];
+  return [FURSONA_ROUTE, PROJECT_ROUTE, FAVOURITE_ROUTE];
 });
 </script>
 
@@ -40,7 +40,7 @@ const routes = computed(() => {
       </div>
 
       <div class="PageHome-routes">
-        <RouterLink v-for="route of routes" :key="route.key" :to="{ name: route.key }">
+        <RouterLink v-for="route of routes" :key="route.id" :to="{ name: route.id }">
           {{ route.title }}
         </RouterLink>
       </div>

@@ -6,7 +6,7 @@ import type { AppRoute } from '@/stores/navigation.store';
 
 const props = defineProps<{ item: AppRoute }>();
 const route = useRoute();
-const isSelected = computed(() => route.name === props.item.key);
+const isSelected = computed(() => route.name === props.item.id);
 </script>
 
 <template>

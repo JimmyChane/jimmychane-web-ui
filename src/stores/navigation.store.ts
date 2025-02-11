@@ -5,77 +5,94 @@ import { type RouteRecordRaw, useRoute } from 'vue-router';
 import FoxIcon from '@/components/icon/Fox.icon.vue';
 import HomeIcon from '@/components/icon/Home.icon.vue';
 
+export enum LayoutId {
+  FULL,
+  NAVIGATION,
+}
+
 export interface AppRouteOption {
-  readonly key: string;
+  readonly id: string;
   readonly path: string;
   readonly title: string;
   readonly icon?: Component;
+  readonly layoutId?: LayoutId;
+
   readonly page: () => Component;
 }
 export class AppRoute {
-  readonly key: string;
+  readonly id: string;
   readonly path: string;
   readonly title: string;
   readonly icon?: Component;
+  readonly layoutId?: LayoutId;
 
   readonly page: () => Component;
 
   constructor(option: AppRouteOption) {
-    this.key = option.key;
+    this.id = option.id;
     this.path = option.path;
     this.title = option.title;
     this.icon = option.icon;
+    this.layoutId = option.layoutId;
+
     this.page = option.page;
   }
 
   toVueRoute(): RouteRecordRaw {
     return {
-      name: this.key,
+      name: this.id,
       path: this.path,
       component: this.page,
     };
   }
 }
 
-export const HomeRoute = new AppRoute({
-  key: 'home',
+export const HOME_ROUTE = new AppRoute({
+  id: 'home',
   path: '/',
   title: 'Home',
   icon: markRaw(HomeIcon),
   page: () => import('@/pages/home/Home.page.vue'),
 });
-export const FursonaRoute = new AppRoute({
-  key: 'fursona',
+export const FURSONA_ROUTE = new AppRoute({
+  id: 'fursona',
   path: '/fursona',
   title: 'Fursona',
   icon: markRaw(FoxIcon),
   page: () => import('@/pages/fursona/Fursona.page.vue'),
 });
-export const FavouriteRoute = new AppRoute({
-  key: 'favourite',
+export const FAVOURITE_ROUTE = new AppRoute({
+  id: 'favourite',
   path: '/favourite',
   title: 'Favourite',
   page: () => import('@/pages/favourite/Favourite.page.vue'),
 });
-export const ProjectRoute = new AppRoute({
-  key: 'project',
+export const PROJECT_ROUTE = new AppRoute({
+  id: 'project',
   path: '/project',
   title: 'Project',
   page: () => import('@/pages/project/Project.page.vue'),
+});
+export const VALENTINE_ROUTE = new AppRoute({
+  id: 'valentine',
+  path: '/valentine',
+  title: 'Valentine',
+  layoutId: LayoutId.FULL,
+  page: () => import('@/pages/valentine/Valentine.page.vue'),
 });
 
 export const useNavigationStore = defineStore('navigation', () => {
   const route = useRoute();
 
-  const navigations = ref([HomeRoute, FursonaRoute, ProjectRoute, FavouriteRoute]);
+  const navigations = ref([HOME_ROUTE, FURSONA_ROUTE, PROJECT_ROUTE, FAVOURITE_ROUTE]);
 
   const currentNavigation = computed(() => {
-    return navigations.value.find((navigationRoute) => navigationRoute.key === route.name);
+    return navigations.value.find((navigationRoute) => navigationRoute.id === route.name);
   });
   const nextNavigation = computed(() => {
     const currentRouteName = route.name;
     const currentNavigation = navigations.value.find((navigation) => {
-      return navigation.key === currentRouteName;
+      return navigation.id === currentRouteName;
     });
 
     if (!currentNavigation) return;
@@ -94,3 +111,11 @@ export const useNavigationStore = defineStore('navigation', () => {
     nextNavigation,
   };
 });
+
+export function findAppRouteById(id?: string): AppRoute | undefined {
+  if (id === undefined) return;
+
+  return [HOME_ROUTE, FURSONA_ROUTE, FAVOURITE_ROUTE, PROJECT_ROUTE, VALENTINE_ROUTE].find(
+    (route) => route.id === id,
+  );
+}

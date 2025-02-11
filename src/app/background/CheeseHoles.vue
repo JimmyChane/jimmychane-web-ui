@@ -77,14 +77,15 @@ onUnmounted(() => {
 
       & > * {
         position: absolute;
+        width: var(--size);
+        height: var(--size);
 
         display: grid;
         place-items: center;
         border-radius: 50%;
-        background: var(--cheese-color);
+        background-color: var(--cheese-color);
 
-        width: var(--size);
-        height: var(--size);
+        transition: background-color 200ms ease;
       }
       & > *:nth-child(1) {
         left: -40vw;

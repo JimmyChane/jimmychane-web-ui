@@ -21,7 +21,7 @@ const cssViewMode = computed(() => {
     <div class="navigation-drawer-items">
       <AppNavigationDrawerItem
         v-for="route of navigationStore.navigations"
-        :key="route.key"
+        :key="route.id"
         :item="route"
       />
     </div>

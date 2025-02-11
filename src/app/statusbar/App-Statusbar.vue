@@ -24,6 +24,8 @@ import { APP_VERSION } from '@/config';
 
   background-color: var(--background-color-opacity50);
 
+  transition: background-color 200ms ease;
+
   @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
     --blur: 1rem;
     -webkit-backdrop-filter: blur(var(--blur));
