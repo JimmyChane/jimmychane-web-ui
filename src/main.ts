@@ -2,8 +2,7 @@ import { createPinia } from 'pinia';
 import { createApp } from 'vue';
 
 import '@/main.css';
-
-import router from './routes/router';
+import router from '@/router';
 
 import App from '@/app/App.vue';
 

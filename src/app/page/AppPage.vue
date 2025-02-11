@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
-import { useNavigationDrawerStore } from '@/app-components/navigation-drawer/navigation-drawer.store';
+import { useNavigationDrawerStore } from '@/stores/navigation-drawer.store';
 
 const navigationDrawerStore = useNavigationDrawerStore();
 

@@ -14,11 +14,14 @@ import PageFavouriteSection from './components/PageFavourite-section.vue';
         <span>Spaghetti</span>
         <span>Pizza</span>
         <span>Ramen</span>
+        <span>Sushi</span>
+        <span>Salmon</span>
       </PageFavouriteSection>
 
       <PageFavouriteSection title="Games" :icon="GameIcon">
         <span>Minecraft</span>
         <span>Factorio</span>
+        <span>Unrailed</span>
       </PageFavouriteSection>
     </div>
   </AppPage>

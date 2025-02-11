@@ -1,6 +1,10 @@
+<script setup lang="ts">
+import { APP_VERSION } from '@/config';
+</script>
+
 <template>
   <div class="App-footer">
-    <span>v0.11.6</span>
+    <span>v{{ APP_VERSION }}</span>
   </div>
 </template>
 

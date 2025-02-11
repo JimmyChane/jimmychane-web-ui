@@ -4,7 +4,7 @@ import { useScroll } from '@vueuse/core';
 import { computed, defineAsyncComponent, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 
-import { useNavigationDrawerStore } from '@/app-components/navigation-drawer/navigation-drawer.store';
+import { useNavigationDrawerStore } from '@/stores/navigation-drawer.store';
 import { useAppStore, useBottomsheetStore, useDialogStore, useThemeStore } from '@/stores/store';
 
 import AppActionbar from '@/app/actionbar/App-Actionbar.vue';

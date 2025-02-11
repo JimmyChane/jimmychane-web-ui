@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, defineAsyncComponent } from 'vue';
 
-import { useNavigationDrawerStore } from '@/app-components/navigation-drawer/navigation-drawer.store';
+import { useNavigationDrawerStore } from '@/stores/navigation-drawer.store';
 import { useNavigationStore } from '@/stores/navigation.store';
 import { useWindowStore } from '@/stores/store';
 

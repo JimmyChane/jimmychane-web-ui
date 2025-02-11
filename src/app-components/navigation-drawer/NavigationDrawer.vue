@@ -3,7 +3,7 @@ import { waitFrame } from '@chanzor/vue-utils';
 import { computedAsync } from '@vueuse/core';
 import { computed } from 'vue';
 
-import { NavigationDrawerState, useNavigationDrawerStore } from './navigation-drawer.store';
+import { NavigationDrawerState, useNavigationDrawerStore } from '@/stores/navigation-drawer.store';
 
 const navigationDrawerStore = useNavigationDrawerStore();
 
