@@ -5,6 +5,7 @@ import {
   FURSONA_ROUTE,
   HOME_ROUTE,
   PROJECT_ROUTE,
+  VALENTINE_ROUTE,
 } from '@/stores/navigation.store';
 
 const router = createRouter({
@@ -14,6 +15,7 @@ const router = createRouter({
     FURSONA_ROUTE.toVueRoute(),
     PROJECT_ROUTE.toVueRoute(),
     FAVOURITE_ROUTE.toVueRoute(),
+    VALENTINE_ROUTE.toVueRoute(),
     { path: '/:pathMatch(.*)*', redirect: { name: HOME_ROUTE.id } },
   ],
 });

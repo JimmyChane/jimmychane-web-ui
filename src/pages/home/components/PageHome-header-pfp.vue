@@ -41,7 +41,7 @@
   justify-content: flex-end;
 
   .PFP-background {
-    background: var(--cheese-color-pfp);
+    background-color: var(--cheese-color-pfp);
     position: absolute;
     bottom: 0;
     left: 0;
@@ -52,6 +52,8 @@
     z-index: 1;
 
     border-radius: 50%;
+
+    transition: background-color 200ms ease;
   }
 
   .PFP-image {
