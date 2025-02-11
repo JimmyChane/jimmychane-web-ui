@@ -2,9 +2,9 @@
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 
-import type { Route } from '@/stores/navigation.store';
+import type { AppRoute } from '@/stores/navigation.store';
 
-const props = defineProps<{ item: Route }>();
+const props = defineProps<{ item: AppRoute }>();
 const route = useRoute();
 const isSelected = computed(() => route.name === props.item.key);
 </script>

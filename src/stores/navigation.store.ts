@@ -1,30 +1,68 @@
 import { defineStore } from 'pinia';
 import { type Component, computed, markRaw, ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { type RouteRecordRaw, useRoute } from 'vue-router';
 
 import FoxIcon from '@/components/icon/Fox.icon.vue';
 import HomeIcon from '@/components/icon/Home.icon.vue';
 
-export interface Route {
-  key: string;
-  path: string;
-  title: string;
-  icon?: Component;
+export interface AppRouteOption {
+  readonly key: string;
+  readonly path: string;
+  readonly title: string;
+  readonly icon?: Component;
+  readonly page: () => Component;
+}
+export class AppRoute {
+  readonly key: string;
+  readonly path: string;
+  readonly title: string;
+  readonly icon?: Component;
+
+  private readonly page: () => Component;
+
+  constructor(option: AppRouteOption) {
+    this.key = option.key;
+    this.path = option.path;
+    this.title = option.title;
+    this.icon = option.icon;
+    this.page = option.page;
+  }
+
+  toVueRoute(): RouteRecordRaw {
+    return {
+      name: this.key,
+      path: this.path,
+      component: this.page,
+    };
+  }
 }
 
-export const HomeRoute: Route = { key: 'home', path: '/', title: 'Home', icon: markRaw(HomeIcon) };
-export const FursonaRoute: Route = {
+export const HomeRoute = new AppRoute({
+  key: 'home',
+  path: '/',
+  title: 'Home',
+  icon: markRaw(HomeIcon),
+  page: () => import('@/pages/home/Home.page.vue'),
+});
+export const FursonaRoute = new AppRoute({
   key: 'fursona',
   path: '/fursona',
   title: 'Fursona',
   icon: markRaw(FoxIcon),
-};
-export const FavouriteRoute: Route = {
+  page: () => import('@/pages/fursona/Fursona.page.vue'),
+});
+export const FavouriteRoute = new AppRoute({
   key: 'favourite',
   path: '/favourite',
   title: 'Favourite',
-};
-export const ProjectRoute: Route = { key: 'project', path: '/project', title: 'Project' };
+  page: () => import('@/pages/favourite/Favourite.page.vue'),
+});
+export const ProjectRoute = new AppRoute({
+  key: 'project',
+  path: '/project',
+  title: 'Project',
+  page: () => import('@/pages/project/Project.page.vue'),
+});
 
 export const useNavigationStore = defineStore('navigation', () => {
   const route = useRoute();
