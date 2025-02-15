@@ -1,14 +1,15 @@
-import { fileURLToPath, URL } from 'node:url';
-
+import vue from '@vitejs/plugin-vue';
+import { URL, fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
-import vue from '@vitejs/plugin-vue';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
     VitePWA({
+      selfDestroying: true,
+      injectRegister: null,
       registerType: 'prompt',
       manifestFilename: 'manifest.json',
       manifest: {
