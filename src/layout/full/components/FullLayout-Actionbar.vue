@@ -2,7 +2,7 @@
 import { useNavigationDrawerStore } from '@/stores/navigation-drawer.store';
 import { useNavigationStore } from '@/stores/navigation.store';
 
-import AppActionbarThemeToggler from '@/app/actionbar/App-Actionbar-ThemeToggler.vue';
+import AppThemeToggler from '@/app/theme-toggler/App-ThemeToggler.vue';
 
 defineProps<{ parentScrollTop: number }>();
 
@@ -24,7 +24,7 @@ const navigationDrawerStore = useNavigationDrawerStore();
         </span>
       </div>
 
-      <AppActionbarThemeToggler />
+      <AppThemeToggler />
     </div>
   </div>
 </template>

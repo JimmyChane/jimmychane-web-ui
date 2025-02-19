@@ -4,7 +4,8 @@ import { computed } from 'vue';
 import { useNavigationDrawerStore } from '@/stores/navigation-drawer.store';
 import { useNavigationStore } from '@/stores/navigation.store';
 
-import ThemeToggler from '../actionbar/App-Actionbar-ThemeToggler.vue';
+import AppThemeToggler from '@/app/theme-toggler/App-ThemeToggler.vue';
+
 import AppNavigationDrawerItem from './AppNavigationDrawer-Item.vue';
 
 const navigationStore = useNavigationStore();
@@ -26,7 +27,7 @@ const cssViewMode = computed(() => {
       />
     </div>
 
-    <ThemeToggler />
+    <AppThemeToggler />
   </div>
 </template>
 

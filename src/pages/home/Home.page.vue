@@ -4,7 +4,7 @@ import { computed } from 'vue';
 import { JimmyChane } from '@/models/Profile.model';
 import { FAVOURITE_ROUTE, FURSONA_ROUTE, PROJECT_ROUTE } from '@/stores/navigation.store';
 
-import AppPage from '@/app/page/AppPage.vue';
+import AppPage from '@/layout/navigation/components/page/AppPage.vue';
 
 import PFP from './components/PageHome-header-pfp.vue';
 import Labels from './components/PageHome-labels.vue';

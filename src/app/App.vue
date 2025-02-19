@@ -4,13 +4,17 @@ import { computed, defineAsyncComponent } from 'vue';
 import { useRoute } from 'vue-router';
 
 import { LayoutId, findAppRouteById } from '@/stores/navigation.store';
-import { useThemeStore } from '@/stores/store';
+import { useAppStore, useBottomsheetStore, useDialogStore, useThemeStore } from '@/stores/store';
 
 const FullLayout = defineAsyncComponent(() => import('@/layout/full/Full.layout.vue'));
 const NavigationLayout = defineAsyncComponent(
   () => import('@/layout/navigation/Navigation.layout.vue'),
 );
 
+const Bottomsheet = defineAsyncComponent(() => import('@/app/bottomsheet/Bottomsheet.vue'));
+const DialogPopup = defineAsyncComponent(() => import('@/app/dialog-popup/DialogPopup.vue'));
+
+const appStore = useAppStore();
 const themeStore = useThemeStore();
 const route = useRoute();
 const appRoute = computed(() => findAppRouteById(route.name?.toString()));
@@ -18,20 +22,48 @@ const layoutId = computed(() => appRoute.value?.layoutId ?? LayoutId.NAVIGATION)
 </script>
 
 <template>
-  <FullLayout
-    class="app"
-    v-if="layoutId === LayoutId.FULL"
-    :data-dark="themeStore.theme.id === ThemeId.DARK"
-  />
-  <NavigationLayout
-    class="app"
-    v-if="layoutId === LayoutId.NAVIGATION"
-    :data-dark="themeStore.theme.id === ThemeId.DARK"
-  />
+  <div class="app" :data-dark="themeStore.theme.id === ThemeId.DARK">
+    <FullLayout v-if="layoutId === LayoutId.FULL" />
+    <NavigationLayout v-if="layoutId === LayoutId.NAVIGATION" />
+    <Bottomsheet
+      v-if="appStore.useBottomsheetComponent"
+      v-for="item of useBottomsheetStore().items"
+      :style="{ 'z-index': `${3 + useBottomsheetStore().items.length}` }"
+      :key="item.id"
+      :bottomsheet="item"
+    />
+    <DialogPopup
+      v-if="appStore.useDialogPopupComponent"
+      v-for="item of useDialogStore().items"
+      :style="{ 'z-index': `${4 + useDialogStore().items.length} ` }"
+      :key="item.id"
+      :dialog="item"
+    />
+  </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .app {
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  color: var(--color-active);
+  background-color: var(--background-color);
+
+  position: relative;
+
+  width: 100%;
+  height: 100dvh;
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
+
+  transition: background-color 200ms ease;
+
   &[data-dark='false'] {
     --color: #fff48c;
     --color-dark: #74500e;

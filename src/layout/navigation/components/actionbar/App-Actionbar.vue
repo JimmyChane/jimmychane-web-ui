@@ -5,10 +5,10 @@ import { useNavigationDrawerStore } from '@/stores/navigation-drawer.store';
 import { useNavigationStore } from '@/stores/navigation.store';
 import { useWindowStore } from '@/stores/store';
 
-import AppActionbarThemeToggler from './App-Actionbar-ThemeToggler.vue';
+import AppThemeToggler from '@/app/theme-toggler/App-ThemeToggler.vue';
 
-const Hamburger = defineAsyncComponent(() => import('./App-Actionbar-Hamburger.vue'));
-const Nav = defineAsyncComponent(() => import('./App-Actionbar-Nav.vue'));
+const AppActionbarHamburger = defineAsyncComponent(() => import('./App-Actionbar-Hamburger.vue'));
+const AppActionbarNav = defineAsyncComponent(() => import('./App-Actionbar-Nav.vue'));
 
 defineProps<{ parentScrollTop: number }>();
 
@@ -30,7 +30,7 @@ const isUsingDrawer = computed(() => {
   >
     <div class="App-actionbar-content">
       <div class="App-actionbar-title" v-if="isUsingDrawer">
-        <Hamburger />
+        <AppActionbarHamburger />
 
         <span v-if="navigationStore.currentNavigation">
           {{ navigationStore.currentNavigation.title }}
@@ -38,10 +38,14 @@ const isUsingDrawer = computed(() => {
       </div>
 
       <div v-if="!isUsingDrawer" class="App-actionbar-items">
-        <Nav v-for="route of navigationStore.navigations" :key="route.id" :item="route" />
+        <AppActionbarNav
+          v-for="route of navigationStore.navigations"
+          :key="route.id"
+          :item="route"
+        />
       </div>
 
-      <AppActionbarThemeToggler />
+      <AppThemeToggler />
     </div>
   </div>
 </template>

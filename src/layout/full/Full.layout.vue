@@ -36,15 +36,8 @@ const { y } = useScroll(layoutBodyRef, { behavior: 'smooth' });
 
 <style lang="scss">
 .full-layout {
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
   --actionbar-height: 4.5rem;
   --statusbar-height: 1.5rem;
-
-  color: var(--color-active);
-  background-color: var(--background-color);
 
   position: relative;
 

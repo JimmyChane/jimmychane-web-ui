@@ -4,7 +4,7 @@ import ImageGryfder from '@/assets/showcase/showcase-gryfder-deficere.webp';
 import ImageRhougous from '@/assets/showcase/showcase-rhougous-hiroki.webp';
 import ImageRory from '@/assets/showcase/showcase-rory-xavier.webp';
 
-import AppPage from '@/app/page/AppPage.vue';
+import AppPage from '@/layout/navigation/components/page/AppPage.vue';
 
 import Label from './components/PageProject-group-label.vue';
 import Labels from './components/PageProject-group-labels.vue';
