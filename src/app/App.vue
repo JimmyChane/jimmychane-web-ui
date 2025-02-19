@@ -4,21 +4,37 @@ import { computed, defineAsyncComponent } from 'vue';
 import { useRoute } from 'vue-router';
 
 import { LayoutId, findAppRouteById } from '@/stores/navigation.store';
-import { useAppStore, useBottomsheetStore, useDialogStore, useThemeStore } from '@/stores/store';
+import {
+  useAppStore,
+  useBottomsheetStore,
+  useDialogStore,
+  useThemeStore,
+} from '@/stores/store';
 
-const FullLayout = defineAsyncComponent(() => import('@/layout/full/Full.layout.vue'));
+import AppRouteLoading from './route-loading/App-RouteLoading.vue';
+
+const FullLayout = defineAsyncComponent(
+  () => import('@/layout/full/Full.layout.vue'),
+);
 const NavigationLayout = defineAsyncComponent(
   () => import('@/layout/navigation/Navigation.layout.vue'),
 );
 
-const Bottomsheet = defineAsyncComponent(() => import('@/app/bottomsheet/Bottomsheet.vue'));
-const DialogPopup = defineAsyncComponent(() => import('@/app/dialog-popup/DialogPopup.vue'));
+const Bottomsheet = defineAsyncComponent(
+  () => import('@/app/bottomsheet/Bottomsheet.vue'),
+);
+const DialogPopup = defineAsyncComponent(
+  () => import('@/app/dialog-popup/DialogPopup.vue'),
+);
 
 const appStore = useAppStore();
 const themeStore = useThemeStore();
 const route = useRoute();
+
 const appRoute = computed(() => findAppRouteById(route.name?.toString()));
-const layoutId = computed(() => appRoute.value?.layoutId ?? LayoutId.NAVIGATION);
+const layoutId = computed(
+  () => appRoute.value?.layoutId ?? LayoutId.NAVIGATION,
+);
 </script>
 
 <template>
@@ -39,10 +55,12 @@ const layoutId = computed(() => appRoute.value?.layoutId ?? LayoutId.NAVIGATION)
       :key="item.id"
       :dialog="item"
     />
+
+    <AppRouteLoading />
   </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .app {
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;

@@ -14,7 +14,9 @@ import AppActionbar from './components/actionbar/App-Actionbar.vue';
 const AppNavigationDrawer = defineAsyncComponent(
   () => import('./components/navigation-drawer/AppNavigationDrawer.vue'),
 );
-const NavigationDrawer = defineAsyncComponent(() => import('./components/NavigationDrawer.vue'));
+const NavigationDrawer = defineAsyncComponent(
+  () => import('./components/NavigationDrawer.vue'),
+);
 
 const route = useRoute();
 const appStore = useAppStore();
@@ -56,7 +58,10 @@ const { y } = useScroll(layoutBodyRef, { behavior: 'smooth' });
       <AppStatusbar style="z-index: 2" />
     </div>
 
-    <NavigationDrawer v-if="appStore.useNavigationDrawerComponent" style="z-index: 2">
+    <NavigationDrawer
+      v-if="appStore.useNavigationDrawerComponent"
+      style="z-index: 2"
+    >
       <AppNavigationDrawer />
     </NavigationDrawer>
   </div>

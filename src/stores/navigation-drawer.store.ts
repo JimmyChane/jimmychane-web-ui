@@ -31,14 +31,16 @@ export const useNavigationDrawerStore = defineStore('navigation-drawer', () => {
   const viewStates = ref<Partial<Record<ViewState, NavigationDrawerState>>>({});
 
   const isShowing = computed(() => {
-    return [NavigationDrawerState.SNAP_WIDE, NavigationDrawerState.DRAWER_WIDE_SHOW].includes(
-      currentViewState.value,
-    );
+    return [
+      NavigationDrawerState.SNAP_WIDE,
+      NavigationDrawerState.DRAWER_WIDE_SHOW,
+    ].includes(currentViewState.value);
   });
   const isSnap = computed(() => {
-    return [NavigationDrawerState.SNAP_THIN, NavigationDrawerState.SNAP_WIDE].includes(
-      currentViewState.value,
-    );
+    return [
+      NavigationDrawerState.SNAP_THIN,
+      NavigationDrawerState.SNAP_WIDE,
+    ].includes(currentViewState.value);
   });
   const isDrawer = computed(() => {
     return [

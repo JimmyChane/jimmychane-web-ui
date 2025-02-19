@@ -15,7 +15,11 @@ onMounted(() => props.bottomsheet.open());
 
 <template>
   <div class="bottomsheet" :data-showing="isShowing">
-    <div style="grid-area: body" class="bottomsheet-close" @click="clickClose"></div>
+    <div
+      style="grid-area: body"
+      class="bottomsheet-close"
+      @click="clickClose"
+    ></div>
     <div style="grid-area: body" class="bottomsheet-body">
       <component :is="bottomsheet.component" :bottomsheet="bottomsheet" />
     </div>

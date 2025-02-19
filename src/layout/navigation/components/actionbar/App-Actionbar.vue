@@ -7,8 +7,12 @@ import { useWindowStore } from '@/stores/store';
 
 import AppThemeToggler from '@/app/theme-toggler/App-ThemeToggler.vue';
 
-const AppActionbarHamburger = defineAsyncComponent(() => import('./App-Actionbar-Hamburger.vue'));
-const AppActionbarNav = defineAsyncComponent(() => import('./App-Actionbar-Nav.vue'));
+const AppActionbarHamburger = defineAsyncComponent(
+  () => import('./App-Actionbar-Hamburger.vue'),
+);
+const AppActionbarNav = defineAsyncComponent(
+  () => import('./App-Actionbar-Nav.vue'),
+);
 
 defineProps<{ parentScrollTop: number }>();
 

@@ -2,7 +2,11 @@
 import { computed } from 'vue';
 
 import { JimmyChane } from '@/models/Profile.model';
-import { FAVOURITE_ROUTE, FURSONA_ROUTE, PROJECT_ROUTE } from '@/stores/navigation.store';
+import {
+  FAVOURITE_ROUTE,
+  FURSONA_ROUTE,
+  PROJECT_ROUTE,
+} from '@/stores/navigation.store';
 
 import AppPage from '@/layout/navigation/components/page/AppPage.vue';
 
@@ -31,7 +35,11 @@ const routes = computed(() => {
         <Labels :labels="labels" />
 
         <div class="PageHome-socials" style="grid-area: socials">
-          <SocialVue v-for="social of socials" :key="social.socialPlatform.title" :item="social" />
+          <SocialVue
+            v-for="social of socials"
+            :key="social.socialPlatform.title"
+            :item="social"
+          />
         </div>
 
         <p class="PageHome-description" style="grid-area: description">
@@ -40,7 +48,11 @@ const routes = computed(() => {
       </div>
 
       <div class="PageHome-routes">
-        <RouterLink v-for="route of routes" :key="route.id" :to="{ name: route.id }">
+        <RouterLink
+          v-for="route of routes"
+          :key="route.id"
+          :to="{ name: route.id }"
+        >
           {{ route.title }}
         </RouterLink>
       </div>
@@ -51,7 +63,9 @@ const routes = computed(() => {
 <style lang="scss" scoped>
 .PageHome {
   min-height: calc(
-    100dvh - var(--statusbar-height) - var(--App-page-padding) - var(--App-page-padding)
+    100dvh - var(--statusbar-height) - var(--App-page-padding) - var(
+        --App-page-padding
+      )
   );
   min-height: 55dvh;
   gap: 3rem;

@@ -39,11 +39,7 @@ export class AppRoute {
   }
 
   toVueRoute(): RouteRecordRaw {
-    return {
-      name: this.id,
-      path: this.path,
-      component: this.page,
-    };
+    return { name: this.id, path: this.path, component: this.page };
   }
 }
 
@@ -84,10 +80,17 @@ export const VALENTINE_ROUTE = new AppRoute({
 export const useNavigationStore = defineStore('navigation', () => {
   const route = useRoute();
 
-  const navigations = ref([HOME_ROUTE, FURSONA_ROUTE, PROJECT_ROUTE, FAVOURITE_ROUTE]);
+  const navigations = ref([
+    HOME_ROUTE,
+    FURSONA_ROUTE,
+    PROJECT_ROUTE,
+    FAVOURITE_ROUTE,
+  ]);
 
   const currentNavigation = computed(() => {
-    return navigations.value.find((navigationRoute) => navigationRoute.id === route.name);
+    return navigations.value.find(
+      (navigationRoute) => navigationRoute.id === route.name,
+    );
   });
   const nextNavigation = computed(() => {
     const currentRouteName = route.name;
@@ -115,7 +118,11 @@ export const useNavigationStore = defineStore('navigation', () => {
 export function findAppRouteById(id?: string): AppRoute | undefined {
   if (id === undefined) return;
 
-  return [HOME_ROUTE, FURSONA_ROUTE, FAVOURITE_ROUTE, PROJECT_ROUTE, VALENTINE_ROUTE].find(
-    (route) => route.id === id,
-  );
+  return [
+    HOME_ROUTE,
+    FURSONA_ROUTE,
+    FAVOURITE_ROUTE,
+    PROJECT_ROUTE,
+    VALENTINE_ROUTE,
+  ].find((route) => route.id === id);
 }

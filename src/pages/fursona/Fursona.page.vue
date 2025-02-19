@@ -9,7 +9,10 @@ import Section from './components/PageFursona-section.vue';
 
 <template>
   <AppPage>
-    <Section class="PageFursona" style="--text-color: var(--section-fursona-text-color)">
+    <Section
+      class="PageFursona"
+      style="--text-color: var(--section-fursona-text-color)"
+    >
       <img
         class="PageFursona-fursona-preview"
         :src="JimmyChane.fursona.image"
@@ -18,7 +21,10 @@ import Section from './components/PageFursona-section.vue';
       />
 
       <template v-for="section of JimmyChane.fursona.sections">
-        <FursonaHeader :title="section.titles.title" :subtitle="section.titles.subtitle" />
+        <FursonaHeader
+          :title="section.titles.title"
+          :subtitle="section.titles.subtitle"
+        />
         <p>{{ section.description }}</p>
       </template>
     </Section>
