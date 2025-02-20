@@ -8,10 +8,9 @@ import {
   computedAsync,
   useTransition,
 } from '@vueuse/core';
-import { onMounted, ref, watch } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
-const route = useRoute();
 const router = useRouter();
 
 let updateTime = 0;
@@ -74,24 +73,21 @@ async function animateEndRoute() {
   percentageSource.value = 1;
 }
 
-onMounted(() => {
-  router.beforeEach((_to, _from, next) => {
-    if (!isRouteBeforeOnce.value) {
-      isRouteBeforeOnce.value = true;
-    } else {
-      animateStartRoute();
-    }
+router.beforeEach((_to, _from, next) => {
+  if (!isRouteBeforeOnce.value) {
+    isRouteBeforeOnce.value = true;
+  } else {
+    animateStartRoute();
+  }
 
-    next();
-  });
-
-  watch(route, () => {
-    if (!isRouteWatchOnce.value) {
-      isRouteWatchOnce.value = true;
-    } else {
-      animateEndRoute();
-    }
-  });
+  next();
+});
+router.afterEach(() => {
+  if (!isRouteWatchOnce.value) {
+    isRouteWatchOnce.value = true;
+  } else {
+    animateEndRoute();
+  }
 });
 </script>
 
@@ -119,7 +115,7 @@ onMounted(() => {
     width: calc(100% * var(--percentage));
     min-height: var(--height);
 
-    background-color: var(--color-dark);
+    background-color: var(--color-active);
 
     transition: opacity 200ms ease;
   }
