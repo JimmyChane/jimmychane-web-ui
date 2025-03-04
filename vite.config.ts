@@ -26,15 +26,8 @@ export default defineConfig({
         background_color: '#E0F7F2',
         display: 'browser',
       },
-      workbox: {
-        cleanupOutdatedCaches: true,
-        globPatterns: ['**/*'],
-      },
+      workbox: { cleanupOutdatedCaches: true, globPatterns: ['**/*'] },
     }),
   ],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-    },
-  },
+  resolve: { alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) } },
 });
