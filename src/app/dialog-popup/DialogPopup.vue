@@ -4,7 +4,6 @@ import { onMounted, onUnmounted, ref } from 'vue';
 
 import DismissableContainer from './DismissableContainer.vue';
 
-const emits = defineEmits<{ clickShow: [void]; clickDismiss: [void] }>();
 const props = defineProps<DialogProps>();
 
 let dismissTime = 0;
