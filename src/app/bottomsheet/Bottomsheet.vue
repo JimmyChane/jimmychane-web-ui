@@ -6,9 +6,9 @@ const props = defineProps<BottomsheetProps>();
 
 const isShowing = computed(() => props.bottomsheet.isShowing);
 
-function clickClose() {
+const clickClose = () => {
   props.bottomsheet.close();
-}
+};
 
 onMounted(() => props.bottomsheet.open());
 </script>

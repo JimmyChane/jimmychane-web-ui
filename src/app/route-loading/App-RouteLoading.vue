@@ -38,7 +38,7 @@ const opacityDelay = ref(500);
 const isRouteBeforeOnce = ref(false);
 const isRouteWatchOnce = ref(false);
 
-async function animateStartRoute() {
+const animateStartRoute = async () => {
   const now = (updateTime = Date.now());
 
   await waitFrame();
@@ -61,8 +61,8 @@ async function animateStartRoute() {
   transition.value = TransitionPresets.easeOutCubic;
   duration.value = 3000;
   percentageSource.value = 0.8;
-}
-async function animateEndRoute() {
+};
+const animateEndRoute = async () => {
   const now = (updateTime = Date.now());
 
   await waitFrame();
@@ -71,7 +71,7 @@ async function animateEndRoute() {
   transition.value = TransitionPresets.easeInOutCubic;
   duration.value = 700;
   percentageSource.value = 1;
-}
+};
 
 router.beforeEach((_to, _from, next) => {
   if (!isRouteBeforeOnce.value) {

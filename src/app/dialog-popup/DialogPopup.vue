@@ -10,7 +10,7 @@ let dismissTime = 0;
 
 const preventKeyDown = ref(false);
 
-async function dismiss() {
+const dismiss = async () => {
   preventKeyDown.value = true;
   const time = (dismissTime = Date.now());
   if (props.dialog.onBeforeClose) {
@@ -27,13 +27,13 @@ async function dismiss() {
   }
 
   props.dialog.close();
-}
+};
 
-async function onKeyDown(e: KeyboardEvent) {
+const onKeyDown = async (e: KeyboardEvent) => {
   if (preventKeyDown.value) return;
 
   if (e.key === 'Escape') dismiss();
-}
+};
 
 onMounted(() => {
   props.dialog.open();

@@ -3,9 +3,9 @@ import { onMounted, onUnmounted, ref } from 'vue';
 
 const scrollTop = ref(0);
 
-function onScroll() {
+const onScroll = () => {
   scrollTop.value = window.scrollY;
-}
+};
 
 onMounted(() => {
   window.addEventListener('scroll', onScroll);
