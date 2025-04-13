@@ -7,9 +7,9 @@ import {
   ref,
 } from 'vue';
 
-export function useAsyncComponent<
-  T extends Component = { new (): ComponentPublicInstance },
->(source: AsyncComponentLoader<T>) {
+export function useAsyncComponent<T extends Component = { new (): ComponentPublicInstance }>(
+  source: AsyncComponentLoader<T>,
+) {
   const isLoaded = ref(false);
   const isLoading = ref(false);
   const isError = ref(false);

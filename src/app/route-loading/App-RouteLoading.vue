@@ -16,14 +16,9 @@ const router = useRouter();
 let updateTime = 0;
 
 const duration = ref(0);
-const transition = ref<CubicBezierPoints | EasingFunction>(
-  TransitionPresets.easeInOutCubic,
-);
+const transition = ref<CubicBezierPoints | EasingFunction>(TransitionPresets.easeInOutCubic);
 const percentageSource = ref(0);
-const percentageOutput = useTransition(percentageSource, {
-  duration,
-  transition,
-});
+const percentageOutput = useTransition(percentageSource, { duration, transition });
 
 const opacity = computedAsync(async () => {
   if (percentageSource.value === 1) {
@@ -93,9 +88,7 @@ router.afterEach(() => {
 
 <template>
   <div class="app-route-load" style="z-index: 99">
-    <span
-      :style="{ '--percentage': percentageOutput, opacity: opacity }"
-    ></span>
+    <span :style="{ '--percentage': percentageOutput, opacity: opacity }"></span>
   </div>
 </template>
 

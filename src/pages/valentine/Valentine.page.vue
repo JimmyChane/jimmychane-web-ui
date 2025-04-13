@@ -36,20 +36,11 @@ const noText = computed(() => {
       </div>
     </div>
 
-    <div
-      v-else
-      class="confirming"
-      :style="{ '--no-count': noCount * 0.25 + 1 }"
-    >
+    <div v-else class="confirming" :style="{ '--no-count': noCount * 0.25 + 1 }">
       <div class="dialog">
         <div>Will you be my valentine?</div>
         <div class="dialog-confirm">
-          <button
-            class="dialog-confirm-yes"
-            @click="() => (isYesClicked = true)"
-          >
-            Yes
-          </button>
+          <button class="dialog-confirm-yes" @click="() => (isYesClicked = true)">Yes</button>
           <button class="dialog-confirm-no" @click="() => noCount++">
             {{ noText }}
           </button>

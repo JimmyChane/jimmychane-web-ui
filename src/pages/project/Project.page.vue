@@ -30,9 +30,8 @@ import Section from './components/PageProject-project-section.vue';
         />
 
         <p>
-          I'm helping develop a user-friendly website with smooth profile
-          picture header animations, a biography, and seamless integration of
-          social media and contact options.
+          I'm helping develop a user-friendly website with smooth profile picture header animations,
+          a biography, and seamless integration of social media and contact options.
         </p>
 
         <Labels class="PageProject-project-labels">
@@ -82,10 +81,9 @@ import Section from './components/PageProject-project-section.vue';
         />
 
         <p>
-          I built a website from scratch to help my friend create a visually
-          appealing online presence for his fursona. The site features a
-          well-designed layout, intuitive background use, and smooth transitions
-          between pages for an enhanced user experience.
+          I built a website from scratch to help my friend create a visually appealing online
+          presence for his fursona. The site features a well-designed layout, intuitive background
+          use, and smooth transitions between pages for an enhanced user experience.
         </p>
 
         <Labels class="PageProject-project-labels">
@@ -112,12 +110,10 @@ import Section from './components/PageProject-project-section.vue';
         />
 
         <p>
-          I built a website for Freshnet Enterprise, a computer store, to
-          enhance its online presence. The website provides detailed information
-          about the company's contacts, business hours, services, and location.
-          With a user-friendly layout, it focuses on retaining customers and
-          driving growth for Freshnet Enterprise in today's competitive
-          marketplace.
+          I built a website for Freshnet Enterprise, a computer store, to enhance its online
+          presence. The website provides detailed information about the company's contacts, business
+          hours, services, and location. With a user-friendly layout, it focuses on retaining
+          customers and driving growth for Freshnet Enterprise in today's competitive marketplace.
         </p>
 
         <Labels class="PageProject-project-labels">

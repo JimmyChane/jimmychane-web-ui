@@ -80,17 +80,10 @@ export const VALENTINE_ROUTE = new AppRoute({
 export const useNavigationStore = defineStore('navigation', () => {
   const route = useRoute();
 
-  const navigations = ref([
-    HOME_ROUTE,
-    FURSONA_ROUTE,
-    PROJECT_ROUTE,
-    FAVOURITE_ROUTE,
-  ]);
+  const navigations = ref([HOME_ROUTE, FURSONA_ROUTE, PROJECT_ROUTE, FAVOURITE_ROUTE]);
 
   const currentNavigation = computed(() => {
-    return navigations.value.find(
-      (navigationRoute) => navigationRoute.id === route.name,
-    );
+    return navigations.value.find((navigationRoute) => navigationRoute.id === route.name);
   });
   const nextNavigation = computed(() => {
     const currentRouteName = route.name;
@@ -108,21 +101,13 @@ export const useNavigationStore = defineStore('navigation', () => {
     return navigations.value[nextNavigationIndex];
   });
 
-  return {
-    navigations: computed(() => navigations.value),
-    currentNavigation,
-    nextNavigation,
-  };
+  return { navigations: computed(() => navigations.value), currentNavigation, nextNavigation };
 });
 
 export function findAppRouteById(id?: string): AppRoute | undefined {
   if (id === undefined) return;
 
-  return [
-    HOME_ROUTE,
-    FURSONA_ROUTE,
-    FAVOURITE_ROUTE,
-    PROJECT_ROUTE,
-    VALENTINE_ROUTE,
-  ].find((route) => route.id === id);
+  return [HOME_ROUTE, FURSONA_ROUTE, FAVOURITE_ROUTE, PROJECT_ROUTE, VALENTINE_ROUTE].find(
+    (route) => route.id === id,
+  );
 }

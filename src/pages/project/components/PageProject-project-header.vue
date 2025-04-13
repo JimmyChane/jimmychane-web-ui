@@ -1,18 +1,14 @@
 <script setup lang="ts">
-withDefaults(
-  defineProps<{ title?: string; subtitle?: string; href?: string }>(),
-  { title: '', subtitle: '', href: '' },
-);
+withDefaults(defineProps<{ title?: string; subtitle?: string; href?: string }>(), {
+  title: '',
+  subtitle: '',
+  href: '',
+});
 </script>
 
 <template>
   <div class="PageCode-header">
-    <a
-      class="PageCode-title"
-      v-if="title.length && href.length"
-      :href="href"
-      target="_blank"
-    >
+    <a class="PageCode-title" v-if="title.length && href.length" :href="href" target="_blank">
       <h3>
         {{ title }}
         <img

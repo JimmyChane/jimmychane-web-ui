@@ -15,18 +15,11 @@ export const useAppStore = defineStore('app', () => {
   const useBottomsheetComponent = ref(false);
   const useDialogPopupComponent = ref(false);
 
-  return {
-    useNavigationDrawerComponent,
-    useBottomsheetComponent,
-    useDialogPopupComponent,
-  };
+  return { useNavigationDrawerComponent, useBottomsheetComponent, useDialogPopupComponent };
 });
 
 export const useThemeStore = defineStore('theme', () => {
-  return defineThemeStoreDefinition({
-    lightIcon: LightThemeIcon,
-    darkIcon: DarkThemeIcon,
-  });
+  return defineThemeStoreDefinition({ lightIcon: LightThemeIcon, darkIcon: DarkThemeIcon });
 });
 
 export const useWindowStore = defineStore('window', () => {

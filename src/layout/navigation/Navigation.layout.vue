@@ -12,10 +12,9 @@ import AppStatusbar from '@/app/statusbar/App-Statusbar.vue';
 
 import AppActionbar from './components/actionbar/App-Actionbar.vue';
 
-const { Component: AppNavigationDrawer, isLoaded: isNavigationDrawerLoaded } =
-  useAsyncComponent(
-    () => import('./components/navigation-drawer/AppNavigationDrawer.vue'),
-  );
+const { Component: AppNavigationDrawer, isLoaded: isNavigationDrawerLoaded } = useAsyncComponent(
+  () => import('./components/navigation-drawer/AppNavigationDrawer.vue'),
+);
 
 const route = useRoute();
 const appStore = useAppStore();
@@ -67,10 +66,7 @@ onMounted(() => {
       <AppStatusbar style="z-index: 2" />
     </div>
 
-    <AppNavigationDrawer
-      v-if="appStore.useNavigationDrawerComponent"
-      style="z-index: 2"
-    />
+    <AppNavigationDrawer v-if="appStore.useNavigationDrawerComponent" style="z-index: 2" />
   </div>
 </template>
 

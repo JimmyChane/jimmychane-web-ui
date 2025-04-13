@@ -20,10 +20,7 @@ const indexTheme = computed(() => {
 
 <template>
   <div class="App-actionbar-theme">
-    <div
-      class="App-actionbar-theme-highlight"
-      :style="{ '--item-index': `${indexTheme}` }"
-    ></div>
+    <div class="App-actionbar-theme-highlight" :style="{ '--item-index': `${indexTheme}` }"></div>
     <button aria-label="Light Theme" @click="() => themeStore.toggleThemes()">
       <component :is="themeStore.LIGHT_THEME.icon" :size="20" />
     </button>
@@ -58,9 +55,7 @@ const indexTheme = computed(() => {
   --container-gap: 0.2em;
   --container-padding: 0.2em;
   --item-width: calc(
-    calc(100% / var(--item-count)) - calc(
-        var(--container-gap) * calc(var(--item-count) - 1)
-      )
+    calc(100% / var(--item-count)) - calc(var(--container-gap) * calc(var(--item-count) - 1))
   );
   --item-height: 3em;
   --item-index: 0;
@@ -90,9 +85,7 @@ const indexTheme = computed(() => {
   }
   .App-actionbar-theme-highlight {
     position: absolute;
-    left: calc(
-      var(--container-padding) + calc(var(--item-width) * var(--item-index))
-    );
+    left: calc(var(--container-padding) + calc(var(--item-width) * var(--item-index)));
 
     transition: all 400ms ease;
 

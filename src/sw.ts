@@ -4,9 +4,7 @@ export async function uninstallServiceWorker() {
   if (!('serviceWorker' in navigator)) return;
 
   window.addEventListener('load', async () => {
-    const regs = await navigator.serviceWorker
-      .getRegistrations()
-      .catch((error: Error) => error);
+    const regs = await navigator.serviceWorker.getRegistrations().catch((error: Error) => error);
     if (regs instanceof Error) {
       console.error('Service worker get registrations failed: ', regs);
       return;
@@ -43,9 +41,7 @@ export async function clearSwCache() {
   if (!('caches' in window)) return;
 
   window.addEventListener('load', async () => {
-    const regs = await navigator.serviceWorker
-      .getRegistrations()
-      .catch((error: Error) => error);
+    const regs = await navigator.serviceWorker.getRegistrations().catch((error: Error) => error);
     if (regs instanceof Error) {
       console.error('Service worker get registrations failed: ', regs);
       return;
