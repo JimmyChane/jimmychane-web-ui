@@ -5,8 +5,10 @@ import { useRoute } from 'vue-router';
 
 import { useDialogPopupStore } from '@/stores/dialog-popup.store';
 import { LayoutId, findAppRouteById } from '@/stores/navigation.store';
+import { usePopoverStore } from '@/stores/popover.store';
 import { useAppStore, useBottomsheetStore, useThemeStore } from '@/stores/store';
 
+import Popover from './popover/Popover.vue';
 import AppRouteLoading from './route-loading/App-RouteLoading.vue';
 
 const FullLayout = defineAsyncComponent(() => import('@/layout/full/Full.layout.vue'));
@@ -42,6 +44,13 @@ const layoutId = computed(() => appRoute.value?.layoutId ?? LayoutId.NAVIGATION)
       :style="{ 'z-index': `${4 + useDialogPopupStore().items.length} ` }"
       :key="dialogPopup.id"
       :dialog-popup="dialogPopup"
+    />
+    <Popover
+      v-if="appStore.usePopoverComponent"
+      v-for="popover of usePopoverStore().items"
+      :style="{ 'z-index': `${5 + usePopoverStore().items.length} ` }"
+      :key="popover.timeCreate"
+      :popover="popover"
     />
 
     <AppRouteLoading />

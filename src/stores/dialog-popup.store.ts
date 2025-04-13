@@ -100,6 +100,7 @@ export const useDialogPopupStore = defineStore('dialog-popup', () => {
 
   const route = useRoute();
 
+  // todo: rename to models
   const items = ref<DialogPopup[]>([]);
 
   const open = <P>(key: string, option: DialogPopupOption<P>): DialogPopup<P> => {

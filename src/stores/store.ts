@@ -13,8 +13,14 @@ export const useAppStore = defineStore('app', () => {
   const useNavigationDrawerComponent = ref(false);
   const useBottomsheetComponent = ref(false);
   const useDialogPopupComponent = ref(false);
+  const usePopoverComponent = ref(false);
 
-  return { useNavigationDrawerComponent, useBottomsheetComponent, useDialogPopupComponent };
+  return {
+    useNavigationDrawerComponent,
+    useBottomsheetComponent,
+    useDialogPopupComponent,
+    usePopoverComponent,
+  };
 });
 
 export const useThemeStore = defineStore('theme', () => {
