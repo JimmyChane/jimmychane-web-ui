@@ -4,17 +4,16 @@ withDefaults(defineProps<{ size?: number }>(), { size: 32 });
 
 <template>
   <svg
-    class="icon-food"
     version="1.0"
     xmlns="http://www.w3.org/2000/svg"
-    :width="size"
-    :height="size"
+    width="1em"
+    height="1em"
     viewBox="0 0 512.000000 512.000000"
     preserveAspectRatio="xMidYMid meet"
   >
     <g
       transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
-      fill="#000000"
+      fill="currentColor"
       stroke="none"
     >
       <path
@@ -53,11 +52,3 @@ withDefaults(defineProps<{ size?: number }>(), { size: 32 });
     </g>
   </svg>
 </template>
-
-<style scoped lang="scss">
-.icon-food {
-  path {
-    fill: var(--color);
-  }
-}
-</style>

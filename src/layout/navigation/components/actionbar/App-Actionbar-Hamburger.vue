@@ -10,7 +10,7 @@ import HamburgerIcon from '@/components/icon/Hamburger.icon.vue';
     aria-label="Hamburger"
     @click="() => useNavigationDrawerStore().toggle()"
   >
-    <HamburgerIcon :size="24" />
+    <HamburgerIcon />
   </button>
 </template>
 
@@ -29,8 +29,10 @@ import HamburgerIcon from '@/components/icon/Hamburger.icon.vue';
   border: none;
   background: none;
 
+  color: var(--color-active);
+
   & > * {
-    --color: var(--color-active);
+    font-size: 1.25rem;
   }
 }
 </style>

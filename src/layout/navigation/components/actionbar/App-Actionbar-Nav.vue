@@ -40,6 +40,10 @@ const isSelected = computed(() => route.name === props.item.id);
   justify-content: center;
 
   transition: all 400ms ease;
+
+  .App-Nav-icon {
+    font-size: 1.042rem;
+  }
 }
 .App-Nav[isSelected='false'] {
   --color: var(--color-active);
