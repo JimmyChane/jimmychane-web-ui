@@ -33,7 +33,7 @@ export const useWindowStore = defineStore('window', () => {
 
 export const useBottomsheetStore = defineStore('bottomsheet', () => {
   return defineBottomsheetStoreDefinition({
-    onCreated() {
+    onCreated: () => {
       useAppStore().useBottomsheetComponent = true;
     },
   });

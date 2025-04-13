@@ -3,12 +3,11 @@ import { ThemeId } from '@chanzor/vue-utils';
 import { computed, defineAsyncComponent } from 'vue';
 import { useRoute } from 'vue-router';
 
-import { useDialogPopupStore } from '@/stores/dialog-popup.store';
+import { useDialogPopupStore } from '@/stores/dialog-popup/dialog-popup.store';
 import { LayoutId, findAppRouteById } from '@/stores/navigation.store';
-import { usePopoverStore } from '@/stores/popover.store';
+import { usePopoverStore } from '@/stores/popover/popover.store';
 import { useAppStore, useBottomsheetStore, useThemeStore } from '@/stores/store';
 
-import Popover from './popover/Popover.vue';
 import AppRouteLoading from './route-loading/App-RouteLoading.vue';
 
 const FullLayout = defineAsyncComponent(() => import('@/layout/full/Full.layout.vue'));
@@ -16,8 +15,9 @@ const NavigationLayout = defineAsyncComponent(
   () => import('@/layout/navigation/Navigation.layout.vue'),
 );
 
-const Bottomsheet = defineAsyncComponent(() => import('@/app/bottomsheet/Bottomsheet.vue'));
-const DialogPopup = defineAsyncComponent(() => import('@/app/dialog-popup/DialogPopup.vue'));
+const AppBottomsheet = defineAsyncComponent(() => import('@/app/bottomsheet/AppBottomsheet.vue'));
+const AppDialogPopup = defineAsyncComponent(() => import('@/app/dialog-popup/AppDialogPopup.vue'));
+const AppPopover = defineAsyncComponent(() => import('./popover/AppPopover.vue'));
 
 const appStore = useAppStore();
 const themeStore = useThemeStore();
@@ -31,26 +31,26 @@ const layoutId = computed(() => appRoute.value?.layoutId ?? LayoutId.NAVIGATION)
   <div class="app" :data-dark="themeStore.theme.id === ThemeId.DARK">
     <FullLayout v-if="layoutId === LayoutId.FULL" />
     <NavigationLayout v-if="layoutId === LayoutId.NAVIGATION" />
-    <Bottomsheet
+    <AppBottomsheet
       v-if="appStore.useBottomsheetComponent"
-      v-for="item of useBottomsheetStore().items"
+      v-for="overlay of useBottomsheetStore().items"
       :style="{ 'z-index': `${3 + useBottomsheetStore().items.length}` }"
-      :key="item.id"
-      :bottomsheet="item"
+      :key="overlay.id"
+      :bottomsheet="overlay"
     />
-    <DialogPopup
+    <AppDialogPopup
       v-if="appStore.useDialogPopupComponent"
-      v-for="dialogPopup of useDialogPopupStore().items"
-      :style="{ 'z-index': `${4 + useDialogPopupStore().items.length} ` }"
-      :key="dialogPopup.id"
-      :dialog-popup="dialogPopup"
+      v-for="overlay of useDialogPopupStore().overlays"
+      :style="{ 'z-index': `${4 + useDialogPopupStore().overlays.length} ` }"
+      :key="overlay.id"
+      :dialog-popup="overlay"
     />
-    <Popover
+    <AppPopover
       v-if="appStore.usePopoverComponent"
-      v-for="popover of usePopoverStore().items"
-      :style="{ 'z-index': `${5 + usePopoverStore().items.length} ` }"
-      :key="popover.timeCreate"
-      :popover="popover"
+      v-for="overlay of usePopoverStore().overlays"
+      :style="{ 'z-index': `${5 + usePopoverStore().overlays.length} ` }"
+      :key="overlay.id"
+      :popover="overlay"
     />
 
     <AppRouteLoading />

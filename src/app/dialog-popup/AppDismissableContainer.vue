@@ -1,33 +1,25 @@
 <script setup lang="ts">
-const emits = defineEmits<{ clickDismiss: [void] }>();
+import { onClickOutside } from '@vueuse/core';
+import { useTemplateRef } from 'vue';
+
+const props = defineProps<{ clickClose?: () => void }>();
+
+if (props.clickClose) {
+  const bodyRef = useTemplateRef('bodyRef');
+  onClickOutside(bodyRef, () => props.clickClose?.());
+}
 </script>
 
 <template>
   <div class="dismissable-container">
-    <div class="dismissable-container-body">
+    <div ref="bodyRef" class="dismissable-container-body">
       <slot></slot>
     </div>
 
-    <div
-      style="grid-area: top"
-      :style="{ 'min-height': 'var(--default-size-top)' }"
-      @click="() => emits('clickDismiss')"
-    ></div>
-    <div
-      style="grid-area: left"
-      :style="{ 'min-width': 'var(--default-size-left)' }"
-      @click="() => emits('clickDismiss')"
-    ></div>
-    <div
-      style="grid-area: right"
-      :style="{ 'min-width': 'var(--default-size-right)' }"
-      @click="() => emits('clickDismiss')"
-    ></div>
-    <div
-      style="grid-area: bottom"
-      :style="{ 'min-height': 'var(--default-size-bottom)' }"
-      @click="() => emits('clickDismiss')"
-    ></div>
+    <div style="grid-area: top" :style="{ 'min-height': 'var(--default-size-top)' }"></div>
+    <div style="grid-area: left" :style="{ 'min-width': 'var(--default-size-left)' }"></div>
+    <div style="grid-area: right" :style="{ 'min-width': 'var(--default-size-right)' }"></div>
+    <div style="grid-area: bottom" :style="{ 'min-height': 'var(--default-size-bottom)' }"></div>
   </div>
 </template>
 

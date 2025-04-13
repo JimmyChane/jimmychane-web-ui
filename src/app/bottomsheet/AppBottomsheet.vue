@@ -14,16 +14,16 @@ onMounted(() => props.bottomsheet.open());
 </script>
 
 <template>
-  <div class="bottomsheet" :data-showing="isShowing">
-    <div style="grid-area: body" class="bottomsheet-close" @click="clickClose"></div>
-    <div style="grid-area: body" class="bottomsheet-body">
+  <div class="app-bottomsheet" :data-showing="isShowing">
+    <div style="grid-area: body" class="app-bottomsheet-close" @click="clickClose"></div>
+    <div style="grid-area: body" class="app-bottomsheet-body">
       <component :is="bottomsheet.component" :bottomsheet="bottomsheet" />
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.bottomsheet {
+.app-bottomsheet {
   --shadow-size: 1rem;
   --padding-top: 3rem;
 
@@ -42,13 +42,13 @@ onMounted(() => props.bottomsheet.open());
 
   transition: background-color 200ms ease;
 
-  .bottomsheet-close {
+  .app-bottomsheet-close {
     display: flex;
     height: 100%;
     width: 100%;
   }
 
-  .bottomsheet-body {
+  .app-bottomsheet-body {
     width: 100%;
     max-width: var(--content-max-width);
     max-height: calc(100dvh - var(--padding-top));
@@ -68,14 +68,14 @@ onMounted(() => props.bottomsheet.open());
 
   &[data-showing='false'] {
     pointer-events: none;
-    .bottomsheet-body {
+    .app-bottomsheet-body {
       transform: translateY(calc(100% + var(--shadow-size)));
     }
   }
   &[data-showing='true'] {
     background-color: rgba(0, 0, 0, 0.7);
 
-    .bottomsheet-body {
+    .app-bottomsheet-body {
       transform: translateY(0%);
     }
   }

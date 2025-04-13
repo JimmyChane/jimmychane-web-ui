@@ -3,12 +3,8 @@ import { wait } from '@chanzor/utils';
 import { computedAsync, onClickOutside, useElementBounding, useWindowSize } from '@vueuse/core';
 import { type CSSProperties, computed, onMounted, onUnmounted, ref, watch } from 'vue';
 
-import {
-  PopoverAlignment,
-  PopoverCorner,
-  type PopoverProps,
-  PopoverWidth,
-} from '@/stores/popover.store';
+import { PopoverAlignment, PopoverCorner, PopoverWidth } from '@/stores/popover/Popover.model';
+import type { PopoverProps } from '@/stores/popover/popover.store';
 
 const props = defineProps<PopoverProps>();
 
@@ -221,7 +217,7 @@ const {
 const anchorWidthHalf = computed(() => anchorWidthPx.value / 2);
 const anchorHeightHalf = computed(() => anchorHeightPx.value / 2);
 
-async function onMountComponent() {
+const onMountComponent = async () => {
   if (!componentRef.value) return;
   if (props.popover.showingTime > 0) return;
 
@@ -240,7 +236,7 @@ async function onMountComponent() {
     window.addEventListener('scroll', onHide, true);
     window.addEventListener('resize', onHide, true);
   }
-}
+};
 
 onClickOutside(selfRef, () => {
   if (isShowing.value) props.popover.close();

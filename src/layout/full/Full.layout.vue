@@ -3,7 +3,7 @@ import { useScroll } from '@vueuse/core';
 import { useTemplateRef, watch } from 'vue';
 import { useRoute } from 'vue-router';
 
-import CheeseHoles from '@/app/background/CheeseHoles.vue';
+import AppCheeseHoles from '@/app/background/AppCheeseHoles.vue';
 
 import FullLayoutActionbar from './components/FullLayout-Actionbar.vue';
 
@@ -18,7 +18,7 @@ const { y } = useScroll(layoutBodyRef, { behavior: 'smooth' });
 
 <template>
   <div class="full-layout">
-    <CheeseHoles style="z-index: 0" />
+    <AppCheeseHoles style="z-index: 0" />
 
     <div ref="layoutBodyRef" class="full-layout-body" style="z-index: 1">
       <FullLayoutActionbar :parent-scroll-top="y" style="z-index: 2" />

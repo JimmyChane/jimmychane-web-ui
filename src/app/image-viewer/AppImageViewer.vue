@@ -2,7 +2,7 @@
 import { onClickOutside, useElementSize } from '@vueuse/core';
 import { type StyleValue, computed, useTemplateRef } from 'vue';
 
-import type { DialogPopupProp } from '@/stores/dialog-popup.store';
+import type { DialogPopupProp } from '@/stores/dialog-popup/DialogPopup.model';
 
 import CloseIcon from '@/components/icon/Close.icon.vue';
 
@@ -25,21 +25,21 @@ onClickOutside(imageBodyRef, close);
 </script>
 
 <template>
-  <div class="image-viewer">
-    <div class="image-viewer-toolbar" :style="imageViewerToolbarStyle">
+  <div class="app-image-viewer">
+    <div class="app-image-viewer-toolbar" :style="imageViewerToolbarStyle">
       <button @click="close">
         <CloseIcon :size="24" />
       </button>
     </div>
 
-    <div ref="bodyRef" class="image-viewer-body">
+    <div ref="bodyRef" class="app-image-viewer-body">
       <img ref="imageRef" :src="props.dialogPopup.prop" />
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.image-viewer {
+.app-image-viewer {
   width: max-content;
   height: max-content;
   max-width: 100%;
@@ -49,7 +49,7 @@ onClickOutside(imageBodyRef, close);
   align-items: center;
   justify-content: center;
 
-  .image-viewer-toolbar {
+  .app-image-viewer-toolbar {
     width: var(--width);
     margin-bottom: 0.5rem;
 
@@ -85,7 +85,7 @@ onClickOutside(imageBodyRef, close);
     }
   }
 
-  .image-viewer-body {
+  .app-image-viewer-body {
     max-width: 100%;
     max-height: calc(100% - 2.5rem - 0.5rem);
     display: flex;

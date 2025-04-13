@@ -31,7 +31,7 @@ withDefaults(defineProps<{ title?: string; subtitle?: string; href?: string }>()
     width: 100%;
     text-decoration: none;
     color: white;
-    font-size: 1.1em;
+    font-size: 1.5em;
 
     h3 {
       width: 100%;
@@ -46,6 +46,7 @@ withDefaults(defineProps<{ title?: string; subtitle?: string; href?: string }>()
   .PageCode-subtitle {
     font-size: 0.8em;
     color: white;
+    opacity: 0.9;
   }
 }
 </style>

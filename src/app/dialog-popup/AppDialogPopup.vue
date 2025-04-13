@@ -1,25 +1,26 @@
 <script setup lang="ts">
+import { wait } from '@chanzor/utils';
 import { onMounted, onUnmounted, ref, watch } from 'vue';
 
-import type { DialogPopup } from '@/stores/dialog-popup.store';
+import type { DialogPopupModel } from '@/stores/dialog-popup/DialogPopup.model';
 
-import DismissableContainer from './DismissableContainer.vue';
+import AppDismissableContainer from './AppDismissableContainer.vue';
 
-const props = defineProps<{ dialogPopup: DialogPopup }>();
+const props = defineProps<{ dialogPopup: DialogPopupModel }>();
 
 let dismissTime = 0;
 
 const preventKeyDown = ref(false);
 const componentRef = ref();
 
-const dismiss = async () => {
+const close = async () => {
   preventKeyDown.value = true;
   const time = (dismissTime = Date.now());
   if (props.dialogPopup.onBeforeClose) {
     const toClose = await props.dialogPopup.onBeforeClose(props.dialogPopup);
     if (time !== dismissTime) return;
 
-    await new Promise((r) => setTimeout(r, 0));
+    await wait();
     if (time !== dismissTime) return;
 
     if (!toClose) {
@@ -34,7 +35,7 @@ const dismiss = async () => {
 const onKeyDown = async (e: KeyboardEvent) => {
   if (preventKeyDown.value) return;
 
-  if (e.key === 'Escape') dismiss();
+  if (e.key === 'Escape') close();
 };
 
 const onMountComponent = async () => {
@@ -52,15 +53,15 @@ onUnmounted(() => window.removeEventListener('keydown', onKeyDown));
 </script>
 
 <template>
-  <DismissableContainer
+  <AppDismissableContainer
     class="DialogPopup"
     :data-showing="`${dialogPopup.isShowing}`"
-    @click-dismiss="dismiss"
+    :click-close="close"
   >
     <div class="DialogPopup-body">
       <component ref="componentRef" :is="dialogPopup.component" :dialog-popup="dialogPopup" />
     </div>
-  </DismissableContainer>
+  </AppDismissableContainer>
 </template>
 
 <style lang="scss" scoped>

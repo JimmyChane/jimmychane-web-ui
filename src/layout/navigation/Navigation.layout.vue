@@ -7,7 +7,7 @@ import { useNavigationDrawerStore } from '@/stores/navigation-drawer.store';
 import { useAppStore } from '@/stores/store';
 import { useAsyncComponent } from '@/use/AsyncComponent';
 
-import CheeseHoles from '@/app/background/CheeseHoles.vue';
+import AppCheeseHoles from '@/app/background/AppCheeseHoles.vue';
 import AppStatusbar from '@/app/statusbar/App-Statusbar.vue';
 
 import AppActionbar from './components/actionbar/App-Actionbar.vue';
@@ -41,7 +41,7 @@ onMounted(() => {
 
 <template>
   <div class="navigation-layout" :data-show="show">
-    <CheeseHoles style="z-index: 0" />
+    <AppCheeseHoles style="z-index: 0" />
 
     <div ref="layoutBodyRef" class="navigation-layout-body" style="z-index: 1">
       <AppActionbar
