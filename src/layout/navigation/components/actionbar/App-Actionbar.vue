@@ -1,14 +1,18 @@
 <script setup lang="ts">
-import { computed, defineAsyncComponent } from 'vue';
+import { computed } from 'vue';
 
 import { useNavigationDrawerStore } from '@/stores/navigation-drawer.store';
 import { useNavigationStore } from '@/stores/navigation.store';
 import { useWindowStore } from '@/stores/store';
+import { useAsyncComponent } from '@/use/AsyncComponent';
 
 import AppThemeToggler from '@/app/theme-toggler/App-ThemeToggler.vue';
 
-const AppActionbarHamburger = defineAsyncComponent(() => import('./App-Actionbar-Hamburger.vue'));
-const AppActionbarNav = defineAsyncComponent(() => import('./App-Actionbar-Nav.vue'));
+const { Component: AppActionbarHamburger, isLoaded: isLoadedAppActionbarHamburger } =
+  useAsyncComponent(() => import('./App-Actionbar-Hamburger.vue'));
+const { Component: AppActionbarNav, isLoaded: isLoadedAppActionbarNav } = useAsyncComponent(
+  () => import('./App-Actionbar-Nav.vue'),
+);
 
 defineProps<{ parentScrollTop: number }>();
 
@@ -19,11 +23,22 @@ const windowStore = useWindowStore();
 const isUsingDrawer = computed(() => {
   return navigationDrawerStore.isDrawer && !windowStore.isLargerThanMobile;
 });
+
+const isShowing = computed(() => {
+  if (isUsingDrawer.value) {
+    if (isLoadedAppActionbarHamburger.value) return true;
+    return false;
+  }
+
+  if (isLoadedAppActionbarNav.value) return true;
+  return false;
+});
 </script>
 
 <template>
   <div
     class="App-actionbar"
+    :data-showing="isShowing"
     :data-background="parentScrollTop > 0"
     :data-snap="navigationDrawerStore.isSnap"
     :data-drawer="navigationDrawerStore.isDrawer"
@@ -65,9 +80,9 @@ const isUsingDrawer = computed(() => {
   align-items: center;
 
   border-bottom: 1px solid;
-  transition:
-    background-color 700ms ease,
-    border-color 700ms ease;
+
+  transition: 700ms ease;
+  transition-property: opacity, background-color, border-color;
 
   .App-actionbar-content {
     width: 100%;
@@ -113,6 +128,13 @@ const isUsingDrawer = computed(() => {
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+  }
+
+  &[data-showing='false'] {
+    opacity: 0;
+  }
+  &[data-showing='true'] {
+    opacity: 1;
   }
 
   &[data-background='false'] {

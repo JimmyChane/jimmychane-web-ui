@@ -29,11 +29,6 @@ const show = computed(() => {
   if (!navigationDrawerStore.isSnap) return true;
   return isNavigationDrawerLoaded.value;
 });
-const viewMode = computed(() => {
-  if (!appStore.useNavigationDrawerComponent) return;
-  if (navigationDrawerStore.isSnap) return 'snap';
-  if (navigationDrawerStore.isDrawer) return 'drawer';
-});
 
 const { y } = useScroll(layoutBodyRef, { behavior: 'smooth' });
 
@@ -45,7 +40,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="navigation-layout" :data-show="show" :data-view-mode="viewMode">
+  <div class="navigation-layout" :data-show="show">
     <CheeseHoles style="z-index: 0" />
 
     <div ref="layoutBodyRef" class="navigation-layout-body" style="z-index: 1">
@@ -117,13 +112,6 @@ onMounted(() => {
   }
   &[data-show='true'] {
     opacity: 1;
-  }
-
-  &[data-view-mode='snap'] {
-    --navigation-drawer-width: 12rem;
-  }
-  &[data-view-mode='drawer'] {
-    --navigation-drawer-width: 16rem;
   }
 }
 .route-enter-from {

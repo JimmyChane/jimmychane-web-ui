@@ -90,6 +90,8 @@ const cssViewState = computedAsync(async () => {
     top: 0;
     left: 0;
 
+    grid-template-columns: var(--navigation-drawer-width);
+
     min-width: var(--navigation-drawer-width);
     max-width: var(--navigation-drawer-width);
 
