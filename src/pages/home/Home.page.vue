@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 
 import { JimmyChane } from '@/models/Profile.model';
+import { useNavigationDrawerStore } from '@/stores/navigation-drawer.store';
 import {
   FAVOURITE_ROUTE,
   FURSONA_ROUTE,
@@ -12,16 +13,13 @@ import AppPage from '@/layout/navigation/components/page/AppPage.vue';
 
 import PFP from './components/PageHome-header-pfp.vue';
 import Labels from './components/PageHome-labels.vue';
-import SocialVue from './components/PageHome-social.vue';
+import Social from './components/PageHome-social.vue';
 
-const name = computed(() => JimmyChane.name);
-const labels = computed(() => JimmyChane.labels);
-const socials = computed(() => JimmyChane.socials);
-const description = computed(() => JimmyChane.description);
+const navigationDrawerStore = useNavigationDrawerStore();
 
-const routes = computed(() => {
-  return [FURSONA_ROUTE, PROJECT_ROUTE, FAVOURITE_ROUTE];
-});
+const profile = computed(() => JimmyChane);
+
+const routes = computed(() => [FURSONA_ROUTE, PROJECT_ROUTE, FAVOURITE_ROUTE]);
 </script>
 
 <template>
@@ -30,24 +28,26 @@ const routes = computed(() => {
       <div class="PageHome-grid">
         <PFP style="grid-area: img" />
 
-        <h1 class="PageHome-name" style="grid-area: name">{{ name }}</h1>
+        <h1 class="PageHome-name" style="grid-area: name">
+          {{ profile.name }}
+        </h1>
 
-        <Labels :labels="labels" />
+        <Labels :labels="profile.labels" />
 
         <div class="PageHome-socials" style="grid-area: socials">
-          <SocialVue
-            v-for="social of socials"
+          <Social
+            v-for="social of profile.socials"
             :key="social.socialPlatform.title"
             :item="social"
           />
         </div>
 
         <p class="PageHome-description" style="grid-area: description">
-          {{ description }}
+          {{ profile.description }}
         </p>
       </div>
 
-      <div class="PageHome-routes">
+      <div v-if="navigationDrawerStore.isDrawer" class="PageHome-routes">
         <RouterLink
           v-for="route of routes"
           :key="route.id"

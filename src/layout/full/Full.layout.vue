@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useScroll } from '@vueuse/core';
-import { ref, watch } from 'vue';
+import { useTemplateRef, watch } from 'vue';
 import { useRoute } from 'vue-router';
 
 import CheeseHoles from '@/app/background/CheeseHoles.vue';
@@ -9,7 +9,7 @@ import FullLayoutActionbar from './components/FullLayout-Actionbar.vue';
 
 const route = useRoute();
 
-const layoutBodyRef = ref<HTMLDivElement>();
+const layoutBodyRef = useTemplateRef('layoutBodyRef');
 
 watch(route, () => (y.value = 0));
 

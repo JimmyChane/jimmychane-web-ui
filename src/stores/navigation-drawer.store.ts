@@ -31,35 +31,48 @@ export const useNavigationDrawerStore = defineStore('navigation-drawer', () => {
   const viewStates = ref<Partial<Record<ViewState, NavigationDrawerState>>>({});
 
   const isShowing = computed(() => {
-    return [
-      NavigationDrawerState.SNAP_WIDE,
-      NavigationDrawerState.DRAWER_WIDE_SHOW,
-    ].includes(currentViewState.value);
+    switch (currentViewState.value) {
+      case NavigationDrawerState.SNAP_THIN:
+      case NavigationDrawerState.SNAP_WIDE:
+      case NavigationDrawerState.DRAWER_WIDE_SHOW:
+        return true;
+    }
+
+    return false;
   });
   const isSnap = computed(() => {
-    return [
-      NavigationDrawerState.SNAP_THIN,
-      NavigationDrawerState.SNAP_WIDE,
-    ].includes(currentViewState.value);
+    switch (currentViewState.value) {
+      case NavigationDrawerState.SNAP_THIN:
+      case NavigationDrawerState.SNAP_WIDE:
+        return true;
+    }
+
+    return false;
   });
   const isDrawer = computed(() => {
-    return [
-      NavigationDrawerState.DRAWER_WIDE_HIDE,
-      NavigationDrawerState.DRAWER_WIDE_SHOW,
-    ].includes(currentViewState.value);
+    switch (currentViewState.value) {
+      case NavigationDrawerState.DRAWER_WIDE_HIDE:
+      case NavigationDrawerState.DRAWER_WIDE_SHOW:
+        return true;
+    }
+
+    return false;
   });
   const isWide = computed(() => {
-    return [
-      NavigationDrawerState.SNAP_WIDE,
-      NavigationDrawerState.DRAWER_WIDE_HIDE,
-      NavigationDrawerState.DRAWER_WIDE_SHOW,
-    ].includes(currentViewState.value);
+    switch (currentViewState.value) {
+      case NavigationDrawerState.SNAP_WIDE:
+      case NavigationDrawerState.DRAWER_WIDE_HIDE:
+      case NavigationDrawerState.DRAWER_WIDE_SHOW:
+        return true;
+    }
+
+    return false;
   });
 
-  function toggle() {
-    return isShowing.value ? close() : open();
-  }
-  function open() {
+  const toggle = () => {
+    isShowing.value ? close() : open();
+  };
+  const open = () => {
     const store = useWindowStore();
     if (store.isLargerThanTablet) {
       currentViewState.value = NavigationDrawerState.SNAP_WIDE;
@@ -70,8 +83,8 @@ export const useNavigationDrawerStore = defineStore('navigation-drawer', () => {
 
     currentViewState.value = NavigationDrawerState.DRAWER_WIDE_SHOW;
     viewStates.value[ViewState.ELSE] = NavigationDrawerState.DRAWER_WIDE_SHOW;
-  }
-  function close() {
+  };
+  const close = () => {
     const store = useWindowStore();
 
     if (store.isLargerThanTablet) {
@@ -81,18 +94,11 @@ export const useNavigationDrawerStore = defineStore('navigation-drawer', () => {
       return;
     }
 
-    // if (store.isLargerThanMobile) {
-    //   currentViewState.value = NavigationDrawerState.SNAP_THIN;
-    //   viewStates.value[ViewState.DESKTOP] = NavigationDrawerState.SNAP_THIN;
-    //   viewStates.value[ViewState.TABLET] = NavigationDrawerState.SNAP_THIN;
-    //   return;
-    // }
-
     currentViewState.value = NavigationDrawerState.DRAWER_WIDE_HIDE;
     viewStates.value[ViewState.ELSE] = NavigationDrawerState.DRAWER_WIDE_HIDE;
-  }
+  };
 
-  function onScreenWidthChange() {
+  const onScreenWidthChange = () => {
     if (windowStore.isLargerThanTablet) {
       if (previousViewState.value === ViewState.DESKTOP) return;
 
@@ -108,28 +114,13 @@ export const useNavigationDrawerStore = defineStore('navigation-drawer', () => {
       return;
     }
 
-    // if (windowStore.isLargerThanMobile) {
-    //   if (previousViewState.value === ViewState.TABLET) return;
-
-    //   previousViewState.value = ViewState.TABLET;
-
-    //   const previewViewState = viewStates.value[ViewState.TABLET];
-    //   if (previewViewState !== undefined) {
-    //     currentViewState.value = previewViewState;
-    //     return;
-    //   }
-
-    //   currentViewState.value = NavigationDrawerState.SNAP_THIN;
-    //   return;
-    // }
-
     if (previousViewState.value === ViewState.ELSE) return;
     currentViewState.value = NavigationDrawerState.DRAWER_WIDE_HIDE;
     previousViewState.value = ViewState.ELSE;
-  }
-  function onScreenModeChange() {
+  };
+  const onScreenModeChange = () => {
     if (windowStore.isLargerThanMobile) close();
-  }
+  };
 
   watch(() => windowStore.width, onScreenWidthChange);
   watch(() => windowStore.isLargerThanMobile, onScreenModeChange);
@@ -145,13 +136,11 @@ export const useNavigationDrawerStore = defineStore('navigation-drawer', () => {
   close();
 
   return {
-    currentViewState: computed(() => currentViewState.value),
-
+    viewState: computed(() => currentViewState.value),
     isShowing,
     isSnap,
     isDrawer,
     isWide,
-
     toggle,
     open,
     close,

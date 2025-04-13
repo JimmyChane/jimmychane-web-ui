@@ -15,7 +15,7 @@ const cssViewMode = computed(() => {
   if (navigationDrawerStore.isDrawer) return 'drawer';
 });
 const cssViewState = computedAsync(async () => {
-  switch (navigationDrawerStore.currentViewState) {
+  switch (navigationDrawerStore.viewState) {
     case NavigationDrawerState.DRAWER_WIDE_HIDE:
       return 'drawer-hide';
     case NavigationDrawerState.DRAWER_WIDE_SHOW:

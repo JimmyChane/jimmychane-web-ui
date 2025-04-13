@@ -6,6 +6,7 @@ import { useNavigationStore } from '@/stores/navigation.store';
 
 import AppThemeToggler from '@/app/theme-toggler/App-ThemeToggler.vue';
 
+import NavigationDrawer from '../NavigationDrawer.vue';
 import AppNavigationDrawerItem from './AppNavigationDrawer-Item.vue';
 
 const navigationStore = useNavigationStore();
@@ -18,17 +19,19 @@ const cssViewMode = computed(() => {
 </script>
 
 <template>
-  <div class="navigation-drawer" :data-view-mode="cssViewMode">
-    <div class="navigation-drawer-items">
-      <AppNavigationDrawerItem
-        v-for="route of navigationStore.navigations"
-        :key="route.id"
-        :item="route"
-      />
-    </div>
+  <NavigationDrawer style="z-index: 2">
+    <div class="navigation-drawer" :data-view-mode="cssViewMode">
+      <div class="navigation-drawer-items">
+        <AppNavigationDrawerItem
+          v-for="route of navigationStore.navigations"
+          :key="route.id"
+          :item="route"
+        />
+      </div>
 
-    <AppThemeToggler />
-  </div>
+      <AppThemeToggler />
+    </div>
+  </NavigationDrawer>
 </template>
 
 <style scoped lang="scss">
