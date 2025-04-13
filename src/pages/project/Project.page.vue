@@ -15,7 +15,7 @@ import Section from './components/PageProject-project-section.vue';
 
 <template>
   <AppPage>
-    <div class="PageProject">
+    <div class="project-page">
       <Section>
         <ProjectHeader
           title="Rory Xavier, Reference"
@@ -34,7 +34,7 @@ import Section from './components/PageProject-project-section.vue';
           a biography, and seamless integration of social media and contact options.
         </p>
 
-        <Labels class="PageProject-project-labels">
+        <Labels class="project-page-project-labels">
           <Label>Svelte.js</Label>
           <Label>HTML</Label>
           <Label>TypeScript</Label>
@@ -57,7 +57,7 @@ import Section from './components/PageProject-project-section.vue';
           alt="Gryfder Deficere's Website"
         />
 
-        <Labels class="PageProject-project-labels">
+        <Labels class="project-page-project-labels">
           <Label>Vue.js</Label>
           <Label>HTML</Label>
           <Label>TypeScript</Label>
@@ -86,7 +86,7 @@ import Section from './components/PageProject-project-section.vue';
           use, and smooth transitions between pages for an enhanced user experience.
         </p>
 
-        <Labels class="PageProject-project-labels">
+        <Labels class="project-page-project-labels">
           <Label>Vue.js</Label>
           <Label>HTML</Label>
           <Label>TypeScript</Label>
@@ -116,7 +116,7 @@ import Section from './components/PageProject-project-section.vue';
           customers and driving growth for Freshnet Enterprise in today's competitive marketplace.
         </p>
 
-        <Labels class="PageProject-project-labels">
+        <Labels class="project-page-project-labels">
           <Label>Vue.js</Label>
           <Label>Express.js</Label>
           <Label>MongoDB</Label>
@@ -133,7 +133,7 @@ import Section from './components/PageProject-project-section.vue';
 </template>
 
 <style scoped lang="scss">
-.PageProject {
+.project-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -157,7 +157,7 @@ import Section from './components/PageProject-project-section.vue';
       margin: 1rem 0;
     }
 
-    .PageProject-project-labels {
+    .project-page-project-labels {
       & > * {
         color: var(--color-dark);
         background-color: white;

@@ -1,20 +1,22 @@
 <script setup lang="ts">
-import type { DialogProps } from '@chanzor/vue-utils';
-import { onMounted, onUnmounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref, watch } from 'vue';
+
+import type { DialogPopup } from '@/stores/dialog-popup.store';
 
 import DismissableContainer from './DismissableContainer.vue';
 
-const props = defineProps<DialogProps>();
+const props = defineProps<{ dialogPopup: DialogPopup }>();
 
 let dismissTime = 0;
 
 const preventKeyDown = ref(false);
+const componentRef = ref();
 
 const dismiss = async () => {
   preventKeyDown.value = true;
   const time = (dismissTime = Date.now());
-  if (props.dialog.onBeforeClose) {
-    const toClose = await props.dialog.onBeforeClose(props.dialog);
+  if (props.dialogPopup.onBeforeClose) {
+    const toClose = await props.dialogPopup.onBeforeClose(props.dialogPopup);
     if (time !== dismissTime) return;
 
     await new Promise((r) => setTimeout(r, 0));
@@ -26,7 +28,7 @@ const dismiss = async () => {
     }
   }
 
-  props.dialog.close();
+  props.dialogPopup.close();
 };
 
 const onKeyDown = async (e: KeyboardEvent) => {
@@ -35,29 +37,34 @@ const onKeyDown = async (e: KeyboardEvent) => {
   if (e.key === 'Escape') dismiss();
 };
 
-onMounted(() => {
-  props.dialog.open();
+const onMountComponent = async () => {
+  if (!componentRef.value) return;
+  if (props.dialogPopup.showingTime > 0) return;
+
+  await props.dialogPopup.open();
   window.addEventListener('keydown', onKeyDown);
-});
-onUnmounted(() => {
-  window.removeEventListener('keydown', onKeyDown);
-});
+};
+
+watch(componentRef, onMountComponent);
+
+onMounted(onMountComponent);
+onUnmounted(() => window.removeEventListener('keydown', onKeyDown));
 </script>
 
 <template>
   <DismissableContainer
-    class="dialog"
-    :data-showing="`${dialog.isShowing}`"
-    @click-dismiss="() => dismiss()"
+    class="DialogPopup"
+    :data-showing="`${dialogPopup.isShowing}`"
+    @click-dismiss="dismiss"
   >
-    <div class="dialog-body">
-      <component :is="dialog.component" :dialog="dialog" />
+    <div class="DialogPopup-body">
+      <component ref="componentRef" :is="dialogPopup.component" :dialog-popup="dialogPopup" />
     </div>
   </DismissableContainer>
 </template>
 
 <style lang="scss" scoped>
-.dialog {
+.DialogPopup {
   --hitbox-size: 30px;
 
   --default-size-top: var(--hitbox-size);
@@ -79,7 +86,7 @@ onUnmounted(() => {
     backdrop-filter: blur(1px);
   }
 
-  .dialog-body {
+  .DialogPopup-body {
     height: 100%;
     width: 100%;
     max-width: max-content;
@@ -100,7 +107,7 @@ onUnmounted(() => {
   &[data-showing='false'] {
     pointer-events: none;
     opacity: 0;
-    .dialog-body {
+    .DialogPopup-body {
       pointer-events: none;
       transform: scale(0.95);
     }
@@ -108,7 +115,7 @@ onUnmounted(() => {
   &[data-showing='true'] {
     pointer-events: all;
     opacity: 1;
-    .dialog-body {
+    .DialogPopup-body {
       pointer-events: all;
       transform: scale(1);
     }

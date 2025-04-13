@@ -8,7 +8,7 @@ import PageFavouriteSection from './components/PageFavourite-section.vue';
 
 <template>
   <AppPage>
-    <div class="page-favourite">
+    <div class="favourite-page">
       <PageFavouriteSection title="Foods" :icon="FoodIcon">
         <span>Fried Rice</span>
         <span>Spaghetti</span>
@@ -28,7 +28,7 @@ import PageFavouriteSection from './components/PageFavourite-section.vue';
 </template>
 
 <style scoped lang="scss">
-.page-favourite {
+.favourite-page {
   width: 100%;
   gap: 1rem;
 

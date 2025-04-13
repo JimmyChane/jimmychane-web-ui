@@ -1,6 +1,5 @@
 import {
   defineBottomsheetStoreDefinition,
-  defineDialogStoreDefinition,
   defineThemeStoreDefinition,
   defineWindowStoreDefinition,
 } from '@chanzor/vue-utils';
@@ -30,14 +29,6 @@ export const useBottomsheetStore = defineStore('bottomsheet', () => {
   return defineBottomsheetStoreDefinition({
     onCreated() {
       useAppStore().useBottomsheetComponent = true;
-    },
-  });
-});
-
-export const useDialogStore = defineStore('dialog-popup', () => {
-  return defineDialogStoreDefinition({
-    onCreated() {
-      useAppStore().useDialogPopupComponent = true;
     },
   });
 });

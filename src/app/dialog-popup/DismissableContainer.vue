@@ -3,8 +3,8 @@ const emits = defineEmits<{ clickDismiss: [void] }>();
 </script>
 
 <template>
-  <div class="DismissableContainer">
-    <div class="DismissableContainer-body">
+  <div class="dismissable-container">
+    <div class="dismissable-container-body">
       <slot></slot>
     </div>
 
@@ -32,7 +32,7 @@ const emits = defineEmits<{ clickDismiss: [void] }>();
 </template>
 
 <style lang="scss" scoped>
-.DismissableContainer {
+.dismissable-container {
   width: 100dvw;
   height: 100dvh;
   z-index: 1;
@@ -63,7 +63,7 @@ const emits = defineEmits<{ clickDismiss: [void] }>();
     height: 100%;
   }
 
-  .DismissableContainer-body {
+  .dismissable-container-body {
     grid-area: body;
     z-index: 2;
     border-radius: 0.5rem 0.5rem 0 0;

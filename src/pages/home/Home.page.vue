@@ -20,8 +20,8 @@ const routes = computed(() => [FURSONA_ROUTE, PROJECT_ROUTE, FAVOURITE_ROUTE]);
 
 <template>
   <AppPage>
-    <div class="PageHome">
-      <div class="PageHome-grid">
+    <div class="home-page">
+      <div class="home-page-grid">
         <PFP style="grid-area: img" />
 
         <h1 class="PageHome-name" style="grid-area: name">
@@ -30,7 +30,7 @@ const routes = computed(() => [FURSONA_ROUTE, PROJECT_ROUTE, FAVOURITE_ROUTE]);
 
         <Labels :labels="profile.labels" />
 
-        <div class="PageHome-socials" style="grid-area: socials">
+        <div class="home-page-socials" style="grid-area: socials">
           <Social
             v-for="social of profile.socials"
             :key="social.socialPlatform.title"
@@ -38,12 +38,12 @@ const routes = computed(() => [FURSONA_ROUTE, PROJECT_ROUTE, FAVOURITE_ROUTE]);
           />
         </div>
 
-        <p class="PageHome-description" style="grid-area: description">
+        <p class="home-page-description" style="grid-area: description">
           {{ profile.description }}
         </p>
       </div>
 
-      <div v-if="navigationDrawerStore.isDrawer" class="PageHome-routes">
+      <div v-if="navigationDrawerStore.isDrawer" class="home-page-routes">
         <RouterLink v-for="route of routes" :key="route.id" :to="{ name: route.id }">
           {{ route.title }}
         </RouterLink>
@@ -53,7 +53,7 @@ const routes = computed(() => [FURSONA_ROUTE, PROJECT_ROUTE, FAVOURITE_ROUTE]);
 </template>
 
 <style lang="scss" scoped>
-.PageHome {
+.home-page {
   min-height: calc(
     100dvh - var(--statusbar-height) - var(--App-page-padding) - var(--App-page-padding)
   );
@@ -63,7 +63,7 @@ const routes = computed(() => [FURSONA_ROUTE, PROJECT_ROUTE, FAVOURITE_ROUTE]);
   display: flex;
   flex-direction: column;
 
-  .PageHome-grid {
+  .home-page-grid {
     width: 100%;
     transition: all 0.3s;
 
@@ -84,7 +84,7 @@ const routes = computed(() => [FURSONA_ROUTE, PROJECT_ROUTE, FAVOURITE_ROUTE]);
       font-size: 2rem;
       text-align: center;
     }
-    .PageHome-socials {
+    .home-page-socials {
       width: 100%;
       gap: 0.4rem;
       margin: 1rem 0;
@@ -96,7 +96,7 @@ const routes = computed(() => [FURSONA_ROUTE, PROJECT_ROUTE, FAVOURITE_ROUTE]);
         gap: initial;
       }
     }
-    .PageHome-description {
+    .home-page-description {
       font-size: 1.2rem;
       text-wrap: balance;
     }
@@ -131,7 +131,7 @@ const routes = computed(() => [FURSONA_ROUTE, PROJECT_ROUTE, FAVOURITE_ROUTE]);
 
         place-self: end;
       }
-      .PageHome-socials {
+      .home-page-socials {
         grid-row: 1fr;
         place-self: start;
         align-items: flex-start;
@@ -139,7 +139,7 @@ const routes = computed(() => [FURSONA_ROUTE, PROJECT_ROUTE, FAVOURITE_ROUTE]);
       }
     }
   }
-  .PageHome-routes {
+  .home-page-routes {
     gap: 0.5rem;
 
     display: grid;

@@ -3,8 +3,9 @@ import { ThemeId } from '@chanzor/vue-utils';
 import { computed, defineAsyncComponent } from 'vue';
 import { useRoute } from 'vue-router';
 
+import { useDialogPopupStore } from '@/stores/dialog-popup.store';
 import { LayoutId, findAppRouteById } from '@/stores/navigation.store';
-import { useAppStore, useBottomsheetStore, useDialogStore, useThemeStore } from '@/stores/store';
+import { useAppStore, useBottomsheetStore, useThemeStore } from '@/stores/store';
 
 import AppRouteLoading from './route-loading/App-RouteLoading.vue';
 
@@ -37,10 +38,10 @@ const layoutId = computed(() => appRoute.value?.layoutId ?? LayoutId.NAVIGATION)
     />
     <DialogPopup
       v-if="appStore.useDialogPopupComponent"
-      v-for="item of useDialogStore().items"
-      :style="{ 'z-index': `${4 + useDialogStore().items.length} ` }"
-      :key="item.id"
-      :dialog="item"
+      v-for="dialogPopup of useDialogPopupStore().items"
+      :style="{ 'z-index': `${4 + useDialogPopupStore().items.length} ` }"
+      :key="dialogPopup.id"
+      :dialog-popup="dialogPopup"
     />
 
     <AppRouteLoading />
