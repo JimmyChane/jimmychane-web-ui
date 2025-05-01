@@ -4,6 +4,7 @@ import { computed } from 'vue';
 import { JimmyChane } from '@/models/Profile.model';
 import { useNavigationDrawerStore } from '@/stores/navigation-drawer.store';
 import { FAVOURITE_ROUTE, FURSONA_ROUTE, PROJECT_ROUTE } from '@/stores/navigation.store';
+import { useWindowStore } from '@/stores/store';
 
 import AppPage from '@/layout/navigation/components/page/AppPage.vue';
 
@@ -12,10 +13,15 @@ import Labels from './components/PageHome-labels.vue';
 import Social from './components/PageHome-social.vue';
 
 const navigationDrawerStore = useNavigationDrawerStore();
+const windowStore = useWindowStore();
 
 const profile = computed(() => JimmyChane);
 
 const routes = computed(() => [FURSONA_ROUTE, PROJECT_ROUTE, FAVOURITE_ROUTE]);
+
+const isUsingDrawer = computed(() => {
+  return navigationDrawerStore.isDrawer && !windowStore.isLargerThanMobile;
+});
 </script>
 
 <template>
@@ -43,7 +49,7 @@ const routes = computed(() => [FURSONA_ROUTE, PROJECT_ROUTE, FAVOURITE_ROUTE]);
         </p>
       </div>
 
-      <div v-if="navigationDrawerStore.isDrawer" class="home-page-routes">
+      <div v-if="isUsingDrawer" class="home-page-routes">
         <RouterLink v-for="route of routes" :key="route.id" :to="{ name: route.id }">
           {{ route.title }}
         </RouterLink>
