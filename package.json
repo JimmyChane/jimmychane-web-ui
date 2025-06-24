@@ -14,8 +14,8 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@chanzor/utils": "^0.0.3",
-    "@chanzor/vue-utils": "^2.0.0",
+    "@chanzor/utils": "^0.1.1",
+    "@chanzor/vue-utils": "^2.0.2",
     "@vueuse/core": "^12.8.2",
     "pinia": "^2.1.7",
     "vite-plugin-pwa": "^0.21.1",
