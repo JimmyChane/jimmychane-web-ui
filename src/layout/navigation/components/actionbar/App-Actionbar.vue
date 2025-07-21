@@ -8,8 +8,9 @@ import { useAsyncComponent } from '@/use/AsyncComponent';
 
 import AppThemeToggler from '@/app/theme-toggler/App-ThemeToggler.vue';
 
-const { Component: AppActionbarHamburger, isLoaded: isLoadedAppActionbarHamburger } =
-  useAsyncComponent(() => import('./App-Actionbar-Hamburger.vue'));
+const { Component: AppActionbarHamburger, isLoaded: isLoadedAppActionbarHamburger } = useAsyncComponent(
+  () => import('./App-Actionbar-Hamburger.vue'),
+);
 const { Component: AppActionbarNav, isLoaded: isLoadedAppActionbarNav } = useAsyncComponent(
   () => import('./App-Actionbar-Nav.vue'),
 );
@@ -53,11 +54,7 @@ const isShowing = computed(() => {
       </div>
 
       <div v-if="!isUsingDrawer" class="App-actionbar-items">
-        <AppActionbarNav
-          v-for="route of navigationStore.navigations"
-          :key="route.id"
-          :item="route"
-        />
+        <AppActionbarNav v-for="route of navigationStore.navigations" :key="route.id" :item="route" />
       </div>
 
       <AppThemeToggler />

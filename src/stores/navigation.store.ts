@@ -107,7 +107,5 @@ export const useNavigationStore = defineStore('navigation', () => {
 export function findAppRouteById(id?: string): AppRoute | undefined {
   if (id === undefined) return;
 
-  return [HOME_ROUTE, FURSONA_ROUTE, FAVOURITE_ROUTE, PROJECT_ROUTE, VALENTINE_ROUTE].find(
-    (route) => route.id === id,
-  );
+  return [HOME_ROUTE, FURSONA_ROUTE, FAVOURITE_ROUTE, PROJECT_ROUTE, VALENTINE_ROUTE].find((route) => route.id === id);
 }

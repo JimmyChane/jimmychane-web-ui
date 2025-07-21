@@ -5,11 +5,7 @@ import HamburgerIcon from '@/components/icon/Hamburger.icon.vue';
 </script>
 
 <template>
-  <button
-    class="App-actionbar-hamburger"
-    aria-label="Hamburger"
-    @click="() => useNavigationDrawerStore().toggle()"
-  >
+  <button class="App-actionbar-hamburger" aria-label="Hamburger" @click="() => useNavigationDrawerStore().toggle()">
     <HamburgerIcon />
   </button>
 </template>

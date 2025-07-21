@@ -17,21 +17,13 @@ import Section from './components/PageProject-project-section.vue';
   <AppPage>
     <div class="project-page">
       <Section>
-        <ProjectHeader
-          title="Rory Xavier, Reference"
-          subtitle="Contributations"
-          href="https://ref.rorywolf.net/"
-        />
+        <ProjectHeader title="Rory Xavier, Reference" subtitle="Contributations" href="https://ref.rorywolf.net/" />
 
-        <ProjectPreview
-          href="https://ref.rorywolf.net/"
-          :src="ImageRory"
-          alt="Rory Xavier's Reference"
-        />
+        <ProjectPreview href="https://ref.rorywolf.net/" :src="ImageRory" alt="Rory Xavier's Reference" />
 
         <p>
-          I'm helping develop a user-friendly website with smooth profile picture header animations,
-          a biography, and seamless integration of social media and contact options.
+          I'm helping develop a user-friendly website with smooth profile picture header animations, a biography, and
+          seamless integration of social media and contact options.
         </p>
 
         <Labels class="project-page-project-labels">
@@ -45,17 +37,9 @@ import Section from './components/PageProject-project-section.vue';
       </Section>
 
       <Section>
-        <ProjectHeader
-          title="Gryfder Deficere"
-          subtitle="Setup Github"
-          href="https://gryfder.github.io/"
-        />
+        <ProjectHeader title="Gryfder Deficere" subtitle="Setup Github" href="https://gryfder.github.io/" />
 
-        <ProjectPreview
-          href="https://gryfder.github.io/"
-          :src="ImageGryfder"
-          alt="Gryfder Deficere's Website"
-        />
+        <ProjectPreview href="https://gryfder.github.io/" :src="ImageGryfder" alt="Gryfder Deficere's Website" />
 
         <Labels class="project-page-project-labels">
           <Label>Vue.js</Label>
@@ -68,22 +52,14 @@ import Section from './components/PageProject-project-section.vue';
       </Section>
 
       <Section>
-        <ProjectHeader
-          title="Rhougous Hiroki"
-          subtitle="Helps from the start"
-          href="https://www.rhougous.net/"
-        />
+        <ProjectHeader title="Rhougous Hiroki" subtitle="Helps from the start" href="https://www.rhougous.net/" />
 
-        <ProjectPreview
-          href="https://www.rhougous.net/"
-          :src="ImageRhougous"
-          alt="Rhougous Hiroki's Website"
-        />
+        <ProjectPreview href="https://www.rhougous.net/" :src="ImageRhougous" alt="Rhougous Hiroki's Website" />
 
         <p>
-          I built a website from scratch to help my friend create a visually appealing online
-          presence for his fursona. The site features a well-designed layout, intuitive background
-          use, and smooth transitions between pages for an enhanced user experience.
+          I built a website from scratch to help my friend create a visually appealing online presence for his fursona.
+          The site features a well-designed layout, intuitive background use, and smooth transitions between pages for
+          an enhanced user experience.
         </p>
 
         <Labels class="project-page-project-labels">
@@ -103,17 +79,13 @@ import Section from './components/PageProject-project-section.vue';
           href="https://www.freshnet.app"
         />
 
-        <ProjectPreview
-          href="https://www.freshnet.app"
-          :src="ImageFreshnet"
-          alt="Freshnet Enterprise"
-        />
+        <ProjectPreview href="https://www.freshnet.app" :src="ImageFreshnet" alt="Freshnet Enterprise" />
 
         <p>
-          I built a website for Freshnet Enterprise, a computer store, to enhance its online
-          presence. The website provides detailed information about the company's contacts, business
-          hours, services, and location. With a user-friendly layout, it focuses on retaining
-          customers and driving growth for Freshnet Enterprise in today's competitive marketplace.
+          I built a website for Freshnet Enterprise, a computer store, to enhance its online presence. The website
+          provides detailed information about the company's contacts, business hours, services, and location. With a
+          user-friendly layout, it focuses on retaining customers and driving growth for Freshnet Enterprise in today's
+          competitive marketplace.
         </p>
 
         <Labels class="project-page-project-labels">

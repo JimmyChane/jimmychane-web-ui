@@ -1,11 +1,5 @@
 <template>
-  <svg
-    width="1em"
-    height="1em"
-    viewBox="0 0 512 512"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg width="1em" height="1em" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g clip-path="url(#clip0_491_2)">
       <mask
         id="mask0_491_2"

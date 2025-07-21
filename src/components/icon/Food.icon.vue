@@ -11,11 +11,7 @@ withDefaults(defineProps<{ size?: number }>(), { size: 32 });
     viewBox="0 0 512.000000 512.000000"
     preserveAspectRatio="xMidYMid meet"
   >
-    <g
-      transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
-      fill="currentColor"
-      stroke="none"
-    >
+    <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
       <path
         d="M2177 5097 c-32 -18 -87 -97 -322 -457 l-283 -435 -733 -5 c-678 -5
 -736 -6 -766 -23 -38 -20 -73 -82 -73 -127 0 -50 35 -107 80 -130 39 -20 56

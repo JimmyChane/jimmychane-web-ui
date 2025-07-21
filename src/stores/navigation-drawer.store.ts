@@ -23,9 +23,7 @@ export const useNavigationDrawerStore = defineStore('navigation-drawer', () => {
 
   const previousViewState = ref<ViewState>();
   const currentViewState = ref(
-    windowStore.isLargerThanTablet
-      ? NavigationDrawerState.SNAP_WIDE
-      : NavigationDrawerState.DRAWER_WIDE_HIDE,
+    windowStore.isLargerThanTablet ? NavigationDrawerState.SNAP_WIDE : NavigationDrawerState.DRAWER_WIDE_HIDE,
   );
 
   const viewStates = ref<Partial<Record<ViewState, NavigationDrawerState>>>({});

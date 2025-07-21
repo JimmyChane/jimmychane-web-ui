@@ -12,10 +12,7 @@ export const usePopoverStore = defineStore('popover', () => {
 
   const overlays = ref<PopoverModel[]>([]);
 
-  const open = <D = undefined>(
-    key: string | undefined,
-    option: PopoverOption<D>,
-  ): PopoverModel<D> => {
+  const open = <D = undefined>(key: string | undefined, option: PopoverOption<D>): PopoverModel<D> => {
     if (key?.length) {
       const existingOverlay = (overlays.value as PopoverModel[]).find((item) => item.id === key);
       if (existingOverlay) return existingOverlay as unknown as PopoverModel<D>;

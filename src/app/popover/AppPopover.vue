@@ -86,23 +86,15 @@ const windowHeightHalf = computed(() => windowHeight.value / 2);
 const calculatedAlignment = computed(() => {
   switch (props.popover.alignment) {
     case PopoverAlignment.VERTICAL:
-      return {
-        vertical:
-          anchorTopPx.value > windowHeightHalf.value ? PopoverCorner.TOP : PopoverCorner.BOTTOM,
-      };
+      return { vertical: anchorTopPx.value > windowHeightHalf.value ? PopoverCorner.TOP : PopoverCorner.BOTTOM };
     case PopoverAlignment.HORIZONTAL:
-      return {
-        horizontal:
-          anchorLeftPx.value > windowWidthHalf.value ? PopoverCorner.LEFT : PopoverCorner.RIGHT,
-      };
+      return { horizontal: anchorLeftPx.value > windowWidthHalf.value ? PopoverCorner.LEFT : PopoverCorner.RIGHT };
     default:
     case PopoverAlignment.AUTO:
     case PopoverAlignment.DIANGLE:
       return {
-        vertical:
-          anchorTopPx.value > windowHeightHalf.value ? PopoverCorner.TOP : PopoverCorner.BOTTOM,
-        horizontal:
-          anchorLeftPx.value > windowWidthHalf.value ? PopoverCorner.LEFT : PopoverCorner.RIGHT,
+        vertical: anchorTopPx.value > windowHeightHalf.value ? PopoverCorner.TOP : PopoverCorner.BOTTOM,
+        horizontal: anchorLeftPx.value > windowWidthHalf.value ? PopoverCorner.LEFT : PopoverCorner.RIGHT,
       };
   }
 });
@@ -130,18 +122,13 @@ const calculatedCorner = computed<PopoverCorner | undefined>(() => {
       const { vertical, horizontal } = calculatedAlignment.value;
 
       if (vertical === PopoverCorner.TOP && horizontal === undefined) return PopoverCorner.TOP;
-      if (vertical === PopoverCorner.BOTTOM && horizontal === undefined)
-        return PopoverCorner.BOTTOM;
+      if (vertical === PopoverCorner.BOTTOM && horizontal === undefined) return PopoverCorner.BOTTOM;
       if (vertical === undefined && horizontal === PopoverCorner.LEFT) return PopoverCorner.LEFT;
       if (vertical === undefined && horizontal === PopoverCorner.RIGHT) return PopoverCorner.RIGHT;
-      if (vertical === PopoverCorner.TOP && horizontal === PopoverCorner.LEFT)
-        return PopoverCorner.TOP_LEFT;
-      if (vertical === PopoverCorner.TOP && horizontal === PopoverCorner.RIGHT)
-        return PopoverCorner.TOP_RIGHT;
-      if (vertical === PopoverCorner.BOTTOM && horizontal === PopoverCorner.LEFT)
-        return PopoverCorner.BOTTOM_LEFT;
-      if (vertical === PopoverCorner.BOTTOM && horizontal === PopoverCorner.RIGHT)
-        return PopoverCorner.BOTTOM_RIGHT;
+      if (vertical === PopoverCorner.TOP && horizontal === PopoverCorner.LEFT) return PopoverCorner.TOP_LEFT;
+      if (vertical === PopoverCorner.TOP && horizontal === PopoverCorner.RIGHT) return PopoverCorner.TOP_RIGHT;
+      if (vertical === PopoverCorner.BOTTOM && horizontal === PopoverCorner.LEFT) return PopoverCorner.BOTTOM_LEFT;
+      if (vertical === PopoverCorner.BOTTOM && horizontal === PopoverCorner.RIGHT) return PopoverCorner.BOTTOM_RIGHT;
   }
 });
 const positionCornerPx = computed<{ x: number; y: number }>(() => {
@@ -149,15 +136,9 @@ const positionCornerPx = computed<{ x: number; y: number }>(() => {
     case PopoverCorner.TOP:
       return { x: anchorLeftPx.value + anchorWidthHalf.value, y: anchorTopPx.value };
     case PopoverCorner.RIGHT:
-      return {
-        x: anchorLeftPx.value + anchorWidthPx.value,
-        y: anchorTopPx.value + anchorHeightHalf.value,
-      };
+      return { x: anchorLeftPx.value + anchorWidthPx.value, y: anchorTopPx.value + anchorHeightHalf.value };
     case PopoverCorner.BOTTOM:
-      return {
-        x: anchorLeftPx.value + anchorWidthHalf.value,
-        y: anchorTopPx.value + anchorHeightPx.value,
-      };
+      return { x: anchorLeftPx.value + anchorWidthHalf.value, y: anchorTopPx.value + anchorHeightPx.value };
     case PopoverCorner.LEFT:
       return { x: anchorLeftPx.value, y: anchorTopPx.value + anchorHeightHalf.value };
     case PopoverCorner.TOP_LEFT:
@@ -175,10 +156,7 @@ const positionCornerPx = computed<{ x: number; y: number }>(() => {
     case PopoverCorner.BOTTOM_RIGHT:
     case PopoverCorner.BOTTOM_LEAN_RIGHT:
     case PopoverCorner.RIGHT_LEAN_BOTTOM:
-      return {
-        x: anchorLeftPx.value + anchorWidthPx.value,
-        y: anchorTopPx.value + anchorHeightPx.value,
-      };
+      return { x: anchorLeftPx.value + anchorWidthPx.value, y: anchorTopPx.value + anchorHeightPx.value };
     default:
       return { x: 0, y: 0 };
   }
@@ -257,13 +235,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div
-    ref="selfRef"
-    class="Popover"
-    :class="classDirection"
-    :style="style"
-    :data-showing="isShowing"
-  >
+  <div ref="selfRef" class="Popover" :class="classDirection" :style="style" :data-showing="isShowing">
     <div class="Popover-body">
       <component ref="componentRef" :is="popover.component" :popover="popover" />
     </div>
@@ -327,8 +299,7 @@ onUnmounted(() => {
 }
 
 .Popover-Top {
-  --transform-start: translateX(calc(0px - 50%))
-    translateY(calc(0px - 100% + var(--anchor-half-height)));
+  --transform-start: translateX(calc(0px - 50%)) translateY(calc(0px - 100% + var(--anchor-half-height)));
   --transform-end: translateX(calc(0px - 50%)) translateY(calc(0px - 100%));
 }
 .Popover-Right {
@@ -340,8 +311,7 @@ onUnmounted(() => {
   --transform-end: translateX(calc(0px - 50%)) translateY(0px);
 }
 .Popover-Left {
-  --transform-start: translateX(calc(0px - 100% + var(--anchor-half-width)))
-    translateY(calc(0px - 50%));
+  --transform-start: translateX(calc(0px - 100% + var(--anchor-half-width))) translateY(calc(0px - 50%));
   --transform-end: translateX(calc(0px - 100%)) translateY(calc(0px - 50%));
 }
 
@@ -364,8 +334,7 @@ onUnmounted(() => {
     translateY(calc(0px - calc(var(--anchor-half-height) * 0.5)));
 }
 .Popover-BottomRight {
-  --transform-start: translateX(calc(0px - var(--anchor-half-width)))
-    translateY(calc(0px - var(--anchor-half-height)));
+  --transform-start: translateX(calc(0px - var(--anchor-half-width))) translateY(calc(0px - var(--anchor-half-height)));
   --transform-end: translateX(calc(0px - calc(var(--anchor-half-width) * 0.5)))
     translateY(calc(0px - calc(var(--anchor-half-height) * 0.5)));
 }
@@ -377,8 +346,7 @@ onUnmounted(() => {
 
 .Popover-Top-Lean-Right {
   --transform-start: translateX(calc(0px - 100%)) translateY(calc(0px - 100%));
-  --transform-end: translateX(calc(0px - 100%))
-    translateY(calc(0px - 100% - 0.5rem - var(--anchor-height)));
+  --transform-end: translateX(calc(0px - 100%)) translateY(calc(0px - 100% - 0.5rem - var(--anchor-height)));
 }
 
 .Popover-Bottom-Lean-Left {
@@ -394,25 +362,21 @@ onUnmounted(() => {
 .Popover-Left-Lean-Top {
   --transform-start: translateX(calc(0px - 100% - 0.5rem + var(--anchor-width)))
     translateY(calc(0px - var(--anchor-height)));
-  --transform-end: translateX(calc(0px - 100% - 0.5rem))
-    translateY(calc(0px - var(--anchor-height)));
+  --transform-end: translateX(calc(0px - 100% - 0.5rem)) translateY(calc(0px - var(--anchor-height)));
 }
 
 .Popover-Left-Lean-Bottom {
-  --transform-start: translateX(calc(0px - 100% - 0.5rem + var(--anchor-width)))
-    translateY(calc(0px - 100%));
+  --transform-start: translateX(calc(0px - 100% - 0.5rem + var(--anchor-width))) translateY(calc(0px - 100%));
   --transform-end: translateX(calc(0px - 100% - 0.5rem)) translateY(calc(0px - 100%));
 }
 
 .Popover-Right-Lean-Top {
-  --transform-start: translateX(calc(0px + 0.5rem - var(--anchor-width)))
-    translateY(calc(0px - var(--anchor-height)));
+  --transform-start: translateX(calc(0px + 0.5rem - var(--anchor-width))) translateY(calc(0px - var(--anchor-height)));
   --transform-end: translateX(calc(0px + 0.5rem)) translateY(calc(0px - var(--anchor-height)));
 }
 
 .Popover-Right-Lean-Bottom {
-  --transform-start: translateX(calc(0px + 0.5rem - var(--anchor-width)))
-    translateY(calc(0px - 100%));
+  --transform-start: translateX(calc(0px + 0.5rem - var(--anchor-width))) translateY(calc(0px - 100%));
   --transform-end: translateX(calc(0px + 0.5rem)) translateY(calc(0px - 100%));
 }
 </style>

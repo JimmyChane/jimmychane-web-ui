@@ -37,11 +37,7 @@ const isUsingDrawer = computed(() => {
         <Labels :labels="profile.labels" />
 
         <div class="home-page-socials" style="grid-area: socials">
-          <Social
-            v-for="social of profile.socials"
-            :key="social.socialPlatform.title"
-            :item="social"
-          />
+          <Social v-for="social of profile.socials" :key="social.socialPlatform.title" :item="social" />
         </div>
 
         <p class="home-page-description" style="grid-area: description">
@@ -60,9 +56,7 @@ const isUsingDrawer = computed(() => {
 
 <style lang="scss" scoped>
 .home-page {
-  min-height: calc(
-    100dvh - var(--statusbar-height) - var(--App-page-padding) - var(--App-page-padding)
-  );
+  min-height: calc(100dvh - var(--statusbar-height) - var(--App-page-padding) - var(--App-page-padding));
   min-height: 55dvh;
   gap: 3rem;
 

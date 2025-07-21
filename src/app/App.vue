@@ -11,9 +11,7 @@ import { useAppStore, useBottomsheetStore, useThemeStore } from '@/stores/store'
 import AppRouteLoading from './route-loading/App-RouteLoading.vue';
 
 const FullLayout = defineAsyncComponent(() => import('@/layout/full/Full.layout.vue'));
-const NavigationLayout = defineAsyncComponent(
-  () => import('@/layout/navigation/Navigation.layout.vue'),
-);
+const NavigationLayout = defineAsyncComponent(() => import('@/layout/navigation/Navigation.layout.vue'));
 
 const AppBottomsheet = defineAsyncComponent(() => import('@/app/bottomsheet/AppBottomsheet.vue'));
 const AppDialogPopup = defineAsyncComponent(() => import('@/app/dialog-popup/AppDialogPopup.vue'));

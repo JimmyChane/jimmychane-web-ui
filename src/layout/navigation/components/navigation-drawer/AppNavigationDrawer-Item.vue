@@ -10,12 +10,7 @@ const isSelected = computed(() => route.name === props.item.id);
 </script>
 
 <template>
-  <RouterLink
-    class="App-Nav"
-    :class="item.icon ? 'App-Nav-withIcon' : ''"
-    :isSelected="isSelected"
-    :to="item.path"
-  >
+  <RouterLink class="App-Nav" :class="item.icon ? 'App-Nav-withIcon' : ''" :isSelected="isSelected" :to="item.path">
     <component v-if="item.icon" class="App-Nav-icon" :is="item.icon" :size="20" />
     <span class="App-Nav-title">{{ item.title }}</span>
   </RouterLink>

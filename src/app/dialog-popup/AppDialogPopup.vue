@@ -53,11 +53,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKeyDown));
 </script>
 
 <template>
-  <AppDismissableContainer
-    class="DialogPopup"
-    :data-showing="`${dialogPopup.isShowing}`"
-    :click-close="close"
-  >
+  <AppDismissableContainer class="DialogPopup" :data-showing="`${dialogPopup.isShowing}`" :click-close="close">
     <div class="DialogPopup-body">
       <component ref="componentRef" :is="dialogPopup.component" :dialog-popup="dialogPopup" />
     </div>

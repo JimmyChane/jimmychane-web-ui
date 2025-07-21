@@ -23,11 +23,7 @@ const cssViewState = computedAsync(async () => {
 </script>
 
 <template>
-  <div
-    class="navigation-drawer-controller"
-    :data-view-mode="cssViewMode"
-    :data-view-state="cssViewState"
-  >
+  <div class="navigation-drawer-controller" :data-view-mode="cssViewMode" :data-view-state="cssViewState">
     <div class="navigation-drawer-controller-blur"></div>
     <div
       class="navigation-drawer-controller-dismiss"

@@ -44,11 +44,7 @@ onMounted(() => {
     <AppCheeseHoles style="z-index: 0" />
 
     <div ref="layoutBodyRef" class="navigation-layout-body" style="z-index: 1">
-      <AppActionbar
-        v-if="navigationDrawerStore.isDrawer"
-        :parent-scroll-top="y"
-        style="z-index: 2"
-      />
+      <AppActionbar v-if="navigationDrawerStore.isDrawer" :parent-scroll-top="y" style="z-index: 2" />
 
       <div class="navigation-layout-router-view" style="z-index: 1">
         <RouterView v-slot="{ Component }">

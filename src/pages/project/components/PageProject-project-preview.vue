@@ -1,9 +1,5 @@
 <script setup lang="ts">
-withDefaults(defineProps<{ href?: string; src?: string; alt?: string }>(), {
-  href: '',
-  src: '',
-  alt: '',
-});
+withDefaults(defineProps<{ href?: string; src?: string; alt?: string }>(), { href: '', src: '', alt: '' });
 </script>
 
 <template>

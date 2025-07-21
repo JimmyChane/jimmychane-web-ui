@@ -24,11 +24,7 @@ const indexTheme = computed(() => {
     <button aria-label="Light Theme" @click="() => themeStore.toggleThemes()">
       <component :is="themeStore.LIGHT_THEME.icon" :size="20" />
     </button>
-    <button
-      style="padding-left: 4%"
-      aria-label="Dark Theme"
-      @click="() => themeStore.toggleThemes()"
-    >
+    <button style="padding-left: 4%" aria-label="Dark Theme" @click="() => themeStore.toggleThemes()">
       <component :is="themeStore.DARK_THEME.icon" :size="18" />
     </button>
   </div>
@@ -54,9 +50,7 @@ const indexTheme = computed(() => {
 
   --container-gap: 0.2em;
   --container-padding: 0.2em;
-  --item-width: calc(
-    calc(100% / var(--item-count)) - calc(var(--container-gap) * calc(var(--item-count) - 1))
-  );
+  --item-width: calc(calc(100% / var(--item-count)) - calc(var(--container-gap) * calc(var(--item-count) - 1)));
   --item-height: 3em;
   --item-index: 0;
 

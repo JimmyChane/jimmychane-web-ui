@@ -27,18 +27,10 @@ const cssViewMode = computed(() => {
 </script>
 
 <template>
-  <NavigationDrawerController
-    class="navigation-drawer-controller"
-    :data-view-mode="viewMode"
-    style="z-index: 2"
-  >
+  <NavigationDrawerController class="navigation-drawer-controller" :data-view-mode="viewMode" style="z-index: 2">
     <div class="navigation-drawer" :data-view-mode="cssViewMode">
       <div class="navigation-drawer-items">
-        <AppNavigationDrawerItem
-          v-for="route of navigationStore.navigations"
-          :key="route.id"
-          :item="route"
-        />
+        <AppNavigationDrawerItem v-for="route of navigationStore.navigations" :key="route.id" :item="route" />
       </div>
 
       <AppThemeToggler />
