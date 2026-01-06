@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import { useAsyncComponent } from '@chanzor/vue-use';
 import { useScroll } from '@vueuse/core';
 import { computed, onMounted, ref, useTemplateRef, watch } from 'vue';
 import { useRoute } from 'vue-router';
 
 import { useNavigationDrawerStore } from '@/stores/navigation-drawer.store';
 import { useAppStore } from '@/stores/store';
-import { useAsyncComponent } from '@/use/AsyncComponent';
 
 import AppCheeseHoles from '@/app/background/AppCheeseHoles.vue';
 import AppStatusbar from '@/app/statusbar/App-Statusbar.vue';

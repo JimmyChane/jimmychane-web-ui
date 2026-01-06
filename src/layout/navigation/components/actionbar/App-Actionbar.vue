@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import { useAsyncComponent } from '@chanzor/vue-use';
 import { computed } from 'vue';
 
 import { useNavigationDrawerStore } from '@/stores/navigation-drawer.store';
 import { useNavigationStore } from '@/stores/navigation.store';
 import { useWindowStore } from '@/stores/store';
-import { useAsyncComponent } from '@/use/AsyncComponent';
 
 import AppThemeToggler from '@/app/theme-toggler/App-ThemeToggler.vue';
 
