@@ -70,8 +70,9 @@ onMounted(() => {
   position: relative;
 
   width: 100%;
-  height: 100dvh;
+  height: 100lvh;
   flex-grow: 1;
+  overflow: hidden;
 
   display: flex;
   flex-direction: row-reverse;
@@ -93,6 +94,8 @@ onMounted(() => {
 
     .navigation-layout-router-view {
       width: 100%;
+      height: 100%;
+      min-height: max-content;
 
       flex-grow: 1;
 

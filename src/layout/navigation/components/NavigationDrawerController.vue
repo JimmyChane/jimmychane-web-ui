@@ -39,7 +39,7 @@ const cssViewState = computedAsync(async () => {
 <style lang="scss" scoped>
 .navigation-drawer-controller {
   width: 100%;
-  height: 100%;
+  height: 100dvh;
   display: grid;
   grid-template-areas: 'content dismiss';
   overflow: hidden;

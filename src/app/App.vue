@@ -67,7 +67,7 @@ const layoutId = computed(() => appRoute.value?.layoutId ?? LayoutId.NAVIGATION)
   position: relative;
 
   width: 100%;
-  height: 100dvh;
+  height: 100lvh;
   flex-grow: 1;
 
   display: flex;

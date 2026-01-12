@@ -5,11 +5,11 @@
   "scripts": {
     "dev": "vite",
     "dev:host": "vite --host",
-    "build": "run-p check \"build-only {@}\" --",
+    "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-preview": "npm run build && npm run preview",
     "build-only": "vite build",
-    "check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
+    "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/"
   },

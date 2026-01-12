@@ -42,7 +42,7 @@ const { y } = useScroll(layoutBodyRef, { behavior: 'smooth' });
   position: relative;
 
   width: 100%;
-  height: 100dvh;
+  height: 100lvh;
   flex-grow: 1;
 
   display: flex;
@@ -54,7 +54,7 @@ const { y } = useScroll(layoutBodyRef, { behavior: 'smooth' });
 
   .full-layout-body {
     width: 100%;
-    height: 100dvh;
+    height: 100lvh;
     overflow-y: auto;
 
     display: flex;

@@ -26,7 +26,7 @@ if (props.clickClose) {
 <style lang="scss" scoped>
 .dismissable-container {
   width: 100dvw;
-  height: 100dvh;
+  height: 100lvh;
   z-index: 1;
   align-items: center;
 

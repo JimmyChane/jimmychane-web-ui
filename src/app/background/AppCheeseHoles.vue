@@ -40,7 +40,7 @@ onUnmounted(() => {
   position: fixed;
 
   --width: 100%;
-  --height: 100dvh;
+  --height: 100lvh;
 
   min-width: var(--width);
   min-height: var(--height);
@@ -58,7 +58,7 @@ onUnmounted(() => {
 
   .CheeseHoles-body {
     --width: 100%;
-    --height: calc(100dvh - var(--scroll-top) * 0.8);
+    --height: calc(100lvh - var(--scroll-top) * 0.8);
 
     min-width: var(--width);
     min-height: var(--height);

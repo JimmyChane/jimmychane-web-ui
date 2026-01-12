@@ -32,7 +32,7 @@ onMounted(() => props.bottomsheet.open());
   left: 0;
 
   width: 100%;
-  height: 100dvh;
+  height: 100lvh;
   overflow: hidden;
 
   display: grid;
