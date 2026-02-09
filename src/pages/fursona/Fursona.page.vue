@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineAsyncComponent } from 'vue';
 
-import { JimmyChane } from '@/models/Profile.model';
+import { PROFILE_JIMMYCHANE } from '@/config/jimmychane.profile.meta';
 import { useDialogPopup } from '@/stores/dialog-popup/DialogPopup.composable';
 
 import AppPage from '@/layout/navigation/components/page/AppPage.vue';
@@ -17,12 +17,12 @@ const { open } = useDialogPopup<string>({
 <template>
   <AppPage>
     <Section class="fursona-page" style="--text-color: var(--section-fursona-text-color)">
-      <button class="PageFursona-fursona-preview" @click="() => open(JimmyChane.fursona.image)">
-        <img :src="JimmyChane.fursona.image" :alt="JimmyChane.fursona.alt" loading="lazy" />
+      <button class="PageFursona-fursona-preview" @click="() => open(PROFILE_JIMMYCHANE.fursona.image)">
+        <img :src="PROFILE_JIMMYCHANE.fursona.image" :alt="PROFILE_JIMMYCHANE.fursona.alt" loading="lazy" />
       </button>
 
       <div style="display: flex; flex-direction: column; gap: 1rem">
-        <div v-for="section of JimmyChane.fursona.sections">
+        <div v-for="section of PROFILE_JIMMYCHANE.fursona.sections">
           <FursonaHeader :title="section.titles.title" :subtitle="section.titles.subtitle" />
           <p>{{ section.description }}</p>
         </div>

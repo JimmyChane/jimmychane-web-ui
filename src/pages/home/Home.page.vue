@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { JimmyChane } from '@/models/Profile.model';
+import { PROFILE_JIMMYCHANE } from '@/config/jimmychane.profile.meta';
 import { FAVOURITE_ROUTE, FURSONA_ROUTE, PROJECT_ROUTE } from '@/stores/navigation.store';
 
 import AppPage from '@/layout/navigation/components/page/AppPage.vue';
@@ -16,16 +16,16 @@ import Social from './components/PageHome-social.vue';
       <div class="home-page-grid">
         <PFP style="grid-area: img" />
 
-        <h1 class="PageHome-name" style="grid-area: name">{{ JimmyChane.name }}</h1>
+        <h1 class="PageHome-name" style="grid-area: name">{{ PROFILE_JIMMYCHANE.name }}</h1>
 
-        <Labels :labels="JimmyChane.labels" />
+        <Labels :labels="PROFILE_JIMMYCHANE.labels" />
 
         <div class="home-page-socials" style="grid-area: socials">
-          <Social v-for="social of JimmyChane.socials" :key="social.socialPlatform.title" :item="social" />
+          <Social v-for="social of PROFILE_JIMMYCHANE.socials" :key="social.socialPlatform.title" :item="social" />
         </div>
 
         <p class="home-page-description" style="grid-area: description">
-          {{ JimmyChane.description }}
+          {{ PROFILE_JIMMYCHANE.description }}
         </p>
       </div>
 

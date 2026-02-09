@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { APP_VERSION } from '@/config';
+import { APP_VERSION } from '@/config/env';
 </script>
 
 <template>
