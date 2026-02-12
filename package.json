@@ -19,7 +19,6 @@
     "@chanzor/vue-utils": "^2.0.2",
     "@vueuse/core": "^12.8.2",
     "pinia": "^2.1.7",
-    "vite-plugin-inspect": "^11.3.3",
     "vite-plugin-pwa": "^0.21.1",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5"
@@ -40,6 +39,7 @@
     "sass": "^1.69.4",
     "typescript": "~5.2.0",
     "vite": "^6.2.0",
+    "vite-plugin-inspect": "^11.3.3",
     "vue-tsc": "^2.0.29"
   }
 }
