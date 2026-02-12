@@ -1,6 +1,7 @@
 import vue from '@vitejs/plugin-vue';
 import { URL, fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
+import ViteInspect from 'vite-plugin-inspect';
 import { VitePWA } from 'vite-plugin-pwa';
 
 import Package from './package.json';
@@ -30,6 +31,7 @@ export default defineConfig({
       },
       workbox: { cleanupOutdatedCaches: true, globPatterns: ['**/*'] },
     }),
+    ViteInspect(),
   ],
   define: {
     'import.meta.env.APP_VERSION': JSON.stringify(Package.version),
