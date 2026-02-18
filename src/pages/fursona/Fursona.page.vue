@@ -4,12 +4,13 @@ import { defineAsyncComponent } from 'vue';
 import { PROFILE_JIMMYCHANE } from '@/config/jimmychane.profile.meta';
 import { useDialog } from '@/stores/store';
 
+import type { AppImageViewerData } from '@/app/image-viewer/AppImageViewer.vue';
 import AppPage from '@/layout/navigation/components/page/AppPage.vue';
 
 import FursonaHeader from './components/PageFursona-header.vue';
 import Section from './components/PageFursona-section.vue';
 
-const { open } = useDialog<string>({
+const { open } = useDialog<AppImageViewerData>({
   component: defineAsyncComponent(() => import('@/app/image-viewer/AppImageViewer.vue')),
 });
 </script>

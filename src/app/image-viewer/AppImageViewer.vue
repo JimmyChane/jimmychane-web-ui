@@ -5,7 +5,9 @@ import { type StyleValue, computed, useTemplateRef } from 'vue';
 
 import CloseIcon from '@/components/icon/Close.icon.vue';
 
-const props = defineProps<DialogProps<string>>();
+export type AppImageViewerData = string;
+
+const props = defineProps<DialogProps<AppImageViewerData>>();
 
 const imageRef = useTemplateRef('imageRef');
 const imageBodyRef = useTemplateRef('bodyRef');

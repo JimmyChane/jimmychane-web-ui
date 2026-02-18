@@ -1,13 +1,27 @@
-<template>
-  <div class="PFP">
-    <div class="PFP-background"></div>
+<script setup lang="ts">
+import { defineAsyncComponent } from 'vue';
 
-    <img class="PFP-image" src="@/assets/jimmy_fox_pfp-v1.webp" alt="Jimmy Chane's Profile Image" loading="lazy" />
-  </div>
+import PFP_WEBP from '@/assets/jimmy_fox_pfp-v1.webp';
+import { useDialog } from '@/stores/store';
+
+import type { AppImageViewerData } from '@/app/image-viewer/AppImageViewer.vue';
+
+const { open } = useDialog<AppImageViewerData>({
+  component: defineAsyncComponent(() => import('@/app/image-viewer/AppImageViewer.vue')),
+});
+</script>
+
+<template>
+  <button class="PFP" @click="() => open(PFP_WEBP)">
+    <div class="PFP-background"></div>
+    <img class="PFP-image" :src="PFP_WEBP" alt="Jimmy Chane's Profile Image" loading="lazy" />
+  </button>
 </template>
 
 <style lang="scss" scoped>
 .PFP {
+  font-size: 1rem;
+
   width: 100%;
   height: 100%;
 
@@ -22,6 +36,7 @@
   transition: 0.3s;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: flex-end;
 
@@ -29,11 +44,8 @@
   border-bottom-left-radius: 45%;
   border-bottom-right-radius: 45%;
 
-  user-select: none;
-
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  border: none;
+  background: none;
 
   .PFP-background {
     background-color: var(--cheese-color-pfp);
@@ -47,6 +59,7 @@
     z-index: 1;
 
     border-radius: 50%;
+    user-select: none;
 
     transition: background-color 200ms ease;
   }
@@ -56,6 +69,14 @@
     width: 120%;
     min-height: 100%;
     object-fit: cover;
+    user-select: none;
+    transition: transform 0.3s;
+  }
+
+  &:hover {
+    .PFP-image {
+      transform: scale(1.05);
+    }
   }
 }
 </style>
