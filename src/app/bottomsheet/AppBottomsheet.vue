@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { BottomsheetProps } from '@chanzor/vue-utils';
+import type { BottomsheetProps } from '@chanzor/vue-bottomsheet';
 import { computed, onMounted } from 'vue';
 
 const props = defineProps<BottomsheetProps>();

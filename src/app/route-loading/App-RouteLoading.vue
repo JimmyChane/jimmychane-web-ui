@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { waitMs } from '@chanzor/utils';
-import { waitFrame } from '@chanzor/vue-utils';
+import { waitFrameMs } from '@chanzor/vue-utils';
 import {
   type CubicBezierPoints,
   type EasingFunction,
@@ -36,7 +36,7 @@ const isRouteWatchOnce = ref(false);
 const animateStartRoute = async () => {
   const now = (updateTime = Date.now());
 
-  await waitFrame();
+  await waitFrameMs();
   if (now !== updateTime) return;
 
   if (percentageOutput.value < 1) {
@@ -50,7 +50,7 @@ const animateStartRoute = async () => {
     percentageSource.value = 0;
   }
 
-  await waitFrame();
+  await waitFrameMs();
   if (now !== updateTime) return;
 
   transition.value = TransitionPresets.easeOutCubic;
@@ -60,7 +60,7 @@ const animateStartRoute = async () => {
 const animateEndRoute = async () => {
   const now = (updateTime = Date.now());
 
-  await waitFrame();
+  await waitFrameMs();
   if (now !== updateTime) return;
 
   transition.value = TransitionPresets.easeInOutCubic;

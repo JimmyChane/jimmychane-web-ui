@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { waitMs } from '@chanzor/utils';
+import type { DialogModel } from '@chanzor/vue-dialog';
 import { onMounted, onUnmounted, ref, watch } from 'vue';
-
-import type { DialogPopupModel } from '@/stores/dialog-popup/DialogPopup.model';
 
 import AppDismissableContainer from './AppDismissableContainer.vue';
 
-const props = defineProps<{ dialogPopup: DialogPopupModel }>();
+const props = defineProps<{ dialogPopup: DialogModel }>();
 
 let dismissTime = 0;
 

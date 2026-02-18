@@ -3,10 +3,8 @@ import { ThemeId } from '@chanzor/vue-utils';
 import { computed, defineAsyncComponent } from 'vue';
 import { useRoute } from 'vue-router';
 
-import { useDialogPopupStore } from '@/stores/dialog-popup/dialog-popup.store';
 import { LayoutId, findAppRouteById } from '@/stores/navigation.store';
-import { usePopoverStore } from '@/stores/popover/popover.store';
-import { useAppStore, useBottomsheetStore, useThemeStore } from '@/stores/store';
+import { useBottomsheetStore, useDialogStore, usePopoverStore, useThemeStore } from '@/stores/store';
 
 import AppRouteLoading from './route-loading/App-RouteLoading.vue';
 
@@ -17,9 +15,12 @@ const AppBottomsheet = defineAsyncComponent(() => import('@/app/bottomsheet/AppB
 const AppDialogPopup = defineAsyncComponent(() => import('@/app/dialog-popup/AppDialogPopup.vue'));
 const AppPopover = defineAsyncComponent(() => import('./popover/AppPopover.vue'));
 
-const appStore = useAppStore();
 const themeStore = useThemeStore();
 const route = useRoute();
+
+const dialogStore = useDialogStore();
+const bottomsheetStore = useBottomsheetStore();
+const popoverStore = usePopoverStore();
 
 const appRoute = computed(() => findAppRouteById(route.name?.toString()));
 const layoutId = computed(() => appRoute.value?.layoutId ?? LayoutId.NAVIGATION);
@@ -29,25 +30,21 @@ const layoutId = computed(() => appRoute.value?.layoutId ?? LayoutId.NAVIGATION)
   <div class="app" :data-dark="themeStore.theme.id === ThemeId.DARK">
     <FullLayout v-if="layoutId === LayoutId.FULL" />
     <NavigationLayout v-if="layoutId === LayoutId.NAVIGATION" />
-    <template v-if="appStore.useBottomsheetComponent">
-      <AppBottomsheet
-        v-for="overlay of useBottomsheetStore().items"
-        :style="{ 'z-index': `${3 + useBottomsheetStore().items.length}` }"
-        :key="overlay.id"
-        :bottomsheet="overlay"
-      />
-    </template>
-    <template v-if="appStore.useDialogPopupComponent">
-      <AppDialogPopup
-        v-for="overlay of useDialogPopupStore().overlays"
-        :style="{ 'z-index': `${4 + useDialogPopupStore().overlays.length} ` }"
-        :key="overlay.id"
-        :dialog-popup="overlay"
-      />
-    </template>
+    <AppBottomsheet
+      v-for="overlay of bottomsheetStore.overlays"
+      :style="{ 'z-index': `${3 + bottomsheetStore.overlays.length}` }"
+      :key="overlay.id"
+      :bottomsheet="overlay"
+    />
+    <AppDialogPopup
+      v-for="overlay of dialogStore.overlays"
+      :style="{ 'z-index': `${4 + dialogStore.overlays.length} ` }"
+      :key="overlay.id"
+      :dialog-popup="overlay"
+    />
     <AppPopover
-      v-for="overlay of usePopoverStore().items"
-      :style="{ 'z-index': `${5 + usePopoverStore().items.length} ` }"
+      v-for="overlay of popoverStore.items"
+      :style="{ 'z-index': `${5 + popoverStore.items.length} ` }"
       :key="overlay.key"
       :popover="overlay"
     />

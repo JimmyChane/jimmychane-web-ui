@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { waitFrame } from '@chanzor/vue-utils';
+import { waitFrameMs } from '@chanzor/vue-utils';
 import { computedAsync } from '@vueuse/core';
 import { computed } from 'vue';
 
@@ -17,7 +17,7 @@ const cssViewState = computedAsync(async () => {
     case NavigationDrawerState.DRAWER_WIDE_HIDE:
       return 'drawer-hide';
     case NavigationDrawerState.DRAWER_WIDE_SHOW:
-      await waitFrame();
+      await waitFrameMs();
       return 'drawer-show';
   }
 }, 'drawer-hide');

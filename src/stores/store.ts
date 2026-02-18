@@ -1,8 +1,7 @@
-import {
-  defineBottomsheetStoreDefinition,
-  defineThemeStoreDefinition,
-  defineWindowStoreDefinition,
-} from '@chanzor/vue-utils';
+import { defineBottomsheetStore, defineUseBottomsheet } from '@chanzor/vue-bottomsheet';
+import { defineDialogStore, defineUseDialog } from '@chanzor/vue-dialog';
+import { definePopoverStore, defineUsePopover } from '@chanzor/vue-popover';
+import { defineThemeStore, defineWindowStore } from '@chanzor/vue-utils';
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
@@ -11,24 +10,30 @@ import LightThemeIcon from '@/components/icon/LightTheme.icon.vue';
 
 export const useAppStore = defineStore('app', () => {
   const useNavigationDrawerComponent = ref(false);
-  const useBottomsheetComponent = ref(false);
-  const useDialogPopupComponent = ref(false);
 
-  return { useNavigationDrawerComponent, useBottomsheetComponent, useDialogPopupComponent };
+  return { useNavigationDrawerComponent };
 });
 
-export const useThemeStore = defineStore('theme', () => {
-  return defineThemeStoreDefinition({ lightIcon: LightThemeIcon, darkIcon: DarkThemeIcon });
-});
+export const useThemeStore = defineStore('theme', () =>
+  defineThemeStore({ lightIcon: LightThemeIcon, darkIcon: DarkThemeIcon }),
+);
 
-export const useWindowStore = defineStore('window', () => {
-  return defineWindowStoreDefinition();
-});
+export const useWindowStore = defineStore('window', () => defineWindowStore());
 
-export const useBottomsheetStore = defineStore('bottomsheet', () => {
-  return defineBottomsheetStoreDefinition({
-    onCreated: () => {
-      useAppStore().useBottomsheetComponent = true;
-    },
-  });
-});
+// DIALOG
+
+export const useDialogStore = defineStore('dialog', () => defineDialogStore());
+
+export const useDialog = defineUseDialog({ getStore: () => useDialogStore() });
+
+// BOTTOMSHEET
+
+export const useBottomsheetStore = defineStore('bottomsheet', () => defineBottomsheetStore());
+
+export const useBottomsheet = defineUseBottomsheet({ getStore: () => useBottomsheetStore() });
+
+// POPOVER
+
+export const usePopoverStore = defineStore('popover', () => definePopoverStore());
+
+export const usePopover = defineUsePopover({ getStore: () => usePopoverStore() });

@@ -2,14 +2,14 @@
 import { defineAsyncComponent } from 'vue';
 
 import { PROFILE_JIMMYCHANE } from '@/config/jimmychane.profile.meta';
-import { useDialogPopup } from '@/stores/dialog-popup/DialogPopup.composable';
+import { useDialog } from '@/stores/store';
 
 import AppPage from '@/layout/navigation/components/page/AppPage.vue';
 
 import FursonaHeader from './components/PageFursona-header.vue';
 import Section from './components/PageFursona-section.vue';
 
-const { open } = useDialogPopup<string>({
+const { open } = useDialog<string>({
   component: defineAsyncComponent(() => import('@/app/image-viewer/AppImageViewer.vue')),
 });
 </script>
@@ -22,7 +22,7 @@ const { open } = useDialogPopup<string>({
       </button>
 
       <div style="display: flex; flex-direction: column; gap: 1rem">
-        <div v-for="section of PROFILE_JIMMYCHANE.fursona.sections">
+        <div v-for="(section, index) of PROFILE_JIMMYCHANE.fursona.sections" :key="index">
           <FursonaHeader :title="section.titles.title" :subtitle="section.titles.subtitle" />
           <p>{{ section.description }}</p>
         </div>

@@ -1,12 +1,11 @@
 <script setup lang="ts">
+import type { DialogProps } from '@chanzor/vue-dialog';
 import { onClickOutside, useElementSize } from '@vueuse/core';
 import { type StyleValue, computed, useTemplateRef } from 'vue';
 
-import type { DialogPopupProp } from '@/stores/dialog-popup/DialogPopup.model';
-
 import CloseIcon from '@/components/icon/Close.icon.vue';
 
-const props = defineProps<DialogPopupProp<string>>();
+const props = defineProps<DialogProps<string>>();
 
 const imageRef = useTemplateRef('imageRef');
 const imageBodyRef = useTemplateRef('bodyRef');
@@ -17,7 +16,7 @@ const imageViewerToolbarStyle = computed<StyleValue>(() => {
   return { '--width': `${width.value}px` };
 });
 
-const close = () => {
+const close = (): void => {
   props.dialogPopup.close();
 };
 
@@ -33,7 +32,7 @@ onClickOutside(imageBodyRef, close);
     </div>
 
     <div ref="bodyRef" class="app-image-viewer-body">
-      <img ref="imageRef" :src="props.dialogPopup.prop" />
+      <img ref="imageRef" :src="props.dialogPopup.data" />
     </div>
   </div>
 </template>

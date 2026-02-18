@@ -1,7 +1,7 @@
 {
   "name": "jimmychane-web-ui",
   "private": true,
-  "version": "1.1.10",
+  "version": "1.1.11",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -19,10 +19,12 @@
   },
   "dependencies": {
     "@chanzor/utils": "^0.2.1",
+    "@chanzor/vue-bottomsheet": "^1.0.2",
+    "@chanzor/vue-dialog": "^1.0.2",
     "@chanzor/vue-popover": "^1.0.1",
-    "@chanzor/vue-use": "^1.0.2",
-    "@chanzor/vue-utils": "^2.0.2",
-    "@vueuse/core": "^12.8.2",
+    "@chanzor/vue-use": "^1.0.3",
+    "@chanzor/vue-utils": "^3.1.6",
+    "@vueuse/core": "^13.9.0",
     "pinia": "^2.1.7",
     "vite-plugin-pwa": "^0.21.1",
     "vue": "^3.3.4",
