@@ -1,4 +1,4 @@
-import { type MaybePromise, newKey } from '@chanzor/utils';
+import { type MaybePromise, newUniqueTimestamp } from '@chanzor/utils';
 import { type Component, computed, ref } from 'vue';
 
 import type { DialogPopupModel } from './DialogPopup.model';
@@ -14,7 +14,7 @@ export interface UseDialogPopupOption<P = void> {
   onAfterClose?: (dialogPopup: DialogPopupModel<P>) => void;
 }
 export function useDialogPopup<P = void>(option: UseDialogPopupOption<P>) {
-  const id = newKey();
+  const id = newUniqueTimestamp();
   const model = ref<DialogPopupModel<P>>();
 
   const open = async (prop: P): Promise<void> => {

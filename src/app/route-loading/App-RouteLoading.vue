@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { wait } from '@chanzor/utils';
+import { waitMs } from '@chanzor/utils';
 import { waitFrame } from '@chanzor/vue-utils';
 import {
   type CubicBezierPoints,
@@ -22,7 +22,7 @@ const percentageOutput = useTransition(percentageSource, { duration, transition 
 
 const opacity = computedAsync(async () => {
   if (percentageSource.value === 1) {
-    await wait(duration.value + opacityDelay.value);
+    await waitMs(duration.value + opacityDelay.value);
     return 0;
   }
 
@@ -43,7 +43,7 @@ const animateStartRoute = async () => {
     duration.value = 300;
     percentageSource.value = 0;
 
-    await wait(duration.value);
+    await waitMs(duration.value);
     if (now !== updateTime) return;
   } else {
     duration.value = 0;

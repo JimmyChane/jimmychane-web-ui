@@ -10,6 +10,7 @@ const navigationDrawerStore = useNavigationDrawerStore();
 const cssViewMode = computed(() => {
   if (navigationDrawerStore.isSnap) return 'snap';
   if (navigationDrawerStore.isDrawer) return 'drawer';
+  return undefined;
 });
 const cssViewState = computedAsync(async () => {
   switch (navigationDrawerStore.viewState) {

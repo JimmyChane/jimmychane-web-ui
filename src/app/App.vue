@@ -29,25 +29,26 @@ const layoutId = computed(() => appRoute.value?.layoutId ?? LayoutId.NAVIGATION)
   <div class="app" :data-dark="themeStore.theme.id === ThemeId.DARK">
     <FullLayout v-if="layoutId === LayoutId.FULL" />
     <NavigationLayout v-if="layoutId === LayoutId.NAVIGATION" />
-    <AppBottomsheet
-      v-if="appStore.useBottomsheetComponent"
-      v-for="overlay of useBottomsheetStore().items"
-      :style="{ 'z-index': `${3 + useBottomsheetStore().items.length}` }"
-      :key="overlay.id"
-      :bottomsheet="overlay"
-    />
-    <AppDialogPopup
-      v-if="appStore.useDialogPopupComponent"
-      v-for="overlay of useDialogPopupStore().overlays"
-      :style="{ 'z-index': `${4 + useDialogPopupStore().overlays.length} ` }"
-      :key="overlay.id"
-      :dialog-popup="overlay"
-    />
+    <template v-if="appStore.useBottomsheetComponent">
+      <AppBottomsheet
+        v-for="overlay of useBottomsheetStore().items"
+        :style="{ 'z-index': `${3 + useBottomsheetStore().items.length}` }"
+        :key="overlay.id"
+        :bottomsheet="overlay"
+      />
+    </template>
+    <template v-if="appStore.useDialogPopupComponent">
+      <AppDialogPopup
+        v-for="overlay of useDialogPopupStore().overlays"
+        :style="{ 'z-index': `${4 + useDialogPopupStore().overlays.length} ` }"
+        :key="overlay.id"
+        :dialog-popup="overlay"
+      />
+    </template>
     <AppPopover
-      v-if="appStore.usePopoverComponent"
-      v-for="overlay of usePopoverStore().overlays"
-      :style="{ 'z-index': `${5 + usePopoverStore().overlays.length} ` }"
-      :key="overlay.id"
+      v-for="overlay of usePopoverStore().items"
+      :style="{ 'z-index': `${5 + usePopoverStore().items.length} ` }"
+      :key="overlay.key"
       :popover="overlay"
     />
 

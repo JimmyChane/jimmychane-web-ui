@@ -1,4 +1,4 @@
-import { wait } from '@chanzor/utils';
+import { waitMs } from '@chanzor/utils';
 import { waitFrame } from '@chanzor/vue-utils';
 import { type Component, markRaw } from 'vue';
 
@@ -79,7 +79,7 @@ export class DialogPopupModel<P = any> {
     this.isShowing = false;
     if (this.onClosed) this.onClosed(this);
 
-    await wait(400);
+    await waitMs(400);
     await waitFrame();
 
     const index = this.siblings.indexOf(this as unknown as DialogPopupModel);

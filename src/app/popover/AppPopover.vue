@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { wait } from '@chanzor/utils';
+import { waitMs } from '@chanzor/utils';
+import type { PopoverCornerType, PopoverProps } from '@chanzor/vue-popover';
 import { computedAsync, onClickOutside, useElementBounding, useWindowSize } from '@vueuse/core';
 import { type CSSProperties, computed, onMounted, onUnmounted, ref, watch } from 'vue';
-
-import { PopoverAlignment, PopoverCorner, PopoverWidth } from '@/stores/popover/Popover.model';
-import type { PopoverProps } from '@/stores/popover/popover.store';
 
 const props = defineProps<PopoverProps>();
 
@@ -19,143 +17,149 @@ const isShowing = computed(() => props.popover.isShowing);
 
 const width = computed(() => {
   switch (props.popover.width) {
-    case PopoverWidth.MIN:
+    case 'min':
       return 'min-content';
-    case PopoverWidth.MAX:
+    case 'max':
       return 'max-content';
-    case PopoverWidth.SAME:
+    case 'same':
       return `${anchorWidthPx.value}px`;
   }
+  return undefined;
 });
 const minWidth = computed(() => {
   switch (props.popover.width) {
-    case PopoverWidth.MIN:
+    case 'min':
       return 'min-content';
-    case PopoverWidth.MAX:
+    case 'max':
       return `${anchorWidthPx.value}px`;
-    case PopoverWidth.SAME:
+    case 'same':
       return `${anchorWidthPx.value}px`;
   }
+  return undefined;
 });
 
 const classDirection = computed(() => {
   switch (calculatedCorner.value) {
-    case PopoverCorner.TOP:
+    case 'top':
       return 'Popover-Top';
-    case PopoverCorner.RIGHT:
+    case 'right':
       return 'Popover-Right';
-    case PopoverCorner.BOTTOM:
+    case 'bottom':
       return 'Popover-Bottom';
-    case PopoverCorner.LEFT:
+    case 'left':
       return 'Popover-Left';
-    case PopoverCorner.TOP_LEFT:
+    case 'top-left':
       return 'Popover-TopLeft';
-    case PopoverCorner.TOP_RIGHT:
+    case 'top-right':
       return 'Popover-TopRight';
-    case PopoverCorner.BOTTOM_LEFT:
+    case 'bottom-left':
       return 'Popover-BottomLeft';
-    case PopoverCorner.BOTTOM_RIGHT:
+    case 'bottom-right':
       return 'Popover-BottomRight';
-    case PopoverCorner.TOP_LEAN_LEFT:
+    case 'top-lean-left':
       return 'Popover-Top-Lean-Left';
-    case PopoverCorner.TOP_LEAN_RIGHT:
+    case 'top-lean-right':
       return 'Popover-Top-Lean-Right';
-    case PopoverCorner.BOTTOM_LEAN_LEFT:
+    case 'bottom-lean-left':
       return 'Popover-Bottom-Lean-Left';
-    case PopoverCorner.BOTTOM_LEAN_RIGHT:
+    case 'bottom-lean-right':
       return 'Popover-Bottom-Lean-Right';
-    case PopoverCorner.LEFT_LEAN_TOP:
+    case 'left-lean-top':
       return 'Popover-Left-Lean-Top';
-    case PopoverCorner.LEFT_LEAN_BOTTOM:
+    case 'left-lean-bottom':
       return 'Popover-Left-Lean-Bottom';
-    case PopoverCorner.RIGHT_LEAN_TOP:
+    case 'right-lean-top':
       return 'Popover-Right-Lean-Top';
-    case PopoverCorner.RIGHT_LEAN_BOTTOM:
+    case 'right-lean-bottom':
       return 'Popover-Right-Lean-Bottom';
   }
+  return undefined;
 });
 
 const transition = computed(() => {
   if (isMounted.value || isShowing.value) return 'all 150ms ease-in-out';
+  return undefined;
 });
 
 const { width: windowWidth, height: windowHeight } = useWindowSize();
 const windowWidthHalf = computed(() => windowWidth.value / 2);
 const windowHeightHalf = computed(() => windowHeight.value / 2);
 
-const calculatedAlignment = computed(() => {
+const calculatedAlignment = computed<{ vertical?: PopoverCornerType; horizontal?: PopoverCornerType }>(() => {
   switch (props.popover.alignment) {
-    case PopoverAlignment.VERTICAL:
-      return { vertical: anchorTopPx.value > windowHeightHalf.value ? PopoverCorner.TOP : PopoverCorner.BOTTOM };
-    case PopoverAlignment.HORIZONTAL:
-      return { horizontal: anchorLeftPx.value > windowWidthHalf.value ? PopoverCorner.LEFT : PopoverCorner.RIGHT };
+    case 'vertical':
+      return { vertical: anchorTopPx.value > windowHeightHalf.value ? 'top' : 'bottom' };
+    case 'horizontal':
+      return { horizontal: anchorLeftPx.value > windowWidthHalf.value ? 'left' : 'right' };
     default:
-    case PopoverAlignment.AUTO:
-    case PopoverAlignment.DIANGLE:
+    case 'auto':
+    case 'diangle':
       return {
-        vertical: anchorTopPx.value > windowHeightHalf.value ? PopoverCorner.TOP : PopoverCorner.BOTTOM,
-        horizontal: anchorLeftPx.value > windowWidthHalf.value ? PopoverCorner.LEFT : PopoverCorner.RIGHT,
+        vertical: anchorTopPx.value > windowHeightHalf.value ? 'top' : 'bottom',
+        horizontal: anchorLeftPx.value > windowWidthHalf.value ? 'left' : 'right',
       };
   }
 });
-const calculatedCorner = computed<PopoverCorner | undefined>(() => {
+const calculatedCorner = computed<PopoverCornerType | undefined>(() => {
   switch (props.popover.corner) {
-    case PopoverCorner.TOP:
-    case PopoverCorner.RIGHT:
-    case PopoverCorner.BOTTOM:
-    case PopoverCorner.LEFT:
-    case PopoverCorner.TOP_LEFT:
-    case PopoverCorner.TOP_RIGHT:
-    case PopoverCorner.BOTTOM_LEFT:
-    case PopoverCorner.BOTTOM_RIGHT:
-    case PopoverCorner.TOP_LEAN_LEFT:
-    case PopoverCorner.TOP_LEAN_RIGHT:
-    case PopoverCorner.BOTTOM_LEAN_LEFT:
-    case PopoverCorner.BOTTOM_LEAN_RIGHT:
-    case PopoverCorner.LEFT_LEAN_TOP:
-    case PopoverCorner.LEFT_LEAN_BOTTOM:
-    case PopoverCorner.RIGHT_LEAN_TOP:
-    case PopoverCorner.RIGHT_LEAN_BOTTOM:
+    case 'top':
+    case 'right':
+    case 'bottom':
+    case 'left':
+    case 'top-left':
+    case 'top-right':
+    case 'bottom-left':
+    case 'bottom-right':
+    case 'top-lean-left':
+    case 'top-lean-right':
+    case 'bottom-lean-left':
+    case 'bottom-lean-right':
+    case 'left-lean-top':
+    case 'left-lean-bottom':
+    case 'right-lean-top':
+    case 'right-lean-bottom':
       return props.popover.corner;
     default:
-    case PopoverCorner.AUTO:
+    case 'auto': {
       const { vertical, horizontal } = calculatedAlignment.value;
 
-      if (vertical === PopoverCorner.TOP && horizontal === undefined) return PopoverCorner.TOP;
-      if (vertical === PopoverCorner.BOTTOM && horizontal === undefined) return PopoverCorner.BOTTOM;
-      if (vertical === undefined && horizontal === PopoverCorner.LEFT) return PopoverCorner.LEFT;
-      if (vertical === undefined && horizontal === PopoverCorner.RIGHT) return PopoverCorner.RIGHT;
-      if (vertical === PopoverCorner.TOP && horizontal === PopoverCorner.LEFT) return PopoverCorner.TOP_LEFT;
-      if (vertical === PopoverCorner.TOP && horizontal === PopoverCorner.RIGHT) return PopoverCorner.TOP_RIGHT;
-      if (vertical === PopoverCorner.BOTTOM && horizontal === PopoverCorner.LEFT) return PopoverCorner.BOTTOM_LEFT;
-      if (vertical === PopoverCorner.BOTTOM && horizontal === PopoverCorner.RIGHT) return PopoverCorner.BOTTOM_RIGHT;
+      if (vertical === 'top' && horizontal === undefined) return 'top';
+      if (vertical === 'bottom' && horizontal === undefined) return 'bottom';
+      if (vertical === undefined && horizontal === 'left') return 'left';
+      if (vertical === undefined && horizontal === 'right') return 'right';
+      if (vertical === 'top' && horizontal === 'left') return 'top-left';
+      if (vertical === 'top' && horizontal === 'right') return 'top-right';
+      if (vertical === 'bottom' && horizontal === 'left') return 'bottom-left';
+      if (vertical === 'bottom' && horizontal === 'right') return 'bottom-right';
+    }
   }
+  return undefined;
 });
 const positionCornerPx = computed<{ x: number; y: number }>(() => {
   switch (calculatedCorner.value) {
-    case PopoverCorner.TOP:
+    case 'top':
       return { x: anchorLeftPx.value + anchorWidthHalf.value, y: anchorTopPx.value };
-    case PopoverCorner.RIGHT:
+    case 'right':
       return { x: anchorLeftPx.value + anchorWidthPx.value, y: anchorTopPx.value + anchorHeightHalf.value };
-    case PopoverCorner.BOTTOM:
+    case 'bottom':
       return { x: anchorLeftPx.value + anchorWidthHalf.value, y: anchorTopPx.value + anchorHeightPx.value };
-    case PopoverCorner.LEFT:
+    case 'left':
       return { x: anchorLeftPx.value, y: anchorTopPx.value + anchorHeightHalf.value };
-    case PopoverCorner.TOP_LEFT:
-    case PopoverCorner.TOP_LEAN_LEFT:
-    case PopoverCorner.LEFT_LEAN_TOP:
+    case 'top-left':
+    case 'top-lean-left':
+    case 'left-lean-top':
       return { x: anchorLeftPx.value, y: anchorTopPx.value };
-    case PopoverCorner.TOP_RIGHT:
-    case PopoverCorner.TOP_LEAN_RIGHT:
-    case PopoverCorner.RIGHT_LEAN_TOP:
+    case 'top-right':
+    case 'top-lean-right':
+    case 'right-lean-top':
       return { x: anchorLeftPx.value + anchorWidthPx.value, y: anchorTopPx.value };
-    case PopoverCorner.BOTTOM_LEFT:
-    case PopoverCorner.BOTTOM_LEAN_LEFT:
-    case PopoverCorner.LEFT_LEAN_BOTTOM:
+    case 'bottom-left':
+    case 'bottom-lean-left':
+    case 'left-lean-bottom':
       return { x: anchorLeftPx.value, y: anchorTopPx.value + anchorHeightPx.value };
-    case PopoverCorner.BOTTOM_RIGHT:
-    case PopoverCorner.BOTTOM_LEAN_RIGHT:
-    case PopoverCorner.RIGHT_LEAN_BOTTOM:
+    case 'bottom-right':
+    case 'bottom-lean-right':
+    case 'right-lean-bottom':
       return { x: anchorLeftPx.value + anchorWidthPx.value, y: anchorTopPx.value + anchorHeightPx.value };
     default:
       return { x: 0, y: 0 };
@@ -164,7 +168,7 @@ const positionCornerPx = computed<{ x: number; y: number }>(() => {
 
 const pointerEvent = computedAsync(async () => {
   if (isShowing.value) {
-    await wait(150);
+    await waitMs(150);
     return 'all';
   }
 
@@ -202,7 +206,7 @@ const onMountComponent = async () => {
   await props.popover.open();
   isMounted.value = true;
 
-  await wait(1000);
+  await waitMs(1000);
 
   if (!isUnmounted.value) {
     onHide = (event: Event | UIEvent) => {

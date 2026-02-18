@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { wait } from '@chanzor/utils';
+import { waitMs } from '@chanzor/utils';
 import { onMounted, onUnmounted, ref, watch } from 'vue';
 
 import type { DialogPopupModel } from '@/stores/dialog-popup/DialogPopup.model';
@@ -20,7 +20,7 @@ const close = async () => {
     const toClose = await props.dialogPopup.onBeforeClose(props.dialogPopup);
     if (time !== dismissTime) return;
 
-    await wait();
+    await waitMs();
     if (time !== dismissTime) return;
 
     if (!toClose) {
