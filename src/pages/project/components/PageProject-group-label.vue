@@ -1,12 +1,12 @@
 <template>
   <span class="label">
-    <slot />
+    <slot></slot>
   </span>
 </template>
 
 <style lang="scss" scoped>
 .label {
-  background: var(--color-dark);
+  background: var(--primary-color-500);
   color: white;
   padding: 0.3em 0.8em;
   border-radius: 2em;

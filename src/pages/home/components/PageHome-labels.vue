@@ -40,7 +40,7 @@ defineProps<{ labels: string[] }>();
     min-height: var(--height);
     max-height: var(--height);
 
-    background: var(--color-active);
+    background: var(--primary-text-color);
     border-radius: 50%;
     overflow: hidden;
   }

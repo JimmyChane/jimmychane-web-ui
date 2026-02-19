@@ -32,7 +32,7 @@ defineProps<{ title: string; icon: Component }>();
     flex-direction: row;
     align-items: center;
 
-    --color: var(--color-active);
+    --color: var(--primary-text-color);
   }
 }
 </style>

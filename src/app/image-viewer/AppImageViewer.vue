@@ -72,7 +72,7 @@ onClickOutside(imageBodyRef, close);
 
       border: none;
       border-radius: 50%;
-      background: var(--color);
+      background: var(--primary-color-300);
       color: var(--text-color);
 
       display: grid;

@@ -30,13 +30,13 @@ import Social from './components/PageHome-social.vue';
       </div>
 
       <div class="home-page-routes">
-        <HomeRouteButton :route="FURSONA_ROUTE">
+        <HomeRouteButton :route="FURSONA_ROUTE" type="fursona">
           <template #description>My character design</template>
         </HomeRouteButton>
-        <HomeRouteButton :route="PROJECT_ROUTE">
+        <HomeRouteButton :route="PROJECT_ROUTE" type="project">
           <template #description>Latest work</template>
         </HomeRouteButton>
-        <HomeRouteButton :route="FAVOURITE_ROUTE">
+        <HomeRouteButton :route="FAVOURITE_ROUTE" type="favorite">
           <template #description>Things I love</template>
         </HomeRouteButton>
       </div>

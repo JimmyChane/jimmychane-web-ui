@@ -25,7 +25,7 @@ import HamburgerIcon from '@/components/icon/Hamburger.icon.vue';
   border: none;
   background: none;
 
-  color: var(--color-active);
+  color: var(--primary-text-color);
 
   & > * {
     font-size: 1.25rem;

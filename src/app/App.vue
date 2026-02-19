@@ -59,7 +59,7 @@ const layoutId = computed(() => appRoute.value?.layoutId ?? LayoutId.NAVIGATION)
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  color: var(--color-active);
+  color: var(--primary-text-color);
   background-color: var(--background-color);
 
   position: relative;

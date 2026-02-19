@@ -33,6 +33,20 @@ const { open } = useDialog<AppImageViewerData>({
 </template>
 
 <style scoped lang="scss">
+.light {
+  .fursona-page {
+    --section-fursona-text-color: rgb(2, 32, 28);
+    --section-fursona-header-background-color: rgb(180, 231, 224);
+    --section-fursona-background-color: #5ba097;
+  }
+}
+.dark {
+  .fursona-page {
+    --section-fursona-text-color: var(--text-color);
+    --section-fursona-header-background-color: rgb(56, 80, 77);
+    --section-fursona-background-color: rgb(41, 58, 56);
+  }
+}
 .fursona-page {
   --section-color: var(--section-fursona-background-color);
   color: white;

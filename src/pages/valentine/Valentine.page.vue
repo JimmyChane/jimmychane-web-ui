@@ -104,7 +104,7 @@ const noText = computed(() => {
         .dialog-confirm-yes {
           min-width: max-content;
 
-          background-color: var(--color-active);
+          background-color: var(--primary-text-color);
           color: var(--background-color-opacity100);
 
           font-size: calc(1em * var(--no-count));
@@ -118,10 +118,10 @@ const noText = computed(() => {
           }
         }
         .dialog-confirm-no {
-          color: var(--color-active);
+          color: var(--primary-text-color);
           transition: background-color 200ms ease;
           &:hover {
-            background-color: var(--color-hover);
+            background-color: var(--text-color-opacity5);
           }
         }
       }

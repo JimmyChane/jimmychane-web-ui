@@ -6,7 +6,7 @@ import { type ComputedRef, computed, useTemplateRef } from 'vue';
 import { AppRoute } from '@/stores/navigation.store';
 import { useWindowStore } from '@/stores/store';
 
-defineProps<{ route: AppRoute }>();
+defineProps<{ route: AppRoute; type: 'fursona' | 'project' | 'favorite' }>();
 
 const windowStore = useWindowStore();
 const aspectRatio = computed(() => {
@@ -25,6 +25,7 @@ const { height } = useAspectRatioHeight(width, aspectRatio);
     :style="{ '--desired-height': `${height}px` }"
     class="home-route-button"
     :to="{ name: route.id }"
+    :data-type="type"
   >
     <span>{{ route.title }}</span>
     <p>
@@ -34,6 +35,18 @@ const { height } = useAspectRatioHeight(width, aspectRatio);
 </template>
 
 <style lang="scss" scoped>
+.light {
+  .home-route-button {
+    --fursona-color: #5ba097;
+    --project-color: var(--primary-color-500);
+  }
+}
+.dark {
+  .home-route-button {
+    --fursona-color: rgb(41, 58, 56);
+    --project-color: var(--primary-color-300);
+  }
+}
 .home-route-button {
   height: var(--desired-height);
 
@@ -61,15 +74,15 @@ const { height } = useAspectRatioHeight(width, aspectRatio);
     opacity: 0.8;
   }
 
-  &:nth-child(1) {
-    background-color: var(--section-fursona-background-color);
+  &[data-type='fursona'] {
+    background-color: var(--fursona-color);
     color: white;
   }
-  &:nth-child(2) {
-    background-color: var(--color-dark);
+  &[data-type='project'] {
+    background-color: var(--project-color);
     color: white;
   }
-  &:nth-child(3) {
+  &[data-type='favorite'] {
     background-color: var(--background-color-opacity60);
     color: inherit;
 

@@ -105,6 +105,16 @@ import Section from './components/PageProject-project-section.vue';
 </template>
 
 <style scoped lang="scss">
+.light {
+  .project-page {
+    --primary-color: var(--primary-color-500);
+  }
+}
+.dark {
+  .project-page {
+    --primary-color: var(--primary-color-200);
+  }
+}
 .project-page {
   display: flex;
   flex-direction: column;
@@ -112,7 +122,7 @@ import Section from './components/PageProject-project-section.vue';
   gap: 1rem;
 
   & > * {
-    --background-color: var(--color-dark);
+    --background-color: var(--primary-color);
 
     color: white;
     text-align: start;
@@ -131,7 +141,7 @@ import Section from './components/PageProject-project-section.vue';
 
     .project-page-project-labels {
       & > * {
-        color: var(--color-dark);
+        color: var(--primary-color);
         background-color: white;
         font-weight: 600;
         font-size: 0.6em;

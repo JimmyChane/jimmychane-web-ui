@@ -1,0 +1,17 @@
+.light {
+  --text-color: hsl(0, 0%, 0%);
+  --text-color-opacity5: hsla(0, 0%, 0%, 0.05);
+  --text-color-opacity30: hsla(0, 0%, 0%, 0.3);
+  --text-color-opacity50: hsla(0, 0%, 0%, 0.5);
+  --text-color-opacity70: hsla(0, 0%, 0%, 0.7);
+  --text-color-opacity90: hsla(0, 0%, 0%, 0.9);
+}
+
+.dark {
+  --text-color: hsl(0, 0%, 100%);
+  --text-color-opacity5: hsla(0, 0%, 100%, 0.05);
+  --text-color-opacity30: hsla(0, 0%, 100%, 0.3);
+  --text-color-opacity50: hsla(0, 0%, 100%, 0.5);
+  --text-color-opacity70: hsla(0, 0%, 100%, 0.7);
+  --text-color-opacity90: hsla(0, 0%, 100%, 0.9);
+}

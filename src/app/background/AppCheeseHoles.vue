@@ -84,6 +84,7 @@ onUnmounted(() => {
         place-items: center;
         border-radius: 50%;
         background-color: var(--cheese-color);
+        opacity: 0.5;
 
         transition: background-color 200ms ease;
       }

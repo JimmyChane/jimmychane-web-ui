@@ -76,7 +76,7 @@ const indexTheme = computed(() => {
     border: none;
     cursor: pointer;
     z-index: 2;
-    color: var(--color-active);
+    color: var(--primary-text-color);
   }
   .App-actionbar-theme-highlight {
     position: absolute;

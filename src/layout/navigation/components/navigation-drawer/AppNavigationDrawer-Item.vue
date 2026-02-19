@@ -36,17 +36,31 @@ const isSelected = computed(() => route.name === props.item.id);
 
   transition: all 400ms ease;
 }
-.App-Nav[isSelected='false'] {
-  --color: var(--color-active);
-  color: var(--color);
 
-  &:hover {
-    background-color: var(--color-hover);
+.light {
+  .App-Nav[isSelected='false'] {
+    color: var(--primary-color-500);
+
+    &:hover {
+      background-color: var(--primary-color-300);
+    }
+  }
+  .App-Nav[isSelected='true'] {
+    color: var(--primary-color-100);
+    background: var(--primary-color-500);
   }
 }
-.App-Nav[isSelected='true'] {
-  --color: var(--background-color);
-  color: var(--color);
-  background: var(--color-active);
+.dark {
+  .App-Nav[isSelected='false'] {
+    color: var(--text-color);
+
+    &:hover {
+      background-color: var(--text-color-opacity5);
+    }
+  }
+  .App-Nav[isSelected='true'] {
+    color: var(--background-color-opacity100);
+    background: var(--text-color);
+  }
 }
 </style>

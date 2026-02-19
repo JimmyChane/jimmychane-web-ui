@@ -108,7 +108,7 @@ router.afterEach(() => {
     width: calc(100% * var(--percentage));
     min-height: var(--height);
 
-    background-color: var(--color-active);
+    background-color: var(--primary-text-color);
 
     transition: opacity 200ms ease;
   }
