@@ -8,6 +8,7 @@ const navigationDrawerStore = useNavigationDrawerStore();
 const cssViewMode = computed(() => {
   if (navigationDrawerStore.isSnap) return 'snap';
   if (navigationDrawerStore.isDrawer) return 'drawer';
+  return undefined;
 });
 </script>
 
