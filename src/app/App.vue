@@ -43,9 +43,9 @@ const layoutId = computed(() => appRoute.value?.layoutId ?? LayoutId.NAVIGATION)
       :dialog-popup="overlay"
     />
     <AppPopover
-      v-for="overlay of popoverStore.items"
-      :style="{ 'z-index': `${5 + popoverStore.items.length} ` }"
-      :key="overlay.key"
+      v-for="overlay of popoverStore.overlays"
+      :style="{ 'z-index': `${5 + popoverStore.overlays.length} ` }"
+      :key="overlay.id"
       :popover="overlay"
     />
 
