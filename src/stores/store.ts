@@ -5,18 +5,13 @@ import { defineThemeStore, defineWindowStore } from '@chanzor/vue-utils';
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
-import DarkThemeIcon from '@/components/icon/DarkTheme.icon.vue';
-import LightThemeIcon from '@/components/icon/LightTheme.icon.vue';
-
 export const useAppStore = defineStore('app', () => {
   const useNavigationDrawerComponent = ref(false);
 
   return { useNavigationDrawerComponent };
 });
 
-export const useThemeStore = defineStore('theme', () =>
-  defineThemeStore({ lightIcon: LightThemeIcon, darkIcon: DarkThemeIcon }),
-);
+export const useThemeStore = defineStore('theme', () => defineThemeStore());
 
 export const useWindowStore = defineStore('window', () => defineWindowStore());
 

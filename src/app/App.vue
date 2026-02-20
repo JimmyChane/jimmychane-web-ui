@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ThemeId } from '@chanzor/vue-utils';
 import { computed, defineAsyncComponent } from 'vue';
 import { useRoute } from 'vue-router';
 
@@ -27,7 +26,7 @@ const layoutId = computed(() => appRoute.value?.layoutId ?? LayoutId.NAVIGATION)
 </script>
 
 <template>
-  <div class="app" :class="[themeStore.theme.id === ThemeId.DARK ? 'dark' : 'light']">
+  <div class="app" :class="themeStore.themeClass">
     <FullLayout v-if="layoutId === LayoutId.FULL" />
     <NavigationLayout v-if="layoutId === LayoutId.NAVIGATION" />
     <AppBottomsheet
