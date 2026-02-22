@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useThrottleFn } from '@vueuse/core';
+import { useElementSize, useThrottleFn } from '@vueuse/core';
 import { type CSSProperties, computed, onMounted, ref, useTemplateRef, watch } from 'vue';
 
 import { useThemeStore } from '@/stores/store';
@@ -8,7 +8,6 @@ import DarkThemeIcon from '@/components/icon/DarkTheme.icon.vue';
 import LightThemeIcon from '@/components/icon/LightTheme.icon.vue';
 
 const themeStore = useThemeStore();
-
 const indexTheme = computed(() => {
   if (themeStore.themeMode === 'auto') return 0;
   if (themeStore.themeMode === 'light') return 1;
@@ -17,9 +16,11 @@ const indexTheme = computed(() => {
 });
 
 const selfRef = useTemplateRef('selfRef');
-const autoRef = useTemplateRef('autoRef');
-const lightRef = useTemplateRef('lightRef');
-const darkRef = useTemplateRef('darkRef');
+const { width, height } = useElementSize(selfRef);
+
+const autoButtonRef = useTemplateRef('autoButtonRef');
+const lightButtonRef = useTemplateRef('lightButtonRef');
+const darkButtonRef = useTemplateRef('darkButtonRef');
 
 const hoverStyle = ref<CSSProperties>({ opacity: 0 });
 const setHoverStyle = useThrottleFn((rect: DOMRect | undefined): void => {
@@ -42,24 +43,22 @@ const setHoverStyle = useThrottleFn((rect: DOMRect | undefined): void => {
     '--height': `${rect.height}px`,
   };
 }, 100);
-
 const unsetHoverStyle = (): void => {
   hoverStyle.value = { opacity: 0 };
 };
-
 const invalidateHover = (): void => {
   if (indexTheme.value === 0) {
-    setHoverStyle(autoRef.value?.getBoundingClientRect());
+    setHoverStyle(autoButtonRef.value?.getBoundingClientRect());
   } else if (indexTheme.value === 1) {
-    setHoverStyle(lightRef.value?.getBoundingClientRect());
+    setHoverStyle(lightButtonRef.value?.getBoundingClientRect());
   } else if (indexTheme.value === 2) {
-    setHoverStyle(darkRef.value?.getBoundingClientRect());
+    setHoverStyle(darkButtonRef.value?.getBoundingClientRect());
   } else {
     unsetHoverStyle();
   }
 };
 
-watch([selfRef, autoRef, lightRef, darkRef, , indexTheme], () => invalidateHover());
+watch([width, height, autoButtonRef, lightButtonRef, darkButtonRef, indexTheme], () => invalidateHover());
 
 onMounted(() => invalidateHover());
 </script>
@@ -67,11 +66,11 @@ onMounted(() => invalidateHover());
 <template>
   <div ref="selfRef" class="app-actionbar-theme">
     <div class="app-actionbar-theme-highlight" :style="hoverStyle"></div>
-    <button ref="autoRef" aria-label="Auto Theme" @click="() => themeStore.setMode('auto')">A</button>
-    <button ref="lightRef" aria-label="Light Theme" @click="() => themeStore.toggleLightDark('light')">
+    <button ref="autoButtonRef" aria-label="Auto Theme" @click="() => themeStore.setMode('auto')">A</button>
+    <button ref="lightButtonRef" aria-label="Light Theme" @click="() => themeStore.toggleLightDark('light')">
       <LightThemeIcon />
     </button>
-    <button ref="darkRef" aria-label="Dark Theme" @click="() => themeStore.toggleLightDark('dark')">
+    <button ref="darkButtonRef" aria-label="Dark Theme" @click="() => themeStore.toggleLightDark('dark')">
       <DarkThemeIcon />
     </button>
   </div>
