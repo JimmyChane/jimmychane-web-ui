@@ -1,6 +1,5 @@
-// experiment
-
-export async function uninstallServiceWorker() {
+// TODO: test
+export async function uninstallAppSw() {
   if (!('serviceWorker' in navigator)) return;
 
   window.addEventListener('load', async () => {
@@ -10,21 +9,20 @@ export async function uninstallServiceWorker() {
       return;
     }
 
-    if (!regs.length) return;
-
-    const promises = regs.map((reg) => reg.unregister());
-    const results = await Promise.all(promises).catch((error: Error) => error);
-    if (results instanceof Error) {
-      console.error('Service worker unregistering failed: ', results);
-      return;
+    for (const reg of regs) {
+      const result = await reg.unregister().catch((e: Error) => e);
+      if (result instanceof Error) {
+        console.error('Service worker unregistering failed: ', result);
+      }
     }
 
-    await clearCache();
+    await clearAppCache();
     // location.reload();
   });
 }
 
-export async function clearCache() {
+// TODO: test
+export async function clearAppCache() {
   if (!('caches' in window)) return;
 
   const cacheNames = await caches.keys().catch((error: Error) => error);
@@ -36,6 +34,7 @@ export async function clearCache() {
   Promise.all(cacheNames.map((cacheName) => caches.delete(cacheName)));
 }
 
+// TODO: test
 export async function clearSwCache() {
   if (!('serviceWorker' in navigator)) return;
   if (!('caches' in window)) return;

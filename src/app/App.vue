@@ -5,6 +5,9 @@ import { useRoute } from 'vue-router';
 import { LayoutId, findAppRouteById } from '@/stores/navigation.store';
 import { useBottomsheetStore, useDialogStore, usePopoverStore, useThemeStore } from '@/stores/store';
 
+import { useAppPwa } from './useAppPwa';
+
+import AppPwaUpdate from './pwa-update/App-PwaUpdate.vue';
 import AppRouteLoading from './route-loading/App-RouteLoading.vue';
 
 const FullLayout = defineAsyncComponent(() => import('@/layout/full/Full.layout.vue'));
@@ -23,12 +26,17 @@ const popoverStore = usePopoverStore();
 
 const appRoute = computed(() => findAppRouteById(route.name?.toString()));
 const layoutId = computed(() => appRoute.value?.layoutId ?? LayoutId.NAVIGATION);
+
+const { isUpdateAvailable, updateThenRefresh } = useAppPwa({ checkOnRoute: true, updateDelayTimeoutMs: 3000 });
 </script>
 
 <template>
   <div class="app" :class="themeStore.themeClass">
     <FullLayout v-if="layoutId === LayoutId.FULL" />
     <NavigationLayout v-if="layoutId === LayoutId.NAVIGATION" />
+
+    <AppPwaUpdate :show="isUpdateAvailable" :click-update="() => updateThenRefresh()" />
+
     <AppBottomsheet
       v-for="overlay of bottomsheetStore.overlays"
       :style="{ 'z-index': `${3 + bottomsheetStore.overlays.length}` }"
