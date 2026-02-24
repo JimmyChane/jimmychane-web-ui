@@ -1,11 +1,10 @@
 <script setup lang="ts">
+import { useAppPwa } from '@chanzor/vue-pwa';
 import { computed, defineAsyncComponent } from 'vue';
 import { useRoute } from 'vue-router';
 
 import { LayoutId, findAppRouteById } from '@/stores/navigation.store';
 import { useBottomsheetStore, useDialogStore, usePopoverStore, useThemeStore } from '@/stores/store';
-
-import { useAppPwa } from './useAppPwa';
 
 import AppPwaUpdate from './pwa-update/App-PwaUpdate.vue';
 import AppRouteLoading from './route-loading/App-RouteLoading.vue';

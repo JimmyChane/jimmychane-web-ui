@@ -1,4 +1,6 @@
+import { getAppPwaViteConfig } from '@chanzor/vue-pwa/config';
 import vue from '@vitejs/plugin-vue';
+import { resolve } from 'node:path';
 import { URL, fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import ViteInspect from 'vite-plugin-inspect';
@@ -6,16 +8,9 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 import Package from './package.json';
 
-type PwaInjectionType = 'inline' | 'script' | 'script-defer' | 'auto' | null | false;
-type PwaRegisterType = 'prompt' | 'autoUpdate';
-
-function getPwaConfig(): { selfDestroying: boolean; injectRegister: PwaInjectionType; registerType: PwaRegisterType } {
-  return { selfDestroying: false, injectRegister: false, registerType: 'prompt' };
-}
-
 // https://vitejs.dev/config/
 export default defineConfig(() => {
-  const { selfDestroying, injectRegister, registerType } = getPwaConfig();
+  const { selfDestroying, injectRegister, registerType } = getAppPwaViteConfig(true);
 
   return {
     plugins: [
@@ -52,6 +47,6 @@ export default defineConfig(() => {
       'import.meta.env.APP_VERSION': JSON.stringify(Package.version),
       'import.meta.env.APP_NAME': JSON.stringify(Package.name),
     },
-    resolve: { alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) } },
+    resolve: { alias: { '@': fileURLToPath(new URL('./src', import.meta.url)), vue: resolve('./node_modules/vue') } },
   };
 });

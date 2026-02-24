@@ -1,7 +1,7 @@
 {
   "name": "jimmychane-web-ui",
   "private": true,
-  "version": "1.2.1",
+  "version": "1.2.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -21,6 +21,7 @@
     "@chanzor/vue-bottomsheet": "^1.0.2",
     "@chanzor/vue-dialog": "^1.0.2",
     "@chanzor/vue-popover": "^1.0.1",
+    "@chanzor/vue-pwa": "^1.0.0",
     "@chanzor/vue-use": "^1.1.0",
     "@chanzor/vue-utils": "^3.1.7",
     "@vueuse/core": "^13.9.0",
