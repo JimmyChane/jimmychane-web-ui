@@ -32,7 +32,7 @@
   text-align: start;
 
   & > span {
-    background-color: var(--emerald-600);
+    background-color: var(--color-emerald-600);
     display: flex;
     flex-direction: column;
 

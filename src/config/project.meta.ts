@@ -1,3 +1,5 @@
+export type ProjectStatusCode = 'active' | 'developing' | 'deprecated';
+
 export interface ProjectModel {
   thumbnail: string;
   thumbnailAlt?: string;
@@ -8,4 +10,6 @@ export interface ProjectModel {
   description?: string;
   techStacks: string[];
   link: string;
+
+  status: ProjectStatusCode;
 }

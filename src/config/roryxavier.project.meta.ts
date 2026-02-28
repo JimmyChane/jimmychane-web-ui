@@ -11,4 +11,6 @@ export const PROJECT_RORY_XAVIER: ProjectModel = {
   description:
     "I'm helping develop a user-friendly website with smooth profile picture header animations, a biography, and seamless integration of social media and contact options.",
   techStacks: ['Svelte.js', 'HTML', 'TypeScript', 'JavaScript', 'CSS', 'SCSS'],
+
+  status: 'developing',
 };

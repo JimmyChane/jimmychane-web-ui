@@ -1,0 +1,69 @@
+.light {
+  /* --- Amber Scale (Vibrant / Brand Orange) --- */
+  --color-amber-100: oklch(0.96 0.05 45); /* Pale Peach */
+  --color-amber-200: oklch(0.9 0.1 45);
+  --color-amber-300: oklch(0.82 0.15 45);
+  --color-amber-400: oklch(0.74 0.19 45);
+  --color-amber-500: oklch(0.65 0.22 45); /* Pure Energetic Orange */
+  --color-amber-600: oklch(0.55 0.19 45);
+  --color-amber-700: oklch(0.45 0.15 45);
+  --color-amber-800: oklch(0.35 0.11 45);
+  --color-amber-900: oklch(0.25 0.08 45); /* Deep Burnt Orange */
+
+  /* --- Sand Scale (Gray-ish / Warm Neutrals) --- */
+  --color-sand-100: oklch(0.98 0.01 45); /* Near white linen */
+  --color-sand-200: oklch(0.94 0.015 45);
+  --color-sand-300: oklch(0.88 0.02 45);
+  --color-sand-400: oklch(0.8 0.025 45);
+  --color-sand-500: oklch(0.72 0.03 45); /* Muted Warm Gray */
+  --color-sand-600: oklch(0.6 0.03 45);
+  --color-sand-700: oklch(0.48 0.03 45);
+  --color-sand-800: oklch(0.35 0.03 45);
+  --color-sand-900: oklch(0.22 0.03 45); /* Warm Charcoal */
+
+  /* --- Sienna Scale (Deep / Heavy / Earth) --- */
+  --color-sienna-100: oklch(0.92 0.08 45);
+  --color-sienna-200: oklch(0.82 0.14 45);
+  --color-sienna-300: oklch(0.7 0.18 45);
+  --color-sienna-400: oklch(0.58 0.21 45);
+  --color-sienna-500: oklch(0.45 0.19 45); /* Rich Terracotta */
+  --color-sienna-600: oklch(0.35 0.16 45);
+  --color-sienna-700: oklch(0.25 0.12 45);
+  --color-sienna-800: oklch(0.18 0.08 45);
+  --color-sienna-900: oklch(0.12 0.05 45); /* Near Black Brown */
+}
+
+.dark {
+  /* --- Amber Scale (Reversed) --- */
+  --color-amber-100: oklch(0.25 0.08 45);
+  --color-amber-200: oklch(0.35 0.11 45);
+  --color-amber-300: oklch(0.45 0.15 45);
+  --color-amber-400: oklch(0.55 0.19 45);
+  --color-amber-500: oklch(0.65 0.22 45);
+  --color-amber-600: oklch(0.74 0.19 45);
+  --color-amber-700: oklch(0.82 0.15 45);
+  --color-amber-800: oklch(0.9 0.1 45);
+  --color-amber-900: oklch(0.96 0.05 45);
+
+  /* --- Sand Scale (Reversed) --- */
+  --color-sand-100: oklch(0.22 0.03 45);
+  --color-sand-200: oklch(0.35 0.03 45);
+  --color-sand-300: oklch(0.48 0.03 45);
+  --color-sand-400: oklch(0.6 0.03 45);
+  --color-sand-500: oklch(0.72 0.03 45);
+  --color-sand-600: oklch(0.8 0.025 45);
+  --color-sand-700: oklch(0.88 0.02 45);
+  --color-sand-800: oklch(0.94 0.015 45);
+  --color-sand-900: oklch(0.98 0.01 45);
+
+  /* --- Sienna Scale (Reversed) --- */
+  --color-sienna-100: oklch(0.12 0.05 45);
+  --color-sienna-200: oklch(0.18 0.08 45);
+  --color-sienna-300: oklch(0.25 0.12 45);
+  --color-sienna-400: oklch(0.35 0.16 45);
+  --color-sienna-500: oklch(0.45 0.19 45);
+  --color-sienna-600: oklch(0.58 0.21 45);
+  --color-sienna-700: oklch(0.7 0.18 45);
+  --color-sienna-800: oklch(0.82 0.14 45);
+  --color-sienna-900: oklch(0.92 0.08 45);
+}

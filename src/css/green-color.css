@@ -1,69 +1,69 @@
 .light {
   /* --- Emerald Scale (Vibrant / Brand Green) --- */
-  --emerald-100: oklch(0.96 0.05 150);
-  --emerald-200: oklch(0.9 0.1 150);
-  --emerald-300: oklch(0.82 0.14 150);
-  --emerald-400: oklch(0.74 0.17 150);
-  --emerald-500: oklch(0.65 0.19 150);
-  --emerald-600: oklch(0.55 0.17 150);
-  --emerald-700: oklch(0.45 0.14 150);
-  --emerald-800: oklch(0.35 0.11 150);
-  --emerald-900: oklch(0.25 0.08 150);
+  --color-emerald-100: oklch(0.96 0.05 150);
+  --color-emerald-200: oklch(0.9 0.1 150);
+  --color-emerald-300: oklch(0.82 0.14 150);
+  --color-emerald-400: oklch(0.74 0.17 150);
+  --color-emerald-500: oklch(0.65 0.19 150);
+  --color-emerald-600: oklch(0.55 0.17 150);
+  --color-emerald-700: oklch(0.45 0.14 150);
+  --color-emerald-800: oklch(0.35 0.11 150);
+  --color-emerald-900: oklch(0.25 0.08 150);
 
   /* --- Sage Scale (Gray-ish / Desaturated) --- */
-  --sage-100: oklch(0.98 0.01 150);
-  --sage-200: oklch(0.94 0.015 150);
-  --sage-300: oklch(0.88 0.02 150);
-  --sage-400: oklch(0.8 0.025 150);
-  --sage-500: oklch(0.72 0.03 150);
-  --sage-600: oklch(0.6 0.03 150);
-  --sage-700: oklch(0.48 0.03 150);
-  --sage-800: oklch(0.35 0.03 150);
-  --sage-900: oklch(0.22 0.03 150);
+  --color-sage-100: oklch(0.98 0.01 150);
+  --color-sage-200: oklch(0.94 0.015 150);
+  --color-sage-300: oklch(0.88 0.02 150);
+  --color-sage-400: oklch(0.8 0.025 150);
+  --color-sage-500: oklch(0.72 0.03 150);
+  --color-sage-600: oklch(0.6 0.03 150);
+  --color-sage-700: oklch(0.48 0.03 150);
+  --color-sage-800: oklch(0.35 0.03 150);
+  --color-sage-900: oklch(0.22 0.03 150);
 
   /* --- Forest Scale (Deep / Heavy) --- */
-  --forest-100: oklch(0.92 0.08 150);
-  --forest-200: oklch(0.82 0.14 150);
-  --forest-300: oklch(0.7 0.18 150);
-  --forest-400: oklch(0.58 0.2 150);
-  --forest-500: oklch(0.45 0.18 150);
-  --forest-600: oklch(0.35 0.15 150);
-  --forest-700: oklch(0.25 0.1 150);
-  --forest-800: oklch(0.18 0.08 150);
-  --forest-900: oklch(0.12 0.05 150);
+  --color-forest-100: oklch(0.92 0.08 150);
+  --color-forest-200: oklch(0.82 0.14 150);
+  --color-forest-300: oklch(0.7 0.18 150);
+  --color-forest-400: oklch(0.58 0.2 150);
+  --color-forest-500: oklch(0.45 0.18 150);
+  --color-forest-600: oklch(0.35 0.15 150);
+  --color-forest-700: oklch(0.25 0.1 150);
+  --color-forest-800: oklch(0.18 0.08 150);
+  --color-forest-900: oklch(0.12 0.05 150);
 }
 
 .dark {
   /* --- Emerald Scale (Reversed) --- */
-  --emerald-100: oklch(0.25 0.08 150);
-  --emerald-200: oklch(0.35 0.11 150);
-  --emerald-300: oklch(0.45 0.14 150);
-  --emerald-400: oklch(0.55 0.17 150);
-  --emerald-500: oklch(0.65 0.19 150);
-  --emerald-600: oklch(0.74 0.17 150);
-  --emerald-700: oklch(0.82 0.14 150);
-  --emerald-800: oklch(0.9 0.1 150);
-  --emerald-900: oklch(0.96 0.05 150);
+  --color-emerald-100: oklch(0.25 0.08 150);
+  --color-emerald-200: oklch(0.35 0.11 150);
+  --color-emerald-300: oklch(0.45 0.14 150);
+  --color-emerald-400: oklch(0.55 0.17 150);
+  --color-emerald-500: oklch(0.65 0.19 150);
+  --color-emerald-600: oklch(0.74 0.17 150);
+  --color-emerald-700: oklch(0.82 0.14 150);
+  --color-emerald-800: oklch(0.9 0.1 150);
+  --color-emerald-900: oklch(0.96 0.05 150);
 
   /* --- Sage Scale (Reversed) --- */
-  --sage-100: oklch(0.22 0.03 150);
-  --sage-200: oklch(0.35 0.03 150);
-  --sage-300: oklch(0.48 0.03 150);
-  --sage-400: oklch(0.6 0.03 150);
-  --sage-500: oklch(0.72 0.03 150);
-  --sage-600: oklch(0.8 0.025 150);
-  --sage-700: oklch(0.88 0.02 150);
-  --sage-800: oklch(0.94 0.015 150);
-  --sage-900: oklch(0.98 0.01 150);
+  --color-sage-100: oklch(0.22 0.03 150);
+  --color-sage-200: oklch(0.35 0.03 150);
+  --color-sage-300: oklch(0.48 0.03 150);
+  --color-sage-400: oklch(0.6 0.03 150);
+  --color-sage-500: oklch(0.72 0.03 150);
+  --color-sage-600: oklch(0.8 0.025 150);
+  --color-sage-700: oklch(0.88 0.02 150);
+  --color-sage-800: oklch(0.94 0.015 150);
+  --color-sage-900: oklch(0.98 0.01 150);
 
   /* --- Forest Scale (Reversed) --- */
-  --forest-100: oklch(0.12 0.05 150);
-  --forest-200: oklch(0.18 0.08 150);
-  --forest-300: oklch(0.25 0.1 150);
-  --forest-400: oklch(0.35 0.15 150);
-  --forest-500: oklch(0.45 0.18 150);
-  --forest-600: oklch(0.58 0.2 150);
-  --forest-700: oklch(0.7 0.18 150);
-  --forest-800: oklch(0.82 0.14 150);
-  --forest-900: oklch(0.92 0.08 150);
+  --color-forest-100: oklch(0.12 0.05 150);
+  --color-forest-200: oklch(0.18 0.08 150);
+  --color-forest-300: oklch(0.25 0.1 150);
+  --color-forest-400: oklch(0.35 0.15 150);
+  --color-forest-500: oklch(0.45 0.18 150);
+  --color-forest-600: oklch(0.58 0.2 150);
+  --color-forest-700: oklch(0.7 0.18 150);
+  --color-forest-800: oklch(0.82 0.14 150);
+  --color-forest-900: oklch(0.92 0.08 150);
 }

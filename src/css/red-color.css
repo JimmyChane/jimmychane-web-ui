@@ -1,0 +1,69 @@
+.light {
+  /* --- Ruby Scale (Vibrant / Brand Red) --- */
+  --color-ruby-100: oklch(0.96 0.04 29); /* Pale Pinkish-Red */
+  --color-ruby-200: oklch(0.9 0.08 29);
+  --color-ruby-300: oklch(0.82 0.13 29);
+  --color-ruby-400: oklch(0.72 0.18 29);
+  --color-ruby-500: oklch(0.6 0.22 29); /* Pure Bold Red */
+  --color-ruby-600: oklch(0.52 0.19 29);
+  --color-ruby-700: oklch(0.42 0.15 29);
+  --color-ruby-800: oklch(0.32 0.11 29);
+  --color-ruby-900: oklch(0.24 0.08 29); /* Deep Maroon */
+
+  /* --- Dust Scale (Gray-ish / Warm Red Neutrals) --- */
+  --color-dust-100: oklch(0.98 0.01 29); /* Near white mist */
+  --color-dust-200: oklch(0.94 0.015 29);
+  --color-dust-300: oklch(0.88 0.02 29);
+  --color-dust-400: oklch(0.8 0.025 29);
+  --color-dust-500: oklch(0.72 0.03 29); /* Muted Taupe-Red */
+  --color-dust-600: oklch(0.6 0.03 29);
+  --color-dust-700: oklch(0.48 0.03 29);
+  --color-dust-800: oklch(0.35 0.03 29);
+  --color-dust-900: oklch(0.22 0.03 29); /* Reddish Charcoal */
+
+  /* --- Garnet Scale (Deep / Heavy / Crimson) --- */
+  --color-garnet-100: oklch(0.92 0.08 29);
+  --color-garnet-200: oklch(0.82 0.14 29);
+  --color-garnet-300: oklch(0.7 0.18 29);
+  --color-garnet-400: oklch(0.55 0.21 29);
+  --color-garnet-500: oklch(0.42 0.19 29); /* Rich Oxblood */
+  --color-garnet-600: oklch(0.32 0.16 29);
+  --color-garnet-700: oklch(0.22 0.12 29);
+  --color-garnet-800: oklch(0.16 0.08 29);
+  --color-garnet-900: oklch(0.1 0.05 29); /* Near Black Red */
+}
+
+.dark {
+  /* --- Ruby Scale (Reversed) --- */
+  --color-ruby-100: oklch(0.24 0.08 29);
+  --color-ruby-200: oklch(0.32 0.11 29);
+  --color-ruby-300: oklch(0.42 0.15 29);
+  --color-ruby-400: oklch(0.52 0.19 29);
+  --color-ruby-500: oklch(0.6 0.22 29);
+  --color-ruby-600: oklch(0.72 0.18 29);
+  --color-ruby-700: oklch(0.82 0.13 29);
+  --color-ruby-800: oklch(0.9 0.08 29);
+  --color-ruby-900: oklch(0.96 0.04 29);
+
+  /* --- Dust Scale (Reversed) --- */
+  --color-dust-100: oklch(0.22 0.03 29);
+  --color-dust-200: oklch(0.35 0.03 29);
+  --color-dust-300: oklch(0.48 0.03 29);
+  --color-dust-400: oklch(0.6 0.03 29);
+  --color-dust-500: oklch(0.72 0.03 29);
+  --color-dust-600: oklch(0.8 0.025 29);
+  --color-dust-700: oklch(0.88 0.02 29);
+  --color-dust-800: oklch(0.94 0.015 29);
+  --color-dust-900: oklch(0.98 0.01 29);
+
+  /* --- Garnet Scale (Reversed) --- */
+  --color-garnet-100: oklch(0.1 0.05 29);
+  --color-garnet-200: oklch(0.16 0.08 29);
+  --color-garnet-300: oklch(0.22 0.12 29);
+  --color-garnet-400: oklch(0.32 0.16 29);
+  --color-garnet-500: oklch(0.42 0.19 29);
+  --color-garnet-600: oklch(0.55 0.21 29);
+  --color-garnet-700: oklch(0.7 0.18 29);
+  --color-garnet-800: oklch(0.82 0.14 29);
+  --color-garnet-900: oklch(0.92 0.08 29);
+}

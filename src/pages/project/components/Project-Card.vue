@@ -9,6 +9,8 @@ import { useDialog } from '@/stores/store';
 
 import type { AppImageViewerData } from '@/app/image-viewer/AppImageViewer.vue';
 
+import ProjectCardStatus from './Project-Card-Status.vue';
+
 defineProps<{ model: ProjectModel }>();
 
 const imageContainerRef = useTemplateRef('imageContainerRef');
@@ -17,7 +19,7 @@ const { height } = useAspectRatioHeight(width, '16:9');
 
 const showImage = ref(false);
 const showImageDelayed = computedAsync(async () => {
-  await waitFrameMs(200);
+  if (showImage.value) await waitFrameMs(200);
   return showImage.value;
 });
 
@@ -28,7 +30,14 @@ const { open } = useDialog<AppImageViewerData>({
 
 <template>
   <div class="project-card">
-    <div ref="imageContainerRef" class="project-card-thumbnail" :style="{ '--height': `${height}px` }">
+    <ProjectCardStatus style="z-index: 2" :model="model.status" />
+
+    <div
+      ref="imageContainerRef"
+      style="z-index: 1"
+      class="project-card-thumbnail"
+      :style="{ '--height': `${height}px` }"
+    >
       <button @click="() => open(model.thumbnail)">
         <img
           :data-show="showImageDelayed"
@@ -39,7 +48,7 @@ const { open } = useDialog<AppImageViewerData>({
       </button>
     </div>
 
-    <div class="project-card-content">
+    <div class="project-card-content" style="z-index: 1">
       <span class="project-card-title">{{ model.title }}</span>
       <p v-if="model.description?.length">{{ model.description }}</p>
 
@@ -56,6 +65,7 @@ const { open } = useDialog<AppImageViewerData>({
 
 <style lang="scss" scoped>
 .project-card {
+  position: relative;
   width: 100%;
   height: 100%;
 
@@ -71,7 +81,7 @@ const { open } = useDialog<AppImageViewerData>({
   background-color: var(--primary-color-light-100);
   border: 1px solid var(--primary-color-dark-100);
 
-  border-radius: 1rem;
+  border-radius: 1.2rem;
   overflow: hidden;
 
   .project-card-thumbnail {
@@ -96,7 +106,7 @@ const { open } = useDialog<AppImageViewerData>({
         height: var(--height);
         object-fit: cover;
         opacity: 0;
-        transition: all 200ms ease;
+        transition: opacity 200ms ease;
 
         &[data-show='true'] {
           opacity: 1;

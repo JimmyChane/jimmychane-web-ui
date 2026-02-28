@@ -1,7 +1,10 @@
 @import './css/primary-color.css';
 @import './css/background-color.css';
 @import './css/text-color.css';
+
 @import './css/green-color.css';
+@import './css/orange-color.css';
+@import './css/red-color.css';
 
 .light {
   --primary-text-color: var(--primary-color-600);

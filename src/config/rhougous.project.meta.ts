@@ -12,4 +12,6 @@ export const PROJECT_RHOUGHOUS: ProjectModel = {
     'I built a website from scratch to help my friend create a visually appealing online presence for his fursona. The site features a well-designed layout, intuitive background use, and smooth transitions between pages for an enhanced user experience.',
 
   techStacks: ['Vue.js', 'HTML', 'TypeScript', 'JavaScript', 'CSS', 'SCSS'],
+
+  status: 'deprecated',
 };
