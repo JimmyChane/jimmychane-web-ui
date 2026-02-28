@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { useAspectRatioHeight } from '@chanzor/vue-use';
+import { useElementSize } from '@vueuse/core';
+import { ref, useTemplateRef } from 'vue';
 
 import AppSectionTitle from '@/components/AppSectionTitle.vue';
 import BrushIcon from '@/components/icon/Brush.icon.vue';
@@ -11,6 +13,10 @@ const images = ref([
   { src: new URL('@/assets/fursona/ref-sheet-front-w250.webp', import.meta.url).toString(), alt: 'Front Reference' },
   { src: new URL('@/assets/fursona/ref-sheet-back-w250.webp', import.meta.url).toString(), alt: 'Back Reference' },
 ]);
+
+const thumbnailsRef = useTemplateRef('thumbnailsRef');
+const { width } = useElementSize(thumbnailsRef);
+const { height } = useAspectRatioHeight(width, '16:8', { throttle: 0 });
 </script>
 
 <template>
@@ -19,7 +25,7 @@ const images = ref([
       <template #icon><BrushIcon /></template>
       Artwork & Character Design
     </AppSectionTitle>
-    <div class="fursona-artwork-thumbnails">
+    <div ref="thumbnailsRef" class="fursona-artwork-thumbnails" :style="{ '--height': `${height}px` }">
       <FursonaArkworkThumbnail v-for="image in images" :src="image.src" :alt="image.alt" />
     </div>
     <p>
@@ -39,11 +45,18 @@ const images = ref([
 
   .fursona-artwork-thumbnails {
     width: 100%;
-    height: 100%;
+    height: var(--height);
+    min-height: var(--height);
+    max-height: var(--height);
     gap: 0.5rem;
 
     display: flex;
     flex-direction: row;
+
+    & > * {
+      flex-shrink: 1;
+      flex-grow: 1;
+    }
   }
   & > p {
     font-size: 0.875rem;

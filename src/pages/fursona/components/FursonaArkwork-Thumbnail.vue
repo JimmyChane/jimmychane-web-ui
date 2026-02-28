@@ -1,26 +1,13 @@
 <script setup lang="ts">
-import { useAspectRatioWidth } from '@chanzor/vue-use';
-import { useElementBounding } from '@vueuse/core';
-import { useTemplateRef } from 'vue';
-
 import { useImageViewerStore } from '@/stores/image-viewer.store';
 
 defineProps<{ src: string; alt: string }>();
 
 const imageViewerStore = useImageViewerStore();
-
-const selfRef = useTemplateRef('selfRef');
-const { height } = useElementBounding(selfRef);
-const { width } = useAspectRatioWidth(height, '12:16');
 </script>
 
 <template>
-  <button
-    ref="selfRef"
-    class="fursona-artwork-thumbnail"
-    :style="{ '--width': `${width}px` }"
-    @click="() => imageViewerStore.open(src)"
-  >
+  <button ref="selfRef" class="fursona-artwork-thumbnail" @click="() => imageViewerStore.open(src)">
     <div class="fursona-artwork-bg"></div>
     <img :src :alt loading="lazy" />
   </button>
@@ -30,7 +17,7 @@ const { width } = useAspectRatioWidth(height, '12:16');
 .fursona-artwork-thumbnail {
   position: relative;
 
-  max-width: var(--width);
+  width: 100%;
   height: 100%;
   padding: 1em;
 
