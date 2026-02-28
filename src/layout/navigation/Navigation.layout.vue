@@ -65,7 +65,7 @@ onMounted(() => {
 .navigation-layout {
   --actionbar-height: 4.5rem;
   --statusbar-height: 1.5rem;
-  --content-max-width: 70rem;
+  --content-max-width: 60rem;
 
   position: relative;
 

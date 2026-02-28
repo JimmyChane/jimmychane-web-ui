@@ -57,6 +57,7 @@ const { open } = useDialog<AppImageViewerData>({
       </div>
 
       <div class="project-card-footer">
+        <!-- TODO: add icon-external button -->
         <a :href="model.link" target="_blank">View Project</a>
       </div>
     </div>
@@ -96,7 +97,6 @@ const { open } = useDialog<AppImageViewerData>({
       min-width: 100%;
       height: var(--height);
       border: none;
-      background-color: transparent;
       overflow: hidden;
       background-color: var(--primary-color-light-200);
 
@@ -106,7 +106,8 @@ const { open } = useDialog<AppImageViewerData>({
         height: var(--height);
         object-fit: cover;
         opacity: 0;
-        transition: opacity 200ms ease;
+        transition: 200ms ease;
+        transition-property: opacity, transform;
 
         &[data-show='true'] {
           opacity: 1;

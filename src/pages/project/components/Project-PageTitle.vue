@@ -21,6 +21,7 @@
 }
 .project-page-title {
   margin-top: 1rem;
+  margin-bottom: 2rem;
   width: 100%;
   text-align: start;
 

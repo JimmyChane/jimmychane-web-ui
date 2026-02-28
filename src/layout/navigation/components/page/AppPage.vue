@@ -13,16 +13,17 @@ const cssViewMode = computed(() => {
 </script>
 
 <template>
-  <div class="App-page" :data-view-mode="cssViewMode">
-    <slot></slot>
+  <div class="app-page" :data-view-mode="cssViewMode">
+    <div class="app-page-body">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.App-page {
+.app-page {
   width: 100%;
   height: 100%;
-  max-width: var(--content-max-width);
 
   transition:
     all 200ms ease-in-out,
@@ -46,6 +47,16 @@ const cssViewMode = computed(() => {
 
   &[data-view-mode='drawer'] {
     padding-top: 0;
+  }
+
+  .app-page-body {
+    width: 100%;
+    max-width: var(--content-max-width);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
   }
 }
 </style>

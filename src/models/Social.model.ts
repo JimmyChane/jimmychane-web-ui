@@ -1,6 +1,3 @@
 import type { SocialPlatformModel } from './SocialPlatform.model';
 
-export interface SocialModel {
-  socialPlatform: SocialPlatformModel;
-  href: string;
-}
+export type SocialModel = { socialPlatform: SocialPlatformModel; href: string };

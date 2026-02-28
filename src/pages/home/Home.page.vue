@@ -4,41 +4,49 @@ import { FAVOURITE_ROUTE, FURSONA_ROUTE, PROJECT_ROUTE } from '@/stores/navigati
 
 import AppPage from '@/layout/navigation/components/page/AppPage.vue';
 
+import HomeLabel from './components/Home-Label.vue';
+import HomePfp from './components/Home-Pfp.vue';
+import HomeSectionTitle from './components/Home-SectionTitle.vue';
+import HomeSocial from './components/Home-Social.vue';
 import HomeRouteButton from './components/HomeRouteButton.vue';
-import PFP from './components/PageHome-header-pfp.vue';
-import Labels from './components/PageHome-labels.vue';
-import Social from './components/PageHome-social.vue';
 </script>
 
 <template>
   <AppPage>
     <div class="home-page">
-      <div class="home-page-grid">
-        <PFP style="grid-area: img" />
-
-        <h1 class="PageHome-name" style="grid-area: name">{{ PROFILE_JIMMYCHANE.name }}</h1>
-
-        <Labels :labels="PROFILE_JIMMYCHANE.labels" />
-
-        <div class="home-page-socials" style="grid-area: socials">
-          <Social v-for="social of PROFILE_JIMMYCHANE.socials" :key="social.socialPlatform.title" :item="social" />
+      <div class="home-intro">
+        <HomePfp />
+        <h1 class="home-title">{{ PROFILE_JIMMYCHANE.name }}</h1>
+        <div class="home-labels">
+          <HomeLabel
+            v-for="(label, index) in PROFILE_JIMMYCHANE.labels"
+            :model="label"
+            :index="index"
+            :length="PROFILE_JIMMYCHANE.labels.length"
+          />
         </div>
-
-        <p class="home-page-description" style="grid-area: description">
-          {{ PROFILE_JIMMYCHANE.description }}
-        </p>
       </div>
 
-      <div class="home-page-routes">
-        <HomeRouteButton :route="FURSONA_ROUTE" type="fursona">
-          <template #description>My character design</template>
-        </HomeRouteButton>
-        <HomeRouteButton :route="PROJECT_ROUTE" type="project">
-          <template #description>Latest work</template>
-        </HomeRouteButton>
-        <HomeRouteButton :route="FAVOURITE_ROUTE" type="favorite">
-          <template #description>Things I love</template>
-        </HomeRouteButton>
+      <div class="home-section-social">
+        <HomeSectionTitle>Connect with me</HomeSectionTitle>
+        <div class="home-socials">
+          <HomeSocial v-for="social of PROFILE_JIMMYCHANE.socials" :key="social.socialPlatform.title" :item="social" />
+        </div>
+      </div>
+
+      <div class="home-section-social">
+        <HomeSectionTitle>Quick Navigation</HomeSectionTitle>
+        <div class="home-page-routes">
+          <HomeRouteButton :route="FURSONA_ROUTE" type="fursona">
+            <template #description>My character design</template>
+          </HomeRouteButton>
+          <HomeRouteButton :route="PROJECT_ROUTE" type="project">
+            <template #description>Latest work</template>
+          </HomeRouteButton>
+          <HomeRouteButton :route="FAVOURITE_ROUTE" type="favorite">
+            <template #description>Things I love</template>
+          </HomeRouteButton>
+        </div>
       </div>
     </div>
   </AppPage>
@@ -46,87 +54,43 @@ import Social from './components/PageHome-social.vue';
 
 <style lang="scss" scoped>
 .home-page {
-  gap: 3rem;
+  width: 100%;
+  gap: 5rem;
+  padding-bottom: 10rem;
 
   display: flex;
   flex-direction: column;
 
-  .home-page-grid {
-    width: 100%;
-    min-height: max-content;
-
-    transition: all 0.3s;
-
-    display: grid;
-    grid-template-areas:
-      'img'
-      'name'
-      'labels'
-      'socials'
-      'description';
-    justify-content: center;
-    align-items: center;
-    place-items: start;
-    gap: 0.5rem 2rem;
-
-    .PageHome-name {
+  .home-intro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    .home-title {
+      line-height: 1.5em;
       font-weight: 600;
       font-size: 2rem;
-      text-align: center;
+      text-align: start;
     }
-    .home-page-socials {
-      width: 100%;
-      gap: 0.4rem;
-      margin: 1rem 0;
+    .home-labels {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-
-      @media (max-width: 28rem) {
-        gap: initial;
-      }
     }
     .home-page-description {
       font-size: 1.2rem;
       text-wrap: balance;
     }
-
-    @media (max-width: 849px) {
-      place-items: center;
-      font-size: 0.8rem;
-
-      & > * {
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-      }
-    }
-    @media (min-width: 850px) {
-      display: grid;
-      grid-template-areas:
-        'img name'
-        'img labels'
-        'img socials'
-        'img description';
-      justify-content: start;
-      align-items: start;
-      gap: 0.5rem 2rem;
-
-      .PageHome-name {
-        width: 100%;
-        grid-row: 0;
-        font-size: 3rem;
-        text-align: start;
-        display: flex;
-
-        place-self: end;
-      }
-      .home-page-socials {
-        grid-row: 1fr;
-        place-self: start;
-        align-items: flex-start;
-        justify-content: flex-start;
-      }
+  }
+  .home-section-social {
+    gap: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    .home-socials {
+      gap: 0.5em;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      flex-wrap: wrap;
     }
   }
   .home-page-routes {
