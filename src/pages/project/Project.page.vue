@@ -1,105 +1,30 @@
 <script setup lang="ts">
-import ImageFreshnet from '@/assets/showcase/showcase-freshnet-enterprise.webp';
-import ImageGryfder from '@/assets/showcase/showcase-gryfder-deficere.webp';
-import ImageRhougous from '@/assets/showcase/showcase-rhougous-hiroki.webp';
-import ImageRory from '@/assets/showcase/showcase-rory-xavier.webp';
+import { PROJECT_FRESHNET } from '@/config/freshnet.project.meta';
+import { PROJECT_GRYFDER_DEFICERE } from '@/config/gryfder.project.meta';
+import { PROJECT_RHOUGHOUS } from '@/config/rhougous.project.meta';
+import { PROJECT_RORY_XAVIER } from '@/config/roryxavier.project.meta';
 
 import AppPage from '@/layout/navigation/components/page/AppPage.vue';
 
-import Label from './components/PageProject-group-label.vue';
-import Labels from './components/PageProject-group-labels.vue';
-import ProjectHeader from './components/PageProject-project-header.vue';
-import ProjectPreview from './components/PageProject-project-preview.vue';
-import Section from './components/PageProject-project-section.vue';
+import ProjectCard from './components/Project-Card.vue';
+import ProjectPageTitle from './components/Project-PageTitle.vue';
+import ProjectSectionTitle from './components/Project-SectionTitle.vue';
 </script>
 
 <template>
   <AppPage>
     <div class="project-page">
-      <Section>
-        <ProjectHeader title="Rory Xavier, Reference" subtitle="Contributations" href="https://ref.rorywolf.net/" />
+      <ProjectPageTitle />
 
-        <ProjectPreview href="https://ref.rorywolf.net/" :src="ImageRory" alt="Rory Xavier's Reference" />
-
-        <p>
-          I'm helping develop a user-friendly website with smooth profile picture header animations, a biography, and
-          seamless integration of social media and contact options.
-        </p>
-
-        <Labels class="project-page-project-labels">
-          <Label>Svelte.js</Label>
-          <Label>HTML</Label>
-          <Label>TypeScript</Label>
-          <Label>JavaScript</Label>
-          <Label>CSS</Label>
-          <Label>SCSS</Label>
-        </Labels>
-      </Section>
-
-      <Section>
-        <ProjectHeader title="Gryfder Deficere" subtitle="Setup Github" href="https://gryfder.github.io/" />
-
-        <ProjectPreview href="https://gryfder.github.io/" :src="ImageGryfder" alt="Gryfder Deficere's Website" />
-
-        <Labels class="project-page-project-labels">
-          <Label>Vue.js</Label>
-          <Label>HTML</Label>
-          <Label>TypeScript</Label>
-          <Label>JavaScript</Label>
-          <Label>CSS</Label>
-          <Label>SCSS</Label>
-        </Labels>
-      </Section>
-
-      <Section>
-        <ProjectHeader title="Rhougous Hiroki" subtitle="Helps from the start" href="https://www.rhougous.net/" />
-
-        <ProjectPreview href="https://www.rhougous.net/" :src="ImageRhougous" alt="Rhougous Hiroki's Website" />
-
-        <p>
-          I built a website from scratch to help my friend create a visually appealing online presence for his fursona.
-          The site features a well-designed layout, intuitive background use, and smooth transitions between pages for
-          an enhanced user experience.
-        </p>
-
-        <Labels class="project-page-project-labels">
-          <Label>Vue.js</Label>
-          <Label>HTML</Label>
-          <Label>TypeScript</Label>
-          <Label>JavaScript</Label>
-          <Label>CSS</Label>
-          <Label>SCSS</Label>
-        </Labels>
-      </Section>
-
-      <Section>
-        <ProjectHeader
-          title="Freshnet Enterprise"
-          subtitle="Computer store's website"
-          href="https://www.freshnet.app"
-        />
-
-        <ProjectPreview href="https://www.freshnet.app" :src="ImageFreshnet" alt="Freshnet Enterprise" />
-
-        <p>
-          I built a website for Freshnet Enterprise, a computer store, to enhance its online presence. The website
-          provides detailed information about the company's contacts, business hours, services, and location. With a
-          user-friendly layout, it focuses on retaining customers and driving growth for Freshnet Enterprise in today's
-          competitive marketplace.
-        </p>
-
-        <Labels class="project-page-project-labels">
-          <Label>Vue.js</Label>
-          <Label>Express.js</Label>
-          <Label>MongoDB</Label>
-          <Label>HTML</Label>
-          <Label>TypeScript</Label>
-          <Label>JavaScript</Label>
-          <Label>CSS</Label>
-          <Label>SCSS</Label>
-          <Label>PWA</Label>
-        </Labels>
-      </Section>
+      <div class="project-section">
+        <ProjectSectionTitle>Milestone</ProjectSectionTitle>
+        <div class="project-milestone-list">
+          <ProjectCard :model="PROJECT_RORY_XAVIER" />
+          <ProjectCard :model="PROJECT_GRYFDER_DEFICERE" />
+          <ProjectCard :model="PROJECT_RHOUGHOUS" />
+          <ProjectCard :model="PROJECT_FRESHNET" />
+        </div>
+      </div>
     </div>
   </AppPage>
 </template>
@@ -116,48 +41,30 @@ import Section from './components/PageProject-project-section.vue';
   }
 }
 .project-page {
+  width: 100%;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  padding-bottom: 10rem;
 
-  & > * {
-    --background-color: var(--primary-color);
-
-    color: white;
-    text-align: start;
-    gap: 6rem 4rem;
-    display: flex;
-    flex-direction: column;
+  .project-section {
+    margin-top: 1rem;
+    width: 100%;
+    gap: 1rem;
 
     display: flex;
     flex-direction: column;
-    text-align: start;
-    gap: 0.5rem;
-
-    p {
-      margin: 1rem 0;
-    }
-
-    .project-page-project-labels {
-      & > * {
-        color: var(--primary-color);
-        background-color: white;
-        font-weight: 600;
-        font-size: 0.6em;
-      }
-    }
+    align-items: center;
   }
 
-  @media (min-width: 1000px) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: stretch;
+  .project-milestone-list {
+    width: 100%;
+    gap: 1rem;
 
-    & > * {
-      flex: 1 14rem;
-      --padding: 4rem;
-    }
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
   }
 }
 </style>

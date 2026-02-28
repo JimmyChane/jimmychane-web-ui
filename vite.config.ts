@@ -43,6 +43,7 @@ export default defineConfig(() => {
       }),
       ViteInspect(),
     ],
+    optimizeDeps: { exclude: ['@chanzor/vue-pwa'] },
     define: {
       'import.meta.env.APP_VERSION': JSON.stringify(Package.version),
       'import.meta.env.APP_NAME': JSON.stringify(Package.name),

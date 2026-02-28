@@ -18,5 +18,6 @@
   border-radius: 2rem;
 
   background: var(--background-color);
+  color: white;
 }
 </style>

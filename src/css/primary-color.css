@@ -8,6 +8,28 @@
   --primary-color-700: #5d4202;
   --primary-color-800: #422f01;
   --primary-color-900: #281b01;
+
+  /* Primary Light Scale */
+  --primary-color-light-100: oklch(0.98 0.01 85);
+  --primary-color-light-200: oklch(0.95 0.015 85);
+  --primary-color-light-300: oklch(0.89 0.02 85);
+  --primary-color-light-400: oklch(0.82 0.025 85);
+  --primary-color-light-500: oklch(0.74 0.03 85);
+  --primary-color-light-600: oklch(0.62 0.03 85);
+  --primary-color-light-700: oklch(0.48 0.03 85);
+  --primary-color-light-800: oklch(0.35 0.03 85);
+  --primary-color-light-900: oklch(0.22 0.03 85);
+
+  /* Primary Dark Scale */
+  --primary-color-dark-100: #ede2a6;
+  --primary-color-dark-200: #d5c472;
+  --primary-color-dark-300: #b58c1d;
+  --primary-color-dark-400: #906e1b;
+  --primary-color-dark-500: #6d5113;
+  --primary-color-dark-600: #4a360a;
+  --primary-color-dark-700: #281b01;
+  --primary-color-dark-800: #181001;
+  --primary-color-dark-900: #0a0700;
 }
 
 .dark {
@@ -20,4 +42,26 @@
   --primary-color-700: #d5c472;
   --primary-color-800: #e6db99;
   --primary-color-900: #f8f2b8;
+
+  /* Primary Light Scale */
+  --primary-color-light-100: oklch(0.22 0.03 85);
+  --primary-color-light-200: oklch(0.35 0.03 85);
+  --primary-color-light-300: oklch(0.48 0.03 85);
+  --primary-color-light-400: oklch(0.62 0.03 85);
+  --primary-color-light-500: oklch(0.74 0.03 85);
+  --primary-color-light-600: oklch(0.82 0.025 85);
+  --primary-color-light-700: oklch(0.89 0.02 85);
+  --primary-color-light-800: oklch(0.95 0.015 85);
+  --primary-color-light-900: oklch(0.98 0.01 85);
+
+  /* Primary Dark Scale */
+  --primary-color-dark-100: #0a0700;
+  --primary-color-dark-200: #181001;
+  --primary-color-dark-300: #281b01;
+  --primary-color-dark-400: #4a360a;
+  --primary-color-dark-500: #6d5113;
+  --primary-color-dark-600: #906e1b;
+  --primary-color-dark-700: #b58c1d;
+  --primary-color-dark-800: #d5c472;
+  --primary-color-dark-900: #ede2a6;
 }
