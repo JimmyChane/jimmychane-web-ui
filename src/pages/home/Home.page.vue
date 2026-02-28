@@ -66,10 +66,10 @@ import HomeRouteButton from './components/HomeRouteButton.vue';
     flex-direction: column;
     align-items: flex-start;
     .home-title {
-      line-height: 1.5em;
       font-weight: 600;
-      font-size: 2rem;
+      font-size: 3rem;
       text-align: start;
+      margin-bottom: 0.2em;
     }
     .home-labels {
       display: flex;

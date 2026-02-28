@@ -12,7 +12,8 @@ import HomePfpBackground from './Home-Pfp-Background.vue';
 
 const selfRef = useTemplateRef('selfRef');
 const { width } = useElementSize(selfRef);
-const { height } = useAspectRatioHeight(width, '16:7');
+const { height } = useAspectRatioHeight(width, '16:12');
+const heightConstrained = computed(() => Math.min(height.value, 500));
 
 const { open } = useDialog<AppImageViewerData>({
   component: defineAsyncComponent(() => import('@/app/image-viewer/AppImageViewer.vue')),
@@ -34,7 +35,7 @@ const selfTheme = computed(() => {
     ref="selfRef"
     class="home-pfp"
     :class="selfTheme"
-    :style="{ '--height': `${height}px` }"
+    :style="{ '--height': `${heightConstrained}px` }"
     @click="() => open(PFP_WEBP)"
   >
     <HomePfpBackground />
