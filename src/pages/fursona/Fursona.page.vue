@@ -1,24 +1,22 @@
 <script setup lang="ts">
-import { defineAsyncComponent } from 'vue';
-
 import { PROFILE_JIMMYCHANE } from '@/config/jimmychane.profile.meta';
-import { useDialog } from '@/stores/store';
+import { useImageViewerStore } from '@/stores/image-viewer.store';
 
-import type { AppImageViewerData } from '@/app/image-viewer/AppImageViewer.vue';
 import AppPage from '@/layout/navigation/components/page/AppPage.vue';
 
 import FursonaHeader from './components/PageFursona-header.vue';
 import Section from './components/PageFursona-section.vue';
 
-const { open } = useDialog<AppImageViewerData>({
-  component: defineAsyncComponent(() => import('@/app/image-viewer/AppImageViewer.vue')),
-});
+const imageViewerStore = useImageViewerStore();
 </script>
 
 <template>
   <AppPage>
     <Section class="fursona-page" style="--text-color: var(--section-fursona-text-color)">
-      <button class="PageFursona-fursona-preview" @click="() => open(PROFILE_JIMMYCHANE.fursona.image)">
+      <button
+        class="PageFursona-fursona-preview"
+        @click="() => imageViewerStore.open(PROFILE_JIMMYCHANE.fursona.image)"
+      >
         <img :src="PROFILE_JIMMYCHANE.fursona.image" :alt="PROFILE_JIMMYCHANE.fursona.alt" loading="lazy" />
       </button>
 

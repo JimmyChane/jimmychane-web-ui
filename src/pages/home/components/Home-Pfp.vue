@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { useAspectRatioHeight } from '@chanzor/vue-use';
 import { useElementSize } from '@vueuse/core';
-import { computed, defineAsyncComponent, useTemplateRef } from 'vue';
+import { computed, useTemplateRef } from 'vue';
 
 import PFP_WEBP from '@/assets/jimmy_fox_pfp-v1.webp';
-import { useDialog, useThemeStore } from '@/stores/store';
-
-import type { AppImageViewerData } from '@/app/image-viewer/AppImageViewer.vue';
+import { useImageViewerStore } from '@/stores/image-viewer.store';
+import { useThemeStore } from '@/stores/store';
 
 import HomePfpBackground from './Home-Pfp-Background.vue';
 
@@ -15,9 +14,7 @@ const { width } = useElementSize(selfRef);
 const { height } = useAspectRatioHeight(width, '16:12');
 const heightConstrained = computed(() => Math.min(height.value, 500));
 
-const { open } = useDialog<AppImageViewerData>({
-  component: defineAsyncComponent(() => import('@/app/image-viewer/AppImageViewer.vue')),
-});
+const imageViewerStore = useImageViewerStore();
 
 const themeStore = useThemeStore();
 const selfTheme = computed(() => {
@@ -36,7 +33,7 @@ const selfTheme = computed(() => {
     class="home-pfp"
     :class="selfTheme"
     :style="{ '--height': `${heightConstrained}px` }"
-    @click="() => open(PFP_WEBP)"
+    @click="() => imageViewerStore.open(PFP_WEBP)"
   >
     <HomePfpBackground />
     <img class="home-pfp-image" :src="PFP_WEBP" alt="Jimmy Chane's Profile Image" loading="lazy" />

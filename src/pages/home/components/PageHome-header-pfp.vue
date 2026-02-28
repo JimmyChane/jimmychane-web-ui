@@ -1,18 +1,12 @@
 <script setup lang="ts">
-import { defineAsyncComponent } from 'vue';
-
 import PFP_WEBP from '@/assets/jimmy_fox_pfp-v1.webp';
-import { useDialog } from '@/stores/store';
+import { useImageViewerStore } from '@/stores/image-viewer.store';
 
-import type { AppImageViewerData } from '@/app/image-viewer/AppImageViewer.vue';
-
-const { open } = useDialog<AppImageViewerData>({
-  component: defineAsyncComponent(() => import('@/app/image-viewer/AppImageViewer.vue')),
-});
+const imageViewerStore = useImageViewerStore();
 </script>
 
 <template>
-  <button class="PFP" @click="() => open(PFP_WEBP)">
+  <button class="PFP" @click="() => imageViewerStore.open(PFP_WEBP)">
     <div class="PFP-background"></div>
     <img class="PFP-image" :src="PFP_WEBP" alt="Jimmy Chane's Profile Image" loading="lazy" />
   </button>

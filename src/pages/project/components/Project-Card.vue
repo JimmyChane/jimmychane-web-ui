@@ -2,12 +2,10 @@
 import { useAspectRatioHeight } from '@chanzor/vue-use';
 import { waitFrameMs } from '@chanzor/vue-utils';
 import { computedAsync, useElementSize } from '@vueuse/core';
-import { defineAsyncComponent, ref, useTemplateRef } from 'vue';
+import { ref, useTemplateRef } from 'vue';
 
 import type { ProjectModel } from '@/config/project.meta';
-import { useDialog } from '@/stores/store';
-
-import type { AppImageViewerData } from '@/app/image-viewer/AppImageViewer.vue';
+import { useImageViewerStore } from '@/stores/image-viewer.store';
 
 import ProjectCardStatus from './Project-Card-Status.vue';
 
@@ -23,9 +21,7 @@ const showImageDelayed = computedAsync(async () => {
   return showImage.value;
 });
 
-const { open } = useDialog<AppImageViewerData>({
-  component: defineAsyncComponent(() => import('@/app/image-viewer/AppImageViewer.vue')),
-});
+const imageViewerStore = useImageViewerStore();
 </script>
 
 <template>
@@ -38,7 +34,7 @@ const { open } = useDialog<AppImageViewerData>({
       class="project-card-thumbnail"
       :style="{ '--height': `${height}px` }"
     >
-      <button @click="() => open(model.thumbnail)">
+      <button @click="() => imageViewerStore.open(model.thumbnail)">
         <img
           :data-show="showImageDelayed"
           :src="model.thumbnail"
