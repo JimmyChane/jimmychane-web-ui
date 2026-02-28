@@ -4,11 +4,12 @@ import { PROJECT_GRYFDER_DEFICERE } from '@/config/gryfder.project.meta';
 import { PROJECT_RHOUGHOUS } from '@/config/rhougous.project.meta';
 import { PROJECT_RORY_XAVIER } from '@/config/roryxavier.project.meta';
 
+import AppSectionTitle from '@/components/AppSectionTitle.vue';
 import AppPage from '@/layout/navigation/components/page/AppPage.vue';
 
 import ProjectCard from './components/Project-Card.vue';
+import ProjectDot from './components/Project-Dot.vue';
 import ProjectPageTitle from './components/Project-PageTitle.vue';
-import ProjectSectionTitle from './components/Project-SectionTitle.vue';
 </script>
 
 <template>
@@ -17,7 +18,10 @@ import ProjectSectionTitle from './components/Project-SectionTitle.vue';
       <ProjectPageTitle />
 
       <div class="project-section">
-        <ProjectSectionTitle>Milestone</ProjectSectionTitle>
+        <AppSectionTitle>
+          <template #icon><ProjectDot /></template>
+          Milestone
+        </AppSectionTitle>
         <div class="project-milestone-list">
           <ProjectCard :model="PROJECT_RORY_XAVIER" />
           <ProjectCard :model="PROJECT_GRYFDER_DEFICERE" />

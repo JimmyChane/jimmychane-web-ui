@@ -7,6 +7,8 @@ import { ref, useTemplateRef } from 'vue';
 import type { ProjectModel } from '@/config/project.meta';
 import { useImageViewerStore } from '@/stores/image-viewer.store';
 
+import AppLabel from '@/components/AppLabel.vue';
+
 import ProjectCardStatus from './Project-Card-Status.vue';
 
 defineProps<{ model: ProjectModel }>();
@@ -49,7 +51,7 @@ const imageViewerStore = useImageViewerStore();
       <p v-if="model.description?.length">{{ model.description }}</p>
 
       <div class="project-card-labels">
-        <span v-for="label in model.techStacks">{{ label }}</span>
+        <AppLabel v-for="label in model.techStacks">{{ label }}</AppLabel>
       </div>
 
       <div class="project-card-footer">
@@ -138,22 +140,14 @@ const imageViewerStore = useImageViewerStore();
     }
 
     .project-card-labels {
-      font-size: 0.7rem;
-      font-weight: 700;
       margin-top: 1.5rem;
-      gap: 0.3em;
+      gap: 0.2rem;
 
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: flex-start;
       flex-wrap: wrap;
-
-      & > * {
-        padding: 0.3em 1.2em;
-        border-radius: 2em;
-        background-color: var(--primary-color-light-200);
-      }
     }
 
     .project-card-footer {

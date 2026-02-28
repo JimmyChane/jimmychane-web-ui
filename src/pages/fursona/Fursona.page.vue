@@ -1,32 +1,28 @@
 <script setup lang="ts">
-import { PROFILE_JIMMYCHANE } from '@/config/jimmychane.profile.meta';
-import { useImageViewerStore } from '@/stores/image-viewer.store';
-
 import AppPage from '@/layout/navigation/components/page/AppPage.vue';
 
-import FursonaHeader from './components/PageFursona-header.vue';
-import Section from './components/PageFursona-section.vue';
-
-const imageViewerStore = useImageViewerStore();
+import FursonaArtworkView from './view/FursonaArtwork.view.vue';
+import FursonaGalleryView from './view/FursonaGallery.view.vue';
+import FursonaIntroView from './view/FursonaIntro.view.vue';
+import FursonaOutfitView from './view/FursonaOutfit.view.vue';
+import FursonaPersonalityView from './view/FursonaPersonality.view.vue';
+import FursonaTraitView from './view/FursonaTrait.view.vue';
 </script>
 
 <template>
   <AppPage>
-    <Section class="fursona-page" style="--text-color: var(--section-fursona-text-color)">
-      <button
-        class="PageFursona-fursona-preview"
-        @click="() => imageViewerStore.open(PROFILE_JIMMYCHANE.fursona.image)"
-      >
-        <img :src="PROFILE_JIMMYCHANE.fursona.image" :alt="PROFILE_JIMMYCHANE.fursona.alt" loading="lazy" />
-      </button>
-
-      <div style="display: flex; flex-direction: column; gap: 1rem">
-        <div v-for="(section, index) of PROFILE_JIMMYCHANE.fursona.sections" :key="index">
-          <FursonaHeader :title="section.titles.title" :subtitle="section.titles.subtitle" />
-          <p>{{ section.description }}</p>
-        </div>
+    <div class="fursona-page">
+      <div class="fursona-page-header">
+        <FursonaIntroView />
+        <FursonaTraitView />
       </div>
-    </Section>
+      <div class="fursona-page-wrap">
+        <FursonaArtworkView />
+        <FursonaPersonalityView />
+      </div>
+      <FursonaOutfitView />
+      <FursonaGalleryView />
+    </div>
   </AppPage>
 </template>
 
@@ -46,49 +42,37 @@ const imageViewerStore = useImageViewerStore();
   }
 }
 .fursona-page {
-  --section-color: var(--section-fursona-background-color);
-  color: white;
-
-  gap: 1rem;
+  width: 100%;
+  gap: 4rem;
+  padding-bottom: 10rem;
 
   display: flex;
   flex-direction: column;
-  text-align: start;
 
-  .PageFursona-fursona-preview {
+  .fursona-page-header {
     width: 100%;
+    gap: 1rem;
 
-    aspect-ratio: 16/9;
-    border-radius: 1.5rem;
-    margin: auto;
-    border: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 
-    background: var(--section-fursona-header-background-color);
+  .fursona-page-wrap {
+    width: 100%;
+    gap: 4rem 2rem;
 
-    & > img {
-      width: 100%;
-      height: 100%;
-      max-height: 25rem;
-      object-fit: contain;
-      transition: all 0.2s ease-in-out;
-    }
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 
-    &:hover {
-      & > img {
-        transform: scale(1.05);
+    & > * {
+      flex-grow: 1;
+      flex-basis: 20rem;
+
+      &:nth-child(1) {
+        flex-basis: 32rem;
       }
-    }
-    &:focus {
-      & > img {
-        transform: scale(0.95);
-      }
-    }
-
-    @media (min-width: 800px) {
-      padding: 1rem;
-    }
-    @media (min-width: 1000px) {
-      padding: 2rem;
     }
   }
 }
