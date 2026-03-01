@@ -1,9 +1,15 @@
 <script setup lang="ts">
+import { useElementSize } from '@vueuse/core';
+import { useTemplateRef } from 'vue';
+
 defineProps<{ show: boolean; clickUpdate: () => void }>();
+
+const selfRef = useTemplateRef('selfRef');
+const { height } = useElementSize(selfRef);
 </script>
 
 <template>
-  <div class="app-pwa-update" :data-show="show">
+  <div ref="selfRef" class="app-pwa-update" :style="{ '--height': `${height}px` }" :data-show="show">
     <span>New version available!</span>
     <button @click="() => clickUpdate()">Update</button>
   </div>
@@ -26,7 +32,7 @@ defineProps<{ show: boolean; clickUpdate: () => void }>();
 }
 .app-pwa-update {
   position: absolute;
-  bottom: 1rem;
+  top: calc(100dvh - var(--height) - 2.5rem);
   right: 1rem;
   border-radius: 1.2em;
   padding: 0.8em;

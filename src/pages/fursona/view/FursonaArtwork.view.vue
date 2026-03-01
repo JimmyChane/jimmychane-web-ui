@@ -16,7 +16,7 @@ const images = ref([
 
 const thumbnailsRef = useTemplateRef('thumbnailsRef');
 const { width } = useElementSize(thumbnailsRef);
-const { height } = useAspectRatioHeight(width, '16:8', { throttle: 0 });
+const { height } = useAspectRatioHeight(width, '16:8');
 </script>
 
 <template>
