@@ -19,7 +19,7 @@ const { height } = useElementSize(selfRef);
 .light {
   .app-pwa-update {
     & > button {
-      color: var(--primary-color-900);
+      color: white;
     }
   }
 }
@@ -35,14 +35,15 @@ const { height } = useElementSize(selfRef);
   top: calc(100dvh - var(--height) - 2.5rem);
   right: 1rem;
   border-radius: 1.2em;
-  padding: 0.8em;
+  padding: 0.4em;
+  padding-left: 1em;
   gap: 0.5em;
 
   z-index: 2;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
 
   font-size: 0.875rem;
 
@@ -50,12 +51,16 @@ const { height } = useElementSize(selfRef);
   border: 1px solid var(--primary-color-200);
   transition: opacity 200ms ease;
 
+  & > span {
+    flex-grow: 1;
+  }
+
   & > button {
-    border-radius: 0.5em;
-    padding: 0.4em 0.8em;
+    border-radius: 0.8em;
+    padding: 0.6em 1em;
     font-size: 0.875rem;
 
-    background-color: var(--primary-color-300);
+    background-color: var(--primary-color-500);
     border: none;
   }
 
