@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { PROJECT_FRESHNET } from '@/config/freshnet.project.meta';
-import { PROJECT_GRYFDER_DEFICERE } from '@/config/gryfder.project.meta';
-import { PROJECT_RHOUGHOUS } from '@/config/rhougous.project.meta';
-import { PROJECT_RORY_XAVIER } from '@/config/roryxavier.project.meta';
+import { PROJECT_FRESHNET } from '@/config/project/freshnet.project.meta';
+import { PROJECT_GRYFDER_DEFICERE } from '@/config/project/gryfder.project.meta';
+import { PROJECT_MYFURCON_2026 } from '@/config/project/myfur.project.meta';
+import { PROJECT_RHOUGHOUS } from '@/config/project/rhougous.project.meta';
+import { PROJECT_RORY_XAVIER } from '@/config/project/roryxavier.project.meta';
 
 import AppSectionTitle from '@/components/AppSectionTitle.vue';
 import AppPage from '@/layout/navigation/components/page/AppPage.vue';
@@ -23,6 +24,7 @@ import ProjectPageTitle from './components/Project-PageTitle.vue';
           Milestone
         </AppSectionTitle>
         <div class="project-milestone-list">
+          <ProjectCard :model="PROJECT_MYFURCON_2026" />
           <ProjectCard :model="PROJECT_RORY_XAVIER" />
           <ProjectCard :model="PROJECT_GRYFDER_DEFICERE" />
           <ProjectCard :model="PROJECT_RHOUGHOUS" />

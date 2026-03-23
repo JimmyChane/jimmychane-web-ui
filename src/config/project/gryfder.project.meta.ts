@@ -10,5 +10,5 @@ export const PROJECT_GRYFDER_DEFICERE: ProjectModel = {
   link: 'https://gryfder.github.io/',
   techStacks: ['Vue.js', 'HTML', 'TypeScript', 'JavaScript', 'CSS', 'SCSS'],
 
-  status: 'active',
+  statuses: ['active'],
 };

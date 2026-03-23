@@ -11,5 +11,5 @@ export interface ProjectModel {
   techStacks: string[];
   link: string;
 
-  status: ProjectStatusCode;
+  statuses: ProjectStatusCode[];
 }

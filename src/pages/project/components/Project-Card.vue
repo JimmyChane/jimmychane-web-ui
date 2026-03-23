@@ -4,8 +4,7 @@ import { waitFrameMs } from '@chanzor/vue-utils';
 import { computedAsync, useElementSize } from '@vueuse/core';
 import { ref, useTemplateRef } from 'vue';
 
-import type { ProjectModel } from '@/config/project.meta';
-import { useImageViewerStore } from '@/stores/image-viewer.store';
+import type { ProjectModel } from '@/config/project/project.meta';
 
 import AppLabel from '@/components/AppLabel.vue';
 
@@ -22,13 +21,11 @@ const showImageDelayed = computedAsync(async () => {
   if (showImage.value) await waitFrameMs(200);
   return showImage.value;
 });
-
-const imageViewerStore = useImageViewerStore();
 </script>
 
 <template>
   <div class="project-card">
-    <ProjectCardStatus style="z-index: 2" :model="model.status" />
+    <ProjectCardStatus v-if="model.statuses.length" style="z-index: 2" :statuses="model.statuses" />
 
     <div
       ref="imageContainerRef"
@@ -36,14 +33,14 @@ const imageViewerStore = useImageViewerStore();
       class="project-card-thumbnail"
       :style="{ '--height': `${height}px` }"
     >
-      <button @click="() => imageViewerStore.open(model.thumbnail)">
+      <a :href="model.link" target="_blank">
         <img
           :data-show="showImageDelayed"
           :src="model.thumbnail"
           :alt="model.thumbnailAlt"
           @load="() => (showImage = true)"
         />
-      </button>
+      </a>
     </div>
 
     <div class="project-card-content" style="z-index: 1">
@@ -90,7 +87,8 @@ const imageViewerStore = useImageViewerStore();
     display: flex;
     flex-direction: column;
 
-    & > button {
+    & > button,
+    & > a {
       width: 100%;
       min-width: 100%;
       height: var(--height);

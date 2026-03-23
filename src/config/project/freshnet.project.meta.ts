@@ -13,5 +13,5 @@ export const PROJECT_FRESHNET: ProjectModel = {
 
   techStacks: ['Vue.js', 'Express.js', 'MongoDB', 'HTML', 'TypeScript', 'JavaScript', 'CSS', 'SCSS', 'PWA'],
 
-  status: 'active',
+  statuses: ['active'],
 };

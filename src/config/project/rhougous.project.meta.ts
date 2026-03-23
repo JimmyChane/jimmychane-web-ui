@@ -13,5 +13,5 @@ export const PROJECT_RHOUGHOUS: ProjectModel = {
 
   techStacks: ['Vue.js', 'HTML', 'TypeScript', 'JavaScript', 'CSS', 'SCSS'],
 
-  status: 'deprecated',
+  statuses: ['deprecated'],
 };
