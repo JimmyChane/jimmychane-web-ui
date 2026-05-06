@@ -11,7 +11,9 @@
     "build-preview": "npm run build && npm run preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "analyze": "knip",
+    "analyze:fix": "knip --fix --allow-remove-files --include files"
   },
   "engines": {
     "node": ">=22"
@@ -34,6 +36,7 @@
     "@types/node": "^22.19.17",
     "@vitejs/plugin-vue": "^6.0.5",
     "@vue/tsconfig": "^0.8.1",
+    "knip": "^6.11.0",
     "prettier": "^3.8.1",
     "sass": "^1.99.0",
     "typescript": "~5.9.3",

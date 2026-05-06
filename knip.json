@@ -1,0 +1,8 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "entry": ["src/main.ts"],
+  "project": ["src/**/*.{ts,vue}"],
+  "paths": { "@/*": ["./src/*"] },
+  "rules": { "files": "error", "dependencies": "error", "unlisted": "error" },
+  "ignoreExportsUsedInFile": { "interface": true, "type": true }
+}
