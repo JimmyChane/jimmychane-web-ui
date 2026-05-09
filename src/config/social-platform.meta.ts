@@ -17,7 +17,7 @@ export const SOCIAL_PLATFORM_TELEGRAM: SocialPlatformModel = {
   useInvertColorOnDark: false,
 };
 export const SOCIAL_PLATFORM_GITHUB: SocialPlatformModel = {
-  id: SocialPlatformId.TWITTER,
+  id: SocialPlatformId.GITHUB,
   title: 'Github',
   icon: GithubLogo,
   useInvertColorOnDark: true,

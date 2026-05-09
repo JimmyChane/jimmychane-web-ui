@@ -95,8 +95,7 @@ onMounted(() => {
 
     .navigation-layout-router-view {
       width: 100%;
-      height: 100%;
-      min-height: max-content;
+      height: max-content;
 
       flex-grow: 1;
 
