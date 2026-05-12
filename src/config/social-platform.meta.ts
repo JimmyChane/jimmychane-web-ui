@@ -2,7 +2,7 @@ import BlueskyLogo from '@/assets/social/bluesky-color-w32.png';
 import GithubLogo from '@/assets/social/github-color.svg';
 import TelegramLogo from '@/assets/social/telegram-color.svg';
 import TwitterLogo from '@/assets/social/twitter-color.svg';
-import { SocialPlatformId, type SocialPlatformModel } from '@/models/SocialPlatform.model';
+import { SocialPlatformId, type SocialPlatformModel } from '@/models/social-platform.model';
 
 export const SOCIAL_PLATFORM_TWITTER: SocialPlatformModel = {
   id: SocialPlatformId.TWITTER,

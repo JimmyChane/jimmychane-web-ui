@@ -1,5 +1,5 @@
 import FURSONA_PREVIEW_WEBP from '@/assets/fursona/fursona-preview-v0.6.webp';
-import type { ProfileModel } from '@/models/Profile.model';
+import type { ProfileModel } from '@/models/profile.model';
 
 import {
   SOCIAL_PLATFORM_BLUESKY,

@@ -1,4 +1,4 @@
-import type { SocialModel } from './Social.model';
+import type { SocialModel } from './social.model';
 
 export interface ProfileModel {
   name: string;

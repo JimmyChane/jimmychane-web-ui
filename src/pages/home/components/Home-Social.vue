@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { type SocialModel } from '@/models/Social.model';
+import { type SocialModel } from '@/models/social.model';
 
 defineProps<{ item: SocialModel }>();
 </script>
 
 <template>
-  <!-- TODO: add icon-external button -->
   <a class="home-social" target="_blank" :href="item.href">
     <img
       :src="item.socialPlatform.icon"
@@ -18,6 +17,16 @@ defineProps<{ item: SocialModel }>();
 </template>
 
 <style scoped lang="scss">
+.dark {
+  .home-social {
+    border: 1px solid var(--background-color-opacity70);
+  }
+}
+.light {
+  .home-social {
+    border: 1px solid var(--primary-color-200);
+  }
+}
 .home-social {
   font-size: 1.2rem;
 
@@ -26,10 +35,8 @@ defineProps<{ item: SocialModel }>();
   gap: 0.8rem;
   padding: 0.6rem 0.7rem;
   border-radius: 2em;
-  border: 1px solid var(--primary-color-200);
 
   color: var(--text-color);
-  text-decoration: none;
   transition: 0.3s;
   background: var(--background-color-opacity60);
 
